@@ -26,9 +26,9 @@ export default {
 
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers });
     const routes = {
-      "/api/longdong": { current: "F-B0053-005", weekly: ["F-B0053-001", "F-B0053-003"] },
-      "/api/kenting": { current: "F-D0047-033", weekly: ["F-D0047-035"] },
-      "/api/defulan": { current: "F-D0047-073", weekly: ["F-D0047-075"] }
+      "/api/longdong": { current: "F-B0053-005", weekly: ["F-B0053-001", "F-B0053-003"], conditionLocationId: "A01800", lat: 25.111, lon: 121.919, stationId: "C0A950" },
+      "/api/kenting": { current: "F-D0047-033", weekly: ["F-D0047-035"], conditionLocationName: "恆春鎮", lat: 21.926, lon: 120.829 },
+      "/api/defulan": { current: "F-D0047-073", weekly: ["F-D0047-075"], conditionLocationName: "和平區", lat: 24.174, lon: 120.974 }
     };
     const route = routes[url.pathname];
     if (request.method !== "GET" || !route) {
@@ -42,7 +42,7 @@ export default {
     }
 
     const cache = caches.default;
-    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v19`, { method: "GET" });
+    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v20`, { method: "GET" });
     const cached = await cache.match(cacheKey);
     if (cached) {
       const responseHeaders = new Headers(cached.headers);
@@ -87,6 +87,16 @@ export default {
       }
     };
 
+    const fetchObservationProduct = async product => {
+      const observationKey = new Request(`${url.origin}/_cwa-cache/${product}?schema=observation-v1`, { method: "GET" });
+      const cachedObservation = await cache.match(observationKey);
+      if (cachedObservation) return cachedObservation.json();
+      const data = await fetchProduct(product);
+      const response = Response.json(data, { headers: { "Cache-Control": "public, max-age=600" } });
+      ctx.waitUntil(cache.put(observationKey, response.clone()));
+      return data;
+    };
+
     const walkData = (value, fn) => {
       if (!value) return;
       if (Array.isArray(value)) { value.forEach(item => walkData(item, fn)); return; }
@@ -110,49 +120,104 @@ export default {
       if (!match) return null;
       const n = Number(match[0]); return n === -98 ? 0 : n <= -90 ? null : n;
     };
-    const normalizeStation = data => {
-      let found = null;
+    const stationPosition = row => {
+      const geo = row.GeoInfo ?? row.geoInfo ?? {};
+      const raw = geo.Coordinates ?? geo.coordinates ?? row.Coordinates ?? row.coordinates ?? [];
+      const list = Array.isArray(raw) ? raw : [raw];
+      const coordinate = list.find(item => /WGS.?84/i.test(String(item?.CoordinateName ?? item?.coordinateName ?? ""))) || list[0] || {};
+      const lat = numberValue(coordinate.StationLatitude ?? coordinate.stationLatitude ?? coordinate.Latitude ?? coordinate.latitude ?? row.StationLatitude ?? row.stationLatitude ?? row.lat);
+      const lon = numberValue(coordinate.StationLongitude ?? coordinate.stationLongitude ?? coordinate.Longitude ?? coordinate.longitude ?? row.StationLongitude ?? row.stationLongitude ?? row.lon);
+      return lat === null || lon === null ? null : { lat, lon };
+    };
+    const stationDistance = (position, route) => {
+      if (!position) return Infinity;
+      const rad = value => value * Math.PI / 180;
+      const dLat = rad(position.lat - route.lat), dLon = rad(position.lon - route.lon);
+      const a = Math.sin(dLat / 2) ** 2 + Math.cos(rad(route.lat)) * Math.cos(rad(position.lat)) * Math.sin(dLon / 2) ** 2;
+      return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    };
+    const stationRows = (data, route, kind) => {
+      const rows = [];
       walkData(data, row => {
         const id = row.StationId ?? row.StationID ?? row.stationId ?? row.stationID;
-        if (String(id) !== "C0A950") return;
-        const weather = row.WeatherElement ?? row.weatherElement ?? {};
-        const rain = row.RainfallElement ?? row.rainfallElement ?? {};
-        const past3 = rain.Past3hr ?? rain.past3hr ?? {};
-        const past6 = rain.Past6hr ?? rain.past6hr ?? {};
-        found = {
-          stationId: "C0A950",
-          humidity: numberValue(pick(weather, ["RelativeHumidity", "RH", "HUMD"])),
-          temperature: numberValue(pick(weather, ["AirTemperature", "Temperature"])),
-          windDirection: numberValue(pick(weather, ["WindDirection", "WD"])),
-          windSpeed: numberValue(pick(weather, ["WindSpeed", "WS"])),
-          past3hr: numberValue(pick(past3, ["Precipitation"])),
-          past6hr: numberValue(pick(past6, ["Precipitation"])),
-          observedAt: pick(row, ["DateTime"])
-        };
+        const weather = row.WeatherElement ?? row.weatherElement;
+        const rainfall = row.RainfallElement ?? row.rainfallElement;
+        if (!id || (kind === "weather" ? !weather : !rainfall)) return;
+        const position = stationPosition(row);
+        rows.push({ row, id: String(id), position, distance: stationDistance(position, route) });
       });
-      return found;
+      if (route.stationId) {
+        const preferred = rows.find(item => item.id === route.stationId);
+        if (preferred) return preferred;
+      }
+      return rows.filter(item => Number.isFinite(item.distance) && item.distance <= 60).sort((a, b) => a.distance - b.distance)[0] || null;
     };
-    const normalizeForecastConditions = data => {
+    const normalizeStation = (data, route) => {
+      const selected = stationRows(data, route, "weather");
+      if (!selected) return null;
+      const row = selected.row;
+      const weather = row.WeatherElement ?? row.weatherElement ?? {};
+      let humidity = numberValue(pick(weather, ["RelativeHumidity", "RH", "HUMD"]));
+      if (humidity !== null && humidity >= 0 && humidity <= 1) humidity *= 100;
+      return {
+        stationId: selected.id,
+        stationName: row.StationName ?? row.stationName ?? row.LocationName ?? row.locationName ?? "",
+        distanceKm: Number.isFinite(selected.distance) ? Math.round(selected.distance * 10) / 10 : null,
+        humidity,
+        temperature: numberValue(pick(weather, ["AirTemperature", "Temperature", "TEMP"])),
+        windDirection: numberValue(pick(weather, ["WindDirection", "WD"])),
+        windSpeed: numberValue(pick(weather, ["WindSpeed", "WS"])),
+        observedAt: pick(row, ["DateTime"])
+      };
+    };
+    const normalizeRain = (data, route) => {
+      const selected = stationRows(data, route, "rain");
+      if (!selected) return null;
+      const row = selected.row;
+      const rainfall = row.RainfallElement ?? row.rainfallElement ?? {};
+      const past3 = rainfall.Past3hr ?? rainfall.past3hr ?? {};
+      const past6 = rainfall.Past6hr ?? rainfall.past6hr ?? {};
+      return {
+        stationId: selected.id,
+        stationName: row.StationName ?? row.stationName ?? row.LocationName ?? row.locationName ?? "",
+        distanceKm: Number.isFinite(selected.distance) ? Math.round(selected.distance * 10) / 10 : null,
+        past3hr: numberValue(pick(past3, ["Precipitation"])),
+        past6hr: numberValue(pick(past6, ["Precipitation"]))
+      };
+    };
+    const directionDegrees = value => {
+      const numeric = numberValue(value);
+      if (numeric !== null) return numeric;
+      const directions = { "北": 0, "東北": 45, "東": 90, "東南": 135, "南": 180, "西南": 225, "西": 270, "西北": 315 };
+      return directions[String(value ?? "").replace(/風|風向/g, "")] ?? null;
+    };
+    const normalizeForecastConditions = (data, route) => {
       let location = null;
       walkData(data, row => {
         const id = row.LocationId ?? row.LocationID ?? row.locationId ?? row.locationID;
-        if (String(id) === "A01800") location = row;
+        const name = String(row.LocationName ?? row.locationName ?? "");
+        if ((route.conditionLocationId && String(id) === route.conditionLocationId) || (route.conditionLocationName && name.includes(route.conditionLocationName))) location = row;
       });
-      if (!location) return { humidity: null, feels: null };
-      let humidity = null, feels = null, bestHumidity = Infinity, bestFeels = Infinity;
-      walkData(location, el => {
-        const name = String(el.ElementName ?? el.elementName ?? "");
-        if (!name || !(el.Time || el.time)) return;
-        for (const period of (el.Time ?? el.time)) {
-          const time = Date.parse(period.StartTime ?? period.startTime ?? period.DataTime ?? period.dataTime ?? "");
-          const distance = Number.isFinite(time) ? Math.abs(time - Date.now()) : 1e15;
-          const value = numberValue(period.ElementValue ?? period.elementValue ?? period.Parameter ?? period.parameter);
-          if (value === null) continue;
-          if (/RelativeHumidity|相對濕度|^RH$|^HUMD$/i.test(name) && distance < bestHumidity) { humidity = value; bestHumidity = distance; }
-          if (/ApparentTemperature|體感溫度|^AT$|^MaxAT$|^MinAT$/i.test(name) && distance < bestFeels) { feels = value; bestFeels = distance; }
+      if (!location) return { humidity: null, feels: null, windDirection: null, windSpeed: null };
+      const best = { humidity: Infinity, feels: Infinity, windDirection: Infinity, windSpeed: Infinity };
+      const result = { humidity: null, feels: null, windDirection: null, windSpeed: null };
+      walkData(location, element => {
+        const name = String(element.ElementName ?? element.elementName ?? "");
+        if (!name || !(element.Time || element.time)) return;
+        for (const period of (element.Time ?? element.time)) {
+          const timestamp = Date.parse(period.StartTime ?? period.startTime ?? period.DataTime ?? period.dataTime ?? "");
+          const distance = Number.isFinite(timestamp) ? Math.abs(timestamp - Date.now()) : 1e15;
+          const raw = period.ElementValue ?? period.elementValue ?? period.Parameter ?? period.parameter;
+          let key = null, value = null;
+          if (/RelativeHumidity|相對濕度|^RH$|^HUMD$/i.test(name)) { key = "humidity"; value = numberValue(raw); }
+          else if (/ApparentTemperature|體感溫度|^AT$|^MaxAT$|^MinAT$/i.test(name)) { key = "feels"; value = numberValue(raw); }
+          else if (/WindDirection|風向|^WD$/i.test(name)) { key = "windDirection"; value = directionDegrees(raw); }
+          else if (/WindSpeed|風速|^WS$/i.test(name)) { key = "windSpeed"; value = numberValue(raw); }
+          if (key && value !== null && distance < best[key]) { result[key] = value; best[key] = distance; }
         }
       });
-      return { humidity, feels };
+      if (result.humidity !== null && result.humidity >= 0 && result.humidity <= 1) result.humidity *= 100;
+      return result;
     };
     const fetchWeeklyProduct = async () => {
       const failures = [];
@@ -167,8 +232,7 @@ export default {
       const [threeHourResult, weeklyResult, tideResult, stationResult, hourlyRainResult] = await Promise.allSettled([
         fetchProduct(route.current), fetchWeeklyProduct(),
         url.pathname === "/api/longdong" ? fetchProduct("F-A0021-001", { LocationId: "A01400" }) : Promise.resolve(null),
-        url.pathname === "/api/longdong" ? fetchProduct("O-A0001-001") : Promise.resolve(null),
-        url.pathname === "/api/longdong" ? fetchProduct("O-A0002-001") : Promise.resolve(null)
+        fetchObservationProduct("O-A0001-001"), fetchObservationProduct("O-A0002-001")
       ]);
       if (threeHourResult.status === "rejected") throw threeHourResult.reason;
       const weekly = weeklyResult.status === "fulfilled" ? weeklyResult.value : null;
@@ -179,9 +243,9 @@ export default {
         fiveDayProduct: weekly?.product || null,
         weeklyError,
         tides: tideResult.status === "fulfilled" ? tideResult.value : null,
-        station: stationResult.status === "fulfilled" ? normalizeStation(stationResult.value) : null,
-        hourlyRain: hourlyRainResult.status === "fulfilled" ? normalizeStation(hourlyRainResult.value) : null,
-        conditionsForecast: normalizeForecastConditions(threeHourResult.value),
+        station: stationResult.status === "fulfilled" ? normalizeStation(stationResult.value, route) : null,
+        hourlyRain: hourlyRainResult.status === "fulfilled" ? normalizeRain(hourlyRainResult.value, route) : null,
+        conditionsForecast: normalizeForecastConditions(threeHourResult.value, route),
         conditionsError: [tideResult, stationResult, hourlyRainResult].filter(x => x.status === "rejected").map(x => x.reason?.message).join("; ") || null,
         fetchedAt: new Date().toISOString()
       });

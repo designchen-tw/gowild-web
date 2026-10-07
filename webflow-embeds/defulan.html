@@ -1,5 +1,5 @@
 <!-- Defulan detail page. Paste into a dedicated Webflow Code Embed. -->
-<main class="df-detail" data-df-detail>
+<main class="df-detail" data-df-detail data-condition-endpoint="/api/defulan" data-condition-lat="24.174" data-condition-lon="120.974" data-condition-language-event="df-language-change">
   <nav class="df-detail__nav" aria-label="德芙蘭頁面導覽">
     <a href="#df-overview" data-df-link="overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10.5 8.5-7 8.5 7M5.5 9.5v10h13v-10M9.5 19.5v-6h5v6"/></svg><span>德芙蘭</span></a>
     <a href="#df-areas" data-df-link="areas"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span>岩區</span></a>
@@ -63,35 +63,7 @@
     <section class="df-detail__live-weather" id="df-live-weather" aria-labelledby="df-live-weather-title">
       <header class="df-detail__live-heading"><p class="df-detail__eyebrow">LIVE CONDITIONS</p><h2 id="df-live-weather-title" data-lang-zh="即時天氣與現場影像" data-lang-en="Live Weather & On-site Cameras">即時天氣與現場影像</h2></header>
       <div class="df-detail__live-grid">
-        <article class="df-detail__live-card df-detail__live-card--cwa" data-cwa-location="和平區" data-cwa-endpoint="/api/defulan" data-cwa-language-event="df-language-change" data-cwa-days="5">
-<div class="df-detail__live-card-head"><div><p class="df-detail__eyebrow">CWA LOCAL FORECAST</p><h3 data-lang-zh="德芙蘭鄉鎮預報" data-lang-en="Defulan Town Forecast">德芙蘭鄉鎮預報</h3></div><span class="df-detail__cwa-source-label" data-lang-zh="中央氣象署" data-lang-en="CWA">中央氣象署</span></div>
-<div class="df-detail__cwa-layout">
-<div class="df-detail__cwa-current">
-<p class="df-detail__cwa-kicker" data-lang-zh="目前預報" data-lang-en="Current Forecast">目前預報</p>
-<div class="df-detail__cwa-current-row">
-<svg class="df-detail__cwa-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="18" r="7"/><path d="M18 4v4m0 20v4M4 18h4m20 0h4M8.1 8.1 11 11m14 14 2.9 2.9M27.9 8.1 25 11"/><path d="M17 36h19a7 7 0 0 0 0-14 10 10 0 0 0-19-2 8 8 0 0 0 0 16Z"/></svg>
-<div><strong class="df-detail__cwa-temp">--°</strong><span class="df-detail__cwa-condition" data-lang-zh="等待資料串接" data-lang-en="Waiting for data connection">等待資料串接</span></div>
-</div>
-<div class="df-detail__cwa-current-meta"><span data-lang-zh="降雨機率" data-lang-en="Rain chance">降雨機率</span><strong>--%</strong><span class="df-detail__cwa-observed-at" data-lang-zh="預報更新後顯示時間" data-lang-en="Forecast issue time appears here">預報更新後顯示時間</span></div>
-</div>
-<div class="df-detail__cwa-upcoming-wrap"><p class="df-detail__cwa-kicker" data-lang-zh="接下來的天氣" data-lang-en="Coming Up">接下來的天氣</p><div class="df-detail__cwa-upcoming">
-<div class="df-detail__cwa-slot"><span data-lang-zh="下一時段" data-lang-en="Next">下一時段</span><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="11" r="4"/><path d="M12 3v2m0 12v2M4 11h2m12 0h2M9 24h14a6 6 0 0 0 0-12 8 8 0 0 0-15-1"/></svg><strong>--°</strong><small data-lang-zh="降雨 --%" data-lang-en="Rain --%">降雨 --%</small></div>
-<div class="df-detail__cwa-slot"><span data-lang-zh="之後" data-lang-en="Later">之後</span><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="11" r="4"/><path d="M12 3v2m0 12v2M4 11h2m12 0h2M9 24h14a6 6 0 0 0 0-12 8 8 0 0 0-15-1"/></svg><strong>--°</strong><small data-lang-zh="降雨 --%" data-lang-en="Rain --%">降雨 --%</small></div>
-<div class="df-detail__cwa-slot"><span data-lang-zh="稍後" data-lang-en="Afterward">稍後</span><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="11" r="4"/><path d="M12 3v2m0 12v2M4 11h2m12 0h2M9 24h14a6 6 0 0 0 0-12 8 8 0 0 0-15-1"/></svg><strong>--°</strong><small data-lang-zh="降雨 --%" data-lang-en="Rain --%">降雨 --%</small></div>
-</div></div>
-</div>
-<div class="df-detail__cwa-five-day">
-<p class="df-detail__cwa-kicker" data-lang-zh="未來五天" data-lang-en="Next Five Days">未來五天</p>
-<div class="df-detail__cwa-days">
-<div class="df-detail__cwa-day"><strong>--/--</strong><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="11" r="4"/><path d="M12 3v2m0 12v2M4 11h2m12 0h2M9 24h14a6 6 0 0 0 0-12 8 8 0 0 0-15-1"/></svg><strong>--° <i>/</i> --°</strong><small data-lang-zh="降雨 --%" data-lang-en="Rain --%">降雨 --%</small></div>
-<div class="df-detail__cwa-day"><strong>--/--</strong><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="11" r="4"/><path d="M12 3v2m0 12v2M4 11h2m12 0h2M9 24h14a6 6 0 0 0 0-12 8 8 0 0 0-15-1"/></svg><strong>--° <i>/</i> --°</strong><small data-lang-zh="降雨 --%" data-lang-en="Rain --%">降雨 --%</small></div>
-<div class="df-detail__cwa-day"><strong>--/--</strong><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="11" r="4"/><path d="M12 3v2m0 12v2M4 11h2m12 0h2M9 24h14a6 6 0 0 0 0-12 8 8 0 0 0-15-1"/></svg><strong>--° <i>/</i> --°</strong><small data-lang-zh="降雨 --%" data-lang-en="Rain --%">降雨 --%</small></div>
-<div class="df-detail__cwa-day"><strong>--/--</strong><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="11" r="4"/><path d="M12 3v2m0 12v2M4 11h2m12 0h2M9 24h14a6 6 0 0 0 0-12 8 8 0 0 0-15-1"/></svg><strong>--° <i>/</i> --°</strong><small data-lang-zh="降雨 --%" data-lang-en="Rain --%">降雨 --%</small></div>
-<div class="df-detail__cwa-day"><strong>--/--</strong><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="11" r="4"/><path d="M12 3v2m0 12v2M4 11h2m12 0h2M9 24h14a6 6 0 0 0 0-12 8 8 0 0 0-15-1"/></svg><strong>--° <i>/</i> --°</strong><small data-lang-zh="降雨 --%" data-lang-en="Rain --%">降雨 --%</small></div>
-</div>
-</div>
-<p class="df-detail__cwa-note" data-lang-zh="五日預報資料來自中央氣象署；出發前請再次確認官方預報與現場狀況。" data-lang-en="The five-day forecast is provided by the CWA. Check the official forecast and on-site conditions before setting out.">五日預報資料來自中央氣象署；出發前請再次確認官方預報與現場狀況。</p><a class="df-detail__live-source" href="https://www.cwa.gov.tw/V8/C/W/Town/Town.html?TID=6602900" target="_blank" rel="noopener" data-lang-zh="中央氣象署鄉鎮預報" data-lang-en="Open CWA Forecast">中央氣象署鄉鎮預報</a>
-</article>
+        <div data-cwa-location="和平區" data-cwa-endpoint="/api/defulan" data-cwa-language-event="df-language-change" data-cwa-days="5" data-cwa-source-href="https://www.cwa.gov.tw/V8/C/W/Town/Town.html?TID=6602900"></div>
 
         <article class="df-detail__live-card df-detail__live-card--weather"><div class="df-detail__live-card-head"><h3 data-lang-zh="Windy 降雨與風況" data-lang-en="Windy Rain & Wind Map">Windy 降雨與風況</h3><a href="https://www.windy.com/24.179/120.977?24.174,120.974,16,p:cities" target="_blank" rel="noopener" data-lang-zh="直接開啟 Windy" data-lang-en="Open Windy">直接開啟 Windy</a></div><div class="df-detail__live-frame"><iframe src="https://embed.windy.com/embed2.html?lat=24.174&lon=120.974&detailLat=24.179&detailLon=120.977&width=900&height=520&zoom=16&amp;level=surface&amp;overlay=rain&amp;product=ecmwf&amp;menu=&amp;message=&amp;marker=true&amp;calendar=now&amp;pressure=&amp;type=map&amp;location=coordinates&amp;detail=true&amp;metricWind=default&amp;metricTemp=default&amp;radarRange=-1" title="Windy weather map" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="df-detail__live-caption" data-lang-zh="天氣圖為 Windy 即時互動地圖；出發前請同時查看氣象署預報與現場狀況。" data-lang-en="The Windy map is interactive and updates with current weather layers. Check the CWA forecast and on-site conditions before setting out.">天氣圖為 Windy 即時互動地圖；出發前請同時查看氣象署預報與現場狀況。</p><a class="df-detail__live-source" href="https://www.cwa.gov.tw/V8/C/W/Town/Town.html?TID=6602900" target="_blank" rel="noopener" data-lang-zh="中央氣象署鄉鎮預報" data-lang-en="Open CWA Forecast">中央氣象署鄉鎮預報</a></article>
         <article class="df-detail__live-card"><div class="df-detail__live-card-head"><h3 data-lang-zh="現場即時影像" data-lang-en="Live Camera">現場即時影像</h3><a href="https://tw.live/cam/?id=CCTV-25-0080-030-002" target="_blank" rel="noopener" data-lang-zh="備用影像來源" data-lang-en="Camera fallback">備用影像來源</a></div><div class="df-detail__live-frame"><img src="https://cctv-ss03.thb.gov.tw:443/T8-030K+600" alt="台8線30K+600松鶴路段即時影像" loading="lazy" referrerpolicy="no-referrer"></div><p class="df-detail__live-caption" data-lang-zh="即時影像串流由交通部公路局提供。" data-lang-en="Live camera stream provided by the Directorate General of Highways.">即時影像串流由交通部公路局提供。</p><p class="df-detail__live-caption" data-lang-zh="若畫面暫時無法載入，可使用上方備用來源查看。" data-lang-en="If the stream is temporarily unavailable, use the fallback link above.">若畫面暫時無法載入，可使用上方備用來源查看。</p></article>
@@ -165,38 +137,6 @@
 
   @media(max-width:520px){.df-detail__area-header h3[data-area-title],.df-detail__area-number{font-size:12px;line-height:1.5}.df-detail__area-header{grid-template-columns:minmax(0,1fr) 2.5ch;gap:6px}}
 
-  .df-detail__live-card--cwa{grid-column:1/-1}
-  .df-detail__live-card--cwa .df-detail__live-card-head{align-items:flex-end;margin-bottom:20px}
-  .df-detail__live-card--cwa .df-detail__eyebrow{margin:0 0 5px;font-size:14px}
-  .df-detail__live-card--cwa .df-detail__live-card-head h3{font-size:14px}
-  .df-detail__cwa-source-label{color:var(--gray);font-size:12px}
-  .df-detail__cwa-layout{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.8fr);gap:24px;align-items:stretch}
-  .df-detail__cwa-current{padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.035)}
-  .df-detail__cwa-kicker{margin:0 0 14px;color:var(--gray);font-size:12px;letter-spacing:.06em}
-  .df-detail__cwa-current-row{display:flex;align-items:center;gap:16px;min-height:76px}
-  .df-detail__cwa-current-row>div{display:flex;flex-direction:column;gap:3px}
-  .df-detail__cwa-icon{width:54px;height:54px;fill:none;stroke:#f5f5f5;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-  .df-detail__cwa-temp{font-size:34px;font-weight:500;line-height:1}
-  .df-detail__cwa-condition{color:var(--gray);font-size:14px}
-  .df-detail__cwa-current-meta{display:flex;align-items:baseline;flex-wrap:wrap;gap:7px 12px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:12px;color:var(--gray)}
-  .df-detail__cwa-current-meta strong{color:#f5f5f5;font-size:14px;font-weight:600}
-  .df-detail__cwa-observed-at{margin-left:auto;font-size:11px}
-  .df-detail__cwa-upcoming-wrap{min-width:0;padding:18px 0}
-  .df-detail__cwa-upcoming{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-  .df-detail__cwa-slot{display:flex;min-width:0;min-height:126px;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:12px 8px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.025);text-align:center}
-  .df-detail__cwa-slot span,.df-detail__cwa-slot small{color:var(--gray);font-size:11px}
-  .df-detail__cwa-slot svg{width:30px;height:30px;fill:none;stroke:#f5f5f5;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
-  .df-detail__cwa-slot strong{font-size:17px;font-weight:500;line-height:1}
-  .df-detail__cwa-five-day{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
-  .df-detail__cwa-days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-  .df-detail__cwa-day{display:flex;min-width:0;min-height:142px;flex-direction:column;align-items:center;justify-content:space-between;gap:8px;padding:14px 9px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.025);text-align:center}
-  .df-detail__cwa-day>span,.df-detail__cwa-day small{color:var(--gray);font-size:11px}
-  .df-detail__cwa-day>strong:first-of-type{color:var(--gray);font-size:11px;font-weight:400}
-  .df-detail__cwa-day svg{width:32px;height:32px;fill:none;stroke:#f5f5f5;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
-  .df-detail__cwa-day strong{font-size:14px;font-weight:500;white-space:nowrap}
-  .df-detail__cwa-day i{color:var(--gray);font-size:11px;font-style:normal}
-  .df-detail__cwa-note{margin:14px 0 0;color:var(--gray);font-size:12px;line-height:1.7}
-  @media(max-width:760px){.df-detail__cwa-layout{grid-template-columns:1fr;gap:10px}.df-detail__cwa-current{padding:15px}.df-detail__cwa-upcoming-wrap{padding:8px 0 0}.df-detail__cwa-days{grid-template-columns:repeat(5,minmax(94px,1fr));overflow-x:auto;padding-bottom:4px}.df-detail__cwa-day{min-height:132px;padding:12px 7px}}
 </style>
 
 <script>
@@ -243,5 +183,6 @@
     addEventListener('scroll',sync,{passive:true});addEventListener('resize',sync);sync();
   })();
 </script>
-<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/weather-card-widget.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/climbing-conditions-widget-v1.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/weather-card-widget-v3.js" defer></script>
 
