@@ -12,17 +12,19 @@ Paste an updated embed into the matching Webflow Code Embed and republish when c
 
 ## Browser-side widgets
 
-- `longdong-conditions-widget.js`: Longdong climbing conditions and the Longdong/Highway 2 camera section.
+- `longdong-conditions-widget-v3.js`: Longdong climbing conditions and the Longdong/Highway 2 camera section.
+- `longdong-cwa-widget-v3.js`: Longdong CWA forecast card and its responsive layout.
 - `weather-card-widget.js`: CWA forecast card behavior for Kenting and Defulan.
 
 Webflow loads these from jsDelivr:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-conditions-widget.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-conditions-widget-v3.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-cwa-widget-v3.js" defer></script>
 <script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/weather-card-widget.js" defer></script>
 ```
 
-After changing a widget, update its `.js` file in this repository. Front-end widget changes do not require a Cloudflare Worker deployment; the CDN may take a short time to refresh.
+Longdong uses versioned widget filenames so jsDelivr cannot keep serving an older cached file at a mutable `@main` URL. For a future Longdong widget change, publish the next filename version and update the matching Webflow Embed URLs. Front-end widget changes do not require a Cloudflare Worker deployment.
 
 ## Weather API
 
