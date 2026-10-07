@@ -42,7 +42,7 @@ export default {
     }
 
     const cache = caches.default;
-    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v18`, { method: "GET" });
+    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v19`, { method: "GET" });
     const cached = await cache.match(cacheKey);
     if (cached) {
       const responseHeaders = new Headers(cached.headers);
@@ -123,6 +123,8 @@ export default {
           stationId: "C0A950",
           humidity: numberValue(pick(weather, ["RelativeHumidity", "RH", "HUMD"])),
           temperature: numberValue(pick(weather, ["AirTemperature", "Temperature"])),
+          windDirection: numberValue(pick(weather, ["WindDirection", "WD"])),
+          windSpeed: numberValue(pick(weather, ["WindSpeed", "WS"])),
           past3hr: numberValue(pick(past3, ["Precipitation"])),
           past6hr: numberValue(pick(past6, ["Precipitation"])),
           observedAt: pick(row, ["DateTime"])
