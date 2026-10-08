@@ -1,4 +1,8 @@
 <!-- Long Dong detail page. Paste into a dedicated Webflow Code Embed. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v4.css?v=2020a16">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-typography-v2.css?v=2020a16">
 <main class="ld-detail" data-ld-detail>
 <nav class="ld-detail__nav" aria-label="龍洞頁面導覽">
 <a href="#ld-about-title" data-ld-link="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10.5 8.5-7 8.5 7M5.5 9.5v10h13v-10M9.5 19.5v-6h5v6"/></svg><span data-lang-en="Longdong">龍洞</span></a>
@@ -16,7 +20,7 @@
 </div>
 </section>
 <script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-conditions-widget-v13.js" defer></script>
-<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-cwa-widget-v9.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-cwa-widget-v9.js?v=2020a16" defer></script>
 
 <section class="ld-detail__section ld-detail__section--soft" id="ld-sectors" data-ld-section="about">
 <header class="ld-detail__heading" id="ld-sectors-title"><p class="ld-detail__eyebrow">NINE SECTORS</p><h2>沿著海岸，走進九個區域</h2><p>各區的岩壁形態、接近方式與路線風格不同。出發前請先查看最新地圖及岩場資訊。</p></header>
@@ -58,7 +62,7 @@
 <section class="ld-detail__live-weather" id="ld-live-weather" aria-labelledby="ld-live-weather-title">
 <header class="ld-detail__live-heading"><p class="ld-detail__eyebrow">LIVE CONDITIONS</p><h2 id="ld-live-weather-title" data-lang-en="Live Weather & On-site Cameras">即時天氣與現場影像</h2></header>
 <div class="ld-detail__live-grid">
-<article class="ld-detail__live-card ld-detail__live-card--cwa" data-cwa-widget data-cwa-product="F-B0053-005" data-cwa-product-5day="F-B0053-001" data-cwa-location="A01800" data-cwa-days="5"></article>
+<article class="ld-detail__live-card ld-detail__live-card--cwa" data-cwa-widget data-cwa-product="F-B0053-005" data-cwa-product-5day="F-B0053-001" data-cwa-location="A01800" data-cwa-days="5"><div class="ld-detail__live-card-head"><div><p class="ld-detail__eyebrow">CWA LOCAL FORECAST</p><h3>龍洞灣公園天氣</h3></div></div><p class="ld-detail__cwa-note">發布後載入即時預報。</p></article>
 <article class="ld-detail__live-card ld-detail__live-card--weather"><div class="ld-detail__live-card-head"><h3 data-lang-en="Windy Rain & Wind Map">Windy 降雨與風況</h3><a href="https://www.windy.com/25.111/121.919?24.495,121.919,8,p:cities" target="_blank" rel="noopener" data-lang-en="Open Windy">直接開啟 Windy</a></div><div class="ld-detail__live-frame"><iframe src="https://embed.windy.com/embed2.html?lat=24.495&lon=121.919&detailLat=25.111&detailLon=121.919&width=900&height=520&zoom=8&amp;level=surface&amp;overlay=rain&amp;product=ecmwf&amp;menu=&amp;message=&amp;marker=true&amp;calendar=now&amp;pressure=&amp;type=map&amp;location=coordinates&amp;detail=true&amp;metricWind=default&amp;metricTemp=default&amp;radarRange=-1" title="Windy weather map" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="ld-detail__live-caption" data-lang-en="The Windy map is interactive and updates with current weather layers. Check the CWA forecast and on-site conditions before setting out.">天氣圖為 Windy 即時互動地圖；出發前請同時查看氣象署預報與現場狀況。</p></article>
 <article class="ld-detail__live-card"><div class="ld-detail__live-card-head"><h3 data-lang-en="Live Camera">現場即時影像</h3><a href="https://www.youtube.com/embed/q7wy94TiBBw" target="_blank" rel="noopener" data-lang-en="Open Camera Page">開啟原始監視器</a></div><div class="ld-detail__live-frame"><iframe src="https://www.youtube.com/embed/q7wy94TiBBw?autoplay=0&mute=1" title="龍洞即時影像 · YouTube" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="ld-detail__live-caption" data-lang-en="If the camera does not load here, open the original camera page.">影像若未能在頁面載入，請開啟原始監視器頁面查看。</p><p class="ld-detail__live-caption" data-lang-en="Live video is provided by an external service and may be unavailable during maintenance or network interruptions.">即時影像由外部平台提供；畫面可能因維護或網路狀況暫時無法觀看。</p></article>
 </div>
@@ -68,12 +72,13 @@
 
 <script>
 (function () {
-  var local = location.protocol === "file:";
-  if (local) document.documentElement.classList.add("gw-local-font-preview");
-  [
-    local ? "./longdong-embed-v4.css" : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v4.css",
-    local ? "./climbing-typography-v2.css" : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-typography-v2.css"
-  ].forEach(function (href) {
+  var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  if (!local) return;
+  document.documentElement.classList.add("gw-local-font-preview");
+  var previewStyle = document.createElement("style");
+  previewStyle.textContent = "html.gw-local-font-preview,html.gw-local-font-preview body{margin:0;background:#000}";
+  document.head.appendChild(previewStyle);
+  ["./longdong-embed-v4.css", "./climbing-typography-v2.css"].forEach(function (href) {
     var link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = href;
