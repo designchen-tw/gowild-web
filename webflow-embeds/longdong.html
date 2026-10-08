@@ -15,8 +15,8 @@
 <div><small data-lang-en="Rock · climbing styles">岩質・攀登類型</small><strong data-lang-en="Sandstone">四稜砂岩</strong><span data-lang-en="Sport · trad · multipitch">運動・傳統・多繩距</span></div><div><small data-lang-en="Sectors · route count">岩區・路線總數</small><strong data-lang-en="9 sectors · 600+ routes">9 區 · 600+ 條</strong><span data-lang-en="Listed in the guidebook">路書收錄路線</span></div><div><small data-lang-en="Season · best time">攀登季節・時間</small><strong data-lang-en="Spring · fall">春秋為主</strong><span data-lang-en="East-facing cliffs; more shade in the afternoon">面東岩壁，午後較有陰影</span></div>
 </div>
 </section>
-<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-conditions-widget-v9.js" defer></script>
-<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-cwa-widget-v4.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-conditions-widget-v10.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-cwa-widget-v5.js" defer></script>
 
 <section class="ld-detail__section ld-detail__section--soft" id="ld-sectors" data-ld-section="about">
 <header class="ld-detail__heading" id="ld-sectors-title"><p class="ld-detail__eyebrow">NINE SECTORS</p><h2>沿著海岸，走進九個區域</h2><p>各區的岩壁形態、接近方式與路線風格不同。出發前請先查看最新地圖及岩場資訊。</p></header>
@@ -256,6 +256,22 @@ main.ld-detail[data-language="en"] .ld-detail__tocc-name{font-size:var(--ld-size
 @media(max-width:520px){
   main.ld-detail:not([data-language="en"]) .ld-detail__tocc-subtitle,main.ld-detail[data-language="en"] .ld-detail__tocc-name{font-size:var(--ld-size-section-mobile)}
   main.ld-detail:not([data-language="en"]) .ld-detail__tocc-name,main.ld-detail[data-language="en"] .ld-detail__tocc-subtitle{font-size:var(--ld-size-label)}
+}
+
+/* Match TOCC bilingual title spacing to the eyebrow-to-heading rhythm used by NINE SECTORS. */
+main.ld-detail .ld-detail__tocc-brand{gap:18px;margin-bottom:18px}
+main.ld-detail .ld-detail__tocc-brand>p{margin:0}
+main.ld-detail:not([data-language="en"]) .ld-detail__tocc-name,
+main.ld-detail[data-language="en"] .ld-detail__tocc-subtitle{font-size:14px;font-weight:var(--ld-weight-regular);line-height:1.45;letter-spacing:.025em;color:var(--ld-ink-muted)}
+main.ld-detail:not([data-language="en"]) .ld-detail__tocc-subtitle,
+main.ld-detail[data-language="en"] .ld-detail__tocc-name{font-size:var(--ld-size-section);font-weight:var(--ld-weight-semibold);line-height:1.3;letter-spacing:.015em;color:var(--ld-ink)}
+@media(max-width:520px){
+  main.ld-detail .ld-detail__tocc-brand{gap:18px;margin-bottom:18px}
+main.ld-detail .ld-detail__tocc-brand>p{margin:0}
+  main.ld-detail:not([data-language="en"]) .ld-detail__tocc-name,
+  main.ld-detail[data-language="en"] .ld-detail__tocc-subtitle{font-size:12px;line-height:1.4;letter-spacing:0}
+  main.ld-detail:not([data-language="en"]) .ld-detail__tocc-subtitle,
+  main.ld-detail[data-language="en"] .ld-detail__tocc-name{font-size:var(--ld-size-section-mobile);line-height:1.3;letter-spacing:0}
 }
 </style>
 
