@@ -27,7 +27,7 @@ export default {
 
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers });
     const routes = {
-      "/api/longdong": { current: "F-B0053-005", weekly: ["F-B0053-001", "F-B0053-003"], conditionLocationId: "A01800", lat: 25.111, lon: 121.919, stationId: "C0A950" },
+      "/api/longdong": { current: "F-B0053-005", weekly: ["F-B0053-001", "F-B0053-003"], conditionLocationName: "龍洞灣公園", lat: 25.111, lon: 121.919, stationId: "C0A950" },
       "/api/kenting": { current: "F-D0047-033", weekly: ["F-D0047-035"], conditionLocationName: "恆春鎮", lat: 21.926, lon: 120.829 },
       "/api/defulan": { current: "F-D0047-073", weekly: ["F-D0047-075"], conditionLocationName: "和平區", lat: 24.174, lon: 120.974 }
     };
@@ -43,7 +43,7 @@ export default {
     }
 
     const cache = caches.default;
-    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v21`, { method: "GET" });
+    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v22`, { method: "GET" });
     const cached = await cache.match(cacheKey);
     if (cached) {
       const responseHeaders = new Headers(cached.headers);
@@ -235,21 +235,22 @@ export default {
       }
     };
     const directionDegrees = value => {
-      const numeric = numberValue(value);
+      const raw = value && typeof value === "object" ? pick(value, ["WindDirection", "WD", "ElementValue", "Value"]) : value;
+      const numeric = numberValue(raw);
       if (numeric !== null) return numeric;
-      const directions = { "北": 0, "東北": 45, "東": 90, "東南": 135, "南": 180, "西南": 225, "西": 270, "西北": 315 };
-      return directions[String(value ?? "").replace(/風|風向/g, "")] ?? null;
+      const directions = { "北": 0, "北北東": 22.5, "東北": 45, "東北東": 67.5, "東": 90, "東南東": 112.5, "東南": 135, "南南東": 157.5, "南": 180, "南南西": 202.5, "西南": 225, "西南西": 247.5, "西": 270, "西北西": 292.5, "西北": 315, "北北西": 337.5 };
+      return directions[String(raw ?? "").replace(/偏|風|風向|\s/g, "")] ?? null;
     };
     const normalizeForecastConditions = (data, route) => {
       let location = null;
       walkData(data, row => {
-        const id = row.LocationId ?? row.LocationID ?? row.locationId ?? row.locationID;
+        const id = row.LocationId ?? row.LocationID ?? row.locationId ?? row.locationID ?? row.ParameterSet?.Parameter?.ParameterValue;
         const name = String(row.LocationName ?? row.locationName ?? "");
-        if ((route.conditionLocationId && String(id) === route.conditionLocationId) || (route.conditionLocationName && name.includes(route.conditionLocationName))) location = row;
+        if (!location && ((route.conditionLocationId && String(id) === route.conditionLocationId) || (route.conditionLocationName && name.includes(route.conditionLocationName)))) location = row;
       });
-      if (!location) return { humidity: null, feels: null, windDirection: null, windSpeed: null };
-      const best = { humidity: Infinity, feels: Infinity, windDirection: Infinity, windSpeed: Infinity };
-      const result = { humidity: null, feels: null, windDirection: null, windSpeed: null };
+      if (!location) return { humidity: null, temperature: null, dewPoint: null, feels: null, windDirection: null, windSpeed: null };
+      const best = { humidity: Infinity, temperature: Infinity, dewPoint: Infinity, feels: Infinity, windDirection: Infinity, windSpeed: Infinity };
+      const result = { humidity: null, temperature: null, dewPoint: null, feels: null, windDirection: null, windSpeed: null, locationName: location.LocationName ?? location.locationName ?? "" };
       walkData(location, element => {
         const name = String(element.ElementName ?? element.elementName ?? "");
         if (!name || !(element.Time || element.time)) return;
@@ -258,10 +259,12 @@ export default {
           const distance = Number.isFinite(timestamp) ? Math.abs(timestamp - Date.now()) : 1e15;
           const raw = period.ElementValue ?? period.elementValue ?? period.Parameter ?? period.parameter;
           let key = null, value = null;
-          if (/RelativeHumidity|相對濕度|^RH$|^HUMD$/i.test(name)) { key = "humidity"; value = numberValue(raw); }
-          else if (/ApparentTemperature|體感溫度|^AT$|^MaxAT$|^MinAT$/i.test(name)) { key = "feels"; value = numberValue(raw); }
+          if (/RelativeHumidity|相對濕度|^RH$|^HUMD$/i.test(name)) { key = "humidity"; value = numberValue(pick(raw, ["RelativeHumidity", "RH", "HUMD"]) ?? raw); }
+          else if (/^Temperature$|^溫度$|^TEMP$/i.test(name)) { key = "temperature"; value = numberValue(pick(raw, ["Temperature", "AirTemperature", "TEMP"]) ?? raw); }
+          else if (/DewPoint|露點/i.test(name)) { key = "dewPoint"; value = numberValue(pick(raw, ["DewPoint"]) ?? raw); }
+          else if (/ApparentTemperature|體感溫度|^AT$|^MaxAT$|^MinAT$/i.test(name)) { key = "feels"; value = numberValue(pick(raw, ["ApparentTemperature", "AT"]) ?? raw); }
           else if (/WindDirection|風向|^WD$/i.test(name)) { key = "windDirection"; value = directionDegrees(raw); }
-          else if (/WindSpeed|風速|^WS$/i.test(name)) { key = "windSpeed"; value = numberValue(raw); }
+          else if (/WindSpeed|風速|^WS$/i.test(name)) { key = "windSpeed"; value = numberValue(pick(raw, ["WindSpeed", "WS"]) ?? raw); }
           if (key && value !== null && distance < best[key]) { result[key] = value; best[key] = distance; }
         }
       });
