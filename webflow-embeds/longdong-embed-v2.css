@@ -1,0 +1,364 @@
+/* Longdong page styles 1 */
+@font-face{font-family:"Avenir Lt Std";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d664_Avenir%20LT%20Std%2035%20Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}@font-face{font-family:"Avenir Lt Std";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d666_Avenir%20LT%20Std%2045%20Book.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Avenir Lt Std";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d58f_Avenir%20LT%20Std%2055%20Roman.otf") format("opentype");font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:"Avenir Lt Std";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d669_Avenir%20LT%20Std%2065%20Medium.otf") format("opentype");font-weight:600;font-style:normal;font-display:swap}.ld-detail{--bg:#000;--panel:#090a0b;--line:rgba(255,255,255,.14);--white:#f5f5f5;--gray:rgba(245,245,245,.62);position:relative;overflow:clip;background:var(--bg);color:var(--white);font-family:"Avenir Lt Std",Arial,sans-serif;scroll-behavior:smooth}.ld-detail *{box-sizing:border-box}.ld-detail__nav{position:fixed;z-index:1000;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;width:clamp(390px,52vw,570px);max-width:calc(100% - 32px);padding:7px;border:1px solid rgba(255,255,255,.2);border-radius:22px;background:rgba(27,29,31,.7);box-shadow:0 12px 42px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.09);backdrop-filter:blur(26px) saturate(150%);-webkit-backdrop-filter:blur(26px) saturate(150%);transform:translateX(-50%)}.ld-detail__nav a{display:flex;min-height:52px;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:1px solid transparent;border-radius:14px;color:rgba(245,245,245,.62);font-size:14px;font-weight:550;text-decoration:none;transition:.25s ease}.ld-detail__nav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.ld-detail__nav a:hover,.ld-detail__nav a.is-active{border-color:rgba(255,255,255,.1);background:rgba(255,255,255,.11);color:#fff}.ld-detail__eyebrow{margin:0 0 18px;color:rgba(245,245,245,.58);font-size:14px;font-weight:500;letter-spacing:.12em}.ld-detail__section{max-width:1440px;margin:0 auto;padding:clamp(76px,9vw,130px) clamp(22px,6vw,88px);background:#000;scroll-margin-top:28px}.ld-detail__section--soft{max-width:none;padding-right:max(22px,calc((100vw - 1264px)/2));padding-left:max(22px,calc((100vw - 1264px)/2));border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:#08090a}.ld-detail__heading{max-width:760px;margin:0 auto 44px;text-align:center}.ld-detail__heading h2,.ld-detail__tocc h2{margin:0;color:#f5f5f5;font-size:25px;font-weight:600;line-height:1.35}.ld-detail__heading>p[data-tagline]{margin:16px 0 0;color:var(--gray);font-size:14px;line-height:1.8}.ld-detail__intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,7vw,100px);align-items:start;max-width:1080px;margin:0 auto}.ld-detail__lead{margin:0;color:#f3f3f3;font-size:25px;font-weight:450;line-height:1.65}.ld-detail__copy p,.ld-detail__tocc-copy>p:not(.ld-detail__eyebrow),.ld-detail__safety-grid p,.ld-detail__safety-grid li{color:var(--gray);font-size:14px;font-weight:350;line-height:1.9}.ld-detail__copy p{margin:0 0 16px}.ld-detail__facts{display:grid;grid-template-columns:repeat(3,1fr);max-width:1080px;margin:72px auto 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.ld-detail__facts div{display:flex;min-height:110px;flex-direction:column;justify-content:center;gap:8px;padding:18px 24px;border-right:1px solid var(--line)}.ld-detail__facts div:last-child{border:0}.ld-detail__facts small{color:rgba(245,245,245,.48);font-size:12px;letter-spacing:.04em}.ld-detail__facts strong{font-size:25px;font-weight:550}.ld-detail__facts span{color:var(--gray);font-size:14px}.ld-detail__language{display:flex;width:max-content;margin:20px auto 0;padding:3px;border:1px solid rgba(255,255,255,.17);border-radius:999px;background:rgba(255,255,255,.04)}.ld-detail__language button{min-width:54px;padding:7px 12px;border:0;border-radius:999px;background:transparent;color:var(--gray);font:inherit;font-size:12px;cursor:pointer}.ld-detail__language button.is-active{background:rgba(255,255,255,.16);color:#fff}.ld-detail__sector-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 18px}.ld-detail__sector-grid article{position:relative;min-height:145px;padding:24px 14px 22px;border-top:1px solid var(--line)}.ld-detail__sector-grid h3{margin:0 0 12px;font-size:14px;font-weight:650}.ld-detail__sector-grid p{max-width:280px;margin:0;color:var(--gray);font-size:14px;font-weight:350;line-height:1.7}.ld-detail__route-list{max-width:920px;margin:0 auto;border-top:1px solid var(--line)}.ld-detail__route-list article{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 8px;border-bottom:1px solid var(--line)}.ld-detail__route-list h3{margin:0 0 6px;font-size:14px;font-weight:650}.ld-detail__route-list h3 span{margin-left:8px;color:var(--gray);font-size:inherit;font-weight:450}.ld-detail__route-list p{margin:0;color:var(--gray);font-size:14px;font-weight:350}.ld-detail__route-list strong{flex:none;font-size:14px;font-weight:450}.ld-detail__route-list h3[data-route-title]{display:flex;flex-wrap:wrap;gap:0 8px;line-height:1.5}.ld-detail__route-list h3[data-route-title] span{margin:0}.ld-detail__route-list h3[data-route-title] .ld-detail__route-pair{display:inline-flex;align-items:baseline;gap:4px;white-space:normal}.ld-detail__route-list [data-route-cn]{color:#f5f5f5}.ld-detail__route-list [data-route-en]{color:var(--gray)}.ld-detail[data-language="en"] .ld-detail__route-list .ld-detail__route-pair{flex-direction:row-reverse}.ld-detail[data-language="en"] .ld-detail__route-list [data-route-en]{color:#f5f5f5}.ld-detail[data-language="en"] .ld-detail__route-list [data-route-cn]{color:var(--gray)}.ld-detail__note{max-width:920px;margin:18px auto 0;color:rgba(245,245,245,.5);font-size:14px;line-height:1.8}.ld-detail__link-row{display:flex;justify-content:center;margin-top:28px}.ld-detail__button{display:inline-flex;min-height:48px;align-items:center;justify-content:center;padding:0 20px;border:1px solid rgba(255,255,255,.65);border-radius:99px;background:#f5f5f5;color:#080808;font-size:14px;font-weight:600;text-decoration:none;transition:.2s ease}.ld-detail__button:hover{background:#d8d8d8;transform:translateY(-2px)}.ld-detail__safety{padding-bottom:160px}.ld-detail__safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1000px;margin:0 auto}.ld-detail__safety-grid p{margin:0}.ld-detail__safety-grid ul{margin:0;padding-left:20px}.ld-detail__safety-grid li{padding:0 0 10px}@media(max-width:760px){.ld-detail__intro-grid,.ld-detail__safety-grid{grid-template-columns:1fr}.ld-detail__sector-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ld-detail__facts{grid-template-columns:1fr}.ld-detail__facts div{min-height:unset;border-right:0;border-bottom:1px solid var(--line)}.ld-detail__facts div:last-child{border-bottom:0}}@media(max-width:520px){.ld-detail__live-heading h2{font-size:17px}.ld-detail__nav{bottom:calc(10px + env(safe-area-inset-bottom));width:calc(100% - 20px);max-width:440px;padding:5px;border-radius:19px;gap:2px}.ld-detail__nav a{min-height:48px;border-radius:13px;font-size:12px}.ld-detail__nav svg{width:17px;height:17px}.ld-detail__section{padding:72px 18px 100px}.ld-detail__section--soft{padding-right:18px;padding-left:18px}.ld-detail__heading{margin-bottom:30px}.ld-detail__heading h2,.ld-detail__tocc h2{font-size:17px}.ld-detail__heading>p[data-tagline],.ld-detail__copy p,.ld-detail__tocc-copy>p:not(.ld-detail__eyebrow),.ld-detail__safety-grid p,.ld-detail__safety-grid li,.ld-detail__eyebrow{font-size:12px}.ld-detail__lead{font-size:17px}.ld-detail__facts{margin-top:48px}.ld-detail__facts div{min-height:unset;padding:16px 12px}.ld-detail__facts small{font-size:11px}.ld-detail__facts strong{font-size:17px}.ld-detail__facts span{font-size:12px}.ld-detail__sector-grid{grid-template-columns:1fr 1fr;gap:0 10px}.ld-detail__sector-grid article{min-height:150px;padding:19px 7px}.ld-detail__sector-grid h3,.ld-detail__sector-grid p,.ld-detail__route-list article{padding:17px 2px}.ld-detail__route-list h3,.ld-detail__route-list strong{font-size:12px}.ld-detail__route-list p,.ld-detail__note{font-size:12px}.ld-detail__button{min-height:44px;padding:0 14px;font-size:12px}.ld-detail__safety{padding-bottom:125px}}@media(prefers-reduced-motion:reduce){.ld-detail{scroll-behavior:auto}.ld-detail__button{transition:none}}.ld-detail__live-weather{max-width:1100px;margin:64px auto 0}.ld-detail__live-heading{margin-bottom:24px;text-align:center}.ld-detail__live-heading h2{margin:0;color:#f5f5f5;font-size:25px;font-weight:600;line-height:1.35}.ld-detail__live-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.ld-detail__live-card{min-width:0;padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.035)}.ld-detail__live-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.ld-detail__live-card-head h3{margin:0;font-size:14px;font-weight:600}.ld-detail__live-card-head a,.ld-detail__live-source{color:var(--gray);font-size:12px;text-decoration:underline;text-underline-offset:3px}.ld-detail__live-frame{position:relative;overflow:hidden;aspect-ratio:16/10;border-radius:10px;background:#111}.ld-detail__live-card:not(.ld-detail__live-card--weather) .ld-detail__live-frame{aspect-ratio:16/10}.ld-detail__live-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.ld-detail__live-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ld-detail__live-caption{margin:12px 0 0;color:var(--gray);font-size:12px;line-height:1.7}.ld-detail__live-source{display:inline-block;margin-top:12px}@media(max-width:700px){.ld-detail__live-grid{grid-template-columns:1fr}.ld-detail__live-weather{margin-top:46px}.ld-detail__live-card{padding:12px}.ld-detail__live-frame{aspect-ratio:4/3}}.ld-detail__area-header{display:grid;grid-template-columns:minmax(0,1fr) 2.5ch;align-items:baseline;gap:8px;margin:0 0 12px}.ld-detail__area-header h3[data-area-title]{display:flex;align-items:baseline;flex-wrap:wrap;min-width:0;margin:0;padding:0;font-size:14px;font-weight:650;line-height:1.5}.ld-detail__area-header .ld-detail__area-pair{display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:0 5px;max-width:100%}.ld-detail__sector-grid [data-area-cn]{color:#f5f5f5;font-size:inherit;font-weight:600}.ld-detail__sector-grid [data-area-en]{color:var(--gray);font-size:inherit;font-weight:400}.ld-detail__area-number{display:block;grid-column:2;grid-row:1;min-width:2.5ch;color:rgba(255,255,255,.34);font-size:14px;font-weight:400;line-height:1.5;letter-spacing:.06em;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.ld-detail[data-language="en"] .ld-detail__sector-grid .ld-detail__area-pair{flex-direction:row-reverse}.ld-detail[data-language="en"] .ld-detail__sector-grid [data-area-en]{color:#f5f5f5}.ld-detail[data-language="en"] .ld-detail__sector-grid [data-area-cn]{color:var(--gray)}@media(max-width:520px){.ld-detail__area-header h3[data-area-title],.ld-detail__area-number{font-size:12px;line-height:1.5}.ld-detail__area-header{grid-template-columns:minmax(0,1fr) 2.5ch;gap:6px}}.ld-detail h2,.ld-detail h3,.ld-detail p,.ld-detail span,.ld-detail strong,.ld-detail li,.ld-detail a{font-family:inherit;font-style:normal}.ld-detail__text-link{display:inline-flex;align-items:center;gap:12px;margin-top:32px;color:#f5f5f5;font-size:14px;font-weight:600;text-decoration:none}.ld-detail__button--quiet{background:transparent;color:#f5f5f5}.ld-detail__button--quiet:hover{background:rgba(255,255,255,.1);color:#fff}.ld-detail__tocc{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,8vw,120px);align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 20% 50%,rgba(255,255,255,.07),transparent 42%),#050505}.ld-detail__tocc-mark{color:rgba(255,255,255,.9);font-size:clamp(64px,12vw,150px);font-weight:250;letter-spacing:-.08em;line-height:1}.ld-detail__tocc-copy{max-width:620px}.ld-detail__tocc-copy .ld-detail__eyebrow{overflow-wrap:anywhere}.ld-detail__tocc h2{margin-bottom:22px}.ld-detail__live-weather{max-width:1100px;margin:64px auto 0}.ld-detail__live-heading{margin-bottom:24px;text-align:center}.ld-detail__live-heading h2{margin:0;color:#f5f5f5;font-size:25px;font-weight:600;line-height:1.4}.ld-detail__live-card:not(.ld-detail__live-card--weather) .ld-detail__live-frame{aspect-ratio:16/9}@media(max-width:760px){.ld-detail__tocc{grid-template-columns:1fr;gap:28px}.ld-detail__tocc-mark{font-size:78px}}@media(max-width:520px){.ld-detail__live-heading h2{max-width:100%;font-size:17px;line-height:1.5;letter-spacing:0;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}}
+
+/* Longdong page styles 2 */
+/* Longdong typography system: one clear scale, three text tones. */
+main.ld-detail{
+  --ld-size-section:22px;--ld-size-body:16px;--ld-size-label:14px;
+  --ld-size-section-mobile:18px;--ld-size-body-mobile:14px;--ld-size-label-mobile:12px;--ld-size-value:20px;--ld-size-value-mobile:16px;
+  --ld-weight-regular:400;--ld-weight-medium:500;--ld-weight-semibold:600;--ld-weight-heavy:800;
+  --ld-ink:#f5f5f5;--ld-ink-secondary:rgba(245,245,245,.68);
+  --ld-ink-muted:rgba(245,245,245,.48);--ld-ink-quiet:rgba(245,245,245,.34);
+}
+/* Section headings */
+main.ld-detail .ld-detail__heading h2,
+main.ld-detail .ld-detail__tocc h2,
+main.ld-detail .ld-detail__live-heading h2{font-size:var(--ld-size-section);font-weight:var(--ld-weight-heavy);color:var(--ld-ink)}
+main.ld-detail .ld-condition-panel .ld-condition-title{font-size:var(--ld-size-body);font-weight:var(--ld-weight-semibold);color:var(--ld-ink)}
+/* Body copy, including the three introductory lines */
+main.ld-detail .ld-detail__intro-grid{display:block;max-width:900px}
+main.ld-detail .ld-detail__intro-grid .ld-detail__copy p:last-child{margin-bottom:0}
+main.ld-detail .ld-detail__lead,
+main.ld-detail .ld-detail__heading>p:not(.ld-detail__eyebrow),
+main.ld-detail .ld-detail__copy p,
+main.ld-detail .ld-detail__tocc-copy>p:not(.ld-detail__eyebrow),
+main.ld-detail .ld-detail__safety-grid p,
+main.ld-detail .ld-detail__safety-grid li,
+main.ld-detail .ld-detail__sector-grid p,
+main.ld-detail .ld-detail__route-list p,
+main.ld-detail .ld-detail__live-caption,
+main.ld-detail .ld-detail__cwa-condition{font-size:var(--ld-size-body);font-weight:var(--ld-weight-regular);color:var(--ld-ink-secondary)}
+main.ld-detail #ld-about-title .ld-detail__eyebrow{font-size:var(--ld-size-body);font-weight:var(--ld-weight-regular);letter-spacing:0;color:var(--ld-ink-secondary)}
+/* Card names and key values */
+main.ld-detail .ld-detail__nav a,
+main.ld-detail .ld-detail__sector-grid h3,
+main.ld-detail .ld-detail__route-list h3,
+main.ld-detail .ld-detail__route-list strong,
+main.ld-detail .ld-detail__live-card-head h3,
+main.ld-detail .ld-road-camera-heading h3,
+main.ld-detail .ld-detail__button,
+main.ld-detail .ld-detail__text-link{font-size:var(--ld-size-body);font-weight:var(--ld-weight-semibold);color:var(--ld-ink)}
+main.ld-detail .ld-detail__facts strong{font-size:var(--ld-size-value);font-weight:var(--ld-weight-semibold);color:var(--ld-ink)}
+main.ld-detail .ld-detail__route-list h3 span,
+main.ld-detail .ld-detail__area-header h3[data-area-title],
+main.ld-detail .ld-detail__area-header h3[data-area-title] span,
+main.ld-detail .ld-detail__sector-grid [data-area-cn],
+main.ld-detail .ld-detail__sector-grid [data-area-en]{font-size:var(--ld-size-body);font-weight:var(--ld-weight-medium)}
+/* Labels and secondary information */
+main.ld-detail .ld-detail__eyebrow,
+main.ld-detail .ld-detail__facts small,
+main.ld-detail .ld-detail__facts span,
+main.ld-detail .ld-detail__language button,
+main.ld-detail .ld-detail__live-card-head a,
+main.ld-detail .ld-detail__live-source,
+main.ld-detail .ld-detail__note,
+main.ld-detail .ld-detail__cwa-source-label,
+main.ld-detail .ld-detail__cwa-kicker,
+main.ld-detail .ld-detail__cwa-observed-at,
+main.ld-detail .ld-detail__cwa-slot span,
+main.ld-detail .ld-detail__cwa-slot small,
+main.ld-detail .ld-detail__cwa-day>span,
+main.ld-detail .ld-detail__cwa-day small,
+main.ld-detail .ld-detail__cwa-day i,
+main.ld-detail .ld-detail__area-number,
+main.ld-detail .ld-road-camera-heading p,
+main.ld-detail .ld-road-camera-meta,
+main.ld-detail .ld-road-camera-hint{font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular);color:var(--ld-ink-muted)}
+main.ld-detail .ld-detail__nav a{font-weight:var(--ld-weight-medium);color:var(--ld-ink-muted)}
+main.ld-detail .ld-detail__nav a.is-active,main.ld-detail .ld-detail__nav a:hover{color:var(--ld-ink)}
+main.ld-detail .ld-detail__language button{font-weight:var(--ld-weight-medium)}
+main.ld-detail .ld-detail__language button.is-active{color:var(--ld-ink)}
+main.ld-detail .ld-detail__button,main.ld-detail .ld-detail__text-link{font-weight:var(--ld-weight-medium)}
+main.ld-detail .ld-detail__area-number{color:var(--ld-ink-quiet)}
+main.ld-detail .ld-detail__route-list [data-route-cn],
+main.ld-detail .ld-detail__route-list [data-route-en],
+main.ld-detail .ld-detail__sector-grid [data-area-cn],
+main.ld-detail .ld-detail__sector-grid [data-area-en]{color:var(--ld-ink-muted)}
+main.ld-detail[data-language="en"] .ld-detail__route-list [data-route-en],
+main.ld-detail[data-language="en"] .ld-detail__sector-grid [data-area-en],
+main.ld-detail:not([data-language="en"]) .ld-detail__route-list [data-route-cn],
+main.ld-detail:not([data-language="en"]) .ld-detail__sector-grid [data-area-cn]{color:var(--ld-ink)}
+main.ld-detail[data-language="en"] .ld-detail__route-list [data-route-cn],
+main.ld-detail[data-language="en"] .ld-detail__sector-grid [data-area-cn]{color:var(--ld-ink-muted)}
+main.ld-detail .ld-condition-panel .ld-condition-updated,
+main.ld-detail .ld-condition-panel .ld-condition-grid small,
+main.ld-detail .ld-condition-panel .ld-condition-grid span,
+main.ld-detail .ld-condition-panel .ld-condition-tide-times i,
+main.ld-detail .ld-condition-panel .ld-condition-tide-last i,
+main.ld-detail .ld-condition-panel [data-tide-date]{font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular);color:var(--ld-ink-muted)}
+main.ld-detail .ld-condition-panel .ld-condition-grid strong{font-size:var(--ld-size-value);font-weight:var(--ld-weight-semibold)}
+main.ld-detail .ld-condition-panel .ld-condition-tide [data-tide-state]{font-size:var(--ld-size-section);font-weight:var(--ld-weight-semibold)}
+main.ld-detail .ld-condition-panel .ld-condition-wind-main strong{font-size:14px!important;font-weight:var(--ld-weight-medium)}
+main.ld-detail .ld-condition-panel .ld-condition-tide-times b{font-size:var(--ld-size-section);font-weight:var(--ld-weight-medium)}
+main.ld-detail .ld-condition-panel .ld-condition-tide-last b{font-size:var(--ld-size-section);font-weight:var(--ld-weight-medium)}
+main.ld-detail .ld-condition-panel .ld-condition-updated{color:var(--ld-ink-quiet)}
+main.ld-detail .ld-detail__cwa-current-meta{font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular);color:var(--ld-ink-muted)}
+main.ld-detail .ld-detail__cwa-current-meta strong{font-size:14px;font-weight:var(--ld-weight-semibold);color:var(--ld-ink)}
+main.ld-detail .ld-detail__cwa-slot strong{font-size:17px;font-weight:var(--ld-weight-medium)}
+main.ld-detail .ld-detail__cwa-day strong{font-size:14px;font-weight:var(--ld-weight-medium)}
+main.ld-detail .ld-detail__cwa-temp{font-size:var(--ld-size-section);font-weight:var(--ld-weight-medium)}
+main.ld-detail .ld-detail__cwa-note{font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular);color:var(--ld-ink-muted)}
+/* Mobile: body copy scales down; labels stay at 12px for consistency. */
+@media(max-width:520px){
+  main.ld-detail .ld-detail__heading h2,
+  main.ld-detail .ld-detail__tocc h2,
+  main.ld-detail .ld-detail__live-heading h2,
+  main.ld-detail .ld-condition-panel .ld-condition-title{font-size:var(--ld-size-body-mobile)}
+  main.ld-detail .ld-detail__lead,
+  main.ld-detail .ld-detail__heading>p:not(.ld-detail__eyebrow),
+  main.ld-detail #ld-about-title .ld-detail__eyebrow,
+  main.ld-detail .ld-detail__copy p,
+  main.ld-detail .ld-detail__tocc-copy>p:not(.ld-detail__eyebrow),
+  main.ld-detail .ld-detail__safety-grid p,
+  main.ld-detail .ld-detail__safety-grid li,
+  main.ld-detail .ld-detail__sector-grid p,
+  main.ld-detail .ld-detail__route-list p,
+  main.ld-detail .ld-detail__live-caption,
+  main.ld-detail .ld-detail__cwa-condition{font-size:var(--ld-size-body-mobile)}
+  main.ld-detail .ld-detail__nav a,
+  main.ld-detail .ld-detail__sector-grid h3,
+  main.ld-detail .ld-detail__route-list h3,
+  main.ld-detail .ld-detail__route-list h3 span,
+  main.ld-detail .ld-detail__route-list strong,
+  main.ld-detail .ld-detail__area-header h3[data-area-title],
+  main.ld-detail .ld-detail__area-header h3[data-area-title] span,
+  main.ld-detail .ld-detail__button,
+  main.ld-detail .ld-detail__text-link,
+  main.ld-detail .ld-road-camera-heading h3,
+  main.ld-detail .ld-road-camera-card .ld-detail__live-card-head h3{font-size:var(--ld-size-body-mobile)}
+  main.ld-detail .ld-detail__facts strong{font-size:var(--ld-size-section-mobile)}
+  main.ld-detail .ld-condition-panel .ld-condition-grid strong{font-size:var(--ld-size-value-mobile)}
+  main.ld-detail .ld-condition-panel .ld-condition-tide [data-tide-state]{font-size:var(--ld-size-section-mobile)}
+  main.ld-detail .ld-condition-panel .ld-condition-tide-times b,main.ld-detail .ld-condition-panel .ld-condition-tide-last b{font-size:var(--ld-size-section-mobile)}
+  main.ld-detail .ld-detail__cwa-temp{font-size:var(--ld-size-section-mobile)}
+  main.ld-detail .ld-condition-panel .ld-condition-wind-main strong{font-size:14px!important}
+  main.ld-detail .ld-detail__cwa-slot strong{font-size:var(--ld-size-section-mobile)}
+  main.ld-detail .ld-detail__cwa-day strong{font-size:12px}
+}
+
+/* Rebalance the climbing-conditions label and TOCC identity. */
+main.ld-detail .ld-condition-panel .ld-condition-title{font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular);color:var(--ld-ink-muted);letter-spacing:.02em}
+main.ld-detail .ld-detail__tocc-copy>.ld-detail__eyebrow{margin:0 0 14px;font-size:var(--ld-size-section);font-weight:var(--ld-weight-semibold);letter-spacing:.04em;color:var(--ld-ink)}
+main.ld-detail .ld-detail__tocc h2{margin:0 0 18px;font-size:var(--ld-size-body);font-weight:var(--ld-weight-regular);line-height:1.6;color:var(--ld-ink-secondary)}
+main.ld-detail .ld-detail__tocc-mark{font-size:clamp(48px,8vw,92px);font-weight:var(--ld-weight-light,300);color:var(--ld-ink-quiet)}
+@media(max-width:520px){
+  main.ld-detail .ld-condition-panel .ld-condition-title{font-size:var(--ld-size-label);}
+  main.ld-detail .ld-detail__tocc-copy>.ld-detail__eyebrow{font-size:var(--ld-size-section-mobile)}
+  main.ld-detail .ld-detail__tocc h2{font-size:var(--ld-size-body-mobile)}
+  main.ld-detail .ld-detail__tocc-mark{font-size:52px}
+}
+
+/* TOCC logo and bilingual name order */
+main.ld-detail .ld-detail__tocc-brand{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin:0 0 16px}
+main.ld-detail .ld-detail__tocc-subtitle{margin:0;font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular);line-height:1.4;color:var(--ld-ink-muted)}
+main.ld-detail .ld-detail__tocc-name{margin:0;font-size:var(--ld-size-section);font-weight:var(--ld-weight-semibold);line-height:1.3;letter-spacing:.025em;color:var(--ld-ink);overflow-wrap:anywhere}
+main.ld-detail[data-language="en"] .ld-detail__tocc-brand{flex-direction:column-reverse}
+main.ld-detail .ld-detail__tocc h2{margin:0 0 18px;font-size:var(--ld-size-body);font-weight:var(--ld-weight-regular);line-height:1.6;color:var(--ld-ink-secondary)}
+main.ld-detail .ld-detail__tocc-mark{font-size:clamp(64px,12vw,150px);font-weight:250;letter-spacing:-.08em;line-height:1;color:rgba(255,255,255,.9)}
+@media(max-width:760px){main.ld-detail .ld-detail__tocc-mark{font-size:78px}}
+@media(max-width:520px){
+  main.ld-detail .ld-detail__tocc-name{font-size:var(--ld-size-section-mobile)}
+  main.ld-detail .ld-detail__tocc h2{font-size:var(--ld-size-body-mobile)}
+}
+
+/* Keep the TOCC wordmark and bilingual identity aligned on narrow screens. */
+main.ld-detail .ld-detail__tocc-name{max-width:100%;text-wrap:balance;word-break:normal;overflow-wrap:normal}
+@media(max-width:980px){
+  main.ld-detail .ld-detail__tocc{grid-template-columns:minmax(0,1fr);gap:24px;text-align:center}
+  main.ld-detail .ld-detail__tocc-mark{justify-self:center;margin:0 auto;text-align:center}
+  main.ld-detail .ld-detail__tocc-copy{width:100%;max-width:760px;margin:0 auto;text-align:center}
+  main.ld-detail .ld-detail__tocc-brand{align-items:center;width:100%}
+  main.ld-detail .ld-detail__tocc-name{max-width:100%;line-height:1.3;letter-spacing:.015em}
+  main.ld-detail .ld-detail__tocc h2{max-width:100%;margin-right:auto;margin-left:auto}
+  main.ld-detail .ld-detail__tocc .ld-detail__text-link{justify-content:center}
+}
+@media(max-width:520px){
+  main.ld-detail .ld-detail__tocc{gap:18px}
+  main.ld-detail .ld-detail__tocc-name{font-size:var(--ld-size-section-mobile);letter-spacing:0}
+  main.ld-detail .ld-detail__tocc-copy>p:not(.ld-detail__tocc-brand){text-align:center}
+}
+
+/* Language-aware TOCC hierarchy and centered mobile glow */
+main.ld-detail:not([data-language="en"]) .ld-detail__tocc-brand{flex-direction:column-reverse}
+main.ld-detail:not([data-language="en"]) .ld-detail__tocc-subtitle{font-size:var(--ld-size-section);font-weight:var(--ld-weight-semibold);color:var(--ld-ink)}
+main.ld-detail:not([data-language="en"]) .ld-detail__tocc-name{font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular);color:var(--ld-ink-muted)}
+main.ld-detail[data-language="en"] .ld-detail__tocc-brand{flex-direction:column}
+main.ld-detail[data-language="en"] .ld-detail__tocc-subtitle{font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular);color:var(--ld-ink-muted)}
+main.ld-detail[data-language="en"] .ld-detail__tocc-name{font-size:var(--ld-size-section);font-weight:var(--ld-weight-semibold);color:var(--ld-ink)}
+@media(max-width:980px){main.ld-detail .ld-detail__tocc{background:radial-gradient(ellipse at 50% 10%,rgba(255,255,255,.07),transparent 42%),#050505}}
+@media(max-width:520px){
+  main.ld-detail:not([data-language="en"]) .ld-detail__tocc-subtitle,main.ld-detail[data-language="en"] .ld-detail__tocc-name{font-size:var(--ld-size-section-mobile)}
+  main.ld-detail:not([data-language="en"]) .ld-detail__tocc-name,main.ld-detail[data-language="en"] .ld-detail__tocc-subtitle{font-size:var(--ld-size-label)}
+}
+
+/* Match TOCC bilingual title spacing to the eyebrow-to-heading rhythm used by NINE SECTORS. */
+main.ld-detail .ld-detail__tocc-brand{gap:18px;margin-bottom:18px}
+main.ld-detail .ld-detail__tocc-brand>p{margin:0}
+main.ld-detail:not([data-language="en"]) .ld-detail__tocc-name,
+main.ld-detail[data-language="en"] .ld-detail__tocc-subtitle{font-size:14px;font-weight:var(--ld-weight-regular);line-height:1.45;letter-spacing:.025em;color:var(--ld-ink-muted)}
+main.ld-detail:not([data-language="en"]) .ld-detail__tocc-subtitle,
+main.ld-detail[data-language="en"] .ld-detail__tocc-name{font-size:var(--ld-size-section);font-weight:var(--ld-weight-semibold);line-height:1.3;letter-spacing:.015em;color:var(--ld-ink)}
+@media(max-width:520px){
+  main.ld-detail .ld-detail__tocc-brand{gap:18px;margin-bottom:18px}
+main.ld-detail .ld-detail__tocc-brand>p{margin:0}
+  main.ld-detail:not([data-language="en"]) .ld-detail__tocc-name,
+  main.ld-detail[data-language="en"] .ld-detail__tocc-subtitle{font-size:12px;line-height:1.4;letter-spacing:0}
+  main.ld-detail:not([data-language="en"]) .ld-detail__tocc-subtitle,
+  main.ld-detail[data-language="en"] .ld-detail__tocc-name{font-size:var(--ld-size-section-mobile);line-height:1.3;letter-spacing:0}
+}
+/* Mobile alignment: match facts and live-widget content insets, and restore the page heading scale. */
+@media(max-width:520px){
+  main.ld-detail #ld-about-title h2{font-size:var(--ld-size-section-mobile);line-height:1.35}
+  main.ld-detail #ld-about-title [data-tagline]{max-width:36ch;margin:12px auto 0;font-size:var(--ld-size-body-mobile);line-height:1.65}
+  main.ld-detail .ld-detail__tocc-brand{gap:8px;margin-bottom:16px}
+  main.ld-detail .ld-detail__tocc-name{max-width:100%;line-height:1.3}
+  /* Keep every regular section title at the same mobile heading level. */
+  main.ld-detail .ld-detail__heading h2,
+  main.ld-detail .ld-detail__live-heading h2{font-size:var(--ld-size-section-mobile);font-weight:var(--ld-weight-heavy);line-height:1.4;letter-spacing:0;color:var(--ld-ink);text-wrap:balance}
+}
+/* Applied type scale for generated conditions and forecast widgets. */
+main.ld-detail .ld-condition-panel .ld-condition-title,
+main.ld-detail .ld-condition-panel .ld-condition-grid small,
+main.ld-detail .ld-condition-panel .ld-condition-grid span,
+main.ld-detail .ld-condition-panel .ld-condition-updated,
+main.ld-detail .ld-condition-panel .ld-condition-tide-times i,
+main.ld-detail .ld-condition-panel .ld-condition-tide-last i,
+main.ld-detail .ld-condition-panel [data-tide-date]{font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular);color:var(--ld-ink-muted)}
+main.ld-detail .ld-condition-panel .ld-condition-grid strong,
+main.ld-detail .ld-condition-panel .ld-condition-tide [data-tide-state],
+main.ld-detail .ld-condition-panel .ld-condition-tide-times b,
+main.ld-detail .ld-condition-panel .ld-condition-tide-last b{font-size:var(--ld-size-value);font-weight:var(--ld-weight-semibold)}
+main.ld-detail .ld-condition-panel .ld-condition-wind-main strong{font-size:16px!important;font-weight:var(--ld-weight-semibold)!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind-main b,
+main.ld-detail .ld-condition-panel [data-wind-feel]{font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular)}
+main.ld-detail .ld-detail__live-card-head h3,
+main.ld-detail .ld-detail__area-header h3[data-area-title],
+main.ld-detail .ld-detail__area-header h3[data-area-title] [data-area-cn],
+main.ld-detail .ld-detail__area-header h3[data-area-title] [data-area-en]{font-size:var(--ld-size-body);font-weight:var(--ld-weight-semibold)}
+main.ld-detail .ld-detail__cwa-kicker{font-size:var(--ld-size-body);font-weight:var(--ld-weight-regular);line-height:1.4;letter-spacing:0;color:var(--gray)}
+main.ld-detail .ld-detail__cwa-source-label,
+main.ld-detail .ld-detail__cwa-current-meta,
+main.ld-detail .ld-detail__cwa-current-meta>span,
+main.ld-detail .ld-detail__cwa-observed-at,
+main.ld-detail .ld-detail__cwa-slot span,
+main.ld-detail .ld-detail__cwa-slot small,
+main.ld-detail .ld-detail__cwa-day>strong:first-of-type,
+main.ld-detail .ld-detail__cwa-day small,
+main.ld-detail .ld-detail__live-source{font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular);color:var(--ld-ink-muted)}
+main.ld-detail .ld-condition-panel .ld-condition-disclaimer{font-size:11px;font-weight:var(--ld-weight-regular);color:var(--ld-ink-quiet)}
+main.ld-detail .ld-detail__cwa-note{font-size:12px;font-weight:var(--ld-weight-regular);color:var(--ld-ink-quiet)}
+main.ld-detail .ld-detail__cwa-current-row .ld-detail__cwa-temp,
+main.ld-detail .ld-detail__cwa-slot strong,
+main.ld-detail .ld-detail__cwa-day>strong:nth-of-type(2){font-size:var(--ld-size-value);font-weight:var(--ld-weight-semibold);color:var(--ld-ink)}
+main.ld-detail .ld-detail__cwa-condition{font-size:var(--ld-size-body);font-weight:var(--ld-weight-regular);color:var(--ld-ink-secondary)}
+main.ld-detail .ld-detail__cwa-current-meta strong{font-size:var(--ld-size-label);font-weight:var(--ld-weight-semibold);color:var(--ld-ink)}
+@media(max-width:520px){
+  main.ld-detail .ld-condition-panel .ld-condition-grid strong,
+  main.ld-detail .ld-condition-panel .ld-condition-tide [data-tide-state],
+  main.ld-detail .ld-condition-panel .ld-condition-tide-times b,
+  main.ld-detail .ld-condition-panel .ld-condition-tide-last b,
+  main.ld-detail .ld-detail__cwa-current-row .ld-detail__cwa-temp,
+  main.ld-detail .ld-detail__cwa-slot strong,
+  main.ld-detail .ld-detail__cwa-day>strong:nth-of-type(2){font-size:var(--ld-size-value-mobile)}
+  main.ld-detail .ld-condition-panel .ld-condition-wind-main strong{font-size:14px!important}
+  main.ld-detail .ld-detail__cwa-kicker{font-size:var(--ld-size-body-mobile)}
+  main.ld-detail .ld-detail__facts strong{font-size:var(--ld-size-value-mobile);font-weight:var(--ld-weight-semibold)}
+  main.ld-detail .ld-detail__live-card-head h3,
+  main.ld-detail .ld-detail__area-header h3[data-area-title],
+  main.ld-detail .ld-detail__area-header h3[data-area-title] [data-area-cn],
+  main.ld-detail .ld-detail__area-header h3[data-area-title] [data-area-en]{font-size:var(--ld-size-body-mobile);font-weight:var(--ld-weight-semibold)}
+  main.ld-detail .ld-detail__eyebrow,
+  main.ld-detail .ld-detail__facts small,
+  main.ld-detail .ld-detail__facts span,
+  main.ld-detail .ld-detail__language button,
+  main.ld-detail .ld-detail__live-card-head a,
+  main.ld-detail .ld-detail__live-source,
+  main.ld-detail .ld-detail__note,
+  main.ld-detail .ld-condition-panel .ld-condition-title,
+  main.ld-detail .ld-condition-panel .ld-condition-grid small,
+  main.ld-detail .ld-condition-panel .ld-condition-grid span,
+  main.ld-detail .ld-condition-panel .ld-condition-updated,
+  main.ld-detail .ld-condition-panel .ld-condition-tide-times i,
+  main.ld-detail .ld-condition-panel .ld-condition-tide-last i,
+  main.ld-detail .ld-condition-panel [data-tide-date],
+  main.ld-detail .ld-condition-panel .ld-condition-wind-main b,
+  main.ld-detail .ld-condition-panel [data-wind-feel],
+  main.ld-detail .ld-detail__cwa-source-label,
+  main.ld-detail .ld-detail__cwa-current-meta,
+  main.ld-detail .ld-detail__cwa-current-meta>span,
+  main.ld-detail .ld-detail__cwa-observed-at,
+  main.ld-detail .ld-detail__cwa-slot span,
+  main.ld-detail .ld-detail__cwa-slot small,
+  main.ld-detail .ld-detail__cwa-day>strong:first-of-type,
+  main.ld-detail .ld-detail__cwa-day small{font-size:var(--ld-size-label-mobile)}
+  main.ld-detail .ld-detail__cwa-note,
+  main.ld-detail .ld-condition-panel .ld-condition-disclaimer{font-size:11px}
+  main.ld-detail .ld-detail__cwa-current-meta strong{font-size:var(--ld-size-label-mobile)}
+}
+
+
+/* Consistent Longdong content gutters and sector copy */
+main.ld-detail{
+  --ld-content-width:1080px;
+  --ld-page-gutter:clamp(22px,6vw,88px);
+}
+main.ld-detail .ld-detail__section{
+  max-width:calc(var(--ld-content-width) + var(--ld-page-gutter) + var(--ld-page-gutter));
+  padding-right:var(--ld-page-gutter);
+  padding-left:var(--ld-page-gutter);
+}
+/* Preserve the edge-to-edge soft background and align its contents to other sections. */
+main.ld-detail .ld-detail__section--soft{
+  max-width:none;
+  padding-right:max(var(--ld-page-gutter),calc((100% - var(--ld-content-width))/2));
+  padding-left:max(var(--ld-page-gutter),calc((100% - var(--ld-content-width))/2));
+}
+main.ld-detail .ld-detail__section :is(.ld-detail__intro-grid,.ld-detail__facts,
+  .ld-detail__sector-grid,.ld-detail__route-list,.ld-detail__note,
+  .ld-detail__safety-grid,.ld-detail__live-weather){
+  width:100%;
+  max-width:none;
+}
+main.ld-detail .ld-detail__section > .ld-condition-panel{
+  box-sizing:border-box;
+  width:100%;
+  max-width:none;
+  padding-right:0;
+  padding-left:0;
+}
+main.ld-detail .ld-detail__sector-grid p{
+  max-width:none;
+  padding:0;
+  line-height:1.72;
+  overflow-wrap:normal;
+}
+@media(max-width:520px){
+  main.ld-detail{--ld-page-gutter:18px}
+  main.ld-detail .ld-detail__sector-grid h3,
+  main.ld-detail .ld-detail__sector-grid p{padding:0}
+}
+
+
+/* Longdong detail text and footer spacing */
+main.ld-detail .ld-detail__sector-grid article p{
+  color:var(--gw-ink-detail,rgba(245,245,245,.62));
+  font-size:var(--gw-type-detail,12px);
+  font-weight:400;
+  line-height:1.6;
+  padding:0;
+}
+main.ld-detail .ld-detail__live-grid .ld-detail__live-card-head a,
+main.ld-detail .ld-detail__live-grid .ld-detail__live-source,
+main.ld-detail .ld-road-camera-section .ld-detail__live-card-head a,
+main.ld-detail .ld-detail__live-card--cwa .ld-detail__cwa-source-label,
+main.ld-detail .ld-detail__live-card--cwa .ld-detail__cwa-condition.is-placeholder{
+  color:var(--gw-ink-detail,rgba(245,245,245,.62))!important;
+  font-size:var(--gw-type-detail,12px)!important;
+  font-weight:400!important;
+  line-height:1.6!important;
+  letter-spacing:0!important;
+}
+main.ld-detail .ld-detail__safety{padding-bottom:56px}
+@media(max-width:520px){
+  main.ld-detail .ld-detail__safety{padding-bottom:72px}
+}
