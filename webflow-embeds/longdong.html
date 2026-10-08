@@ -71,7 +71,7 @@
 <script>
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ["longdong-conditions-widget-v14.js", "longdong-cwa-widget-v11.js"].forEach(function (name) {
+  ["longdong-conditions-widget-v14.js", "longdong-cwa-widget-v12.js"].forEach(function (name) {
     var script = document.createElement("script");
     script.async = false;
     script.src = local ? "../" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/" + name;
@@ -90,8 +90,8 @@
     document.head.appendChild(previewStyle);
   }
   var styles = local
-    ? ["./longdong-embed-v6.css", "./climbing-typography-v2.css"]
-    : ["https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v6.css"];
+    ? ["./longdong-embed-v7.css", "./climbing-typography-v2.css"]
+    : ["https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v7.css"];
   styles.forEach(function (href) {
     var link = document.createElement("link");
     link.rel = "stylesheet";
