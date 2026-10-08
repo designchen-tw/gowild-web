@@ -14,7 +14,7 @@ For the shared menu, keep `fs-scrolldisable-element="when-visible"` on the exist
 
 ## Browser-side widgets
 
-- `longdong-conditions-widget-v8.js`: Longdong climbing conditions, tide, and roadside cameras, including the latest tide-phase start time.
+- `longdong-conditions-widget-v9.js`: Longdong climbing conditions, tide, and roadside cameras, including the latest tide-phase start time.
 - `longdong-cwa-widget-v4.js`: Longdong CWA forecast card and its responsive layout.
 - `climbing-conditions-widget-v1.js`: Kenting and Defulan climbing conditions (without tide).
 - `weather-card-widget-v3.js`: Shared CWA forecast card layout and data widget for Kenting and Defulan.
@@ -22,7 +22,7 @@ For the shared menu, keep `fs-scrolldisable-element="when-visible"` on the exist
 Webflow loads these from jsDelivr:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-conditions-widget-v8.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-conditions-widget-v9.js" defer></script>
 <script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-cwa-widget-v4.js" defer></script>
 <script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/climbing-conditions-widget-v1.js" defer></script>
 <script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/weather-card-widget-v3.js" defer></script>

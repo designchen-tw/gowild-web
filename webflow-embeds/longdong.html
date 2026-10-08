@@ -9,13 +9,13 @@
 </nav>
 
 <section class="ld-detail__section" id="ld-about" data-ld-section="about">
-<header class="ld-detail__heading" id="ld-about-title"><p class="ld-detail__eyebrow" data-lang-en="Ruifang · New Taipei City · Taiwan">台灣・新北市・瑞芳</p><h2 data-lang-en="Longdong">龍洞</h2><p data-tagline data-lang-en="Climb above the Pacific, with waves for a soundtrack and sea breeze for a guide. Every route at Longdong is its own coastal adventure.">在面向太平洋的岩壁上攀登，讓浪聲當背景、海風帶路——龍洞每條路線，都有自己的海岸冒險。</p><div class="ld-detail__language" role="group" aria-label="Language"><button type="button" data-lang-choice="zh" class="is-active" aria-pressed="true">中文</button><button type="button" data-lang-choice="en" aria-pressed="false">EN</button></div></header>
+<header class="ld-detail__heading" id="ld-about-title"><p class="ld-detail__eyebrow" data-lang-en="Gongliao · New Taipei City · Taiwan">台灣・新北市・貢寮</p><h2 data-lang-en="Longdong">龍洞</h2><p data-tagline data-lang-en="Climb above the Pacific, with waves for a soundtrack and sea breeze for a guide. Every route at Longdong is its own coastal adventure.">在面向太平洋的岩壁上攀登，讓浪聲當背景、海風帶路——龍洞每條路線，都有自己的海岸冒險。</p><div class="ld-detail__language" role="group" aria-label="Language"><button type="button" data-lang-choice="zh" class="is-active" aria-pressed="true">中文</button><button type="button" data-lang-choice="en" aria-pressed="false">EN</button></div></header>
 <div class="ld-detail__intro-grid"><div class="ld-detail__copy"><p data-lang-en="Long Dong lies on Taiwan’s northeast coast in Gongliao, New Taipei. Its sandstone cliffs follow the headland, where wind, tides, and rock shape a distinctive climbing environment. Since climbing began here in the late 1970s, generations of climbers have explored and cared for the area, shaping a well-established natural crag and a close-knit community. From sport routes and traditional cracks to multipitch climbs that call for route-finding and teamwork, Long Dong offers a range of styles. Before visiting, get to know the sectors, routes, and current conditions to prepare for a day on the coast.">龍洞位於新北市貢寮區的東北角海岸，砂岩峭壁沿著海岬展開，海風、潮汐與岩面形塑出獨特的攀登環境。自 1970 年代末發展至今，歷經不同世代攀岩者的探索與維護，龍洞已成為成熟的天然岩場，也孕育出深厚的攀岩社群。從運動攀登、傳統裂隙到需要路線判斷與團隊協作的多繩距路線，這裡提供多樣的攀登風格；造訪前，建議先了解各區特色、路線資訊與當日環境，為海岸攀登做好準備。</p></div></div>
 <div class="ld-detail__facts">
 <div><small data-lang-en="Rock · climbing styles">岩質・攀登類型</small><strong data-lang-en="Sandstone">四稜砂岩</strong><span data-lang-en="Sport · trad · multipitch">運動・傳統・多繩距</span></div><div><small data-lang-en="Sectors · route count">岩區・路線總數</small><strong data-lang-en="9 sectors · 600+ routes">9 區 · 600+ 條</strong><span data-lang-en="Listed in the guidebook">路書收錄路線</span></div><div><small data-lang-en="Season · best time">攀登季節・時間</small><strong data-lang-en="Spring · fall">春秋為主</strong><span data-lang-en="East-facing cliffs; more shade in the afternoon">面東岩壁，午後較有陰影</span></div>
 </div>
 </section>
-<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-conditions-widget-v8.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-conditions-widget-v9.js" defer></script>
 <script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-cwa-widget-v4.js" defer></script>
 
 <section class="ld-detail__section ld-detail__section--soft" id="ld-sectors" data-ld-section="about">
@@ -226,6 +226,36 @@ main.ld-detail .ld-detail__tocc-mark{font-size:clamp(64px,12vw,150px);font-weigh
 @media(max-width:520px){
   main.ld-detail .ld-detail__tocc-name{font-size:var(--ld-size-section-mobile)}
   main.ld-detail .ld-detail__tocc h2{font-size:var(--ld-size-body-mobile)}
+}
+
+/* Keep the TOCC wordmark and bilingual identity aligned on narrow screens. */
+main.ld-detail .ld-detail__tocc-name{max-width:100%;text-wrap:balance;word-break:normal;overflow-wrap:normal}
+@media(max-width:980px){
+  main.ld-detail .ld-detail__tocc{grid-template-columns:minmax(0,1fr);gap:24px;text-align:center}
+  main.ld-detail .ld-detail__tocc-mark{justify-self:center;margin:0 auto;text-align:center}
+  main.ld-detail .ld-detail__tocc-copy{width:100%;max-width:760px;margin:0 auto;text-align:center}
+  main.ld-detail .ld-detail__tocc-brand{align-items:center;width:100%}
+  main.ld-detail .ld-detail__tocc-name{max-width:100%;line-height:1.3;letter-spacing:.015em}
+  main.ld-detail .ld-detail__tocc h2{max-width:100%;margin-right:auto;margin-left:auto}
+  main.ld-detail .ld-detail__tocc .ld-detail__text-link{justify-content:center}
+}
+@media(max-width:520px){
+  main.ld-detail .ld-detail__tocc{gap:18px}
+  main.ld-detail .ld-detail__tocc-name{font-size:var(--ld-size-section-mobile);letter-spacing:0}
+  main.ld-detail .ld-detail__tocc-copy>p:not(.ld-detail__tocc-brand){text-align:center}
+}
+
+/* Language-aware TOCC hierarchy and centered mobile glow */
+main.ld-detail:not([data-language="en"]) .ld-detail__tocc-brand{flex-direction:column-reverse}
+main.ld-detail:not([data-language="en"]) .ld-detail__tocc-subtitle{font-size:var(--ld-size-section);font-weight:var(--ld-weight-semibold);color:var(--ld-ink)}
+main.ld-detail:not([data-language="en"]) .ld-detail__tocc-name{font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular);color:var(--ld-ink-muted)}
+main.ld-detail[data-language="en"] .ld-detail__tocc-brand{flex-direction:column}
+main.ld-detail[data-language="en"] .ld-detail__tocc-subtitle{font-size:var(--ld-size-label);font-weight:var(--ld-weight-regular);color:var(--ld-ink-muted)}
+main.ld-detail[data-language="en"] .ld-detail__tocc-name{font-size:var(--ld-size-section);font-weight:var(--ld-weight-semibold);color:var(--ld-ink)}
+@media(max-width:980px){main.ld-detail .ld-detail__tocc{background:radial-gradient(ellipse at 50% 10%,rgba(255,255,255,.07),transparent 42%),#050505}}
+@media(max-width:520px){
+  main.ld-detail:not([data-language="en"]) .ld-detail__tocc-subtitle,main.ld-detail[data-language="en"] .ld-detail__tocc-name{font-size:var(--ld-size-section-mobile)}
+  main.ld-detail:not([data-language="en"]) .ld-detail__tocc-name,main.ld-detail[data-language="en"] .ld-detail__tocc-subtitle{font-size:var(--ld-size-label)}
 }
 </style>
 
