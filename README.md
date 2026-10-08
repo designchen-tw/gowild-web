@@ -7,12 +7,14 @@ This public repository stores the Webflow embed source and browser-side weather/
 - `webflow-embeds/longdong.html`
 - `webflow-embeds/kenting.html`
 - `webflow-embeds/defulan.html`
+- `webflow-embeds/menu-overlay-full.html`: paste into a Code Embed inside the existing Navbar overlay. It replaces the overlay menu contents, keeps page groups collapsed until clicked, and can be opened directly in a browser for a local preview.
 
 Paste an updated embed into the matching Webflow Code Embed and republish when changing page structure or layout.
+For the shared menu, keep `fs-scrolldisable-element="when-visible"` on the existing `.mobile-overlay.gw` element. The menu Embed only controls its own layout.
 
 ## Browser-side widgets
 
-- `longdong-conditions-widget-v4.js`: Longdong climbing conditions, tide, and roadside cameras.
+- `longdong-conditions-widget-v5.js`: Longdong climbing conditions, tide, and roadside cameras, including the latest tide-phase start time.
 - `longdong-cwa-widget-v4.js`: Longdong CWA forecast card and its responsive layout.
 - `climbing-conditions-widget-v1.js`: Kenting and Defulan climbing conditions (without tide).
 - `weather-card-widget-v3.js`: Shared CWA forecast card layout and data widget for Kenting and Defulan.
@@ -20,7 +22,7 @@ Paste an updated embed into the matching Webflow Code Embed and republish when c
 Webflow loads these from jsDelivr:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-conditions-widget-v4.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-conditions-widget-v5.js" defer></script>
 <script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-cwa-widget-v4.js" defer></script>
 <script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/climbing-conditions-widget-v1.js" defer></script>
 <script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/weather-card-widget-v3.js" defer></script>
