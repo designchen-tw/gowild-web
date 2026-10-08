@@ -147,6 +147,16 @@
   @media(max-width:520px){.kd-detail__area-header h3[data-area-title],.kd-detail__area-number{font-size:12px;line-height:1.5}.kd-detail__area-header{grid-template-columns:minmax(0,1fr) 2.5ch;gap:6px}}
 
 </style>
+<script>
+(function () {
+  var local = location.protocol === "file:";
+  if (local) document.documentElement.classList.add("gw-local-font-preview");
+  var link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = local ? "./climbing-typography-v1.css" : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-typography-v1.css";
+  document.head.appendChild(link);
+})();
+</script>
 
 <script>
   (()=>{
@@ -195,6 +205,6 @@
     addEventListener('scroll',sync,{passive:true});addEventListener('resize',sync);sync();
   })();
 </script>
-<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/climbing-conditions-widget-v1.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/climbing-conditions-widget-v2.js" defer></script>
 <script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/weather-card-widget-v3.js" defer></script>
 

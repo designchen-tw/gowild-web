@@ -1,0 +1,331 @@
+/* Shared typography for the Longdong, Kenting and Defulan climbing pages. */
+main:is(.ld-detail,.kd-detail,.df-detail){
+  --gw-type-section:22px;
+  --gw-type-value:20px;
+  --gw-type-card:16px;
+  --gw-type-body:16px;
+  --gw-type-label:14px;
+  --gw-type-note:12px;
+  --gw-ink:#f5f5f5;
+  --gw-ink-secondary:rgba(245,245,245,.68);
+  --gw-ink-weather:rgba(245,245,245,.62);
+  --gw-ink-muted:rgba(245,245,245,.48);
+  --gw-ink-quiet:rgba(245,245,245,.34);
+  font-weight:400;
+  font-synthesis:none;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Section hierarchy: place, eyebrow, title, then introduction. */
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__eyebrow,.kd-detail__eyebrow,.df-detail__eyebrow){
+  margin-bottom:14px;
+  color:var(--gw-ink-muted);
+  font-size:var(--gw-type-label);
+  font-weight:400;
+  line-height:1.4;
+  letter-spacing:.08em;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__heading,.kd-detail__heading,.df-detail__heading,.ld-detail__live-heading,.kd-detail__live-heading,.df-detail__live-heading) h2{
+  color:var(--gw-ink);
+  font-size:var(--gw-type-section);
+  font-weight:800;
+  line-height:1.36;
+  letter-spacing:-.015em;
+  text-wrap:balance;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__heading,.kd-detail__heading,.df-detail__heading) > p:not([class$="__eyebrow"]){
+  margin-top:14px;
+  color:var(--gw-ink-secondary);
+  font-size:var(--gw-type-body);
+  font-weight:400;
+  line-height:1.7;
+  letter-spacing:0;
+}
+main.ld-detail #ld-about-title .ld-detail__eyebrow,
+main.kd-detail #kd-overview .kd-detail__eyebrow,
+main.df-detail #df-overview .df-detail__eyebrow{
+  color:var(--gw-ink-secondary);
+  font-size:var(--gw-type-body);
+  font-weight:400;
+  line-height:1.5;
+  letter-spacing:0;
+}
+
+/* Reading text stays readable on mobile; supporting text stays secondary. */
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__lead,.kd-detail__lead,.df-detail__lead,
+  .ld-detail__copy p,.kd-detail__copy p,.df-detail__copy p,
+  .ld-detail__sector-grid p,.kd-detail__area-grid p,.df-detail__area-grid p,
+  .ld-detail__route-list p,.kd-detail__route-list p,.df-detail__route-list p,
+  .kd-detail__visit-grid p,.df-detail__visit-grid p,
+  .ld-detail__safety-grid p,.kd-detail__safety-grid p,.df-detail__safety-grid p,
+  .ld-detail__safety-grid li,.kd-detail__safety-grid li,.df-detail__safety-grid li,
+  .kd-detail__notice p,.df-detail__notice p,
+  .ld-detail__live-caption,.kd-detail__live-caption,.df-detail__live-caption,
+  .ld-detail__tocc-copy>p:not(.ld-detail__tocc-brand):not(.ld-detail__eyebrow)){
+  color:var(--gw-ink-secondary);
+  font-size:var(--gw-type-body);
+  font-weight:400;
+  line-height:1.72;
+  letter-spacing:0;
+}
+
+/* Cards, route names and facts have three distinct reading levels. */
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__sector-grid h3,.kd-detail__area-grid h3,.df-detail__area-grid h3,
+  .kd-detail__visit-grid h3,.df-detail__visit-grid h3,
+  .ld-detail__route-list h3,.kd-detail__route-list h3,.df-detail__route-list h3,
+  .ld-detail__route-list strong,.kd-detail__route-list strong,.df-detail__route-list strong,
+  .ld-detail__live-card-head h3,.kd-detail__live-card-head h3,.df-detail__live-card-head h3,
+  .ld-road-camera-heading h3){
+  font-size:var(--gw-type-card);
+  font-weight:600;
+  line-height:1.45;
+  letter-spacing:0;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__area-header,.kd-detail__area-header,.df-detail__area-header) h3[data-area-title],
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__route-list,.kd-detail__route-list,.df-detail__route-list) h3[data-route-title] span{
+  font-size:var(--gw-type-card);
+  line-height:1.45;
+  letter-spacing:0;
+}
+/* Bilingual names keep one size; the active language carries the weight. */
+main:is(.ld-detail,.kd-detail,.df-detail) :is([data-area-cn],[data-area-en],[data-route-cn],[data-route-en]){
+  font-size:var(--gw-type-card);
+  line-height:1.45;
+  letter-spacing:0;
+}
+main:is(.ld-detail,.kd-detail,.df-detail):not([data-language="en"]) :is([data-area-cn],[data-route-cn]),
+main:is(.ld-detail,.kd-detail,.df-detail)[data-language="en"] :is([data-area-en],[data-route-en]){
+  color:var(--gw-ink)!important;
+  font-weight:600!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail):not([data-language="en"]) :is([data-area-en],[data-route-en]),
+main:is(.ld-detail,.kd-detail,.df-detail)[data-language="en"] :is([data-area-cn],[data-route-cn]){
+  color:var(--gw-ink-muted)!important;
+  font-weight:400!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__facts,.kd-detail__facts,.df-detail__facts) strong{
+  color:var(--gw-ink);
+  font-size:var(--gw-type-value);
+  font-weight:600;
+  line-height:1.3;
+  letter-spacing:-.01em;
+  font-variant-numeric:tabular-nums;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__facts,.kd-detail__facts,.df-detail__facts) :is(small,span){
+  color:var(--gw-ink-muted);
+  font-size:var(--gw-type-label);
+  font-weight:400;
+  line-height:1.45;
+  letter-spacing:0;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__area-number,.kd-detail__area-number,.df-detail__area-number){
+  color:var(--gw-ink-quiet);
+  font-size:var(--gw-type-label);
+  font-weight:400;
+  line-height:1.45;
+  letter-spacing:.02em;
+  font-variant-numeric:tabular-nums;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__note,.kd-detail__note,.df-detail__note){
+  color:var(--gw-ink-muted);
+  font-size:var(--gw-type-label);
+  font-weight:400;
+  line-height:1.65;
+  letter-spacing:0;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__nav,.kd-detail__nav,.df-detail__nav) a{
+  font-size:var(--gw-type-label);
+  font-weight:500;
+  line-height:1.2;
+  letter-spacing:0;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__language,.kd-detail__language,.df-detail__language) button{
+  font-size:var(--gw-type-label);
+  font-weight:500;
+  line-height:1.2;
+  letter-spacing:0;
+}
+
+/* The TOCC name follows the same eyebrow-to-heading rhythm. */
+main.ld-detail .ld-detail__tocc-brand{gap:14px;margin-bottom:18px}
+main.ld-detail:not([data-language="en"]) .ld-detail__tocc-subtitle,
+main.ld-detail[data-language="en"] .ld-detail__tocc-name{
+  color:var(--gw-ink);
+  font-size:var(--gw-type-section);
+  font-weight:800;
+  line-height:1.36;
+  letter-spacing:-.015em;
+}
+main.ld-detail:not([data-language="en"]) .ld-detail__tocc-name,
+main.ld-detail[data-language="en"] .ld-detail__tocc-subtitle{
+  color:var(--gw-ink-muted);
+  font-size:var(--gw-type-label);
+  font-weight:400;
+  line-height:1.4;
+  letter-spacing:.04em;
+}
+main.ld-detail .ld-detail__tocc h2{
+  color:var(--gw-ink-secondary);
+  font-size:var(--gw-type-body);
+  font-weight:400;
+  line-height:1.7;
+  letter-spacing:0;
+}
+
+/* Live card titles also cover cards rendered later by the weather widget. */
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__live-card-head,.kd-detail__live-card-head,.df-detail__live-card-head) h3{
+  color:var(--gw-ink)!important;
+  font-size:var(--gw-type-card)!important;
+  font-weight:600!important;
+  line-height:1.45!important;
+  letter-spacing:0!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__live-card--cwa .ld-detail__eyebrow,.kd-detail__live-card--cwa .kd-detail__eyebrow,.df-detail__live-card--cwa .df-detail__eyebrow){
+  font-size:var(--gw-type-label)!important;
+  font-weight:400!important;
+  line-height:1.4!important;
+  letter-spacing:.08em!important;
+}
+/* Weather: subsection labels share one level; measurements share another. */
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__cwa-kicker,.kd-detail__cwa-kicker,.df-detail__cwa-kicker){
+  color:var(--gw-ink-weather)!important;
+  font-size:var(--gw-type-card)!important;
+  font-weight:400!important;
+  line-height:1.45!important;
+  letter-spacing:0!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__cwa-temp,.kd-detail__cwa-temp,.df-detail__cwa-temp,
+  .ld-detail__cwa-slot strong,.kd-detail__cwa-slot strong,.df-detail__cwa-slot strong,
+  .ld-detail__cwa-day>strong:nth-of-type(2),.kd-detail__cwa-day>strong:nth-of-type(2),.df-detail__cwa-day>strong:nth-of-type(2),
+  .ld-detail__cwa-current-meta strong,.kd-detail__cwa-current-meta strong,.df-detail__cwa-current-meta strong){
+  font-size:var(--gw-type-value)!important;
+  font-weight:600!important;
+  line-height:1.3!important;
+  letter-spacing:-.01em!important;
+  font-variant-numeric:tabular-nums;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__cwa-source-label,.kd-detail__cwa-source-label,.df-detail__cwa-source-label,
+  .ld-detail__cwa-observed-at,.kd-detail__cwa-observed-at,.df-detail__cwa-observed-at,
+  .ld-detail__cwa-slot span,.kd-detail__cwa-slot span,.df-detail__cwa-slot span,
+  .ld-detail__cwa-slot small,.kd-detail__cwa-slot small,.df-detail__cwa-slot small,
+  .ld-detail__cwa-day>strong:first-of-type,.kd-detail__cwa-day>strong:first-of-type,.df-detail__cwa-day>strong:first-of-type,
+  .ld-detail__cwa-day small,.kd-detail__cwa-day small,.df-detail__cwa-day small,
+  .ld-detail__cwa-current-meta>span,.kd-detail__cwa-current-meta>span,.df-detail__cwa-current-meta>span){
+  color:var(--gw-ink-muted)!important;
+  font-size:var(--gw-type-label)!important;
+  font-weight:400!important;
+  line-height:1.45!important;
+  letter-spacing:0!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__cwa-condition,.kd-detail__cwa-condition,.df-detail__cwa-condition){
+  color:var(--gw-ink-secondary)!important;
+  font-size:var(--gw-type-body)!important;
+  font-weight:400!important;
+  line-height:1.6!important;
+  letter-spacing:0!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__cwa-note,.kd-detail__cwa-note,.df-detail__cwa-note){
+  color:var(--gw-ink-muted)!important;
+  font-size:var(--gw-type-note)!important;
+  font-weight:400!important;
+  line-height:1.6!important;
+}
+
+/* Generated climbing-condition cards use one scale for every key reading. */
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-title,.gw-condition-title){
+  color:var(--gw-ink-muted)!important;
+  font-size:var(--gw-type-label)!important;
+  font-weight:400!important;
+  line-height:1.45!important;
+  letter-spacing:0!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-grid,.gw-condition-grid) :is(strong,.ld-condition-tide-times b,.ld-condition-tide-last b),
+main.ld-detail .ld-condition-panel .ld-condition-tide :is([data-tide-state],.ld-condition-tide-times b,.ld-condition-tide-last b){
+  font-size:var(--gw-type-value)!important;
+  font-weight:600!important;
+  line-height:1.3!important;
+  letter-spacing:-.01em!important;
+  font-variant-numeric:tabular-nums;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-updated,.gw-condition-updated,
+  .ld-condition-grid small,.gw-condition-grid small,
+  .ld-condition-grid article>span,.gw-condition-grid article>span,
+  .ld-condition-tide-last i,.ld-condition-tide-times i){
+  font-size:var(--gw-type-label)!important;
+  font-weight:400!important;
+  line-height:1.45!important;
+  letter-spacing:0!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-grid small,.gw-condition-grid small){color:var(--gw-ink-muted)!important}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-updated,.gw-condition-updated){color:var(--gw-ink-quiet)!important}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-wind-main,.gw-condition-wind-main){
+  display:grid!important;
+  grid-template-columns:22px minmax(0,1fr);
+  align-items:center;
+  column-gap:6px;
+  row-gap:2px;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-wind-arrow,.gw-condition-wind-arrow){grid-column:1;grid-row:1/3}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-wind-main,.gw-condition-wind-main) strong{
+  grid-column:2;
+  grid-row:1;
+  min-width:0;
+  white-space:normal!important;
+  overflow-wrap:anywhere;
+}
+/* Match the older Longdong rule's specificity so direction and speed share one value size. */
+main.ld-detail .ld-condition-panel .ld-condition-wind-main strong{
+  font-size:var(--gw-type-value)!important;
+  font-weight:600!important;
+  line-height:1.3!important;
+  letter-spacing:-.01em!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-wind-main,.gw-condition-wind-main) b{
+  grid-column:2;
+  grid-row:2;
+  min-width:0;
+  margin:0;
+  font-size:var(--gw-type-value)!important;
+  font-weight:600!important;
+  line-height:1.3!important;
+  letter-spacing:-.01em!important;
+  font-variant-numeric:tabular-nums;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-disclaimer,.gw-condition-disclaimer){
+  color:var(--gw-ink-muted)!important;
+  font-size:var(--gw-type-note)!important;
+  font-weight:400!important;
+  line-height:1.6!important;
+}
+
+/* Native font faces are only used while opening the local HTML files on this Mac. */
+html.gw-local-font-preview main:is(.ld-detail,.kd-detail,.df-detail),
+html.gw-local-font-preview main:is(.ld-detail,.kd-detail,.df-detail) *{
+  font-family:"Avenir Next","Avenir",Arial,sans-serif!important;
+}
+
+@media(max-width:520px){
+  main:is(.ld-detail,.kd-detail,.df-detail){
+    --gw-type-section:18px;
+    --gw-type-value:16px;
+    --gw-type-card:14px;
+    --gw-type-body:14px;
+    --gw-type-label:12px;
+    --gw-type-note:11px;
+  }
+  main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__eyebrow,.kd-detail__eyebrow,.df-detail__eyebrow){margin-bottom:10px;letter-spacing:.06em}
+  main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__heading,.kd-detail__heading,.df-detail__heading,.ld-detail__live-heading,.kd-detail__live-heading,.df-detail__live-heading) h2{line-height:1.4;letter-spacing:-.01em}
+  main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__heading,.kd-detail__heading,.df-detail__heading) > p:not([class$="__eyebrow"]){margin-top:12px;line-height:1.68}
+  main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__lead,.kd-detail__lead,.df-detail__lead,
+    .ld-detail__copy p,.kd-detail__copy p,.df-detail__copy p,
+    .ld-detail__sector-grid p,.kd-detail__area-grid p,.df-detail__area-grid p,
+    .ld-detail__route-list p,.kd-detail__route-list p,.df-detail__route-list p,
+    .kd-detail__visit-grid p,.df-detail__visit-grid p,
+    .ld-detail__safety-grid p,.kd-detail__safety-grid p,.df-detail__safety-grid p,
+    .ld-detail__safety-grid li,.kd-detail__safety-grid li,.df-detail__safety-grid li,
+    .kd-detail__notice p,.df-detail__notice p,
+    .ld-detail__live-caption,.kd-detail__live-caption,.df-detail__live-caption){line-height:1.68}
+  main.ld-detail #ld-about-title h2{line-height:1.4;letter-spacing:-.01em}
+  main.ld-detail .ld-detail__tocc-brand{gap:10px;margin-bottom:16px}
+  main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel,.gw-condition-panel) :is(.ld-condition-grid,.gw-condition-grid) article{padding:12px}
+}
