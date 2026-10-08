@@ -295,3 +295,45 @@ main.ld-detail .ld-detail__cwa-current-meta strong{font-size:var(--ld-size-label
   main.ld-detail .ld-condition-panel .ld-condition-disclaimer{font-size:11px}
   main.ld-detail .ld-detail__cwa-current-meta strong{font-size:var(--ld-size-label-mobile)}
 }
+
+
+/* Consistent Longdong content gutters and sector copy */
+main.ld-detail{
+  --ld-content-width:1080px;
+  --ld-page-gutter:clamp(22px,6vw,88px);
+}
+main.ld-detail .ld-detail__section{
+  max-width:calc(var(--ld-content-width) + var(--ld-page-gutter) + var(--ld-page-gutter));
+  padding-right:var(--ld-page-gutter);
+  padding-left:var(--ld-page-gutter);
+}
+/* Preserve the edge-to-edge soft background and align its contents to other sections. */
+main.ld-detail .ld-detail__section--soft{
+  max-width:none;
+  padding-right:max(var(--ld-page-gutter),calc((100% - var(--ld-content-width))/2));
+  padding-left:max(var(--ld-page-gutter),calc((100% - var(--ld-content-width))/2));
+}
+main.ld-detail .ld-detail__section :is(.ld-detail__intro-grid,.ld-detail__facts,
+  .ld-detail__sector-grid,.ld-detail__route-list,.ld-detail__note,
+  .ld-detail__safety-grid,.ld-detail__live-weather){
+  width:100%;
+  max-width:none;
+}
+main.ld-detail .ld-detail__section > .ld-condition-panel{
+  box-sizing:border-box;
+  width:100%;
+  max-width:none;
+  padding-right:0;
+  padding-left:0;
+}
+main.ld-detail .ld-detail__sector-grid p{
+  max-width:none;
+  padding:0;
+  line-height:1.72;
+  overflow-wrap:normal;
+}
+@media(max-width:520px){
+  main.ld-detail{--ld-page-gutter:18px}
+  main.ld-detail .ld-detail__sector-grid h3,
+  main.ld-detail .ld-detail__sector-grid p{padding:0}
+}
