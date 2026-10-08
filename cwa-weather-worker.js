@@ -2,6 +2,7 @@
  * Cloudflare Worker: serves CWA forecast data and protects the authorization key.
  * Configure CWA_API_KEY as a Worker Secret. Never put the key in this file.
  * Optional variable ALLOWED_ORIGINS: comma-separated origin allowlist.
+ * Optional KV binding CONDITIONS_HISTORY and hourly Cron: Longdong wind/heat history.
  */
 
 const DEFAULT_ORIGINS = ["https://gowild.one", "https://www.gowild.one"];
@@ -42,7 +43,7 @@ export default {
     }
 
     const cache = caches.default;
-    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v20`, { method: "GET" });
+    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v21`, { method: "GET" });
     const cached = await cache.match(cacheKey);
     if (cached) {
       const responseHeaders = new Headers(cached.headers);
@@ -120,6 +121,11 @@ export default {
       if (!match) return null;
       const n = Number(match[0]); return n === -98 ? 0 : n <= -90 ? null : n;
     };
+    const rainfallValue = value => {
+      if (Array.isArray(value)) return value.map(rainfallValue).find(item => item !== null) ?? null;
+      if (value && typeof value === "object") return rainfallValue(value.ElementValue ?? value.elementValue ?? value.Value ?? value.value ?? value.Precipitation ?? value.precipitation);
+      return value === "T" ? 0.05 : numberValue(value);
+    };
     const stationPosition = row => {
       const geo = row.GeoInfo ?? row.geoInfo ?? {};
       const raw = geo.Coordinates ?? geo.coordinates ?? row.Coordinates ?? row.coordinates ?? [];
@@ -165,6 +171,7 @@ export default {
         distanceKm: Number.isFinite(selected.distance) ? Math.round(selected.distance * 10) / 10 : null,
         humidity,
         temperature: numberValue(pick(weather, ["AirTemperature", "Temperature", "TEMP"])),
+        dailyHigh: numberValue(pick(pick(weather, ["DailyHigh"]) ?? {}, ["AirTemperature", "Temperature"])),
         windDirection: numberValue(pick(weather, ["WindDirection", "WD"])),
         windSpeed: numberValue(pick(weather, ["WindSpeed", "WS"])),
         observedAt: pick(row, ["DateTime"])
@@ -175,15 +182,57 @@ export default {
       if (!selected) return null;
       const row = selected.row;
       const rainfall = row.RainfallElement ?? row.rainfallElement ?? {};
+      const past1 = rainfall.Past1hr ?? rainfall.past1hr ?? {};
       const past3 = rainfall.Past3hr ?? rainfall.past3hr ?? {};
       const past6 = rainfall.Past6hr ?? rainfall.past6hr ?? {};
+      const past12 = rainfall.Past12hr ?? rainfall.past12hr ?? {};
+      const past24 = rainfall.Past24hr ?? rainfall.past24hr ?? {};
+      const past2days = rainfall.Past2days ?? rainfall.past2days ?? {};
       return {
         stationId: selected.id,
         stationName: row.StationName ?? row.stationName ?? row.LocationName ?? row.locationName ?? "",
         distanceKm: Number.isFinite(selected.distance) ? Math.round(selected.distance * 10) / 10 : null,
-        past3hr: numberValue(pick(past3, ["Precipitation"])),
-        past6hr: numberValue(pick(past6, ["Precipitation"]))
+        past1hr: rainfallValue(pick(past1, ["Precipitation"])),
+        past3hr: rainfallValue(pick(past3, ["Precipitation"])),
+        past6hr: rainfallValue(pick(past6, ["Precipitation"])),
+        past12hr: rainfallValue(pick(past12, ["Precipitation"])),
+        past24hr: rainfallValue(pick(past24, ["Precipitation"])),
+        past2days: rainfallValue(pick(past2days, ["Precipitation"]))
       };
+    };
+    const conditionHistory = async station => {
+      if (!env.CONDITIONS_HISTORY || !station?.observedAt) return null;
+      const observed = Date.parse(station.observedAt);
+      if (!Number.isFinite(observed) || Math.abs(Date.now() - observed) > 2 * 3600000) return null;
+      const key = `longdong:observations:v1:${station.stationId}`;
+      try {
+        const saved = await env.CONDITIONS_HISTORY.get(key, "json");
+        const samples = (Array.isArray(saved) ? saved : []).filter(row => Number.isFinite(row?.t) && row.t >= Date.now() - 75 * 3600000);
+        if (!samples.some(row => row.t === observed)) {
+          samples.push({ t: observed, temperature: station.temperature, dailyHigh: station.dailyHigh, humidity: station.humidity, windSpeed: station.windSpeed, windDirection: station.windDirection });
+          samples.sort((a, b) => a.t - b.t);
+          ctx.waitUntil(env.CONDITIONS_HISTORY.put(key, JSON.stringify(samples), { expirationTtl: 4 * 86400 }));
+        }
+        const recent = samples.filter(row => row.t >= observed - 3 * 3600000 && row.t <= observed && Number.isFinite(row.windSpeed));
+        const covered = recent.length >= 3 && recent.at(-1).t - recent[0].t >= 2 * 3600000;
+        const wind3hAvg = covered ? recent.reduce((sum, row) => sum + row.windSpeed, 0) / recent.length : null;
+        const directions = recent.filter(row => Number.isFinite(row.windDirection) && row.windDirection >= 0 && row.windDirection <= 360 && row.windSpeed > 0);
+        const x = directions.reduce((sum, row) => sum + row.windSpeed * Math.sin(row.windDirection * Math.PI / 180), 0);
+        const y = directions.reduce((sum, row) => sum + row.windSpeed * Math.cos(row.windDirection * Math.PI / 180), 0);
+        const wind3hDirection = covered && directions.length >= 2 && Math.hypot(x, y) > 0.1 ? (Math.atan2(x, y) * 180 / Math.PI + 360) % 360 : null;
+        const validTemperatures = recent.filter(row => Number.isFinite(row.temperature));
+        const tempTrend3h = covered && validTemperatures.length >= 2 ? validTemperatures.at(-1).temperature - validTemperatures[0].temperature : null;
+        const dayKey = time => {
+          const parts = new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Taipei", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(time);
+          const get = type => parts.find(part => part.type === type)?.value;
+          return `${get("year")}-${get("month")}-${get("day")}`;
+        };
+        const previousDays = [1, 2].map(offset => dayKey(new Date(observed - offset * 86400000)));
+        const hotDays = previousDays.every(day => samples.some(row => dayKey(row.t) === day && (Number.isFinite(row.dailyHigh) && row.dailyHigh >= 32 || Number.isFinite(row.temperature) && row.temperature >= 32))) ? 2 : null;
+        return { wind3hAvg, wind3hDirection, tempTrend3h, hotDays, sampleCount: recent.length };
+      } catch {
+        return null;
+      }
     };
     const directionDegrees = value => {
       const numeric = numberValue(value);
@@ -237,14 +286,17 @@ export default {
       if (threeHourResult.status === "rejected") throw threeHourResult.reason;
       const weekly = weeklyResult.status === "fulfilled" ? weeklyResult.value : null;
       const weeklyError = weeklyResult.status === "rejected" ? weeklyResult.reason.message : null;
+      const station = stationResult.status === "fulfilled" ? normalizeStation(stationResult.value, route) : null;
+      const history = url.pathname === "/api/longdong" ? await conditionHistory(station) : null;
       const payload = JSON.stringify({
         threeHour: threeHourResult.value,
         fiveDay: weekly?.data || null,
         fiveDayProduct: weekly?.product || null,
         weeklyError,
         tides: tideResult.status === "fulfilled" ? tideResult.value : null,
-        station: stationResult.status === "fulfilled" ? normalizeStation(stationResult.value, route) : null,
+        station,
         hourlyRain: hourlyRainResult.status === "fulfilled" ? normalizeRain(hourlyRainResult.value, route) : null,
+        conditionHistory: history,
         conditionsForecast: normalizeForecastConditions(threeHourResult.value, route),
         conditionsError: [tideResult, stationResult, hourlyRainResult].filter(x => x.status === "rejected").map(x => x.reason?.message).join("; ") || null,
         fetchedAt: new Date().toISOString()
@@ -263,6 +315,67 @@ export default {
       return Response.json({ error: "Unable to load CWA forecast", detail: error.message }, {
         status: 502, headers: { ...headers, "Cache-Control": "no-store" }
       });
+    }
+  },
+  async scheduled(_event, env) {
+    if (!env.CWA_API_KEY || !env.CONDITIONS_HISTORY) return;
+    try {
+      const rest = "https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0001-001?format=JSON";
+      const file = `https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0001-001?Authorization=${encodeURIComponent(env.CWA_API_KEY)}&downloadType=WEB&format=JSON`;
+      let response = await fetch(rest, { headers: { Accept: "application/json", Authorization: env.CWA_API_KEY } });
+      let data = response.ok ? await response.json().catch(() => null) : null;
+      if (!data || data.success === false || data.success === "false") {
+        response = await fetch(file, { headers: { Accept: "application/json" } });
+        if (!response.ok) throw new Error(`CWA observation HTTP ${response.status}`);
+        data = await response.json();
+      }
+      let station = null;
+      const walk = value => {
+        if (station || !value || typeof value !== "object") return;
+        if (Array.isArray(value)) { value.forEach(walk); return; }
+        if (String(value.StationId ?? value.StationID ?? value.stationId ?? value.stationID ?? "") === "C0A950" && (value.WeatherElement || value.weatherElement)) {
+          station = value; return;
+        }
+        Object.values(value).forEach(walk);
+      };
+      walk(data);
+      if (!station) return;
+      const weather = station.WeatherElement ?? station.weatherElement;
+      const pick = (object, names) => {
+        if (!object || typeof object !== "object") return null;
+        for (const name of names) if (object[name] != null) return object[name];
+        for (const value of Object.values(object)) { const found = pick(value, names); if (found != null) return found; }
+        return null;
+      };
+      const number = value => {
+        if (Array.isArray(value)) return number(value[0]);
+        if (value && typeof value === "object") return number(value.ElementValue ?? value.elementValue ?? value.Value ?? value.value);
+        const parsed = Number(value);
+        return value != null && value !== "" && Number.isFinite(parsed) && parsed > -90 ? parsed : null;
+      };
+      const observed = Date.parse(station.ObsTime?.DateTime ?? station.obsTime?.DateTime ?? "");
+      if (!Number.isFinite(observed) || Math.abs(Date.now() - observed) > 2 * 3600000) return;
+      let humidity = number(pick(weather, ["RelativeHumidity", "RH", "HUMD"]));
+      if (humidity !== null && humidity <= 1) humidity *= 100;
+      const high = pick(weather, ["DailyHigh"]);
+      const sample = {
+        t: observed,
+        temperature: number(pick(weather, ["AirTemperature", "Temperature", "TEMP"])),
+        dailyHigh: number(pick(high, ["AirTemperature", "Temperature"])),
+        humidity,
+        windSpeed: number(pick(weather, ["WindSpeed", "WS"])),
+        windDirection: number(pick(weather, ["WindDirection", "WD"]))
+      };
+      const key = "longdong:observations:v1:C0A950";
+      const saved = await env.CONDITIONS_HISTORY.get(key, "json");
+      const samples = (Array.isArray(saved) ? saved : []).filter(row => Number.isFinite(row?.t) && row.t >= Date.now() - 75 * 3600000);
+      if (!samples.some(row => row.t === observed)) {
+        samples.push(sample);
+        samples.sort((a, b) => a.t - b.t);
+        await env.CONDITIONS_HISTORY.put(key, JSON.stringify(samples), { expirationTtl: 4 * 86400 });
+      }
+    } catch (error) {
+      console.warn("Longdong condition history unavailable:", error.message);
     }
   }
 };
