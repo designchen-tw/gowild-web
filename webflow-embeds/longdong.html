@@ -1,7 +1,7 @@
 <!-- Long Dong detail page. Paste into a dedicated Webflow Code Embed. -->
 <main class="ld-detail" data-ld-detail>
 <nav class="ld-detail__nav" aria-label="龍洞頁面導覽">
-<a href="#ld-about-title" data-ld-link="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10.5 8.5-7 8.5 7M5.5 9.5v10h13v-10M9.5 19.5v-6h5v6"/></svg><span>龍洞</span></a>
+<a href="#ld-about-title" data-ld-link="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10.5 8.5-7 8.5 7M5.5 9.5v10h13v-10M9.5 19.5v-6h5v6"/></svg><span data-lang-en="Longdong">龍洞</span></a>
 <a href="#ld-sectors-title" data-ld-link="about"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span>岩場</span></a>
 <a href="#ld-classics" data-ld-link="routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20 9 4l3 8 3-5 4 13M8 8h3m3 6h3"/></svg><span>路線</span></a>
 <a href="#ld-tocc" data-ld-link="tocc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M7.5 14.5c1.2 1.4 2.7 2 4.5 2s3.3-.6 4.5-2M8 9h.01M16 9h.01"/></svg><span>TOCC</span></a>
@@ -16,7 +16,7 @@
 </div>
 </section>
 <script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-conditions-widget-v13.js" defer></script>
-<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-cwa-widget-v8.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/longdong-cwa-widget-v9.js" defer></script>
 
 <section class="ld-detail__section ld-detail__section--soft" id="ld-sectors" data-ld-section="about">
 <header class="ld-detail__heading" id="ld-sectors-title"><p class="ld-detail__eyebrow">NINE SECTORS</p><h2>沿著海岸，走進九個區域</h2><p>各區的岩壁形態、接近方式與路線風格不同。出發前請先查看最新地圖及岩場資訊。</p></header>
@@ -71,7 +71,7 @@
   var local = location.protocol === "file:";
   if (local) document.documentElement.classList.add("gw-local-font-preview");
   [
-    local ? "./longdong-embed-v3.css" : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v3.css",
+    local ? "./longdong-embed-v4.css" : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v4.css",
     local ? "./climbing-typography-v2.css" : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-typography-v2.css"
   ].forEach(function (href) {
     var link = document.createElement("link");
