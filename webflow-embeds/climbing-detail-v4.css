@@ -1,0 +1,460 @@
+/* Kenting and Defulan follow Longdong's page rhythm and type scale. */
+main:is(.kd-detail,.df-detail) :is(.kd-detail__section--soft,.df-detail__section--soft) {
+  padding-inline:max(clamp(22px,6vw,88px),calc((100vw - 1264px)/2));
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__intro-grid,.df-detail__intro-grid) {
+  display:block;
+  max-width:900px;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__copy,.df-detail__copy) p {
+  margin:0;
+  color:var(--gw-ink-secondary);
+  font-size:var(--gw-type-body);
+  font-weight:400;
+  line-height:1.72;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__heading,.df-detail__heading) [data-tagline] {
+  max-width:760px;
+  margin:14px auto 0;
+  color:var(--gw-ink-secondary);
+  font-size:var(--gw-type-body);
+  font-weight:400;
+  line-height:1.7;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__language,.df-detail__language) {
+  margin-top:22px;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__area-grid,.df-detail__area-grid) article {
+  min-height:0;
+  padding-block:20px;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__area-grid,.df-detail__area-grid) p {
+  max-width:none;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__safety,.df-detail__safety) {
+  padding-bottom:0;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-weather,.df-detail__live-weather) {
+  max-width:1100px;
+  margin:64px auto 0;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-grid,.df-detail__live-grid) {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card--weather,.df-detail__live-card--weather),
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card--camera,.df-detail__live-card--camera) {
+  grid-column:1/-1;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card--weather,.df-detail__live-card--weather) :is(.kd-detail__live-frame,.df-detail__live-frame) {
+  aspect-ratio:16/5;
+  min-height:290px;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card--camera,.df-detail__live-card--camera) :is(.kd-detail__live-frame,.df-detail__live-frame) {
+  aspect-ratio:16/7;
+  max-height:560px;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card-head,.df-detail__live-card-head) h3 {
+  color:var(--gw-ink)!important;
+  font-size:var(--gw-type-card)!important;
+  font-weight:600!important;
+  line-height:1.45!important;
+  letter-spacing:0!important;
+}
+
+/* Weather forecast uses the same card and labels as Longdong. */
+main:is(.kd-detail,.df-detail) .gw-weather__live-card--cwa {
+  grid-column:1/-1;
+  min-width:0;
+  border:1px solid var(--line,rgba(255,255,255,.14));
+  border-radius:16px;
+  background:rgba(255,255,255,.035);
+}
+main:is(.kd-detail,.df-detail) .gw-weather__live-card-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+main:is(.kd-detail,.df-detail) .gw-weather__live-card-head h3 {
+  margin:0;
+  color:var(--gw-ink)!important;
+  font-size:var(--gw-type-card)!important;
+  font-weight:600!important;
+  line-height:1.45!important;
+}
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-source-label,
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-note {
+  color:var(--gw-ink-detail)!important;
+  font-size:var(--gw-type-detail)!important;
+  font-weight:400!important;
+  line-height:1.6!important;
+}
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-kicker,
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-kicker-hint,
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-observed-at {
+  color:var(--gw-ink-detail)!important;
+  font-size:var(--gw-type-detail)!important;
+  font-weight:400!important;
+  line-height:1.55!important;
+}
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-condition {
+  color:var(--gw-ink-secondary)!important;
+  font-size:var(--gw-type-body)!important;
+  font-weight:400!important;
+  line-height:1.5!important;
+}
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-temp,
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-slot strong,
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-day>strong:nth-of-type(2) {
+  color:var(--gw-ink)!important;
+  font-size:var(--gw-type-value)!important;
+  font-weight:600!important;
+}
+main:is(.kd-detail,.df-detail) :is(.gw-weather__cwa-slot span,.gw-weather__cwa-slot small,.gw-weather__cwa-day small,.gw-weather__cwa-day>strong:first-of-type,.gw-weather__cwa-current-meta span) {
+  color:var(--gw-ink-muted)!important;
+  font-size:var(--gw-type-label)!important;
+  font-weight:400!important;
+}
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-current-meta .gw-weather__cwa-rain-value {
+  color:var(--gw-ink-muted)!important;
+  font-size:var(--gw-type-label)!important;
+  font-weight:400!important;
+}
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-day-detail {
+  color:var(--gw-ink-secondary);
+}
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-hour :is(time,small,span),
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-detail-note {
+  color:var(--gw-ink-detail);
+  font-size:var(--gw-type-detail);
+  line-height:1.5;
+}
+main:is(.kd-detail,.df-detail) .gw-weather__cwa-hour strong {
+  color:var(--gw-ink);
+  font-size:var(--gw-type-value);
+  font-weight:600;
+}
+
+/* Five equal climbing cards; the primary reading shares one grid row. */
+main:is(.kd-detail,.df-detail) .gw-condition-panel {
+  --state-blue:#9fc6dc;
+  --state-green:#add4b4;
+  --state-sand:#e7d39a;
+  --state-coral:#f0b8a2;
+  --state-warning:#d87879;
+  box-sizing:border-box;
+  max-width:1080px;
+  margin:24px auto 0;
+  padding:0 24px;
+  color:var(--gw-ink);
+}
+main:is(.kd-detail,.df-detail) .gw-condition-head {
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:14px;
+  margin:0 0 14px;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-head h2 {
+  margin:0;
+  color:var(--gw-ink-muted);
+  font-size:var(--gw-type-label);
+  font-weight:400;
+  line-height:1.45;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-head time {
+  color:var(--gw-ink-detail);
+  font-size:var(--gw-type-detail);
+  font-weight:400;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-grid {
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  align-items:stretch;
+  gap:8px;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-grid article {
+  box-sizing:border-box;
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  grid-template-rows:40px 48px minmax(0,1fr);
+  min-width:0;
+  min-height:150px;
+  gap:7px;
+  padding:14px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+  background:rgba(255,255,255,.025);
+}
+main:is(.kd-detail,.df-detail) .gw-condition-grid small {
+  grid-row:1;
+  color:var(--gw-ink-muted);
+  font-size:var(--gw-type-label);
+  font-weight:400;
+  line-height:1.45;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-grid article>strong,
+main:is(.kd-detail,.df-detail) .gw-condition-wind-main {
+  grid-row:2;
+  align-self:center;
+  min-width:0;
+  margin:0;
+  color:var(--gw-ink);
+  font-size:var(--gw-type-value);
+  font-weight:600;
+  line-height:1.3;
+  overflow-wrap:anywhere;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-grid article>span,
+main:is(.kd-detail,.df-detail) .gw-condition-wind-support,
+main:is(.kd-detail,.df-detail) .gw-condition-current {
+  grid-row:3;
+  align-self:end;
+  color:var(--gw-ink-detail);
+  font-size:var(--gw-type-detail);
+  line-height:1.55;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-wind-main {
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-wind-main strong {
+  color:inherit;
+  font-size:var(--gw-type-value);
+  font-weight:600;
+  line-height:1.3;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-wind-main [data-arrow] {
+  width:18px;
+  height:18px;
+  flex:none;
+  display:block;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-wind-main [data-arrow][hidden] {display:none}
+main:is(.kd-detail,.df-detail) .gw-condition-wind-main svg {
+  display:block;
+  width:18px;
+  height:18px;
+  fill:currentColor;
+  transform:rotate(var(--wind-angle,0deg));
+}
+main:is(.kd-detail,.df-detail) .gw-condition-wind-support {
+  display:flex;
+  flex-direction:column;
+  align-self:start;
+  gap:2px;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-wind-support span,
+main:is(.kd-detail,.df-detail) .gw-condition-current :is(i,b),
+main:is(.kd-detail,.df-detail) .gw-condition-feels-range :is(i,b) {
+  color:var(--gw-ink-detail);
+  font-size:var(--gw-type-detail);
+  font-style:normal;
+  font-weight:400;
+  line-height:1.5;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-wind-support [data-wind-detail] {
+  display:block;
+  padding:0;
+  border:0!important;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-feels {
+  grid-template-rows:40px 48px auto auto!important;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-feels-range {
+  grid-row:3;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+  padding-top:8px;
+  border-top:1px solid rgba(245,245,245,.1);
+}
+main:is(.kd-detail,.df-detail) .gw-condition-feels-range>div {
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-feels-range b {
+  color:var(--gw-ink)!important;
+  font-size:var(--gw-type-value)!important;
+  font-weight:600!important;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-current {
+  grid-row:4;
+  display:flex;
+  gap:5px;
+  align-items:baseline;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-disclaimer {
+  margin:12px 0 0;
+  color:var(--gw-ink-detail);
+  font-size:var(--gw-type-detail);
+  line-height:1.6;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-wind[data-level=blue] .gw-condition-wind-main{color:var(--state-blue)}
+main:is(.kd-detail,.df-detail) .gw-condition-wind[data-level=green] .gw-condition-wind-main{color:var(--state-green)}
+main:is(.kd-detail,.df-detail) .gw-condition-wind[data-level=sand] .gw-condition-wind-main{color:var(--state-sand)}
+main:is(.kd-detail,.df-detail) .gw-condition-wind[data-level=coral] .gw-condition-wind-main{color:var(--state-coral)}
+main:is(.kd-detail,.df-detail) .gw-condition-wind[data-level=warning] .gw-condition-wind-main{color:var(--state-warning)}
+main:is(.kd-detail,.df-detail) .gw-condition-rock [data-level=very-dry]{color:var(--state-green)}
+main:is(.kd-detail,.df-detail) .gw-condition-rock [data-level=dry]{color:var(--state-blue)}
+main:is(.kd-detail,.df-detail) .gw-condition-rock :is([data-level=slightly-dry],[data-level=slightly-damp],[data-level=greasy]){color:var(--state-sand)}
+main:is(.kd-detail,.df-detail) .gw-condition-rock :is([data-level=damp],[data-level=condensing]){color:var(--state-coral)}
+main:is(.kd-detail,.df-detail) .gw-condition-rock :is([data-level=seeping],[data-level=saturated],[data-level=runoff]){color:var(--state-warning)}
+
+@media(max-width:1100px) {
+  main:is(.kd-detail,.df-detail) .gw-condition-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
+  main:is(.kd-detail,.df-detail) .gw-condition-grid article {min-height:138px}
+  main:is(.kd-detail,.df-detail) .gw-condition-grid article:nth-child(n+4) {grid-column:span 1}
+}
+@media(max-width:760px) {
+  main:is(.kd-detail,.df-detail) .gw-condition-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+  main:is(.kd-detail,.df-detail) .gw-condition-panel {padding-inline:12px}
+  main:is(.kd-detail,.df-detail) .gw-condition-grid article {min-height:132px}
+  main:is(.kd-detail,.df-detail) .gw-condition-rock {grid-column:1/-1}
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__live-grid,.df-detail__live-grid) {grid-template-columns:1fr}
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card--weather,.df-detail__live-card--weather) :is(.kd-detail__live-frame,.df-detail__live-frame) {aspect-ratio:4/3;min-height:360px}
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card--camera,.df-detail__live-card--camera) :is(.kd-detail__live-frame,.df-detail__live-frame) {aspect-ratio:4/3;max-height:none}
+}
+@media(max-width:520px) {
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__section,.df-detail__section) {padding-inline:18px}
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__copy,.df-detail__copy) p,
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__heading,.df-detail__heading) [data-tagline] {font-size:var(--gw-type-body,14px)}
+  main:is(.kd-detail,.df-detail) .gw-condition-grid article {padding:12px;min-height:124px}
+  main:is(.kd-detail,.df-detail) .gw-condition-grid article {grid-template-rows:38px 48px minmax(0,1fr)}
+  main:is(.kd-detail,.df-detail) .gw-condition-feels {grid-template-rows:38px 48px auto auto!important}
+  main:is(.kd-detail,.df-detail) .gw-condition-wind-main strong {font-size:var(--gw-type-value,16px)}
+  main:is(.kd-detail,.df-detail) .gw-condition-wind-support span,
+  main:is(.kd-detail,.df-detail) .gw-condition-current :is(i,b),
+  main:is(.kd-detail,.df-detail) .gw-condition-feels-range :is(i,b),
+  main:is(.kd-detail,.df-detail) .gw-condition-disclaimer {font-size:var(--gw-type-detail,10px)}
+  main:is(.kd-detail,.df-detail) .gw-weather__cwa-source-label {max-width:40%;text-align:right;white-space:normal!important}
+  main:is(.kd-detail,.df-detail) .gw-weather__cwa-five-day>.gw-weather__cwa-kicker {font-size:var(--gw-type-detail,10px)!important}
+}
+
+/* Match Longdong's 1080px content measure and section gutters. */
+main:is(.kd-detail,.df-detail){
+  --gw-content-width:1080px;
+  --gw-page-gutter:clamp(22px,6vw,88px);
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__section,.df-detail__section){
+  width:100%;
+  max-width:calc(var(--gw-content-width) + var(--gw-page-gutter) + var(--gw-page-gutter));
+  padding-right:var(--gw-page-gutter);
+  padding-left:var(--gw-page-gutter);
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__section--soft,.df-detail__section--soft){
+  max-width:none;
+  padding-right:max(var(--gw-page-gutter),calc((100% - var(--gw-content-width))/2));
+  padding-left:max(var(--gw-page-gutter),calc((100% - var(--gw-content-width))/2));
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__section,.df-detail__section) :is(
+  .kd-detail__intro-grid,.df-detail__intro-grid,
+  .kd-detail__facts,.df-detail__facts,
+  .kd-detail__area-grid,.df-detail__area-grid,
+  .kd-detail__route-list,.df-detail__route-list,
+  .kd-detail__note,.df-detail__note,
+  .kd-detail__visit-grid,.df-detail__visit-grid,
+  .kd-detail__notice,.df-detail__notice,
+  .kd-detail__safety-grid,.df-detail__safety-grid,
+  .kd-detail__live-weather,.df-detail__live-weather){
+  box-sizing:border-box;
+  width:100%;
+  max-width:none;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__section,.df-detail__section) > .gw-condition-panel{
+  width:100%;
+  max-width:none;
+  padding-right:24px;
+  padding-left:24px;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__area-grid,.df-detail__area-grid) article{
+  min-height:0;
+  padding:18px 12px 20px;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__area-grid,.df-detail__area-grid) article p{
+  max-width:none;
+  padding:0;
+  color:var(--gw-ink-muted)!important;
+  font-size:var(--gw-type-label)!important;
+  font-weight:400!important;
+  line-height:1.5!important;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__note,.df-detail__note){
+  color:var(--gw-ink-detail)!important;
+  font-size:var(--gw-type-detail)!important;
+  font-weight:400!important;
+  line-height:1.6!important;
+}
+
+/* Keep both live cards and Windy's iframe inside the content column. */
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-grid,.df-detail__live-grid),
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card,.df-detail__live-card),
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-frame,.df-detail__live-frame){
+  box-sizing:border-box;
+  min-width:0;
+  max-width:100%;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-frame,.df-detail__live-frame){
+  width:100%;
+  overflow:hidden;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-frame,.df-detail__live-frame) iframe{
+  box-sizing:border-box;
+  display:block;
+  position:absolute;
+  inset:0;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  height:100%!important;
+  max-height:100%!important;
+  border:0;
+}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card-head,.df-detail__live-card-head){min-width:0}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card-head,.df-detail__live-card-head) h3{min-width:0}
+main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card-head,.df-detail__live-card-head) a{
+  flex:0 1 auto;
+  min-width:0;
+  max-width:42%;
+  overflow-wrap:anywhere;
+  text-align:right;
+  color:var(--gw-ink-detail)!important;
+  font-size:var(--gw-type-detail)!important;
+  font-weight:400!important;
+  line-height:1.6!important;
+}
+
+@media(max-width:760px){
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__live-grid,.df-detail__live-grid){grid-template-columns:minmax(0,1fr)}
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card--weather,.df-detail__live-card--weather) :is(.kd-detail__live-frame,.df-detail__live-frame){
+    aspect-ratio:auto;
+    height:clamp(380px,105vw,530px);
+    min-height:0;
+  }
+}
+@media(max-width:520px){
+  main:is(.kd-detail,.df-detail){--gw-page-gutter:18px}
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__section,.df-detail__section){
+    padding-right:var(--gw-page-gutter);
+    padding-left:var(--gw-page-gutter);
+  }
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__section,.df-detail__section) > .gw-condition-panel{
+    padding-right:0;
+    padding-left:0;
+  }
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__facts,.df-detail__facts) > div{
+    padding-right:0;
+    padding-left:0;
+  }
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__area-grid,.df-detail__area-grid) article{
+    min-height:0;
+    padding:14px 8px 16px;
+  }
+  main:is(.kd-detail,.df-detail) :is(.kd-detail__live-card-head,.df-detail__live-card-head) h3{
+    font-size:var(--gw-type-card)!important;
+  }
+}
