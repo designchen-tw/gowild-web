@@ -2,7 +2,8 @@
  * Cloudflare Worker: serves CWA forecast data and protects the authorization key.
  * Configure CWA_API_KEY as a Worker Secret. Never put the key in this file.
  * Optional variable ALLOWED_ORIGINS: comma-separated origin allowlist.
- * Optional KV binding CONDITIONS_HISTORY and hourly Cron: Longdong wind/heat history.
+ * Optional KV binding CONDITIONS_HISTORY: recent station wind/heat history.
+ * The hourly Cron prewarms Longdong, Kenting and Defulan station samples.
  */
 
 const DEFAULT_ORIGINS = ["https://gowild.one", "https://www.gowild.one"];
@@ -43,7 +44,7 @@ export default {
     }
 
     const cache = caches.default;
-    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v23`, { method: "GET" });
+    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v24`, { method: "GET" });
     const cached = await cache.match(cacheKey);
     if (cached) {
       const responseHeaders = new Headers(cached.headers);
@@ -207,11 +208,11 @@ export default {
         past2days: rainfallValue(pick(past2days, ["Precipitation"]))
       };
     };
-    const conditionHistory = async station => {
+    const conditionHistory = async (station, area) => {
       if (!env.CONDITIONS_HISTORY || !station?.observedAt) return null;
       const observed = Date.parse(station.observedAt);
       if (!Number.isFinite(observed) || Math.abs(Date.now() - observed) > 2 * 3600000) return null;
-      const key = `longdong:observations:v1:${station.stationId}`;
+      const key = `${area}:observations:v1:${station.stationId}`;
       try {
         const saved = await env.CONDITIONS_HISTORY.get(key, "json");
         const samples = (Array.isArray(saved) ? saved : []).filter(row => Number.isFinite(row?.t) && row.t >= Date.now() - 75 * 3600000);
@@ -297,7 +298,7 @@ export default {
       const weekly = weeklyResult.status === "fulfilled" ? weeklyResult.value : null;
       const weeklyError = weeklyResult.status === "rejected" ? weeklyResult.reason.message : null;
       const station = stationResult.status === "fulfilled" ? normalizeStation(stationResult.value, route) : null;
-      const history = url.pathname === "/api/longdong" ? await conditionHistory(station) : null;
+      const history = await conditionHistory(station, url.pathname.slice(5));
       const payload = JSON.stringify({
         threeHour: threeHourResult.value,
         fiveDay: weekly?.data || null,
@@ -339,18 +340,16 @@ export default {
         if (!response.ok) throw new Error(`CWA observation HTTP ${response.status}`);
         data = await response.json();
       }
-      let station = null;
+      const stations = [];
       const walk = value => {
-        if (station || !value || typeof value !== "object") return;
+        if (!value || typeof value !== "object") return;
         if (Array.isArray(value)) { value.forEach(walk); return; }
-        if (String(value.StationId ?? value.StationID ?? value.stationId ?? value.stationID ?? "") === "C0A950" && (value.WeatherElement || value.weatherElement)) {
-          station = value; return;
+        if ((value.StationId ?? value.StationID ?? value.stationId ?? value.stationID) && (value.WeatherElement || value.weatherElement)) {
+          stations.push(value);
         }
         Object.values(value).forEach(walk);
       };
       walk(data);
-      if (!station) return;
-      const weather = station.WeatherElement ?? station.weatherElement;
       const pick = (object, names) => {
         if (!object || typeof object !== "object") return null;
         for (const name of names) if (object[name] != null) return object[name];
@@ -363,26 +362,54 @@ export default {
         const parsed = Number(value);
         return value != null && value !== "" && Number.isFinite(parsed) && parsed > -90 ? parsed : null;
       };
-      const observed = Date.parse(station.ObsTime?.DateTime ?? station.obsTime?.DateTime ?? "");
-      if (!Number.isFinite(observed) || Math.abs(Date.now() - observed) > 2 * 3600000) return;
-      let humidity = number(pick(weather, ["RelativeHumidity", "RH", "HUMD"]));
-      if (humidity !== null && humidity <= 1) humidity *= 100;
-      const high = pick(weather, ["DailyHigh"]);
-      const sample = {
-        t: observed,
-        temperature: number(pick(weather, ["AirTemperature", "Temperature", "TEMP"])),
-        dailyHigh: number(pick(high, ["AirTemperature", "Temperature"])),
-        humidity,
-        windSpeed: number(pick(weather, ["WindSpeed", "WS"])),
-        windDirection: number(pick(weather, ["WindDirection", "WD"]))
+      const position = row => {
+        const geo = row.GeoInfo ?? row.geoInfo ?? {};
+        const raw = geo.Coordinates ?? geo.coordinates ?? row.Coordinates ?? row.coordinates ?? [];
+        const list = Array.isArray(raw) ? raw : [raw];
+        const coordinate = list.find(item => /WGS.?84/i.test(String(item?.CoordinateName ?? item?.coordinateName ?? ""))) || list[0] || {};
+        const lat = number(coordinate.StationLatitude ?? coordinate.stationLatitude ?? coordinate.Latitude ?? coordinate.latitude ?? row.StationLatitude ?? row.stationLatitude ?? row.lat);
+        const lon = number(coordinate.StationLongitude ?? coordinate.stationLongitude ?? coordinate.Longitude ?? coordinate.longitude ?? row.StationLongitude ?? row.stationLongitude ?? row.lon);
+        return lat === null || lon === null ? null : { lat, lon };
       };
-      const key = "longdong:observations:v1:C0A950";
-      const saved = await env.CONDITIONS_HISTORY.get(key, "json");
-      const samples = (Array.isArray(saved) ? saved : []).filter(row => Number.isFinite(row?.t) && row.t >= Date.now() - 75 * 3600000);
-      if (!samples.some(row => row.t === observed)) {
-        samples.push(sample);
-        samples.sort((a, b) => a.t - b.t);
-        await env.CONDITIONS_HISTORY.put(key, JSON.stringify(samples), { expirationTtl: 4 * 86400 });
+      const distance = (point, target) => {
+        if (!point) return Infinity;
+        const rad = value => value * Math.PI / 180;
+        const dLat = rad(point.lat - target.lat), dLon = rad(point.lon - target.lon);
+        const a = Math.sin(dLat / 2) ** 2 + Math.cos(rad(target.lat)) * Math.cos(rad(point.lat)) * Math.sin(dLon / 2) ** 2;
+        return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      };
+      const targets = [
+        { area: "longdong", stationId: "C0A950", lat: 25.111, lon: 121.919 },
+        { area: "kenting", lat: 21.926, lon: 120.829 },
+        { area: "defulan", lat: 24.174, lon: 120.974 }
+      ];
+      for (const target of targets) {
+        const station = stations.find(row => String(row.StationId ?? row.StationID ?? row.stationId ?? row.stationID ?? "") === target.stationId) ||
+          stations.map(row => ({ row, km: distance(position(row), target) })).filter(item => item.km <= 60).sort((a, b) => a.km - b.km)[0]?.row;
+        if (!station) continue;
+        const weather = station.WeatherElement ?? station.weatherElement;
+        const observed = Date.parse(station.ObsTime?.DateTime ?? station.obsTime?.DateTime ?? "");
+        if (!Number.isFinite(observed) || Math.abs(Date.now() - observed) > 2 * 3600000) continue;
+        let humidity = number(pick(weather, ["RelativeHumidity", "RH", "HUMD"]));
+        if (humidity !== null && humidity <= 1) humidity *= 100;
+        const high = pick(weather, ["DailyHigh"]);
+        const sample = {
+          t: observed,
+          temperature: number(pick(weather, ["AirTemperature", "Temperature", "TEMP"])),
+          dailyHigh: number(pick(high, ["AirTemperature", "Temperature"])),
+          humidity,
+          windSpeed: number(pick(weather, ["WindSpeed", "WS"])),
+          windDirection: number(pick(weather, ["WindDirection", "WD"]))
+        };
+        const id = String(station.StationId ?? station.StationID ?? station.stationId ?? station.stationID);
+        const key = target.area + ":observations:v1:" + id;
+        const saved = await env.CONDITIONS_HISTORY.get(key, "json");
+        const samples = (Array.isArray(saved) ? saved : []).filter(row => Number.isFinite(row?.t) && row.t >= Date.now() - 75 * 3600000);
+        if (!samples.some(row => row.t === observed)) {
+          samples.push(sample);
+          samples.sort((a, b) => a.t - b.t);
+          await env.CONDITIONS_HISTORY.put(key, JSON.stringify(samples), { expirationTtl: 4 * 86400 });
+        }
       }
     } catch (error) {
       console.warn("Longdong condition history unavailable:", error.message);
