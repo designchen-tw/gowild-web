@@ -3,14 +3,14 @@
   style.setAttribute('data-ld-conditions-rwd', 'v1');
   style.textContent = `
 /* Keep the hierarchy stable while the conditions grid changes columns. */
-main.ld-detail .ld-condition-panel .ld-condition-grid { align-items: stretch !important; }
+main.ld-detail .ld-condition-panel .ld-condition-grid { align-items: start !important; }
 main.ld-detail .ld-condition-panel .ld-condition-grid > article {
   display: grid !important;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto minmax(34px, 1fr) auto !important;
+  grid-template-rows: 20px 32px minmax(0, 1fr) !important;
   align-items: start;
   gap: 6px;
-  min-height: 104px !important;
+  min-height: 118px !important;
   padding: 12px;
 }
 main.ld-detail .ld-condition-panel .ld-condition-grid > article > small {
@@ -29,8 +29,8 @@ main.ld-detail .ld-condition-panel .ld-condition-grid > article > span {
   margin: 0 !important;
 }
 main.ld-detail .ld-condition-panel .ld-condition-wind {
-  grid-template-rows: auto minmax(36px, 1fr) auto auto !important;
-  min-height: 126px !important;
+  grid-template-rows: 20px 32px auto auto !important;
+  min-height: 132px !important;
 }
 main.ld-detail .ld-condition-panel .ld-condition-wind-main {
   grid-row: 2;
@@ -44,7 +44,7 @@ main.ld-detail .ld-condition-panel .ld-condition-wind-detail {
   font-weight: 400 !important;
   line-height: 1.6 !important;
 }
-main.ld-detail .ld-condition-panel .ld-condition-wind-note { grid-row: 4 !important; }
+main.ld-detail .ld-condition-panel .ld-condition-wind-note { grid-row: 4 !important; align-self: start !important; }
 main.ld-detail .ld-condition-panel .ld-condition-tide {
   grid-template-rows: auto auto minmax(34px, 1fr) auto auto !important;
   min-height: 154px !important;
@@ -85,19 +85,19 @@ main.ld-detail,
 main.ld-detail .ld-detail__section:last-child,
 main.ld-detail .ld-detail__safety { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 @media (max-width: 980px) {
-  main.ld-detail .ld-condition-panel .ld-condition-grid > article { min-height: 110px !important; }
-  main.ld-detail .ld-condition-panel .ld-condition-wind { min-height: 132px !important; }
+  main.ld-detail .ld-condition-panel .ld-condition-grid > article { min-height: 124px !important; }
+  main.ld-detail .ld-condition-panel .ld-condition-wind { min-height: 136px !important; }
   main.ld-detail .ld-condition-panel .ld-condition-tide { min-height: 158px !important; }
 }
 @media (max-width: 520px) {
   main.ld-detail .ld-condition-panel .ld-condition-grid > article {
-    grid-template-rows: auto minmax(32px, 1fr) auto !important;
-    min-height: 106px !important;
+    grid-template-rows: 19px 30px minmax(0, 1fr) !important;
+    min-height: 112px !important;
     padding: 11px;
   }
   main.ld-detail .ld-condition-panel .ld-condition-wind {
-    grid-template-rows: auto minmax(34px, 1fr) auto auto !important;
-    min-height: 128px !important;
+    grid-template-rows: 19px 30px auto auto !important;
+    min-height: 130px !important;
   }
   main.ld-detail .ld-condition-panel .ld-condition-tide {
     grid-template-rows: auto auto minmax(32px, 1fr) auto auto !important;
