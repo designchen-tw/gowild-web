@@ -43,7 +43,7 @@ export default {
     }
 
     const cache = caches.default;
-    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v22`, { method: "GET" });
+    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v23`, { method: "GET" });
     const cached = await cache.match(cacheKey);
     if (cached) {
       const responseHeaders = new Headers(cached.headers);
@@ -163,6 +163,12 @@ export default {
       if (!selected) return null;
       const row = selected.row;
       const weather = row.WeatherElement ?? row.weatherElement ?? {};
+      const temperatureValue = value => {
+        const raw = value && typeof value === "object" ? pick(value, ["AirTemperature", "Temperature", "TEMP", "Value"]) : value;
+        const match = String(raw ?? "").match(/-?\d+(?:\.\d+)?/);
+        const number = match ? Number(match[0]) : null;
+        return number !== null && number >= -30 && number <= 50 ? number : null;
+      };
       let humidity = numberValue(pick(weather, ["RelativeHumidity", "RH", "HUMD"]));
       if (humidity !== null && humidity >= 0 && humidity <= 1) humidity *= 100;
       return {
@@ -170,8 +176,9 @@ export default {
         stationName: row.StationName ?? row.stationName ?? row.LocationName ?? row.locationName ?? "",
         distanceKm: Number.isFinite(selected.distance) ? Math.round(selected.distance * 10) / 10 : null,
         humidity,
-        temperature: numberValue(pick(weather, ["AirTemperature", "Temperature", "TEMP"])),
-        dailyHigh: numberValue(pick(pick(weather, ["DailyHigh"]) ?? {}, ["AirTemperature", "Temperature"])),
+        temperature: temperatureValue(pick(weather, ["AirTemperature", "Temperature", "TEMP"])),
+        dailyHigh: temperatureValue(pick(weather, ["DailyHigh"])),
+        dailyLow: temperatureValue(pick(weather, ["DailyLow"])),
         windDirection: numberValue(pick(weather, ["WindDirection", "WD"])),
         windSpeed: numberValue(pick(weather, ["WindSpeed", "WS"])),
         observedAt: pick(row, ["DateTime"])
