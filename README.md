@@ -19,7 +19,7 @@
 - Webflow 頁面從 jsDelivr 的 `designchen-tw/gowild-web@main` 載入前端 CSS/JS。瀏覽器小工具呼叫 `https://cwa-weather.designchenme.workers.dev/api/{longdong|kenting|defulan}`；Worker 向中央氣象署取得資料。Windy 和即時影像為第三方 iframe。
 - `cwa-weather-worker.js` 是 Worker 原始碼，`CWA_API_KEY` 只存在 Cloudflare Worker Secret。龍洞觀測歷史使用 KV binding `CONDITIONS_HISTORY`，每小時 `15 * * * *` 的 Cron Trigger 更新；詳細岩面推估規則見 `ROCK-CONDITION-RULES.md`。
 - 中英文切換在各 Embed 及小工具內實作。龍洞是三個地點頁共同的版面參考；墾丁與德芙蘭不顯示潮汐卡。
-- 攀登現況共用排版在 `webflow-embeds/climbing-conditions-layout-v1.css`：以卡片容器寬度切換三欄／兩欄（680px），兩欄時岩面推估與龍洞潮汐各自滿版。每排卡片透過 CSS subgrid 共用標題、主要數值、補充資料與來源四列，依內容自動決定列高，不保留固定高度的空白。三個地點 Embed 都需載入此 CSS；龍洞 `v30` 將上一次潮汐與標題包在同一標題區塊。
+- 攀登現況共用排版在 `webflow-embeds/climbing-conditions-layout-v2.css`：桌機所有卡片同一列（龍洞六欄、墾丁與德芙蘭五欄），卡片容器寬度 ≤ 980px 時切換兩欄，兩欄時岩面推估與龍洞潮汐各自滿版。每排卡片透過 CSS subgrid 共用標題、主要數值、補充資料與來源四列，依內容自動決定列高，不保留固定高度的空白。三個地點 Embed 都需載入此 CSS；龍洞 `v30` 將上一次潮汐與標題包在同一標題區塊。
 - 共通文字層級在 `webflow-embeds/climbing-typography-v2.css`：桌機章節標題／重要數值／卡片名稱／內文／標籤／細節文字為 22/20/16/16/14/12px；手機 `max-width:520px` 為 18/16/14/14/12/10px。修改時一併檢查字高、字距、灰度、左右留白與中英文換行。
 
 ## 修改與發布
