@@ -22,6 +22,7 @@
 
 <section class="ld-detail__section ld-detail__section--soft" id="ld-sectors" data-ld-section="about">
 <header class="ld-detail__heading" id="ld-sectors-title"><p class="ld-detail__eyebrow">NINE SECTORS</p><h2>沿著海岸，走進九個區域</h2><p>各區的岩壁形態、接近方式與路線風格不同。出發前請先查看最新地圖及岩場資訊。</p></header>
+<div class="ld-sector-map" data-ld-sector-map></div>
 <div class="ld-detail__sector-grid">
 <article><div class="ld-detail__area-header"><h3 data-area-title><span class="ld-detail__area-pair"><span data-area-cn>校門口</span><span data-area-en>School Gate</span></span></h3><span class="ld-detail__area-number">01</span></div><p>北側入口，龍洞攀岩文化的經典起點。</p></article>
 <article><div class="ld-detail__area-header"><h3 data-area-title><span class="ld-detail__area-pair"><span data-area-cn>鐘塔</span><span data-area-en>Clock Tower</span></span></h3><span class="ld-detail__area-number">02</span></div><p>裂隙與立體岩形交錯，傳統攀登特色鮮明。</p></article>
@@ -71,7 +72,7 @@
 <script>
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ["longdong-rock-estimate-v3.js", "longdong-conditions-widget-v30.js", "longdong-cwa-widget-v15.js"].forEach(function (name) {
+  ["longdong-rock-estimate-v3.js", "longdong-conditions-widget-v30.js", "longdong-cwa-widget-v15.js", "longdong-sector-map-v2.js"].forEach(function (name) {
     var script = document.createElement("script");
     script.async = false;
     script.src = local ? "../" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/" + name;
@@ -90,8 +91,8 @@
     document.head.appendChild(previewStyle);
   }
   var styles = local
-    ? ["./longdong-embed-v8.css", "./climbing-typography-v2.css", "./climbing-conditions-layout-v3.css", "./area-names-v1.css"]
-    : ["https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v8.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-conditions-layout-v3.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/area-names-v1.css"];
+    ? ["./longdong-embed-v8.css", "./climbing-typography-v2.css", "./climbing-conditions-layout-v3.css", "./area-names-v1.css", "./longdong-sector-map-v2.css"]
+    : ["https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v8.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-conditions-layout-v3.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/area-names-v1.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-sector-map-v2.css"];
   styles.forEach(function (href) {
     var link = document.createElement("link");
     link.rel = "stylesheet";

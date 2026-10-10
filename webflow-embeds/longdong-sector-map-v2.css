@@ -1,0 +1,146 @@
+/* Temporary Long Dong locator: map, zoom control and linked sector cards. */
+main.ld-detail .ld-sector-map{
+  width:min(100%,600px);
+  margin:0 auto 34px;
+  color:#f5f5f5;
+  scroll-margin-top:18px;
+}
+main.ld-detail .ld-map-frame{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+  background:#090c0d;
+}
+main.ld-detail .ld-map-svg{display:block;width:100%;height:auto;aspect-ratio:760/1060;touch-action:pan-y}
+main.ld-detail .ld-map-sea{fill:url(#ld-map-sea)}
+main.ld-detail .ld-map-coast{
+  fill:none;
+  stroke:#a9bcb5;
+  stroke-width:2.5;
+  stroke-linejoin:round;
+}
+main.ld-detail .ld-map-contours path{
+  stroke:rgba(201,221,207,.18);
+  stroke-width:1.15;
+}
+main.ld-detail .ld-map-road-halo{
+  fill:none;
+  stroke:rgba(172,191,200,.11);
+  stroke-width:20;
+  stroke-linecap:round;
+}
+main.ld-detail .ld-map-road{
+  fill:none;
+  stroke:#708c9c;
+  stroke-width:4;
+  stroke-linecap:round;
+}
+main.ld-detail .ld-map-trail{
+  fill:none;
+  stroke:#b2b49b;
+  stroke-width:2.3;
+  stroke-linecap:round;
+  stroke-dasharray:2 7;
+}
+main.ld-detail .ld-map-trail--branch{stroke:rgba(178,180,155,.58)}
+main.ld-detail .ld-map-parking rect{
+  fill:#162832;
+  stroke:#8db6c3;
+  stroke-width:1.3;
+}
+main.ld-detail .ld-map-parking text{
+  fill:#b9dce4;
+  font-size:19px;
+  font-weight:700;
+}
+main.ld-detail .ld-map-static-labels text{
+  fill:rgba(245,245,245,.43);
+  font-family:inherit;
+  font-size:18px;
+  font-weight:500;
+  letter-spacing:.025em;
+}
+main.ld-detail .ld-map-static-labels path{
+  fill:none;
+  stroke:rgba(245,245,245,.58);
+  stroke-width:2;
+  stroke-linecap:round;
+}
+main.ld-detail .ld-map-spot{cursor:pointer;outline:none}
+main.ld-detail .ld-map-spot__target{fill:transparent}
+main.ld-detail .ld-map-spot__ring{
+  fill:#0e1718;
+  stroke:#a9d9b6;
+  stroke-width:2;
+  transition:fill .2s,stroke .2s,stroke-width .2s;
+}
+main.ld-detail .ld-map-spot text{
+  fill:#e6eee8;
+  font-family:inherit;
+  font-size:17px;
+  font-weight:600;
+  pointer-events:none;
+}
+main.ld-detail .ld-map-spot:hover .ld-map-spot__ring,
+main.ld-detail .ld-map-spot:focus-visible .ld-map-spot__ring{
+  fill:#244438;
+  stroke:#d7f4e0;
+  stroke-width:3;
+}
+main.ld-detail .ld-map-spot.is-active .ld-map-spot__ring{
+  fill:#a9d9b6;
+  stroke:#e8f8eb;
+  stroke-width:3;
+}
+main.ld-detail .ld-map-spot.is-active text{fill:#09110d}
+main.ld-detail .ld-map-reset{
+  position:absolute;
+  right:13px;
+  bottom:13px;
+  padding:9px 12px;
+  border:1px solid rgba(255,255,255,.27);
+  border-radius:99px;
+  background:rgba(7,13,14,.87);
+  color:#f5f5f5;
+  font:inherit;
+  font-size:12px;
+  cursor:pointer;
+  backdrop-filter:blur(12px);
+}
+main.ld-detail .ld-map-reset:hover,
+main.ld-detail .ld-map-reset:focus-visible{
+  border-color:#a9d9b6;
+  outline:none;
+}
+main.ld-detail .ld-detail__sector-grid article.ld-map-linked-card{
+  position:relative;
+  transition:background .2s,box-shadow .2s;
+}
+main.ld-detail .ld-detail__sector-grid article.ld-map-linked-card:hover,
+main.ld-detail .ld-detail__sector-grid article.is-map-selected{
+  background:rgba(169,217,182,.07);
+  box-shadow:inset 0 2px 0 #a9d9b6;
+}
+main.ld-detail .ld-map-card-button{
+  position:absolute;
+  z-index:1;
+  inset:0;
+  width:100%;
+  border:0;
+  background:transparent;
+  color:transparent;
+  cursor:pointer;
+}
+main.ld-detail .ld-map-card-button:focus-visible{
+  outline:2px solid #a9d9b6;
+  outline-offset:-3px;
+}
+@media(max-width:520px){
+  main.ld-detail .ld-sector-map{margin-bottom:28px}
+  main.ld-detail .ld-map-static-labels text{font-size:20px}
+}
+@media(prefers-reduced-motion:reduce){
+  main.ld-detail .ld-map-spot__ring,
+  main.ld-detail .ld-detail__sector-grid article.ld-map-linked-card{transition:none}
+}
