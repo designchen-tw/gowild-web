@@ -141,7 +141,7 @@
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   if (local) document.documentElement.classList.add("gw-local-font-preview");
-  ["climbing-typography-v2.css", "climbing-detail-v5.css"].forEach(function (name) {
+  ["climbing-typography-v2.css", "climbing-detail-v6.css"].forEach(function (name) {
     var link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = local ? "./" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/" + name;
@@ -197,7 +197,7 @@
 <script>
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ["longdong-rock-estimate-v3.js", "climbing-conditions-widget-v3.js", "weather-card-widget-v4.js"].forEach(function (name) {
+  ["longdong-rock-estimate-v3.js", "climbing-conditions-widget-v4.js", "weather-card-widget-v5.js"].forEach(function (name) {
     var script = document.createElement("script");
     script.async = false;
     script.src = local ? "../" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/" + name;

@@ -1,0 +1,282 @@
+(()=>{
+const root=document.querySelector('[data-ld-detail]'),facts=root?.querySelector('.ld-detail__facts');if(!root||!facts)return;
+const widget=document.createElement('section');widget.className='ld-condition-panel';widget.setAttribute('aria-label','Longdong climbing conditions');widget.innerHTML=`<div class="ld-condition-head"><h2 class="ld-condition-title" data-en="Climbing conditions">攀登現況</h2><span class="ld-condition-updated">--</span></div><div class="ld-condition-grid"><article><small data-en="Sunrise / sunset">日出／日落</small><strong data-sun>--:-- / --:--</strong><span data-en="Local time">當地時間</span></article><article><small data-en="Relative humidity">相對濕度</small><strong data-humidity>--%</strong><span data-humidity-source data-en="CWA observation">氣象署觀測</span></article><article class="ld-condition-feels"><small data-en="Feels like">體感溫度</small><strong data-feels>--°</strong><div class="ld-condition-feels-times"><div><i data-en="Today’s high">當日最高溫</i><b data-today-high>--°</b></div><div><i data-en="Today’s low">當日最低溫</i><b data-today-low>--°</b></div></div><div class="ld-condition-feels-current"><i data-en="Current temperature">目前溫度</i><b data-current-temp>--°</b></div></article><article class="ld-condition-wind"><small data-en="Wind direction · speed">風向・風速</small><div class="ld-condition-wind-main"><span class="ld-condition-wind-arrow" data-wind-arrow aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 5 10h5v12h4V10h5z"/></svg></span><strong data-wind-summary>資料暫缺</strong></div><div class="ld-condition-wind-divider" aria-hidden="true"></div><span class="ld-condition-wind-detail" data-wind-detail>蒲福 -- 級・-- m/s</span><span data-en="Mean station wind; coastal gusts may be stronger.">氣象站平均風速，海岸陣風可能更強</span></article><article class="ld-condition-rock"><small data-en="Rock dryness · estimate">岩面乾燥度・推估</small><strong data-rock>資料載入中</strong><span data-rock-note>依雨量與溫濕度推估</span></article><article class="ld-condition-tide"><small data-en="Tide status">潮汐狀態</small><strong data-tide-state>載入中</strong><div class="ld-condition-tide-last"><i data-tide-last-label>上一次滿潮</i><b class="ld-condition-tide-clock" data-tide-last-time>--:--</b></div><div class="ld-condition-tide-times"><div><i>下一次滿潮</i><b>--:--</b></div><div><i>下一次乾潮</i><b>--:--</b></div></div><span data-tide-date>龍洞南口・預報</span></article></div><p class="ld-condition-disclaimer" data-en="Weather-based estimate from nearby stations; rock, salt and sea spray are not measured. Check on site.">岩面狀態由附近氣象站推估，未量測岩面、鹽分或海浪；請以現場狀況為準。</p>`;
+const rockTitle=widget.querySelector('.ld-condition-rock small');rockTitle.textContent='岩面狀況推估';rockTitle.dataset.en='Rock condition estimate';
+const windCardLayout=widget.querySelector('.ld-condition-wind');
+const feelsTimesLayout=widget.querySelector('.ld-condition-feels-times');
+if(feelsTimesLayout?.children.length===2)feelsTimesLayout.prepend(feelsTimesLayout.children[1]);
+const windDetailLayout=windCardLayout?.querySelector('[data-wind-detail]');
+const windNoteLayout=windCardLayout?.querySelector('span[data-en="Mean station wind; coastal gusts may be stronger."]');
+if(windCardLayout&&windDetailLayout){windCardLayout.querySelector('.ld-condition-wind-main')?.after(windDetailLayout);windCardLayout.querySelector('.ld-condition-wind-divider')?.remove();}
+windNoteLayout?.classList.add('ld-condition-wind-note');
+const tideCardLayout=widget.querySelector('.ld-condition-tide');
+const tideLastLayout=tideCardLayout?.querySelector('.ld-condition-tide-last');
+if(tideCardLayout&&tideLastLayout)tideCardLayout.querySelector('small')?.after(tideLastLayout);
+const tideLastLabel=tideCardLayout?.querySelector('[data-tide-last-label]');
+const tideLastTime=tideCardLayout?.querySelector('[data-tide-last-time]');
+[tideLastLabel,tideLastTime].forEach(el=>{if(!el)return;el.style.setProperty('font-size','var(--gw-type-detail,12px)','important');el.style.setProperty('font-weight','400','important');el.style.setProperty('line-height','1.6','important');el.style.setProperty('color','var(--gw-ink-detail,rgba(245,245,245,.62))','important');});
+facts.insertAdjacentElement('afterend',widget);
+const liveGrid=root.querySelector('.ld-detail__live-grid');
+if(liveGrid&&!root.querySelector('.ld-road-camera-section')){
+const oldCamera=liveGrid.querySelector('iframe[src*="q7wy94TiBBw"]')?.closest('article');if(oldCamera)oldCamera.remove();
+const cameras=document.createElement('section');cameras.className='ld-road-camera-section ld-detail__live-card';cameras.setAttribute('aria-label','現場即時影像與台2線路口監視器');
+cameras.innerHTML=`<header class="ld-road-camera-heading"><div><p class="ld-condition-eyebrow" data-lang-zh="現場影像" data-lang-en="Live cameras">LIVE CAMERAS</p><h3 data-lang-zh="現場即時影像" data-lang-en="Live Cameras">現場即時影像</h3></div><p data-lang-zh="龍洞現場與台2線路口監視器" data-lang-en="Longdong and Highway 2 roadside cameras">龍洞現場與台2線路口監視器</p></header><p class="ld-road-camera-hint" data-lang-zh="左右滑動，選擇想看的畫面" data-lang-en="Swipe to browse cameras">左右滑動，選擇想看的畫面</p><div class="ld-road-camera-grid"><article class="ld-road-camera-card"><div class="ld-detail__live-card-head"><div><h3 data-lang-zh="龍洞現場影像" data-lang-en="Longdong Climbing Area">龍洞現場影像</h3><span class="ld-road-camera-meta" data-lang-zh="YouTube 即時串流" data-lang-en="YouTube live stream">YouTube 即時串流</span></div><a href="https://www.youtube.com/watch?v=q7wy94TiBBw" target="_blank" rel="noopener" data-lang-zh="開啟原始影像" data-lang-en="Open camera">開啟原始影像</a></div><div class="ld-detail__live-frame"><iframe src="https://www.youtube.com/embed/q7wy94TiBBw?autoplay=0&mute=1" title="龍洞現場即時影像" data-title-zh="龍洞現場即時影像" data-title-en="Longdong live camera" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></article><article class="ld-road-camera-card"><div class="ld-detail__live-card-head"><div><h3 data-lang-zh="龍洞隧道口（W）" data-lang-en="Longdong Tunnel (W)">龍洞隧道口（W）</h3><span class="ld-road-camera-meta" data-lang-zh="台2線 87K+743" data-lang-en="Provincial Highway 2 · 87K+743">台2線 87K+743</span></div><a href="https://tw.live/cam/?id=CCTV-14-0020-087-004" target="_blank" rel="noopener" data-lang-zh="備用來源" data-lang-en="Camera details">備用來源</a></div><div class="ld-detail__live-frame"><img src="https://cctv-ss01.thb.gov.tw:443/T2-87K+743(N)" alt="龍洞隧道口西向即時影像" data-alt-zh="龍洞隧道口西向即時影像" data-alt-en="Longdong Tunnel westbound live camera" loading="lazy" referrerpolicy="no-referrer"></div></article><article class="ld-road-camera-card"><div class="ld-detail__live-card-head"><div><h3 data-lang-zh="龍洞隧道口（E）" data-lang-en="Longdong Tunnel (E)">龍洞隧道口（E）</h3><span class="ld-road-camera-meta" data-lang-zh="台2線 87K+543" data-lang-en="Provincial Highway 2 · 87K+543">台2線 87K+543</span></div><a href="https://tw.live/cam/?id=CCTV-14-0020-087-003" target="_blank" rel="noopener" data-lang-zh="備用來源" data-lang-en="Camera details">備用來源</a></div><div class="ld-detail__live-frame"><img src="https://cctv-ss01.thb.gov.tw:443/T2-87K+543(S)" alt="龍洞隧道口東向即時影像" data-alt-zh="龍洞隧道口東向即時影像" data-alt-en="Longdong Tunnel eastbound live camera" loading="lazy" referrerpolicy="no-referrer"></div></article><article class="ld-road-camera-card"><div class="ld-detail__live-card-head"><div><h3 data-lang-zh="鼻頭隧道口（W）" data-lang-en="Bitou Tunnel (W)">鼻頭隧道口（W）</h3><span class="ld-road-camera-meta" data-lang-zh="台2線 84K+792" data-lang-en="Provincial Highway 2 · 84K+792">台2線 84K+792</span></div><a href="https://tw.live/cam/?id=CCTV-14-0020-084-004" target="_blank" rel="noopener" data-lang-zh="備用來源" data-lang-en="Camera details">備用來源</a></div><div class="ld-detail__live-frame"><img src="https://cctv-ss01.thb.gov.tw:443/T2-84K+792" alt="鼻頭隧道口西向即時影像" data-alt-zh="鼻頭隧道口西向即時影像" data-alt-en="Bitou Tunnel westbound live camera" loading="lazy" referrerpolicy="no-referrer"></div></article></div>`;
+cameras.querySelector('.ld-road-camera-heading .ld-condition-eyebrow')?.remove();
+liveGrid.insertAdjacentElement('afterend',cameras);
+const syncCameraLanguage=()=>{const en=root.dataset.language==='en';cameras.querySelectorAll('[data-lang-en]').forEach(el=>el.textContent=en?el.dataset.langEn:el.dataset.langZh);cameras.setAttribute('aria-label',en?'Longdong and Highway 2 live cameras':'龍洞現場影像與台2線路口監視器');cameras.querySelectorAll('[data-title-en]').forEach(el=>el.title=en?el.dataset.titleEn:el.dataset.titleZh);cameras.querySelectorAll('[data-alt-en]').forEach(el=>el.alt=en?el.dataset.altEn:el.dataset.altZh)};
+document.addEventListener('ld-language-change',syncCameraLanguage);syncCameraLanguage();
+}
+const css=document.createElement('style');css.textContent='.ld-condition-panel{--ld-state-coral:#f0b8a2;--ld-state-sand:#e7d39a;--ld-state-blue:#9fc6dc;--ld-state-unknown:#f5f5f5;max-width:1080px;margin:24px auto 0;padding:0 24px;border:0;border-radius:0;background:transparent}.ld-condition-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.ld-condition-title{margin:0;color:#f5f5f5;font-size:var(--gw-type-label,14px);font-weight:400;letter-spacing:0;line-height:1.45}.ld-condition-updated{color:rgba(245,245,245,.42);font-size:var(--gw-type-label,14px);line-height:1.45}.ld-condition-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}.ld-condition-grid article{display:flex;min-width:0;min-height:98px;flex-direction:column;justify-content:space-between;gap:7px;padding:13px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(0,0,0,.28)}.ld-condition-grid .ld-condition-wind{min-height:118px}.ld-condition-wind-main{display:flex;min-width:0;align-items:center;gap:6px}.ld-condition-wind-main strong{font-size:var(--gw-type-value,20px)!important;white-space:normal;overflow-wrap:anywhere}.ld-condition-wind-main b{margin-left:0;color:rgba(245,245,245,.82);font-size:var(--gw-type-value,20px);font-weight:600;line-height:1.3;white-space:nowrap}.ld-condition-wind-arrow{display:grid;width:22px;height:22px;flex:none;place-items:center;color:#f5f5f5}.ld-condition-wind-arrow svg{width:20px;height:20px;fill:currentColor;transform:rotate(var(--wind-angle,0deg));transition:transform .25s ease}.ld-condition-wind-meter{height:3px;overflow:hidden;border-radius:4px;background:rgba(245,245,245,.12)}.ld-condition-wind-meter i{display:block;width:0;height:100%;border-radius:inherit;background:var(--ld-state-blue);transition:width .25s ease}.ld-condition-wind[data-level="noticeable"] .ld-condition-wind-meter i{background:var(--ld-state-sand)}.ld-condition-wind[data-level="strong"] .ld-condition-wind-meter i,.ld-condition-wind[data-level="high"] .ld-condition-wind-meter i{background:var(--ld-state-coral)}.ld-condition-grid small{color:rgba(245,245,245,.48);font-size:var(--gw-type-label,14px);line-height:1.45;letter-spacing:0}.ld-condition-grid strong{color:#f5f5f5;font-size:var(--gw-type-value,20px);font-weight:600;line-height:1.3;letter-spacing:-.01em}.ld-condition-grid span{color:rgba(245,245,245,.56);font-size:var(--gw-type-label,14px);line-height:1.45}.ld-condition-disclaimer{margin:12px 0 0;color:rgba(245,245,245,.48);font-size:11px;line-height:1.6}.ld-condition-disclaimer a{margin-left:5px;color:inherit;text-underline-offset:2px}.ld-condition-rock strong[data-level="wet"]{color:var(--ld-state-coral)}.ld-condition-rock strong[data-level="damp"]{color:var(--ld-state-sand)}.ld-condition-rock strong[data-level="dry"]{color:var(--ld-state-blue)}.ld-condition-grid .ld-condition-tide{min-height:158px;background:rgba(125,176,201,.08)!important}.ld-condition-tide-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:auto;padding-top:8px;border-top:1px solid rgba(245,245,245,.1)}.ld-condition-tide-times>div{display:flex;min-width:0;flex-direction:column;gap:3px}.ld-condition-tide-times i,.ld-condition-tide-last i{color:rgba(245,245,245,.48);font-size:var(--gw-type-label,14px);line-height:1.45;font-style:normal}.ld-condition-tide-times b{color:#f5f5f5;font-size:var(--gw-type-value,20px);font-weight:600;line-height:1.3}.ld-condition-tide-last{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}.ld-condition-tide-last b{color:rgba(245,245,245,.82);font-size:var(--gw-type-value,20px);font-weight:600;line-height:1.3;white-space:nowrap}.ld-condition-tide [data-tide-state]{font-size:var(--gw-type-value,20px)}.ld-condition-tide [data-tide-state][data-state="rising"]{color:var(--ld-state-coral)}.ld-condition-tide [data-tide-state][data-state="falling"]{color:var(--ld-state-blue)}.ld-condition-wind[data-level="light"] [data-wind-feel],.ld-condition-wind[data-level="light"] [data-wind-speed]{color:var(--ld-state-blue)}.ld-condition-wind[data-level="noticeable"] [data-wind-feel],.ld-condition-wind[data-level="noticeable"] [data-wind-speed]{color:var(--ld-state-sand)}.ld-condition-wind[data-level="strong"] [data-wind-feel],.ld-condition-wind[data-level="high"] [data-wind-feel],.ld-condition-wind[data-level="strong"] [data-wind-speed],.ld-condition-wind[data-level="high"] [data-wind-speed]{color:var(--ld-state-coral)}.ld-condition-wind[data-level="unknown"] [data-wind-feel],.ld-condition-wind[data-level="unknown"] [data-wind-speed],.ld-condition-rock strong[data-level="unknown"],.ld-condition-tide [data-tide-state][data-state="unknown"]{color:var(--ld-state-unknown)}@media(max-width:980px){.ld-condition-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:760px){.ld-condition-title{font-size:var(--gw-type-label,14px)}.ld-condition-panel{margin-top:20px;padding:0 12px}.ld-condition-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ld-condition-grid article:not(.ld-condition-rock):not(.ld-condition-tide){min-height:118px}.ld-condition-tide,.ld-condition-rock{grid-column:1/-1;min-height:132px}}@media(max-width:380px){.ld-condition-grid strong{font-size:var(--gw-type-value,16px)}.ld-condition-grid article{padding:11px}}.ld-road-camera-section{grid-column:1/-1;margin:18px 0 0;padding:16px!important}.ld-road-camera-hint{display:none;margin:0 0 9px;color:rgba(245,245,245,.5);font-size:11px}.ld-road-camera-card{min-width:0;padding:11px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(0,0,0,.22)}.ld-road-camera-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:14px}.ld-road-camera-heading h3{margin:0;color:#f5f5f5;font-size:17px;font-weight:500}.ld-road-camera-heading p{margin:0;color:rgba(245,245,245,.55);font-size:12px;line-height:1.6}.ld-road-camera-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.ld-road-camera-card .ld-detail__live-card-head{align-items:flex-start}.ld-road-camera-card .ld-detail__live-card-head h3{font-size:14px}.ld-road-camera-meta{display:block;margin-top:4px;color:rgba(245,245,245,.52);font-size:11px}.ld-road-camera-card .ld-detail__live-frame{aspect-ratio:16/9}.ld-road-camera-card .ld-detail__live-caption{font-size:11px}.ld-road-camera-section a{flex:none}@media(max-width:760px){.ld-road-camera-heading{align-items:flex-start;flex-direction:column;gap:5px}.ld-road-camera-hint{display:block}.ld-road-camera-grid{display:flex;overflow-x:auto;gap:9px;padding:0 0 7px;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;scrollbar-width:none}.ld-road-camera-grid::-webkit-scrollbar{display:none}.ld-road-camera-card{flex:0 0 84%;max-width:360px;scroll-snap-align:start}}.ld-detail__live-card--weather{grid-column:1/-1}.ld-detail__live-card--weather .ld-detail__live-frame{aspect-ratio:2.05/1}@media(max-width:700px){.ld-detail__live-card--weather .ld-detail__live-frame{aspect-ratio:6/5}}';css.textContent += `
+.ld-condition-panel{--ld-state-green:#a9d9b6;--ld-state-warning:#d97878}
+main.ld-detail .ld-condition-panel .ld-condition-updated{color:var(--gw-ink-detail,rgba(245,245,245,.62))!important;font-size:var(--gw-type-detail,12px)!important;font-weight:400!important;line-height:1.6!important;letter-spacing:0!important}
+.ld-condition-wind-divider{height:1px;margin:1px 0 0;background:rgba(245,245,245,.16)}
+main.ld-detail .ld-condition-panel .ld-condition-wind-main{grid-template-columns:22px minmax(0,1fr)!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind-arrow{grid-row:1}
+main.ld-detail .ld-condition-panel .ld-condition-wind-arrow[hidden]{display:none!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind[data-beaufort="0"] .ld-condition-wind-main,
+main.ld-detail .ld-condition-panel .ld-condition-wind[data-level="unknown"] .ld-condition-wind-main{grid-template-columns:minmax(0,1fr)!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind[data-beaufort="0"] [data-wind-summary],
+main.ld-detail .ld-condition-panel .ld-condition-wind[data-level="unknown"] [data-wind-summary]{grid-column:1!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind-main [data-wind-summary]{grid-row:1}
+main.ld-detail .ld-condition-panel .ld-condition-wind[data-level="blue"] :is([data-wind-summary],.ld-condition-wind-arrow){color:var(--ld-state-blue)!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind[data-level="green"] :is([data-wind-summary],.ld-condition-wind-arrow){color:var(--ld-state-green)!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind[data-level="sand"] :is([data-wind-summary],.ld-condition-wind-arrow){color:var(--ld-state-sand)!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind[data-level="coral"] :is([data-wind-summary],.ld-condition-wind-arrow){color:var(--ld-state-coral)!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind[data-level="warning"] :is([data-wind-summary],.ld-condition-wind-arrow){color:var(--ld-state-warning)!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind-detail{color:var(--gw-ink-detail,rgba(245,245,245,.62))!important;font-size:var(--gw-type-detail,12px)!important;font-weight:400!important;line-height:1.6!important}
+main.ld-detail .ld-condition-panel .ld-condition-rock strong[data-level="very-dry"]{color:var(--ld-state-green)!important}
+main.ld-detail .ld-condition-panel .ld-condition-rock strong[data-level="dry"]{color:var(--ld-state-blue)!important}
+main.ld-detail .ld-condition-panel .ld-condition-rock strong[data-level="slightly-dry"],
+main.ld-detail .ld-condition-panel .ld-condition-rock strong[data-level="slightly-damp"],
+main.ld-detail .ld-condition-panel .ld-condition-rock strong[data-level="greasy"]{color:var(--ld-state-sand)!important}
+main.ld-detail .ld-condition-panel .ld-condition-rock strong[data-level="damp"],
+main.ld-detail .ld-condition-panel .ld-condition-rock strong[data-level="condensing"]{color:var(--ld-state-coral)!important}
+main.ld-detail .ld-condition-panel .ld-condition-rock strong[data-level="seeping"],
+main.ld-detail .ld-condition-panel .ld-condition-rock strong[data-level="saturated"],
+main.ld-detail .ld-condition-panel .ld-condition-rock strong[data-level="runoff"]{color:var(--ld-state-warning)!important}
+`;
+css.textContent+=`
+/* Align each card's primary reading on one shared grid row. */
+main.ld-detail .ld-condition-panel .ld-condition-grid{align-items:stretch}
+main.ld-detail .ld-condition-panel .ld-condition-grid>article{display:grid!important;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(34px,1fr) auto;align-items:start;justify-content:stretch;gap:6px;min-height:104px!important;padding:12px}
+main.ld-detail .ld-condition-panel .ld-condition-grid>article>small{grid-row:1;align-self:start;margin:0!important}
+main.ld-detail .ld-condition-panel .ld-condition-grid>article>strong{grid-row:2;align-self:center;margin:0!important}
+main.ld-detail .ld-condition-panel .ld-condition-grid>article>span{grid-row:3;align-self:end;margin:0!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind{grid-template-rows:auto minmax(36px,1fr) auto auto!important;min-height:126px!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind-main{grid-row:2;align-self:center}
+main.ld-detail .ld-condition-panel .ld-condition-wind-detail{grid-row:3!important;align-self:start!important;color:var(--gw-ink-detail,rgba(245,245,245,.62))!important;font-size:var(--gw-type-detail,12px)!important;font-weight:400!important;line-height:1.6!important}
+main.ld-detail .ld-condition-panel .ld-condition-wind-note{grid-row:4!important}
+main.ld-detail .ld-condition-panel .ld-condition-tide{grid-template-rows:auto auto minmax(34px,1fr) auto auto!important;min-height:154px!important}
+main.ld-detail .ld-condition-panel .ld-condition-tide-last{grid-row:2;display:flex;align-items:center;justify-content:flex-start;gap:5px;margin:0!important}
+main.ld-detail .ld-condition-panel .ld-condition-tide-last :is(i,b),main.ld-detail .ld-condition-panel .ld-condition-tide-last [data-tide-last-time]{color:var(--gw-ink-detail,rgba(245,245,245,.62))!important;font-size:var(--gw-type-detail,12px)!important;font-weight:400!important;font-style:normal;line-height:1.6!important}
+main.ld-detail .ld-condition-panel .ld-condition-tide [data-tide-state]{grid-row:3;align-self:center;margin:0!important}
+main.ld-detail .ld-condition-panel .ld-condition-tide-times{grid-row:4;align-self:end;margin:0!important;padding-top:8px}
+main.ld-detail .ld-condition-panel .ld-condition-tide [data-tide-date]{grid-row:5;align-self:end;margin:0!important}
+main.ld-detail,main.ld-detail .ld-detail__section:last-child,main.ld-detail .ld-detail__safety{margin-bottom:0!important;padding-bottom:0!important}
+@media(max-width:980px){main.ld-detail .ld-condition-panel .ld-condition-grid>article{min-height:110px!important}main.ld-detail .ld-condition-panel .ld-condition-wind{min-height:132px!important}main.ld-detail .ld-condition-panel .ld-condition-tide{min-height:158px!important}}
+@media(max-width:520px){main.ld-detail .ld-condition-panel .ld-condition-wind-detail,main.ld-detail .ld-condition-panel .ld-condition-tide-last :is(i,b),main.ld-detail .ld-condition-panel .ld-condition-tide-last [data-tide-last-time]{font-size:var(--gw-type-detail,10px)!important}main.ld-detail .ld-condition-panel .ld-condition-grid>article{grid-template-rows:auto minmax(32px,1fr) auto;min-height:106px!important;padding:11px}main.ld-detail .ld-condition-panel .ld-condition-wind{grid-template-rows:auto minmax(34px,1fr) auto auto!important;min-height:128px!important}main.ld-detail .ld-condition-panel .ld-condition-tide{grid-template-rows:auto auto minmax(32px,1fr) auto auto!important;min-height:150px!important}main.ld-detail .ld-condition-panel .ld-condition-wind-detail{align-self:start!important}}
+`;
+css.textContent+=`
+main.ld-detail .ld-condition-panel .ld-condition-feels-current{min-width:0}
+main.ld-detail .ld-condition-panel .ld-condition-feels-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border-top:1px solid rgba(245,245,245,.1)}
+main.ld-detail .ld-condition-panel .ld-condition-feels-times>div{display:flex;min-width:0;flex-direction:column;gap:3px}
+main.ld-detail .ld-condition-panel .ld-condition-feels-times i{color:var(--gw-ink-detail,rgba(245,245,245,.62));font-size:var(--gw-type-detail,12px);font-style:normal;font-weight:400;line-height:1.6}
+main.ld-detail .ld-condition-panel .ld-condition-feels-times b{color:#f5f5f5;font-size:var(--gw-type-value,20px);font-weight:600;line-height:1.3}
+@media(max-width:520px){main.ld-detail .ld-condition-panel .ld-condition-feels-times i{font-size:var(--gw-type-detail,10px)}}
+`;
+css.textContent+=`
+/* Self-contained card layout: the live page must not depend on a second layout script. */
+main.ld-detail .ld-condition-panel .ld-condition-grid>article{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-rows:48px minmax(52px,auto) minmax(56px,1fr) minmax(20px,auto)!important;
+  align-items:start!important;
+  align-self:stretch!important;
+  gap:4px!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:12px!important;
+}
+/* Explicit placement prevents the title and previous tide from creating a second column. */
+main.ld-detail .ld-condition-panel .ld-condition-grid>article>*{
+  grid-column:1!important;
+  min-width:0!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-grid>article>small{
+  grid-row:1!important;
+  align-self:start!important;
+  margin:0!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-grid>article>strong,
+main.ld-detail .ld-condition-panel .ld-condition-tide [data-tide-state]{
+  grid-row:2!important;
+  align-self:start!important;
+  margin:0!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-grid>article>span{
+  grid-row:4!important;
+  align-self:end!important;
+  margin:0!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-wind-main{
+  grid-row:2!important;
+  align-self:start!important;
+  margin:0!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-grid>article.ld-condition-wind>.ld-condition-wind-detail{
+  grid-row:3!important;
+  align-self:start!important;
+  margin:0!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-wind-note{grid-row:4!important}
+main.ld-detail .ld-condition-panel .ld-condition-tide-last{
+  grid-row:1!important;
+  align-self:end!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:5px!important;
+  margin:0!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-tide-last i,
+main.ld-detail .ld-condition-panel .ld-condition-tide-last b,
+main.ld-detail .ld-condition-panel .ld-condition-tide-last time{
+  color:var(--gw-ink-detail,rgba(245,245,245,.62))!important;
+  font-size:var(--gw-type-detail,12px)!important;
+  font-weight:400!important;
+  font-style:normal!important;
+  line-height:1.6!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-tide-times,
+main.ld-detail .ld-condition-panel .ld-condition-feels-times{
+  grid-row:3!important;
+  align-self:stretch!important;
+  align-content:start!important;
+  margin:0!important;
+  padding-top:6px!important;
+  border-top:1px solid rgba(245,245,245,.1)!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-tide-times i,
+main.ld-detail .ld-condition-panel .ld-condition-feels-times i{
+  color:var(--gw-ink-detail,rgba(245,245,245,.62))!important;
+  font-size:var(--gw-type-detail,12px)!important;
+  font-weight:400!important;
+  font-style:normal!important;
+  line-height:1.6!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-tide-clock{
+  display:inline-flex!important;
+  align-items:baseline!important;
+  gap:2px!important;
+  white-space:nowrap!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-tide-clock time{font:inherit!important;color:inherit!important}
+main.ld-detail .ld-condition-panel .ld-condition-tide-offset{
+  color:var(--gw-ink-detail,rgba(245,245,245,.62))!important;
+  font-size:var(--gw-type-detail,12px)!important;
+  font-weight:400!important;
+  line-height:1.6!important;
+  letter-spacing:0!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-feels-current{
+  grid-row:4!important;
+  align-self:end!important;
+  display:flex!important;
+  align-items:baseline!important;
+  gap:5px!important;
+  min-width:0!important;
+  margin:0!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-feels-current i,
+main.ld-detail .ld-condition-panel .ld-condition-feels-current [data-current-temp]{
+  color:var(--gw-ink-detail,rgba(245,245,245,.62))!important;
+  font-size:var(--gw-type-detail,12px)!important;
+  font-weight:400!important;
+  font-style:normal!important;
+  line-height:1.6!important;
+  letter-spacing:0!important;
+}
+main.ld-detail .ld-condition-panel .ld-condition-tide [data-tide-date]{grid-row:4!important;align-self:end!important;margin:0!important}
+@media(max-width:520px){
+  main.ld-detail .ld-condition-panel .ld-condition-grid>article{
+    grid-template-rows:42px minmax(46px,auto) minmax(54px,1fr) minmax(18px,auto)!important;
+    padding:11px!important;
+  }
+}
+`;
+document.head.appendChild(css);
+const text=(selector,zh,en)=>{const el=widget.querySelector(selector);if(!el)return;el.textContent=root.dataset.language==='en'?en:zh};
+function sunTimes(date,lat=25.1174,lon=121.9159){const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date),part=k=>Number(parts.find(x=>x.type===k).value),year=part('year'),month=part('month'),day=part('day'),rad=Math.PI/180,n=Math.ceil((Date.UTC(year,month-1,day)-Date.UTC(year,0,0))/86400000),lngHour=lon/15,calc=rising=>{const t=n+((rising?6:18)-lngHour)/24,M=.9856*t-3.289,L=(M+1.916*Math.sin(M*rad)+.020*Math.sin(2*M*rad)+282.634)%360,RA=(Math.atan(.91764*Math.tan(L*rad))/rad+360)%360;let ra=(Math.floor(L/90)*90+RA-Math.floor(RA/90)*90)/15;const sinDec=.39782*Math.sin(L*rad),cosDec=Math.cos(Math.asin(sinDec)),cosH=(Math.cos(90.833*rad)-sinDec*Math.sin(lat*rad))/(cosDec*Math.cos(lat*rad));if(cosH>1||cosH< -1)return'--:--';const H=(rising?360-Math.acos(cosH)/rad:Math.acos(cosH)/rad)/15,solarTime=H+ra-.06571*t-6.622,local=(solarTime-lngHour+8+48)%24,h=Math.floor(local),m=Math.round((local-h)*60);return`${String(h).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`};return`${calc(true)} / ${calc(false)}`}
+widget.querySelector('[data-sun]').textContent=sunTimes(new Date());
+function walk(value,fn){if(!value)return;if(Array.isArray(value)){value.forEach(v=>walk(v,fn));return}if(typeof value==='object'){fn(value);Object.values(value).forEach(v=>walk(v,fn))}}
+const val=x=>{if(x==null)return'';if(Array.isArray(x)){for(const item of x){const v=val(item);if(v!=='')return v}return''}if(typeof x==='object'){for(const key of ['ElementValue','elementValue','Value','value','ParameterValue','parameterValue'])if(x[key]!=null){const v=val(x[key]);if(v!=='')return v}for(const item of Object.values(x)){const v=val(item);if(v!=='')return v}return''}return x};
+const num=x=>{const raw=val(x);if(raw==='T')return 0;const m=String(raw).match(/-?\d+(?:\.\d+)?/);if(!m)return null;const n=Number(m[0]);return n===-98?0:n<=-90?null:n};
+function stationInfo(data){if(data&&Number.isFinite(Number(data.humidity)))return data;let out=null;walk(data,o=>{if(out)return;const id=o.StationId||o.StationID||o.stationId||o.stationID;if(id==='C0A950'||id==='C0A95'){const weather=o.WeatherElement||o.weatherElement||{},rain=o.RainfallElement||o.rainfallElement||{};let humidity=num(weather.RelativeHumidity??weather.relativeHumidity),temp=num(weather.AirTemperature??weather.airTemperature),windDirection=num(weather.WindDirection??weather.windDirection),windSpeed=num(weather.WindSpeed??weather.windSpeed),precip=num(rain.Past3hr?.Precipitation??rain.Past3hr?.precipitation??rain.Past6hr?.Precipitation??rain.Past6hr?.precipitation);if(humidity===null||temp===null||windDirection===null||windSpeed===null){walk(weather,e=>{const name=e.ElementName||e.elementName||'';if(humidity===null&&/RelativeHumidity|相對濕度|^RH$|^HUMD$/i.test(name))humidity=num(e.ElementValue??e.elementValue??e.value);if(temp===null&&/AirTemperature|氣溫|^T$/i.test(name))temp=num(e.ElementValue??e.elementValue??e.value);if(windDirection===null&&/WindDirection|風向|^WD$/i.test(name))windDirection=num(e.ElementValue??e.elementValue??e.value);if(windSpeed===null&&/WindSpeed|風速|^WS$/i.test(name))windSpeed=num(e.ElementValue??e.elementValue??e.value)})}if(humidity!==null&&humidity<=1)humidity*=100;out={humidity,temp,windDirection,windSpeed,precip,time:o.ObsTime?.DateTime||o.obsTime?.DateTime||''}}});return out}
+function currentForecast(data){let humidity=null,feels=null;walk(data,o=>{if(o.ElementName||o.elementName){const name=o.ElementName||o.elementName,ts=o.Time||o.time||[];for(const t of ts){const values=t.ElementValue||t.elementValue||t.parameter||t.Parameter||[],v=Array.isArray(values)?values[0]:values;if(/相對濕度|RelativeHumidity|^RH$|^HUMD$/i.test(name)&&humidity===null)humidity=num(v);if(/體感溫度|ApparentTemperature|^AT$|^MaxAT$|^MinAT$/i.test(name)&&feels===null)feels=num(v)}}});return{humidity:humidity!==null&&humidity<=1?humidity*100:humidity,feels}}
+function taipeiDay(value){const date=value instanceof Date?value:new Date(value);if(!Number.isFinite(date.getTime()))return'';const parts=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date),part=type=>parts.find(item=>item.type===type)?.value||'';return part('year')+'-'+part('month')+'-'+part('day')}
+const tempNum=value=>{const raw=val(value),match=String(raw).match(/-?\d+(?:\.\d+)?/);if(!match)return null;const n=Number(match[0]);return n>=-30&&n<=50?n:null};
+function forecastDayRange(data){let location=null;walk(data?.records||data,o=>{if(location)return;const name=o.LocationName||o.locationName||'',id=o.LocationId||o.locationId||'';if((String(id)==='A01800'||/龍洞灣公園|Longdong Bay Park/i.test(String(name)))&&Array.isArray(o.WeatherElement||o.weatherElement))location=o});if(!location)return{high:null,low:null};const today=taipeiDay(new Date()),range={high:null,low:null};for(const element of location.WeatherElement||location.weatherElement||[]){const name=String(element.ElementName||element.elementName||'');const kind=/最高溫|MaxTemperature/i.test(name)?'high':/最低溫|MinTemperature/i.test(name)?'low':null;if(!kind)continue;for(const period of element.Time||element.time||[]){const raw=period.StartTime||period.startTime||period.DataTime||period.dataTime||'';const date=/[zZ]|[+-]\d{2}:?\d{2}$/.test(raw)?raw:String(raw).replace(' ','T')+'+08:00';if(taipeiDay(date)!==today)continue;const n=tempNum(period.ElementValue??period.elementValue??period.Parameter??period.parameter);if(n===null)continue;range[kind]=range[kind]===null?n:(kind==='high'?Math.max(range[kind],n):Math.min(range[kind],n))}}return range}
+function tideEvents(data){let target=null;walk(data,o=>{if(target)return;const id=o.LocationId||o.locationId||o.StationId||o.stationId,name=o.LocationName||o.locationName||'';if(id==='A01400'||/龍洞南口/.test(name))target=o});if(!target)return[];const events=[];walk(target,el=>{const times=el.Time||el.time||[];if(!Array.isArray(times))return;times.forEach(row=>{const time=row.DateTime||row.dateTime||row.DataTime||row.dataTime||row.TideTime||row.tideTime,params=row.Parameter||row.parameter||[],tide=row.Tide||row.tide||'';if(!time)return;const detail=String(tide)+' '+(Array.isArray(params)?params.map(p=>`${p.ParameterName||p.parameterName||''} ${p.ParameterValue||p.parameterValue||''}`).join(' '):JSON.stringify(params));let kind=null;if(/滿潮|高潮|high/i.test(detail))kind='high';else if(/乾潮|低潮|low/i.test(detail))kind='low';if(kind)events.push({time:String(time),kind})})});return events}
+const beaufortLimits=[0.3,1.6,3.4,5.5,8,10.8,13.9,17.2,20.8,24.5,28.5,32.7,37,41.5,46.2,51,56.1];
+const beaufortZh=['無風','軟風','輕風','微風','和風','清風','強風','疾風','大風','烈風','狂風','暴風'];
+const beaufortEn=['Calm','Light air','Light breeze','Gentle breeze','Moderate breeze','Fresh breeze','Strong breeze','Near gale','Gale','Strong gale','Storm','Violent storm'];
+function beaufortGrade(speed){if(speed==null||!Number.isFinite(Number(speed))||Number(speed)<0)return null;const grade=beaufortLimits.findIndex(limit=>Number(speed)<limit);return grade<0?17:grade}
+function render(data){const current=currentForecast(data.threeHour),station=stationInfo(data.station),forecast=data.conditionsForecast||{},humidity=station?.humidity??forecast.humidity??current.humidity,feels=forecast.feels??current.feels,windDirection=station?.windDirection??forecast.windDirection??null,windSpeed=station?.windSpeed??forecast.windSpeed??null;widget.querySelector('[data-humidity]').textContent=humidity==null?'--%':`${Math.round(humidity)}%`;widget.querySelector('[data-feels]').textContent=feels==null?'--°':`${Math.round(feels)}°`;const currentTemp=tempNum(forecast.temperature)??tempNum(station?.temperature??station?.temp),dailyRange=forecastDayRange(data.fiveDay),stationToday=taipeiDay(station?.observedAt??station?.time)===taipeiDay(new Date()),todayHigh=dailyRange.high??(stationToday?tempNum(station?.dailyHigh):null),todayLow=dailyRange.low??(stationToday?tempNum(station?.dailyLow):null);widget.querySelector('[data-current-temp]').textContent=currentTemp==null?'--°':`${Math.round(currentTemp)}°`;widget.querySelector('[data-today-high]').textContent=todayHigh==null?'--°':`${Math.round(todayHigh)}°`;widget.querySelector('[data-today-low]').textContent=todayLow==null?'--°':`${Math.round(todayLow)}°`;const lang=root.dataset.language==='en';widget.querySelector('[data-today-high]').title=dailyRange.high!=null?(lang?'Longdong Bay Park forecast':'龍洞灣公園預報'):(lang?'Bitou Cape observation':'鼻頭角站觀測');widget.querySelector('[data-today-low]').title=dailyRange.low!=null?(lang?'Longdong Bay Park forecast':'龍洞灣公園預報'):(lang?'Bitou Cape observation':'鼻頭角站觀測');
+const windCard=widget.querySelector('.ld-condition-wind');
+const windNote=windCard.querySelector('.ld-condition-wind-note');const forecastWind=station?.windSpeed==null&&forecast.windSpeed!=null;if(windNote){windNote.dataset.zh=forecastWind?'龍洞灣公園預報風速，海岸陣風可能更強':'氣象站平均風速，海岸陣風可能更強';windNote.dataset.en=forecastWind?'Longdong Bay Park forecast; coastal gusts may be stronger.':'Mean station wind; coastal gusts may be stronger.';windNote.textContent=lang?windNote.dataset.en:windNote.dataset.zh;}
+const directionNames=lang?['N','NE','E','SE','S','SW','W','NW']:['北','東北','東','東南','南','西南','西','西北'];
+const grade=beaufortGrade(windSpeed);
+const band=grade==null?'unknown':grade<=2?'blue':grade<=6?'green':grade<=9?'sand':grade<=12?'coral':'warning';
+const windLabel=grade==null?(lang?'Wind unavailable':'風況資料暫缺'):grade<12?(lang?beaufortEn[grade]:beaufortZh[grade]):(lang?'Hurricane-force wind':'颶風級風');
+const windBearing=windDirection==null?null:((Number(windDirection)%360)+360)%360;
+const windIndex=windBearing==null?null:Math.round(windBearing/45)%8;
+const direction=windIndex==null?(lang?'Direction unavailable':'風向暫缺'):directionNames[windIndex];
+widget.querySelector('[data-wind-summary]').textContent=grade==null?windLabel:grade===0?windLabel:(lang?`${direction} · ${windLabel}`:`${direction}・${windLabel}`);
+const gradeText=grade==null?'--':grade===17&&Number(windSpeed)>=61.3?(lang?'17+':'17級以上'):lang?String(grade):`${grade}級`;
+const speedText=grade==null?'--':Number(windSpeed).toFixed(1);
+widget.querySelector('[data-wind-detail]').textContent=lang?`Beaufort ${gradeText} · ${speedText} m/s`:`蒲福 ${gradeText}・${speedText} m/s`;
+windCard.dataset.level=band;
+windCard.dataset.beaufort=grade==null?'unknown':String(grade);
+const arrow=widget.querySelector('[data-wind-arrow]');
+arrow.hidden=grade==null||grade===0||windBearing==null;
+if(!arrow.hidden)arrow.style.setProperty('--wind-angle',`${windBearing}deg`);
+widget.querySelector('[data-humidity-source]').textContent=station?.humidity!=null?(lang?'Bitou Cape station':'鼻頭角站觀測'):(humidity!=null?(lang?'CWA forecast':'龍洞天氣預報'):(lang?'CWA data unavailable':'氣象署資料暫缺'));
+const estimate=window.GWLongdongRockEstimate?.({...data,conditionsForecast:{...forecast,humidity:forecast.humidity??current.humidity}})||{level:'unknown',zh:'資料不足',en:'Insufficient data',windHistory:false};
+const rock=widget.querySelector('[data-rock]');rock.dataset.level=estimate.level;rock.textContent=lang?estimate.en:estimate.zh;
+const note=widget.querySelector('[data-rock-note]');
+if(estimate.level==='greasy')note.textContent=lang?'Hot days and onshore wind; salinity unmeasured':'連日高溫與海風推估；未量測鹽分';
+else if(estimate.level==='condensing')note.textContent=lang?'Humidity and cooling suggest condensation':'高濕與降溫推估；未量測岩面溫度';
+else if(['seeping','saturated','runoff'].includes(estimate.level))note.textContent=lang?'Inferred from nearby heavy rain; check the wall':'依附近強降雨推估；請核對現場';
+else note.textContent=estimate.windHistory?(lang?'Based on rain, humidity and 3h wind':'依雨量、濕度與近三小時風況推估'):(lang?'Based on rain and humidity; wind history pending':'依雨量與濕度推估；風況歷史不足');
+const now=new Date();
+const events=tideEvents(data.tides).map(event=>({...event,time:new Date(event.time)})).filter(event=>Number.isFinite(event.time.getTime())).sort((a,b)=>a.time-b.time);
+const future=events.filter(event=>event.time>now),past=events.filter(event=>event.time<=now);
+const nextHigh=future.find(event=>event.kind==='high'),nextLow=future.find(event=>event.kind==='low');
+const previousHigh=past.filter(event=>event.kind==='high').pop(),previousLow=past.filter(event=>event.kind==='low').pop();
+const tideState=widget.querySelector('[data-tide-state]');
+const tideParts=event=>{
+  if(!event)return{clock:'--:--',offset:''};
+  const clock=new Intl.DateTimeFormat(lang?'en-GB':'zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Asia/Taipei'}).format(event.time);
+  const dateValue=day=>{const [year,month,date]=day.split('-').map(Number);return Date.UTC(year,month-1,date)};
+  const dayOffset=Math.round((dateValue(taipeiDay(event.time))-dateValue(taipeiDay(now)))/86400000);
+  return{clock,offset:dayOffset>0?`+${dayOffset}`:dayOffset<0?String(dayOffset):''};
+};
+const tideMarkup=event=>{
+  const {clock,offset}=tideParts(event);
+  return `<time>${clock}</time>`+(offset?`<small class="ld-condition-tide-offset">${offset}</small>`:'');
+};
+const falling=future[0]?.kind==='low',firstKind=falling?'low':'high',secondKind=falling?'high':'low';
+const firstEvent=firstKind==='high'?nextHigh:nextLow,secondEvent=secondKind==='high'?nextHigh:nextLow,lastEvent=falling?previousHigh:previousLow;
+widget.querySelector('.ld-condition-tide-times').innerHTML=[{kind:firstKind,event:firstEvent},{kind:secondKind,event:secondEvent}].map(({kind,event})=>`<div><i>${kind==='high'?(lang?'Next high tide':'下一次滿潮'):(lang?'Next low tide':'下一次乾潮')}</i><b class="ld-condition-tide-clock">${tideMarkup(event)}</b></div>`).join('');
+widget.querySelector('[data-tide-last-label]').textContent=falling?(lang?'Previous high tide':'上一次滿潮'):(lang?'Previous low tide':'上一次乾潮');
+widget.querySelector('[data-tide-last-time]').innerHTML=tideMarkup(lastEvent);
+tideState.textContent=future.length?(falling?(lang?'Falling tide':'正在退潮'):(lang?'Rising tide':'正在漲潮')):(lang?'Unavailable':'資料暫缺');
+tideState.dataset.state=falling?'falling':future.length?'rising':'unknown';
+widget.querySelector('[data-tide-date]').textContent=future.length?`${lang?'Longdong South':'龍洞南口'} · ${lang?'forecast':'預報'}`:(lang?'Tide forecast unavailable':'潮汐資料暫時無法取得');
+const updatedTime=new Intl.DateTimeFormat(lang?'en-GB':'zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Asia/Taipei'}).format(new Date(data.fetchedAt||Date.now()));
+widget.querySelector('.ld-condition-updated').textContent=lang?'Updated '+updatedTime:'更新 '+updatedTime;
+widget.querySelectorAll('[data-en]:not([data-tide-first-label]):not([data-tide-second-label])').forEach(el=>el.textContent=lang?el.dataset.en:el.dataset.zh||el.textContent);
+}
+widget.querySelectorAll('[data-en]').forEach(el=>el.dataset.zh=el.textContent);const refreshLanguage=()=>{widget.querySelectorAll('[data-en]').forEach(el=>el.textContent=root.dataset.language==='en'?el.dataset.en:el.dataset.zh);if(window.__longdongConditionData)render(window.__longdongConditionData)};document.addEventListener('ld-language-change',refreshLanguage);
+fetch('https://cwa-weather.designchenme.workers.dev/api/longdong?conditions=22',{headers:{Accept:'application/json'},cache:'no-store'}).then(r=>r.json().then(d=>{if(!r.ok)throw Error(d.detail||d.error||r.status);return d})).then(data=>{window.__longdongConditionData=data;if(data.conditionsError)console.warn('CWA climbing conditions unavailable:',data.conditionsError);render(data)}).catch(()=>{widget.querySelector('[data-rock]').textContent=root.dataset.language==='en'?'Unavailable':'無法載入';widget.querySelector('[data-tide-date]').textContent=root.dataset.language==='en'?'Tide forecast unavailable':'潮汐資料暫時無法取得'});
+})();
