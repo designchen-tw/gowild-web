@@ -1,0 +1,31 @@
+/* Keep each bilingual crag name inside its card; the active language comes first. */
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__area-header,.kd-detail__area-header,.df-detail__area-header) h3[data-area-title]{
+  display:block;
+  min-width:0;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__area-pair,.kd-detail__area-pair,.df-detail__area-pair){
+  display:flex;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  flex-direction:row!important;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:0 5px;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__area-pair,.kd-detail__area-pair,.df-detail__area-pair)>span{
+  display:block;
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+  white-space:normal;
+}
+main:is(.ld-detail,.kd-detail,.df-detail)[data-language="en"] [data-area-en]{order:-1}
+@media(max-width:520px){
+  main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-detail__area-pair,.kd-detail__area-pair,.df-detail__area-pair){
+    flex-direction:column!important;
+    flex-wrap:nowrap;
+    align-items:flex-start;
+    gap:2px;
+  }
+}

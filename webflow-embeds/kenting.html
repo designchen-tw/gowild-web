@@ -150,7 +150,7 @@
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   if (local) document.documentElement.classList.add("gw-local-font-preview");
-  ["climbing-typography-v2.css", "climbing-detail-v6.css", "climbing-conditions-layout-v3.css"].forEach(function (name) {
+  ["climbing-typography-v2.css", "climbing-detail-v6.css", "climbing-conditions-layout-v3.css", "area-names-v1.css"].forEach(function (name) {
     var link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = local ? "./" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/" + name;
