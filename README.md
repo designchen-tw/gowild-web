@@ -6,7 +6,7 @@
 
 | 頁面 | Webflow Embed | 前端小工具 | 樣式 |
 | --- | --- | --- | --- |
-| 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v15.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v4.js` | `webflow-embeds/longdong-embed-v8.css`、`climbing-typography-v2.css` |
+| 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v15.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v5.js` | `webflow-embeds/longdong-embed-v8.css`、`climbing-typography-v2.css` |
 | 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v5.js`、`longdong-rock-estimate-v3.js` | `webflow-embeds/climbing-detail-v6.css`、`climbing-typography-v2.css` |
 | 德芙蘭 `/defulan` | `webflow-embeds/defulan.html` | 同墾丁 | 同墾丁 |
 | 全站選單 | `webflow-embeds/menu-overlay-full.html` | Embed 內部程式 | Embed 內部樣式 |
@@ -20,7 +20,7 @@
 - `cwa-weather-worker.js` 是 Worker 原始碼，`CWA_API_KEY` 只存在 Cloudflare Worker Secret。龍洞觀測歷史使用 KV binding `CONDITIONS_HISTORY`，每小時 `15 * * * *` 的 Cron Trigger 更新；詳細岩面推估規則見 `ROCK-CONDITION-RULES.md`。
 - 中英文切換在各 Embed 及小工具內實作。龍洞是三個地點頁共同的版面參考；墾丁與德芙蘭不顯示潮汐卡。
 - 攀登現況共用排版在 `webflow-embeds/climbing-conditions-layout-v3.css`：桌機所有卡片同一列（龍洞六欄、墾丁與德芙蘭五欄），卡片容器寬度 601–980px 時採三欄；墾丁與德芙蘭第二排風向／岩面各佔半寬；≤ 600px 時切換兩欄，兩欄時岩面推估與龍洞潮汐各自滿版。每排卡片透過 CSS subgrid 共用標題、主要數值、補充資料與來源四列，依內容自動決定列高，不保留固定高度的空白。三個地點 Embed 都需載入此 CSS；龍洞 `v30` 將上一次潮汐與標題包在同一標題區塊。
-- 龍洞九區位置圖由 `longdong-sector-map-v4.js` 與 `webflow-embeds/longdong-sector-map-v4.css` 提供，點地圖或下方卡片會雙向選取並聚焦。地圖使用使用者提供的 Illustrator 原稿提取之 `webflow-embeds/longdong-map-vector-v2.svg`，保留原稿的海岸地形、道路、步道與九區邊界；奇數與偶數岩區使用交錯灰階，九個標記位於原稿對應岩區內。地圖另以可切換中英文的文字標註道路、隧道、步道、停車場、和美國小、西靈巖寺與龍洞南口海洋公園。此版只保留地圖、縮放重置與下方岩區卡片連動。這是原稿比例的岩區示意位置，並非 GPS 導航或救援點編號。這一版僅用於龍洞。
+- 龍洞九區位置圖由 `longdong-sector-map-v5.js` 與 `webflow-embeds/longdong-sector-map-v5.css` 提供，點地圖或下方卡片會雙向選取並聚焦。寬螢幕地圖採較寬、固定高度的可捲動視窗，手機版縮短視窗；固定在地圖框右下角的「查看全圖」可切換完整縮圖與放大瀏覽。地圖使用使用者提供的 Illustrator 原稿提取之 `webflow-embeds/longdong-map-vector-v2.svg`，保留原稿的海岸地形、道路、步道與九區邊界；奇數與偶數岩區使用交錯灰階，九個標記位於原稿對應岩區內。地圖另以可切換中英文的文字標註道路、隧道、步道、停車場、和美國小、西靈巖寺與龍洞南口海洋公園。這是原稿比例的岩區示意位置，並非 GPS 導航或救援點編號。這一版僅用於龍洞。
 - 岩區名稱的中英文排列在 `webflow-embeds/area-names-v1.css`：目前語言排前，手機版（≤ 520px）讓另一語言固定另起一行；三個地點 Embed 都需載入此 CSS。
 - 共通文字層級在 `webflow-embeds/climbing-typography-v2.css`：桌機章節標題／重要數值／卡片名稱／內文／標籤／細節文字為 22/20/16/16/14/12px；手機 `max-width:520px` 為 18/16/14/14/12/10px。修改時一併檢查字高、字距、灰度、左右留白與中英文換行。
 

@@ -1,0 +1,145 @@
+/* Long Dong vector locator, zoom control and linked sector cards. */
+main.ld-detail .ld-sector-map{
+  width:min(100%,1080px);
+  margin:0 auto 34px;
+  color:#f5f5f5;
+  scroll-margin-top:18px;
+}
+main.ld-detail .ld-map-frame{
+  position:relative;
+  overflow:hidden;
+  height:clamp(440px,65svh,650px);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+  background:#090c0d;
+}
+main.ld-detail .ld-map-viewport{
+  width:100%;
+  height:100%;
+  overflow-x:hidden;
+  overflow-y:auto;
+  scrollbar-color:rgba(255,255,255,.38) transparent;
+  scrollbar-width:thin;
+  touch-action:pan-y;
+  overflow-anchor:none;
+}
+main.ld-detail .ld-map-viewport:focus-visible{outline:2px solid #d8dede;outline-offset:-3px}
+main.ld-detail .ld-map-svg{display:block;width:100%;height:auto;aspect-ratio:900/1840}
+main.ld-detail .ld-sector-map.is-map-overview .ld-map-viewport{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+main.ld-detail .ld-sector-map.is-map-overview .ld-map-svg{
+  width:auto;
+  max-width:100%;
+  height:100%;
+}
+main.ld-detail .ld-map-label{
+  fill:#e0e3e4;
+  stroke:#0b0d0e;
+  stroke-width:5px;
+  paint-order:stroke fill;
+  font-family:inherit;
+  font-size:23px;
+  font-weight:500;
+  letter-spacing:.01em;
+  pointer-events:none;
+}
+main.ld-detail .ld-map-label--trail,
+main.ld-detail .ld-map-label--parking{fill:#c4cacc;font-size:21px}
+main.ld-detail .ld-map-label--direction{font-size:26px;font-weight:700}
+main.ld-detail .ld-sector-map.is-map-en .ld-map-label{font-size:20px}
+main.ld-detail .ld-sector-map.is-map-en .ld-map-label--trail,
+main.ld-detail .ld-sector-map.is-map-en .ld-map-label--parking{font-size:19px}
+main.ld-detail .ld-map-selected-name{
+  fill:#f5f6f6;
+  stroke:#0b0d0e;
+  stroke-width:5px;
+  paint-order:stroke fill;
+  font-family:inherit;
+  font-size:21px;
+  font-weight:600;
+  pointer-events:none;
+}
+main.ld-detail .ld-map-selected-name[hidden]{display:none}
+main.ld-detail .ld-sector-map.is-map-en .ld-map-selected-name{font-size:21px}
+main.ld-detail .ld-map-spot{cursor:pointer;outline:none}
+main.ld-detail .ld-map-spot__target{fill:transparent}
+main.ld-detail .ld-map-spot__ring{
+  fill:#111517;
+  stroke:#f0f2f2;
+  stroke-width:2;
+  transition:fill .2s,stroke .2s,stroke-width .2s;
+}
+main.ld-detail .ld-map-spot text{
+  fill:#f0f2f2;
+  font-family:inherit;
+  font-size:17px;
+  font-weight:600;
+  pointer-events:none;
+}
+main.ld-detail .ld-map-spot:hover .ld-map-spot__ring,
+main.ld-detail .ld-map-spot:focus-visible .ld-map-spot__ring{
+  fill:#3b4346;
+  stroke:#ffffff;
+  stroke-width:3;
+}
+main.ld-detail .ld-map-spot.is-active .ld-map-spot__ring{
+  fill:#f0f2f2;
+  stroke:#ffffff;
+  stroke-width:3;
+}
+main.ld-detail .ld-map-spot.is-active text{fill:#111517}
+main.ld-detail .ld-map-reset{
+  position:absolute;
+  z-index:2;
+  right:13px;
+  bottom:13px;
+  padding:9px 12px;
+  border:1px solid rgba(255,255,255,.27);
+  border-radius:99px;
+  background:rgba(7,13,14,.87);
+  color:#f5f5f5;
+  font:inherit;
+  font-size:12px;
+  cursor:pointer;
+  backdrop-filter:blur(12px);
+}
+main.ld-detail .ld-map-reset:hover,
+main.ld-detail .ld-map-reset:focus-visible{
+  border-color:#f0f2f2;
+  outline:none;
+}
+main.ld-detail .ld-detail__sector-grid article.ld-map-linked-card{
+  position:relative;
+  transition:background .2s,box-shadow .2s;
+}
+main.ld-detail .ld-detail__sector-grid article.ld-map-linked-card:hover,
+main.ld-detail .ld-detail__sector-grid article.is-map-selected{
+  background:rgba(226,230,230,.08);
+  box-shadow:inset 0 2px 0 #d8dede;
+}
+main.ld-detail .ld-map-card-button{
+  position:absolute;
+  z-index:1;
+  inset:0;
+  width:100%;
+  border:0;
+  background:transparent;
+  color:transparent;
+  cursor:pointer;
+}
+main.ld-detail .ld-map-card-button:focus-visible{
+  outline:2px solid #d8dede;
+  outline-offset:-3px;
+}
+@media(max-width:520px){
+  main.ld-detail .ld-sector-map{margin-bottom:28px}
+  main.ld-detail .ld-map-frame{height:clamp(350px,54svh,440px)}
+}
+@media(prefers-reduced-motion:reduce){
+  main.ld-detail .ld-map-spot__ring,
+  main.ld-detail .ld-detail__sector-grid article.ld-map-linked-card{transition:none}
+}
