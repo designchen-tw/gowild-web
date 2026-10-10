@@ -1,0 +1,125 @@
+/* Four shared tracks per visual row: header, reading, supporting data, source.
+   Subgrid keeps neighbouring readings aligned without reserving fixed heights.
+   The doubled panel selector overrides legacy widget and breakpoint rules. */
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel){
+  container:climbing-conditions / inline-size;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-grid,.gw-condition-grid){
+  grid-template-columns:repeat(6,minmax(0,1fr))!important;
+  grid-auto-rows:auto;
+  align-items:stretch;
+  column-gap:8px;
+  row-gap:12px;
+}
+/* Kenting and Defulan have five cards; desktop keeps every card on one row. */
+main:is(.kd-detail,.df-detail) .gw-condition-panel.gw-condition-panel .gw-condition-grid{
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+}
+/* Match the temperature divider spacing across all three locations. */
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-feels-times,.gw-condition-feels-range){
+  padding-top:8px!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-grid,.gw-condition-grid)>article{
+  box-sizing:border-box;
+  display:grid!important;
+  grid-column:auto!important;
+  grid-row:span 4;
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-rows:subgrid!important;
+  align-items:start!important;
+  align-self:stretch!important;
+  min-width:0;
+  min-height:0!important;
+  height:auto!important;
+  padding:12px!important;
+  row-gap:12px!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-grid,.gw-condition-grid)>article>*{
+  grid-column:1!important;
+  min-width:0;
+  margin:0!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-grid,.gw-condition-grid)>article>small,
+main.ld-detail .ld-condition-panel.ld-condition-panel .ld-condition-tide-header{
+  grid-row:1!important;
+  align-self:start!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-grid,.gw-condition-grid)>article>strong,
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-wind-main,.gw-condition-wind-main){
+  grid-row:2!important;
+  align-self:start!important;
+  margin:0!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-feels-times,.gw-condition-feels-range,.ld-condition-tide-times),
+main.ld-detail .ld-condition-panel.ld-condition-panel .ld-condition-grid>article>.ld-condition-wind-detail{
+  grid-row:3!important;
+  align-self:start!important;
+  margin:0!important;
+}
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-grid,.gw-condition-grid)>article>span:not(.ld-condition-wind-detail),
+main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-feels-current,.gw-condition-current){
+  grid-row:4!important;
+  align-self:end!important;
+  margin:0!important;
+}
+main.ld-detail .ld-condition-panel.ld-condition-panel .ld-condition-tide-header{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+main.ld-detail .ld-condition-panel.ld-condition-panel .ld-condition-tide-last{
+  justify-content:flex-start;
+  gap:5px;
+  margin:0!important;
+  flex-wrap:wrap;
+}
+main.ld-detail .ld-condition-panel.ld-condition-panel .ld-condition-feels-current{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:5px;
+}
+/* Place the wind's source in the same bottom track as the temperature source. */
+main:is(.kd-detail,.df-detail) .gw-condition-panel.gw-condition-panel .gw-condition-wind-support{display:contents}
+main:is(.kd-detail,.df-detail) .gw-condition-panel.gw-condition-panel .gw-condition-wind-support>span{
+  grid-column:1;
+  grid-row:4;
+  align-self:end;
+}
+main:is(.kd-detail,.df-detail) .gw-condition-panel.gw-condition-panel .gw-condition-wind-support>[data-wind-detail]{
+  grid-row:3;
+  align-self:start;
+}
+/* Tablet: three cards above; the two non-tidal cards fill the second row. */
+@container climbing-conditions (max-width:980px){
+  main.ld-detail .ld-condition-panel.ld-condition-panel .ld-condition-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+  main:is(.kd-detail,.df-detail) .gw-condition-panel.gw-condition-panel .gw-condition-grid{
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
+  }
+  main:is(.kd-detail,.df-detail) .gw-condition-panel.gw-condition-panel .gw-condition-grid>article{
+    grid-column:span 2!important;
+  }
+  main:is(.kd-detail,.df-detail) .gw-condition-panel.gw-condition-panel .gw-condition-grid>:is(.gw-condition-wind,.gw-condition-rock){
+    grid-column:span 3!important;
+  }
+}
+@container climbing-conditions (max-width:600px){
+  main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-grid,.gw-condition-grid){
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  main:is(.kd-detail,.df-detail) .gw-condition-panel.gw-condition-panel .gw-condition-grid>article,
+  main:is(.kd-detail,.df-detail) .gw-condition-panel.gw-condition-panel .gw-condition-grid>:is(.gw-condition-wind,.gw-condition-rock){
+    grid-column:auto!important;
+  }
+  main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-grid,.gw-condition-grid)>:is(.ld-condition-rock,.gw-condition-rock,.ld-condition-tide){
+    grid-column:1/-1!important;
+  }
+}
+/* Extra narrow embeds retain two columns until the readings cannot fit. */
+@container climbing-conditions (max-width:280px){
+  main:is(.ld-detail,.kd-detail,.df-detail) :is(.ld-condition-panel.ld-condition-panel,.gw-condition-panel.gw-condition-panel) :is(.ld-condition-grid,.gw-condition-grid){
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+}
