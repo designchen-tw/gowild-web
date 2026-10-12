@@ -1,0 +1,233 @@
+<!-- GO WILD homepage Embed. Replace the old intro and content-index blocks below the existing hero.
+Keep the existing native Webflow Course Inquires Form Block on this page, outside this Embed.
+This Embed moves that SAME form into CONTACT; do not remove, duplicate or nest the Form Block.
+Keep the Webflow navbar, hero, footer and generated Webflow scripts. See home-installation.md. -->
+<style>
+
+@font-face{font-family:"GW Home Avenir";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d666_Avenir%20LT%20Std%2045%20Book.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"GW Home Avenir";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d669_Avenir%20LT%20Std%2065%20Medium.otf") format("opentype");font-weight:600;font-display:swap}
+.gw-home{--home-text:#f5f5f5;--home-muted:rgba(245,245,245,.62);--home-line:rgba(255,255,255,.14);width:100%;overflow:clip;background:#000;color:var(--home-text);font-family:"GW Home Avenir",Arial,sans-serif;font-weight:400;line-height:1.7}
+.gw-home *{box-sizing:border-box}.gw-home [hidden],[data-gw-home-contact-source][hidden]{display:none!important}
+.gw-home a{color:inherit;text-decoration:none}.gw-home button,.gw-home input,.gw-home textarea{font-family:inherit}
+.gw-home a:focus-visible,.gw-home button:focus-visible{outline:2px solid #A9D9B6;outline-offset:5px}
+.gw-home__section{max-width:1440px;margin:0 auto;padding:clamp(76px,9vw,130px) clamp(22px,6vw,88px);scroll-margin-top:28px}
+.gw-home__heading{max-width:760px;margin:0 auto 44px;text-align:center}.gw-home__heading h2{margin:0;color:#f5f5f5;font-size:22px;font-weight:600;line-height:1.5}
+.gw-home__eyebrow{margin:0 0 18px;color:rgba(245,245,245,.58);font-size:14px;font-weight:400;letter-spacing:.12em}
+.gw-home__section-intro{max-width:650px;margin:16px auto 0;color:var(--home-muted);font-size:16px;line-height:1.85}
+.gw-home__language{display:flex;width:max-content;margin:20px auto 0;padding:3px;border:1px solid rgba(255,255,255,.17);border-radius:999px;background:rgba(255,255,255,.04)}
+.gw-home__language button{min-width:54px;padding:7px 12px;border:0;border-radius:999px;background:transparent;color:var(--home-muted);font-size:12px;line-height:1.5;cursor:pointer}.gw-home__language button:hover,.gw-home__language button.is-active{background:rgba(255,255,255,.16);color:#fff}
+.gw-home__intro-copy{max-width:830px;margin:auto}.gw-home__intro-copy p{margin:0 0 22px;color:var(--home-muted);font-size:16px;line-height:1.95}.gw-home__intro-copy .gw-home__tagline{margin:34px 0 0;color:#f5f5f5;font-weight:600}
+.gw-home__section--soft{max-width:none;padding-right:max(22px,calc((100vw - 1264px)/2));padding-left:max(22px,calc((100vw - 1264px)/2));border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:#08090a}
+.gw-home__grid{display:grid;gap:20px}.gw-home__grid--four{grid-template-columns:repeat(4,minmax(0,1fr))}.gw-home__grid--three{grid-template-columns:repeat(3,minmax(0,1fr))}.gw-home__grid--two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:830px;margin:auto}
+.gw-home__card{display:block;min-width:0;padding:8px 8px 20px;border:1px solid var(--home-line);border-radius:8px;background:rgba(255,255,255,.035);color:inherit;transition:background .2s,border-color .2s}
+a.gw-home__card:hover{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.09)}
+.gw-home__card h3{margin:14px 6px 0;color:#f5f5f5;font-size:16px;font-weight:600;line-height:1.5;overflow-wrap:anywhere}.gw-home__card p{margin:5px 6px 0;color:var(--home-muted);font-size:14px;line-height:1.65;overflow-wrap:anywhere}.gw-home__card .gw-home__card-copy{margin-top:12px;font-size:12px}
+.gw-home__art{position:relative;isolation:isolate;display:block;aspect-ratio:1.16;overflow:hidden;border-radius:4px;background:#233038;filter:grayscale(1)}
+.gw-home__art:before{position:absolute;inset:0;z-index:1;content:"";background:linear-gradient(180deg,rgba(0,0,0,.06),transparent 45%,rgba(0,0,0,.3))}
+.gw-home__art>span{position:absolute;z-index:4;top:12px;left:12px;right:12px;width:max-content;max-width:calc(100% - 24px);padding:6px 9px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(8,10,12,.62);color:rgba(255,255,255,.88);font-size:12px;line-height:1.5;backdrop-filter:blur(12px)}
+.gw-home__art i,.gw-home__art b{position:absolute;z-index:2;display:block}.gw-home__art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.gw-home__nav{position:fixed;z-index:1000;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;width:clamp(390px,52vw,570px);max-width:calc(100% - 32px);padding:7px;border:1px solid rgba(255,255,255,.2);border-radius:22px;background:rgba(27,29,31,.7);box-shadow:0 12px 42px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.09);backdrop-filter:blur(26px) saturate(150%);transform:translateX(-50%)}
+.gw-home__nav a{display:flex;min-width:0;min-height:52px;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:1px solid transparent;border-radius:14px;color:var(--home-muted);font-size:14px;font-weight:400;line-height:1.4;text-decoration:none;transition:.25s ease}
+.gw-home__nav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.gw-home__nav a:hover,.gw-home__nav a.is-active{border-color:rgba(255,255,255,.1);background:rgba(255,255,255,.11);color:#fff}
+.gw-home__contact{padding-bottom:0}.gw-home__form-mount,.gw-home__form-fallback{max-width:760px;margin:auto}.gw-home__form-fallback{text-align:center;color:var(--home-muted);font-size:16px}
+.gw-home__button,.gw-home__native-form [type=submit]{display:inline-flex;width:auto;min-height:44px;margin:8px 0 0;padding:11px 24px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:#2d3336;color:#f5f5f5;font-size:14px;font-weight:400;line-height:1.5;text-decoration:none;cursor:pointer;transition:background .2s,color .2s}
+.gw-home__button:hover,.gw-home__button:focus-visible,.gw-home__native-form [type=submit]:hover,.gw-home__native-form [type=submit]:focus-visible{background:#f5f5f5;color:#080808}.gw-home__native-form [type=submit]:disabled{cursor:wait;opacity:.6}
+.gw-home__native-form.w-form{width:100%;max-width:none;margin:0;padding:0;background:none}.gw-home__native-form form{display:grid;width:100%;max-width:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:0;padding:0;border:0;background:none}
+.gw-home__native-form form>div{min-width:0;margin:0;padding:0}.gw-home__native-form form>div:has(textarea),.gw-home__native-form form>div:has(input[name="Inquiring-About"]){grid-column:1/-1}
+.gw-home__native-form label{display:block;margin:0 0 8px;padding:0;color:var(--home-muted);font-size:14px;font-weight:400;line-height:1.6}
+.gw-home__native-form input:not([type=submit]):not([type=hidden]),.gw-home__native-form textarea{display:block;width:100%;max-width:none;height:auto;min-height:48px;margin:0;padding:12px 14px;border:1px solid var(--home-line);border-radius:8px;background:#101214;color:#f5f5f5;font-size:16px;font-weight:400;line-height:1.6;box-shadow:none;transition:border-color .2s}
+.gw-home__native-form textarea{min-height:180px;resize:vertical}.gw-home__native-form input::placeholder,.gw-home__native-form textarea::placeholder{color:rgba(245,245,245,.38)}
+.gw-home__native-form input:focus,.gw-home__native-form textarea:focus{border-color:#A9D9B6;outline:none}.gw-home__native-form [type=submit]{justify-self:start;grid-column:1/-1}
+.gw-home__native-form .w-form-done,.gw-home__native-form .w-form-fail{display:none;margin:18px 0 0;padding:20px;border:1px solid var(--home-line);border-radius:8px;background:#101214;color:var(--home-text);font-size:16px;line-height:1.8;text-align:left}
+@media(max-width:980px){.gw-home__grid--four,.gw-home__grid--three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.gw-home__section{padding:68px 22px;scroll-margin-top:24px}.gw-home__heading{margin-bottom:32px}.gw-home__heading h2{font-size:18px}.gw-home__eyebrow{font-size:12px}.gw-home__section-intro,.gw-home__intro-copy p{font-size:14px}.gw-home__intro-copy p{margin-bottom:20px}.gw-home__grid{gap:12px}.gw-home__card{padding:6px 6px 15px}.gw-home__card h3{margin:12px 3px 0;font-size:14px}.gw-home__card p{margin:4px 3px 0;font-size:12px}.gw-home__card .gw-home__card-copy{font-size:10px}.gw-home__art{aspect-ratio:1}.gw-home__art>span{top:8px;left:8px;right:8px;max-width:calc(100% - 16px);padding:5px 7px;font-size:10px}.gw-home__nav{bottom:calc(10px + env(safe-area-inset-bottom));width:calc(100% - 20px);max-width:440px;padding:5px;border-radius:19px;gap:2px}.gw-home__nav a{min-height:48px;border-radius:13px;font-size:10px}.gw-home__nav svg{width:17px;height:17px}.gw-home__contact{padding-bottom:0}.gw-home__native-form form{grid-template-columns:1fr;gap:18px}.gw-home__native-form label{font-size:12px}.gw-home__native-form .w-form-done,.gw-home__native-form .w-form-fail{font-size:14px}.gw-home__button,.gw-home__native-form [type=submit]{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.gw-home *{transition:none!important;scroll-behavior:auto!important}}
+  .gw-home__art--guanziling{background:linear-gradient(150deg,#7c8b7d,#b39a72 54%,#343b33)}
+  .gw-home__art--guanziling i{right:-12%;bottom:-4%;left:-12%;height:54%;background:linear-gradient(130deg,#3a4037,#7c765c);clip-path:polygon(0 28%,18% 6%,36% 34%,54% 0,73% 27%,100% 7%,100% 100%,0 100%)}
+  .gw-home__art--guanziling b{right:18%;bottom:13%;left:17%;height:25%;border-top:1px solid rgba(230,220,194,.4);border-radius:50%}
+  .gw-home__art--sport{background:linear-gradient(145deg,#665848,#ab8f6a 46%,#292c2b)}
+  .gw-home__art--sport i{top:10%;right:22%;width:2px;height:74%;background:rgba(246,233,206,.7);transform:rotate(13deg)}
+  .gw-home__art--sport b{top:46%;right:calc(22% - 4px);width:10px;height:10px;border:1px solid #f6e9ce;border-radius:50%}
+  .gw-home__art--gym{background:linear-gradient(135deg,#25333a,#56666b 54%,#182025)}
+  .gw-home__art--gym i{inset:17% 12%;border:1px solid rgba(239,226,201,.54);background:repeating-linear-gradient(135deg,transparent 0 24px,rgba(239,226,201,.12) 25px 28px);clip-path:polygon(5% 0,100% 10%,85% 100%,0 82%)}
+  .gw-home__art--gym b{top:28%;left:37%;width:14px;height:14px;border-radius:50%;background:#d2aa77;box-shadow:35px 24px 0 rgba(210,170,119,.8),-26px 74px 0 rgba(210,170,119,.65)}
+  .gw-home__art--trad{background:linear-gradient(155deg,#575950,#8e795c 44%,#252722)}
+  .gw-home__art--trad i{inset:-10% 22% 0 36%;border-left:1px solid rgba(244,231,202,.55);border-right:1px solid rgba(244,231,202,.26);transform:rotate(8deg)}
+  .gw-home__art--trad b{top:24%;left:44%;width:18%;height:24%;border:1px solid rgba(244,231,202,.48);border-radius:45% 55% 40% 60%;transform:rotate(28deg)}
+  .gw-home__art--multi{background:linear-gradient(180deg,#728085,#9e8e75 38%,#564c40 39%,#161d21)}
+  .gw-home__art--multi i{right:-10%;bottom:-6%;left:-14%;height:67%;background:linear-gradient(130deg,#413a33,#a18a69);clip-path:polygon(0 60%,15% 25%,28% 43%,45% 4%,60% 30%,74% 0,100% 33%,100% 100%,0 100%)}
+  .gw-home__art--multi b{top:18%;left:49%;width:2px;height:55%;background:#ead9b8;transform:rotate(-9deg)}
+  .gw-home__art--rescue{background:linear-gradient(130deg,#303b3f,#6c7775 48%,#192228)}
+  .gw-home__art--rescue i{top:0;left:54%;width:2px;height:100%;background:rgba(238,230,211,.74);transform:rotate(19deg)}
+  .gw-home__art--rescue b{top:44%;left:calc(54% - 7px);width:16px;height:16px;border:1px solid #eee6d3;border-radius:50%;box-shadow:0 0 0 7px rgba(238,230,211,.12)}
+  .gw-home__art--guide{background:linear-gradient(150deg,#788882,#a8987c 48%,#273b3c)}
+  .gw-home__art--guide i{right:-15%;bottom:-12%;left:-10%;height:55%;background:linear-gradient(140deg,#283b36,#657064);clip-path:polygon(0 48%,18% 14%,35% 35%,56% 0,76% 34%,100% 7%,100% 100%,0 100%)}
+  .gw-home__art--guide b{top:29%;left:35%;width:18%;aspect-ratio:1;border:1px solid rgba(255,255,255,.5);border-radius:50%;box-shadow:28px 40px 0 -11px rgba(255,255,255,.55)}
+  .gw-home__art--resole{background:radial-gradient(ellipse at 52% 47%,#9a8062 0 15%,transparent 16%),linear-gradient(145deg,#43413b,#83745e 49%,#1e2628)}
+  .gw-home__art--resole i{top:22%;left:37%;width:27%;height:52%;border:2px solid rgba(239,226,202,.65);border-radius:42% 48% 36% 39%;transform:rotate(-23deg)}
+  .gw-home__art--resole b{top:27%;left:41%;width:17%;height:42%;border-bottom:2px solid rgba(239,226,202,.62);border-radius:40%;transform:rotate(-23deg)}
+</style>
+<main class="gw-home" data-gw-home data-language="zh" lang="zh-TW">
+<nav class="gw-home__nav" data-home-aria-zh="首頁導覽" data-home-aria-en="Home page navigation" aria-label="首頁導覽"><a href="#gw-home-overview" data-home-link="overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10.5 8.5-7 8.5 7M5.5 9.5v10h13v-10M9.5 19.5v-6h5v6"/></svg><span data-home-zh="主頁" data-home-en="Home">主頁</span></a><a href="#gw-home-discover" data-home-link="discover"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2.2 4.8-4.8 2.2 2.2-4.8 4.8-2.2Z"/></svg><span data-home-zh="發現" data-home-en="Discover">發現</span></a><a href="#gw-home-learn" data-home-link="learn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c3.2-.9 5.9-.5 8 1.2v12c-2.1-1.7-4.8-2.1-8-1.2v-12ZM20 5.5c-3.2-.9-5.9-.5-8 1.2v12c2.1-1.7 4.8-2.1 8-1.2v-12Z"/></svg><span data-home-zh="學習" data-home-en="Learn">學習</span></a><a href="#gw-home-explore" data-home-link="explore"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10.2c0 5.1-7 10.3-7 10.3S5 15.3 5 10.2a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></svg><span data-home-zh="探索" data-home-en="Explore">探索</span></a><a href="#gw-home-contact" data-home-link="contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4.5 7 7.5 6 7.5-6"/></svg><span data-home-zh="聯絡" data-home-en="Contact">聯絡</span></a></nav>
+<section class="gw-home__section gw-home__overview" id="gw-home-overview" data-home-section="overview"><header class="gw-home__heading"><p class="gw-home__eyebrow">GO WILD · TAIWAN</p><h2 data-home-zh="台灣是一座擁有豐富攀岩環境的島嶼。" data-home-en="Taiwan is an island with a rich and diverse climbing landscape.">台灣是一座擁有豐富攀岩環境的島嶼。</h2><div class="gw-home__language" role="group" aria-label="Language"><button type="button" data-home-language="zh" class="is-active" aria-pressed="true">中文</button><button type="button" data-home-language="en" aria-pressed="false">EN</button></div></header><div class="gw-home__intro-copy"><p data-home-zh="從東北角壯闊的海岸岩壁，到山林之中的花崗岩與石灰岩，台灣擁有多樣的岩質、地形與氣候，也孕育出獨特而充滿活力的攀岩文化。" data-home-en="From the dramatic sea cliffs of the northeast coast to granite and limestone crags in the mountains, its varied rock, terrain, and climate have nurtured a distinctive and vibrant climbing culture.">從東北角壯闊的海岸岩壁，到山林之中的花崗岩與石灰岩，台灣擁有多樣的岩質、地形與氣候，也孕育出獨特而充滿活力的攀岩文化。</p><p data-home-zh="除了岩場本身，台灣也擁有便利的交通、豐富的自然環境、獨特的文化與美食，以及熱情的在地攀岩社群。" data-home-en="Beyond the crags, Taiwan offers convenient transportation, abundant natural scenery, a unique culture and food scene, and a welcoming local climbing community.">除了岩場本身，台灣也擁有便利的交通、豐富的自然環境、獨特的文化與美食，以及熱情的在地攀岩社群。</p><p data-home-zh="對於希望探索亞洲不同攀岩目的地的攀岩者來說，台灣是一個值得深入探索的地方。" data-home-en="For climbers looking to explore destinations across Asia, Taiwan is well worth discovering.">對於希望探索亞洲不同攀岩目的地的攀岩者來說，台灣是一個值得深入探索的地方。</p><p data-home-zh="GO WILD | 夠野戶外，以台灣為基地，分享台灣的攀岩環境、整合在地資訊與戶外教育資源。" data-home-en="Based in Taiwan, GO WILD | 夠野戶外 shares information about the island’s climbing areas, brings together local knowledge, and highlights outdoor education resources.">GO WILD | 夠野戶外，以台灣為基地，分享台灣的攀岩環境、整合在地資訊與戶外教育資源。</p><p data-home-zh="我們希望讓更多人認識台灣的岩場，也讓來自世界各地的攀岩者能夠以更深入、更安全、更貼近在地的方式探索台灣。" data-home-en="We hope to introduce Taiwan’s crags to more people and help climbers from around the world explore the island in a more informed, safe, and locally connected way.">我們希望讓更多人認識台灣的岩場，也讓來自世界各地的攀岩者能夠以更深入、更安全、更貼近在地的方式探索台灣。</p><p class="gw-home__tagline" data-home-zh="台灣攀岩，從岩壁探索台灣的美。" data-home-en="Discover Taiwan through Climbing.">台灣攀岩，從岩壁探索台灣的美。</p></div></section>
+<section class="gw-home__section " id="gw-home-discover" data-home-section="discover"><header class="gw-home__heading"><p class="gw-home__eyebrow">DISCOVER</p><h2 data-home-zh="發現台灣岩場" data-home-en="Discover Taiwan’s Crags">發現台灣岩場</h2><p class="gw-home__section-intro" data-home-zh="從北到南，探索海岸與山林之間的不同岩場。" data-home-en="From north to south, explore the island’s coastal and mountain crags.">從北到南，探索海岸與山林之間的不同岩場。</p></header><div class="gw-home__grid gw-home__grid--four"><a class="gw-home__card" href="/longdong"><div class="gw-home__art gw-home__art--photo"><img src="https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ac506c2cafe6c406bf50acb_IMG_8472.avif" alt="" loading="lazy" decoding="async" width="720" height="620"><span data-home-zh="東北角・海岸岩壁" data-home-en="Northeast Coast · Sea Cliffs">東北角・海岸岩壁</span></div><h3 data-home-zh="龍洞" data-home-en="Long Dong · Dragon Cave">龍洞</h3><p class="gw-home__secondary" data-home-zh="Long Dong · Dragon Cave" data-home-en="龍洞">Long Dong · Dragon Cave</p></a><a class="gw-home__card" href="/defulan"><div class="gw-home__art gw-home__art--photo"><img src="https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6acc964e5dddc872247b4f87_defulan_web_home.avif" alt="" loading="lazy" decoding="async" width="720" height="620"><span data-home-zh="台中・谷關山林" data-home-en="Taichung · Guguan Forest">台中・谷關山林</span></div><h3 data-home-zh="德芙蘭" data-home-en="Defulan · Guguan">德芙蘭</h3><p class="gw-home__secondary" data-home-zh="Defulan · Guguan" data-home-en="德芙蘭">Defulan · Guguan</p></a><article class="gw-home__card"><div class="gw-home__art gw-home__art--guanziling"><i aria-hidden="true"></i><b aria-hidden="true"></b><span data-home-zh="台南・山線" data-home-en="Tainan · Mountains">台南・山線</span></div><h3 data-home-zh="關子嶺" data-home-en="Guan Zi Ling">關子嶺</h3><p class="gw-home__secondary" data-home-zh="Guan Zi Ling" data-home-en="關子嶺">Guan Zi Ling</p></article><a class="gw-home__card" href="/kenting"><div class="gw-home__art gw-home__art--photo"><img src="https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb756f4f47a7ca03710bcd_fxn%202026-05-01%20170923B1B0C0982812.avif" alt="" loading="lazy" decoding="async" width="720" height="620"><span data-home-zh="屏東・南台灣" data-home-en="Pingtung · Southern Taiwan">屏東・南台灣</span></div><h3 data-home-zh="墾丁" data-home-en="Kenting">墾丁</h3><p class="gw-home__secondary" data-home-zh="Kenting" data-home-en="墾丁">Kenting</p></a></div></section>
+<section class="gw-home__section gw-home__section--soft" id="gw-home-learn" data-home-section="learn"><header class="gw-home__heading"><p class="gw-home__eyebrow">LEARN</p><h2 data-home-zh="從基礎到戶外攀登" data-home-en="Learn to Climb Outdoors">從基礎到戶外攀登</h2><p class="gw-home__section-intro" data-home-zh="認識攀登、確保與繩索技術，從基礎開始，逐步探索不同形式的攀岩與戶外學習。" data-home-en="Build your skills in climbing, belaying, and rope systems, then explore different forms of climbing and outdoor learning.">認識攀登、確保與繩索技術，從基礎開始，逐步探索不同形式的攀岩與戶外學習。</p></header><div class="gw-home__grid gw-home__grid--three"><article class="gw-home__card"><div class="gw-home__art gw-home__art--sport"><i aria-hidden="true"></i><b aria-hidden="true"></b><span data-home-zh="攀登・確保・下降" data-home-en="Climb · Belay · Lower">攀登・確保・下降</span></div><h3 data-home-zh="運動攀登" data-home-en="Sport Climbing">運動攀登</h3><p class="gw-home__secondary" data-home-zh="Sport Climbing" data-home-en="運動攀登">Sport Climbing</p><p class="gw-home__card-copy" data-home-zh="先鋒攀登與確保・安全下放" data-home-en="Lead climbing, belaying, and safe lowering">先鋒攀登與確保・安全下放</p></article><article class="gw-home__card"><div class="gw-home__art gw-home__art--gym"><i aria-hidden="true"></i><b aria-hidden="true"></b><span data-home-zh="從室內到自然岩場" data-home-en="From the Gym to Natural Rock">從室內到自然岩場</span></div><h3 data-home-zh="岩館到戶外" data-home-en="Gym to Crag">岩館到戶外</h3><p class="gw-home__secondary" data-home-zh="Gym to Crag" data-home-en="岩館到戶外">Gym to Crag</p></article><article class="gw-home__card"><div class="gw-home__art gw-home__art--trad"><i aria-hidden="true"></i><b aria-hidden="true"></b><span data-home-zh="自主判斷・裝備運用" data-home-en="Judgment · Gear Placement">自主判斷・裝備運用</span></div><h3 data-home-zh="傳統攀登" data-home-en="Traditional Climbing">傳統攀登</h3><p class="gw-home__secondary" data-home-zh="Traditional Climbing" data-home-en="傳統攀登">Traditional Climbing</p><p class="gw-home__card-copy" data-home-zh="單繩距傳統攀登" data-home-en="Single-pitch trad climbing">單繩距傳統攀登</p></article><a class="gw-home__card" href="/multi-pitch"><div class="gw-home__art gw-home__art--multi"><i aria-hidden="true"></i><b aria-hidden="true"></b><span data-home-zh="向上・再向上" data-home-en="Upward · Pitch by Pitch">向上・再向上</span></div><h3 data-home-zh="多繩距攀登" data-home-en="Multi-pitch Climbing">多繩距攀登</h3><p class="gw-home__secondary" data-home-zh="Multi-pitch Climbing" data-home-en="多繩距攀登">Multi-pitch Climbing</p></a><a class="gw-home__card" href="/rock-rescue-skill"><div class="gw-home__art gw-home__art--rescue"><i aria-hidden="true"></i><b aria-hidden="true"></b><span data-home-zh="繩索技術・救援" data-home-en="Rope Skills · Rescue">繩索技術・救援</span></div><h3 data-home-zh="進階岩石" data-home-en="Advanced Rock Skills">進階岩石</h3><p class="gw-home__secondary" data-home-zh="Advanced Rock Skills" data-home-en="進階岩石">Advanced Rock Skills</p><p class="gw-home__card-copy" data-home-zh="繩索操作與救援技術" data-home-en="Rope systems and rescue techniques">繩索操作與救援技術</p></a><article class="gw-home__card"><div class="gw-home__art gw-home__art--guide"><i aria-hidden="true"></i><b aria-hidden="true"></b><span data-home-zh="在地知識・同行探索" data-home-en="Local Knowledge · Shared Exploration">在地知識・同行探索</span></div><h3 data-home-zh="台灣嚮導" data-home-en="Guide in Taiwan">台灣嚮導</h3><p class="gw-home__secondary" data-home-zh="Guide in Taiwan" data-home-en="台灣嚮導">Guide in Taiwan</p></article></div></section>
+<section class="gw-home__section " id="gw-home-explore" data-home-section="explore"><header class="gw-home__heading"><p class="gw-home__eyebrow">EXPLORE</p><h2 data-home-zh="從影像到裝備修補" data-home-en="Climbing Through a Different Lens">從影像到裝備修補</h2><p class="gw-home__section-intro" data-home-zh="從岩壁影像到裝備修補，看見攀岩文化裡不同的面向。" data-home-en="From climbing photography to gear repair, discover different sides of climbing culture.">從岩壁影像到裝備修補，看見攀岩文化裡不同的面向。</p></header><div class="gw-home__grid gw-home__grid--two"><a class="gw-home__card" href="/photography"><div class="gw-home__art gw-home__art--photo"><img src="https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ac4e4e725975a0bd25a6620_IMG_3724.avif" alt="" loading="lazy" decoding="async" width="720" height="620"><span data-home-zh="光線・岩壁・瞬間" data-home-en="Light · Rock · Moments">光線・岩壁・瞬間</span></div><h3 data-home-zh="岩壁攝影" data-home-en="Climbing Photography">岩壁攝影</h3><p class="gw-home__secondary" data-home-zh="Climbing Photography" data-home-en="岩壁攝影">Climbing Photography</p></a><article class="gw-home__card"><div class="gw-home__art gw-home__art--resole"><i aria-hidden="true"></i><b aria-hidden="true"></b><span data-home-zh="修補・延續・再出發" data-home-en="Repair · Renew · Climb Again">修補・延續・再出發</span></div><h3 data-home-zh="攀岩鞋修補" data-home-en="Climbing Shoe Resole">攀岩鞋修補</h3><p class="gw-home__secondary" data-home-zh="Climbing Shoe Resole" data-home-en="攀岩鞋修補">Climbing Shoe Resole</p></article></div></section>
+<section class="gw-home__section gw-home__contact" id="gw-home-contact" data-home-section="contact"><header class="gw-home__heading"><p class="gw-home__eyebrow">CONTACT</p><h2 data-home-zh="與我們聯絡" data-home-en="Get in Touch">與我們聯絡</h2><p class="gw-home__section-intro" data-home-zh="想了解台灣攀岩、戶外學習，或有其他問題，歡迎留下訊息。" data-home-en="Questions about climbing in Taiwan, outdoor learning, or something else? Send us a message.">想了解台灣攀岩、戶外學習，或有其他問題，歡迎留下訊息。</p><div class="gw-home__language" role="group" aria-label="Language"><button type="button" data-home-language="zh" class="is-active" aria-pressed="true">中文</button><button type="button" data-home-language="en" aria-pressed="false">EN</button></div></header><div class="gw-home__form-mount" data-home-form-mount></div><div class="gw-home__form-fallback" data-home-form-fallback><p data-home-zh="歡迎寄信與我們聯絡。" data-home-en="You are welcome to contact us by email.">歡迎寄信與我們聯絡。</p><a class="gw-home__button" href="mailto:gowild.tw@gmail.com">gowild.tw@gmail.com</a></div></section>
+</main>
+<script>
+(() => {
+  function init() {
+    const root = document.querySelector('[data-gw-home]');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = 'true';
+    let language = 'zh';
+    let nativeWrapper = null;
+    let submitObserver = null;
+    const buttons = [...root.querySelectorAll('[data-home-language]')];
+    const nav = root.querySelector('.gw-home__nav');
+    const links = [...nav.querySelectorAll('a')];
+    const sections = [...root.querySelectorAll('[data-home-section]')];
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const formText = {
+      zh: {
+        fields: [['Nick-alt-Name', '名字 *', '如何稱呼你'], ['Email-3', '電子郵件 *', 'name@email.com'], ['Inquiring-About', '詢問主題 *', '你想詢問的事情'], ['field', '訊息內容 *', '請輸入你想詢問的資訊，我們會盡快回覆。']],
+        submit: '送出', wait: '請稍候…', success: '謝謝你，訊息已送出，我們會盡快回覆！',
+        error: '訊息未能送出，請再試一次。若問題持續，請寄信至 gowild.tw@gmail.com。'
+      },
+      en: {
+        fields: [['Nick-alt-Name', 'Name *', 'Your name'], ['Email-3', 'Email address *', 'name@email.com'], ['Inquiring-About', 'Subject *', 'What would you like to ask?'], ['field', 'Message *', 'Tell us what you would like to know. We will reply as soon as possible.']],
+        submit: 'Send', wait: 'Please wait…', success: 'Thank you! Your message has been sent. We will reply as soon as possible.',
+        error: 'Your message could not be sent. Please try again, or email gowild.tw@gmail.com if the problem continues.'
+      }
+    };
+
+    function translateSubmit() {
+      if (!nativeWrapper) return;
+      const submit = nativeWrapper.querySelector('[type="submit"]');
+      if (!submit) return;
+      const text = formText[language];
+      const current = submit.tagName === 'INPUT' ? submit.value : submit.textContent;
+      // Turnstile can disable an idle button too; disabled alone does not mean sending.
+      const waiting = /稍|wait/i.test(current);
+      const next = waiting ? text.wait : text.submit;
+      submit.setAttribute('data-wait', text.wait);
+      if (current !== next) {
+        if (submit.tagName === 'INPUT') submit.value = next;
+        else submit.textContent = next;
+      }
+    }
+
+    function translateForm() {
+      if (!nativeWrapper) return;
+      const text = formText[language];
+      nativeWrapper.lang = language === 'zh' ? 'zh-TW' : 'en';
+      text.fields.forEach(([id, label, placeholder]) => {
+        const input = nativeWrapper.querySelector(`[id="${id}"]`);
+        if (!input) return;
+        const labelNode = nativeWrapper.querySelector(`label[for="${id}"]`);
+        if (labelNode) labelNode.textContent = label;
+        input.setAttribute('placeholder', placeholder);
+      });
+      ['success', 'error'].forEach(kind => {
+        const panel = nativeWrapper.querySelector(kind === 'success' ? '.w-form-done' : '.w-form-fail');
+        if (!panel) return;
+        const copy = panel.firstElementChild || panel;
+        copy.textContent = text[kind];
+        panel.setAttribute('aria-live', kind === 'success' ? 'polite' : 'assertive');
+      });
+      translateSubmit();
+    }
+
+    function mountNativeForm() {
+      if (nativeWrapper) return;
+      const form = document.getElementById('wf-form-Course-Inquires');
+      const wrapper = form && form.closest('.w-form');
+      if (!wrapper) return;
+      const sourceSection = wrapper.closest('section');
+      nativeWrapper = wrapper;
+      // Move the same native nodes. Webflow IDs, field names, handlers and Turnstile stay intact.
+      root.querySelector('[data-home-form-mount]').appendChild(wrapper);
+      wrapper.classList.add('gw-home__native-form');
+      root.querySelector('[data-home-form-fallback]').hidden = true;
+      if (sourceSection && !root.contains(sourceSection)) {
+        sourceSection.setAttribute('data-gw-home-contact-source', '');
+        sourceSection.hidden = true;
+      }
+      translateForm();
+      const submit = wrapper.querySelector('[type="submit"]');
+      if (submit) {
+        submitObserver = new MutationObserver(translateSubmit);
+        submitObserver.observe(submit, { attributes: true, attributeFilter: ['value', 'disabled'], childList: true });
+      }
+    }
+
+    function setLanguage(next) {
+      language = next === 'en' ? 'en' : 'zh';
+      root.dataset.language = language;
+      root.lang = language === 'zh' ? 'zh-TW' : 'en';
+      buttons.forEach(button => {
+        const active = button.dataset.homeLanguage === language;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+      root.querySelectorAll('[data-home-zh][data-home-en]').forEach(node => {
+        node.textContent = node.getAttribute(`data-home-${language}`);
+      });
+      root.querySelectorAll('[data-home-aria-zh][data-home-aria-en]').forEach(node => {
+        node.setAttribute('aria-label', node.getAttribute(`data-home-aria-${language}`));
+      });
+      translateForm();
+    }
+    buttons.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.homeLanguage)));
+    setLanguage('zh');
+    mountNativeForm();
+    // Webflow may initialize before or after this Embed; adopting existing nodes works in both cases.
+    window.Webflow = window.Webflow || [];
+    window.Webflow.push(mountNativeForm);
+
+    function setActive(id) {
+      links.forEach(link => {
+        const active = link.dataset.homeLink === id;
+        link.classList.toggle('is-active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }
+    links.forEach(link => link.addEventListener('click', event => {
+      const target = root.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+      history.replaceState(null, '', link.getAttribute('href'));
+      setActive(link.dataset.homeLink);
+    }));
+    let queued = false;
+    function syncActive() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        const reference = window.innerHeight * .35;
+        let active = sections[0];
+        sections.forEach(section => { if (section.getBoundingClientRect().top <= reference) active = section; });
+        setActive(active.dataset.homeSection);
+        queued = false;
+      });
+    }
+    window.addEventListener('scroll', syncActive, { passive: true });
+    window.addEventListener('resize', syncActive);
+    syncActive();
+    // Keep source-component state and entered values; never handle or replace form submission.
+    window.addEventListener('pagehide', () => { if (submitObserver) submitObserver.disconnect(); }, { once: true });
+    window.addEventListener('pageshow', event => {
+      if (event.persisted && submitObserver && nativeWrapper) {
+        const submit = nativeWrapper.querySelector('[type="submit"]');
+        if (submit) submitObserver.observe(submit, { attributes: true, attributeFilter: ['value', 'disabled'], childList: true });
+      }
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  else init();
+})();
+
+</script>

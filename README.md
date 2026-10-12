@@ -6,12 +6,13 @@
 
 | 頁面 | Webflow Embed | 前端小工具 | 樣式 |
 | --- | --- | --- | --- |
+| 首頁 `/` | `webflow-embeds/home.html` | Embed 內部中英文切換、導覽與原生表單整合 | Embed 內部樣式 |
 | 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v16.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v8.js` | `webflow-embeds/longdong-embed-v13.css`、`climbing-typography-v2.css` |
 | 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v6.js`、`longdong-rock-estimate-v3.js` | `webflow-embeds/climbing-detail-v7.css`、`climbing-typography-v2.css` |
 | 德芙蘭 `/defulan` | `webflow-embeds/defulan.html` | 同墾丁，另有 `defulan-sector-map-v2.js` | 同墾丁，另有 `webflow-embeds/defulan-sector-map-v2.css` |
 | 全站選單 | `webflow-embeds/menu-overlay-full.html` | Embed 內部程式 | Embed 內部樣式 |
 
-上表是目前交接版本。後續以各 Embed **實際引用的檔名** 為準；舊版檔案保留作為歷史版本。首頁其他 Embed 不在上表的三個地點頁之內。
+上表是目前交接版本。後續以各 Embed **實際引用的檔名** 為準；舊版檔案保留作為歷史版本。首頁新版內容 Embed 的安裝與原生表單保留方式見 `webflow-embeds/home-installation.md`。
 
 ## 架構與維護
 
@@ -28,6 +29,9 @@
 - 德芙蘭推薦路線依六個岩區順序排列，同區依[路線列表](https://docs.google.com/spreadsheets/d/18rTDqJdxDHYv9Jf7z8TZdqs46thJxRLNGasWbvRmiHc/edit?gid=0#gid=0)的列序排列；目前共十條，新增咪嚕咕／Miruku（邊境左，傳統，15 m，5.11b，小號 cam、nut）與私釀／Bootlegger（金三角，運動，5.10b，9 bolts + anchor，原表未列高度）。行前資訊以 Facebook 群組公告為主要更新來源，並提供路線表、路線照片兩個輔助連結；頁面不再使用 Mountain Project 名稱或連結。
 - 岩區名稱的中英文排列在 `webflow-embeds/area-names-v1.css`：目前語言排前，手機版（≤ 520px）讓另一語言固定另起一行；三個地點 Embed 都需載入此 CSS。
 - 共通文字層級在 `webflow-embeds/climbing-typography-v2.css`：桌機章節標題／重要數值／卡片名稱／內文／標籤／細節文字為 22/20/16/16/14/12px；手機 `max-width:520px` 為 18/16/14/14/12/10px。修改時一併檢查字高、字距、灰度、左右留白與中英文換行。
+
+- 首頁 `webflow-embeds/home.html` 整合雙語介紹、DISCOVER／LEARN／EXPLORE 與 CONTACT。DISCOVER 依龍洞、德芙蘭、關子嶺、墾丁排序；關子嶺保留無連結卡片。EXPLORE 已移除尚未完成的人物誌。首頁與聯絡區的語言按鈕同步切換文字及卡片主副標題。樣式與程式內嵌，不需要發布新的 CDN 檔案。
+- 首頁 CONTACT 會將頁面現有的 `Course Inquires` 原生 Webflow Form Block 移入 Embed，保留原始節點、欄位名稱、Webflow 識別與 Turnstile，不改提交處理；請勿刪除或複製原生 Form Block。語言切換不改動填寫值。本機測試未發送真實訊息，發布後仍須確認 Webflow 後台收件。
 
 ## 修改與發布
 
