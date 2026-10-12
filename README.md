@@ -6,7 +6,7 @@
 
 | 頁面 | Webflow Embed | 前端小工具 | 樣式 |
 | --- | --- | --- | --- |
-| 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v16.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v8.js` | `webflow-embeds/longdong-embed-v12.css`、`climbing-typography-v2.css` |
+| 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v16.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v8.js` | `webflow-embeds/longdong-embed-v13.css`、`climbing-typography-v2.css` |
 | 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v6.js`、`longdong-rock-estimate-v3.js` | `webflow-embeds/climbing-detail-v7.css`、`climbing-typography-v2.css` |
 | 德芙蘭 `/defulan` | `webflow-embeds/defulan.html` | 同墾丁，另有 `defulan-sector-map-v2.js` | 同墾丁，另有 `webflow-embeds/defulan-sector-map-v2.css` |
 | 全站選單 | `webflow-embeds/menu-overlay-full.html` | Embed 內部程式 | Embed 內部樣式 |
