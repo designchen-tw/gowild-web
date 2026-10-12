@@ -5,7 +5,7 @@
     <a href="#df-areas" data-df-link="areas"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span>岩區</span></a>
     <a href="#df-routes" data-df-link="routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20 9 4l3 8 3-5 4 13M8 8h3m3 6h3"/></svg><span>路線</span></a>
     <a href="#df-visit" data-df-link="visit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M12 3v18M5.6 5.6l12.8 12.8m0-12.8L5.6 18.4"/><circle cx="12" cy="12" r="9"/></svg><span>行前</span></a>
-    <a href="#df-safety" data-df-link="safety"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-3Z"/><path d="m9 12 2 2 4-4"/></svg><span>安全</span></a>
+    <a href="#df-safety" data-df-link="safety"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="18" r="1.5"/><path d="M8 16 18 6m-6 0h6v6"/></svg><span data-lang-zh="出發" data-lang-en="Go">出發</span></a>
   </nav>
 
   <section class="df-detail__section" id="df-overview" data-df-section="overview">
@@ -18,6 +18,8 @@
 
   <section class="df-detail__section df-detail__section--soft" id="df-areas" data-df-section="areas">
     <header class="df-detail__heading"><p class="df-detail__eyebrow">AREAS</p><h2>從邊境到金三角</h2><p>岩區遮蔭和日照條件不同；天氣炎熱或岩面潮濕時，請調整計畫並避免攀爬濕滑岩壁。</p></header>
+    <div class="df-sector-map" data-df-sector-map></div>
+    <p class="df-map-caption" data-lang-zh="位置依提供的地圖重繪；終極邊境、邊境左與邊境右共用原圖的邊境區域標示。此圖為位置示意，非精確導航。" data-lang-en="Redrawn from the supplied map. Final Frontier, Frontier Left, and Frontier Right share the original Frontier Area outline. This schematic is not precise navigation.">位置依提供的地圖重繪；終極邊境、邊境左與邊境右共用原圖的邊境區域標示。此圖為位置示意，非精確導航。</p>
     <div class="df-detail__area-grid">
       <article><div class="df-detail__area-header"><h3 data-area-title><span class="df-detail__area-pair"><span data-area-cn>終極邊境</span><span data-area-en>Final Frontier</span></span></h3><span class="df-detail__area-number">01</span></div><p>運動與傳統路線並存，包含裂隙攀登。路線表對部分線路有落石警示，請遵循現場標記。</p></article>
       <article><div class="df-detail__area-header"><h3 data-area-title><span class="df-detail__area-pair"><span data-area-cn>邊境（左）</span><span data-area-en>Frontier Left</span></span></h3><span class="df-detail__area-number">02</span></div><p>有長岩面運動路線，也有傳統攀登與延伸繩距；注意岩壁平台上方和下方隊伍。</p></article>
@@ -58,7 +60,7 @@
 
   <section class="df-detail__section df-detail__safety" id="df-safety" data-df-section="safety">
     <header class="df-detail__heading"><p class="df-detail__eyebrow">CLIMB WITH CARE</p><h2>共享山林，先把安全放在前面</h2></header>
-    <div class="df-detail__safety-grid"><p>德芙蘭岩場和步道可能仍有變動。崖頂坡陡且有鬆動石土，落石可能危及下方攀登者；戶外攀岩有固有風險，請由具備相應經驗的隊伍自行評估。</p><ul><li>全程戴岩盔，注意崖頂和斜坡上方的落石；有人在下方時不要高繞至崖頂。</li><li>遵守警示帶、告示牌和開發者指示；不要進入開發中的路線區域。</li><li>路線掛有固定繩或標示開發中時，請勿攀爬，也不要移除固定繩。</li><li>第一顆 bolt 偏高的路線，先使用掛繩竿保護；若現場有共享掛繩竿，使用後放回原處。</li><li>把垃圾全部帶走，使用停車場公共廁所；尊重步道使用者並降低噪音。</li><li>若發現落石或固定點異常，請停止使用並回報當地攀岩社群。</li></ul></div>
+    <div class="df-detail__safety-grid"><ul><li>德芙蘭岩場和步道可能仍有變動。崖頂坡陡且有鬆動石土，落石可能危及下方攀登者；戶外攀岩有固有風險，請由具備相應經驗的隊伍自行評估。</li><li>全程戴岩盔，注意崖頂和斜坡上方的落石；有人在下方時不要高繞至崖頂。</li><li>遵守警示帶、告示牌和開發者指示；不要進入開發中的路線區域。</li><li>路線掛有固定繩或標示開發中時，請勿攀爬，也不要移除固定繩。</li><li>第一顆 bolt 偏高的路線，先使用掛繩竿保護；若現場有共享掛繩竿，使用後放回原處。</li><li>把垃圾全部帶走，使用停車場公共廁所；尊重步道使用者並降低噪音。</li><li>若發現落石或固定點異常，請停止使用並回報當地攀岩社群。</li></ul></div>
     <section class="df-detail__live-weather" id="df-live-weather" aria-labelledby="df-live-weather-title">
       <header class="df-detail__live-heading"><p class="df-detail__eyebrow">LIVE CONDITIONS</p><h2 id="df-live-weather-title" data-lang-zh="即時天氣與現場影像" data-lang-en="Live Weather & On-site Cameras">即時天氣與現場影像</h2></header>
       <div class="df-detail__live-grid">
@@ -141,7 +143,7 @@
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   if (local) document.documentElement.classList.add("gw-local-font-preview");
-  ["climbing-typography-v2.css", "climbing-detail-v6.css", "climbing-conditions-layout-v3.css", "area-names-v1.css"].forEach(function (name) {
+  ["climbing-typography-v2.css", "climbing-detail-v7.css", "climbing-conditions-layout-v3.css", "area-names-v1.css", "defulan-sector-map-v1.css"].forEach(function (name) {
     var link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = local ? "./" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/" + name;
@@ -197,7 +199,7 @@
 <script>
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ["longdong-rock-estimate-v3.js", "climbing-conditions-widget-v4.js", "weather-card-widget-v5.js"].forEach(function (name) {
+  ["longdong-rock-estimate-v3.js", "climbing-conditions-widget-v4.js", "weather-card-widget-v6.js", "defulan-sector-map-v1.js"].forEach(function (name) {
     var script = document.createElement("script");
     script.async = false;
     script.src = local ? "../" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/" + name;

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">德芙蘭岩場位置線稿</title>
+  <desc id="desc">依使用者提供的位置圖重繪的示意圖，標出山坡、台八線、松鶴橋、德芙蘭步道與四個原圖標示的岩區。</desc>
+  <rect width="1600" height="900" fill="#090c0d"/>
+  <path d="M0 0H1600V226C1510 270 1418 311 1322 346C1245 372 1150 382 1080 438C1008 497 888 514 807 548C711 589 616 593 526 629C346 688 157 697 0 730Z" fill="#111719"/>
+  <path d="M0 742C236 714 431 683 611 640C797 594 966 572 1138 505C1274 451 1445 368 1600 312V900H0Z" fill="#172023"/>
+  <path d="M0 784C233 741 400 707 569 670C744 632 891 621 1062 565C1280 495 1423 423 1600 356V900H0Z" fill="#11181b"/>
+  <g fill="none" stroke="#2c3638" stroke-width="2" opacity=".55">
+    <path d="M-60 103C188 52 335 79 490 137S815 124 999 71S1358 72 1670 33"/>
+    <path d="M-60 171C136 139 302 156 451 215S755 210 974 157S1359 154 1670 108"/>
+    <path d="M-60 242C177 196 343 227 483 288S757 272 959 232S1366 227 1670 186"/>
+    <path d="M-60 312C136 272 309 292 440 351S721 340 942 300S1322 289 1660 265"/>
+    <path d="M-60 382C106 337 292 351 417 410S691 411 919 369S1292 351 1630 330"/>
+    <path d="M-60 451C109 408 272 420 390 474S673 472 899 433S1267 410 1610 392"/>
+    <path d="M-60 521C126 480 267 490 380 537S638 535 862 502S1218 474 1555 448"/>
+    <path d="M-60 589C130 551 276 561 378 599S624 596 826 567S1169 531 1480 504"/>
+    <path d="M-60 654C121 617 281 625 391 658S593 659 796 631S1123 590 1406 556"/>
+  </g>
+  <g fill="none" stroke="#263034" stroke-width="2" opacity=".62">
+    <path d="M-30 808C213 768 418 733 590 707S955 647 1170 562S1465 470 1620 426"/>
+    <path d="M-30 836C197 801 421 768 609 735S985 676 1196 595S1486 505 1630 461"/>
+    <path d="M-30 864C204 835 430 800 631 766S1000 710 1223 629S1500 544 1630 505"/>
+    <path d="M-30 892C218 863 455 829 658 797S1015 747 1250 666S1520 584 1630 546"/>
+  </g>
+  <g fill="#263033" stroke="#394447" stroke-width="2" opacity=".9">
+    <path d="m19 680 94-15 11 44-90 18z"/><path d="m150 652 72-18 13 44-76 21z"/>
+    <path d="m243 631 64-15 11 39-68 18z"/><path d="m333 621 52-16 16 53-58 18z"/>
+    <path d="m394 570 77-21 16 28-82 27z"/><path d="m567 558 83-17 10 23-78 21z"/>
+    <path d="m1154 364 61-20 13 35-62 20z"/>
+  </g>
+  <path d="M-50 804C191 748 332 746 468 711C685 655 795 643 960 579C1188 488 1417 348 1650 231" fill="none" stroke="#080b0c" stroke-width="45" stroke-linecap="round"/>
+  <path d="M-50 804C191 748 332 746 468 711C685 655 795 643 960 579C1188 488 1417 348 1650 231" fill="none" stroke="#737c7e" stroke-width="30" stroke-linecap="round"/>
+  <path d="M-50 804C191 748 332 746 468 711C685 655 795 643 960 579C1188 488 1417 348 1650 231" fill="none" stroke="#aab1b2" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+  <path d="M418 744C426 695 437 661 404 640C374 620 335 617 344 589C354 557 407 560 472 569C578 587 695 552 829 505C899 480 932 432 967 394C1010 351 1062 340 1103 350" fill="none" stroke="#080b0c" stroke-width="39" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M418 744C426 695 437 661 404 640C374 620 335 617 344 589C354 557 407 560 472 569C578 587 695 552 829 505C899 480 932 432 967 394C1010 351 1062 340 1103 350" fill="none" stroke="#899294" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M287 437C409 427 506 414 593 409S701 393 783 359S916 324 1038 326" fill="none" stroke="#d2d8d8" stroke-width="5" stroke-dasharray="11 9" stroke-linecap="round"/>
+  <path d="m304 426-17 11 17 9" fill="none" stroke="#d2d8d8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M521 409C533 386 533 369 504 352M771 362C774 334 771 308 756 279M962 326C973 315 982 296 992 278" fill="none" stroke="#b5bfc0" stroke-width="4" stroke-dasharray="9 8" stroke-linecap="round"/>
+  <path d="M640 281C633 269 627 264 617 260C639 246 639 230 621 219" fill="none" stroke="#b5bfc0" stroke-width="4" stroke-dasharray="8 7" stroke-linecap="round"/>
+  <path d="M424 672v116" fill="none" stroke="#c3cbcc" stroke-width="2" stroke-dasharray="4 6" opacity=".55"/>
+  <g fill="none" stroke="#626d70" stroke-width="2" opacity=".8">
+    <path d="M70 731c80-35 139-16 208-43m-98 74c105-38 144-29 193-48"/>
+    <path d="M608 657c94-4 175-18 252-52m201-12c70-19 139-44 210-73"/>
+  </g>
+  <path d="M411 170 789 76q11-3 14 9l25 76q3 11-8 14L438 268q-11 3-14-8l-22-77q-3-10 9-13Z" fill="rgba(255,255,255,.015)" stroke="#9ca6a7" stroke-width="3"/>
+  <rect x="656" y="218" width="190" height="77" rx="13" fill="rgba(255,255,255,.015)" stroke="#9ca6a7" stroke-width="3"/>
+  <path d="m439 320 112-34 18 66-111 34z" fill="rgba(255,255,255,.015)" stroke="#9ca6a7" stroke-width="3"/>
+  <rect x="948" y="217" width="112" height="77" rx="12" fill="rgba(255,255,255,.015)" stroke="#9ca6a7" stroke-width="3"/>
+</svg>

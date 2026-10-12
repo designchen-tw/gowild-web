@@ -5,7 +5,7 @@
     <a href="#kd-areas" data-kd-link="areas"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span>岩區</span></a>
     <a href="#kd-routes" data-kd-link="routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20 9 4l3 8 3-5 4 13M8 8h3m3 6h3"/></svg><span>路線</span></a>
     <a href="#kd-visit" data-kd-link="visit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M12 3v18M5.6 5.6l12.8 12.8m0-12.8L5.6 18.4"/><circle cx="12" cy="12" r="9"/></svg><span>行前</span></a>
-    <a href="#kd-safety" data-kd-link="safety"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-3Z"/><path d="m9 12 2 2 4-4"/></svg><span>安全</span></a>
+    <a href="#kd-safety" data-kd-link="safety"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="18" r="1.5"/><path d="M8 16 18 6m-6 0h6v6"/></svg><span data-lang-zh="出發" data-lang-en="Go">出發</span></a>
   </nav>
 
   <section class="kd-detail__section" id="kd-overview" data-kd-section="overview">
@@ -61,7 +61,7 @@
 
   <section class="kd-detail__section kd-detail__safety" id="kd-safety" data-kd-section="safety">
     <header class="kd-detail__heading"><p class="kd-detail__eyebrow">CLIMB WITH CARE</p><h2>保護自己，也讓岩場長久存在</h2></header>
-    <div class="kd-detail__safety-grid"><p>戶外攀岩具有風險，岩場石灰岩可能不穩定，落石與固定點狀況都需謹慎判斷。路書是社群整理的參考資料，不能取代現場檢查、訓練與攀登者自己的風險評估。</p><ul><li>攀登與確保時戴岩盔，並避開岩壁下方的落石區。</li><li>部分路線第一顆 bolt 偏高；依路書建議使用 3 米以上掛繩竿，並在攀登前評估保護方式。</li><li>部分老路線、樹上固定點或繩圈曾有鏽蝕、老化等提醒；使用前檢查狀況，有明確警示的路線不要攀爬。</li><li>遵守 LNT 原則：帶走所有垃圾與個人物品，不餵食野生動物，不生火。</li><li>附近沒有廁所設施，請事先使用公共廁所；若不得已在野外如廁，依路書指引處理並帶走衛生用品。</li><li>若發現鬆動岩石、耳片或其他危險，請告知當地攀岩社群。</li></ul></div>
+    <div class="kd-detail__safety-grid"><ul><li>戶外攀岩具有風險，岩場石灰岩可能不穩定，落石與固定點狀況都需謹慎判斷。路書是社群整理的參考資料，不能取代現場檢查、訓練與攀登者自己的風險評估。</li><li>攀登與確保時戴岩盔，並避開岩壁下方的落石區。</li><li>部分路線第一顆 bolt 偏高；依路書建議使用 3 米以上掛繩竿，並在攀登前評估保護方式。</li><li>部分老路線、樹上固定點或繩圈曾有鏽蝕、老化等提醒；使用前檢查狀況，有明確警示的路線不要攀爬。</li><li>遵守 LNT 原則：帶走所有垃圾與個人物品，不餵食野生動物，不生火。</li><li>附近沒有廁所設施，請事先使用公共廁所；若不得已在野外如廁，依路書指引處理並帶走衛生用品。</li><li>若發現鬆動岩石、耳片或其他危險，請告知當地攀岩社群。</li></ul></div>
     <section class="kd-detail__live-weather" id="kd-live-weather" aria-labelledby="kd-live-weather-title">
       <header class="kd-detail__live-heading"><p class="kd-detail__eyebrow">LIVE CONDITIONS</p><h2 id="kd-live-weather-title" data-lang-zh="即時天氣與現場影像" data-lang-en="Live Weather & On-site Cameras">即時天氣與現場影像</h2></header>
       <div class="kd-detail__live-grid">
@@ -150,7 +150,7 @@
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   if (local) document.documentElement.classList.add("gw-local-font-preview");
-  ["climbing-typography-v2.css", "climbing-detail-v6.css", "climbing-conditions-layout-v3.css", "area-names-v1.css"].forEach(function (name) {
+  ["climbing-typography-v2.css", "climbing-detail-v7.css", "climbing-conditions-layout-v3.css", "area-names-v1.css"].forEach(function (name) {
     var link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = local ? "./" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/" + name;
@@ -209,7 +209,7 @@
 <script>
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ["longdong-rock-estimate-v3.js", "climbing-conditions-widget-v4.js", "weather-card-widget-v5.js"].forEach(function (name) {
+  ["longdong-rock-estimate-v3.js", "climbing-conditions-widget-v4.js", "weather-card-widget-v6.js"].forEach(function (name) {
     var script = document.createElement("script");
     script.async = false;
     script.src = local ? "../" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/" + name;

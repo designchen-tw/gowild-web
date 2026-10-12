@@ -7,8 +7,8 @@
 | 頁面 | Webflow Embed | 前端小工具 | 樣式 |
 | --- | --- | --- | --- |
 | 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v16.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v8.js` | `webflow-embeds/longdong-embed-v12.css`、`climbing-typography-v2.css` |
-| 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v5.js`、`longdong-rock-estimate-v3.js` | `webflow-embeds/climbing-detail-v6.css`、`climbing-typography-v2.css` |
-| 德芙蘭 `/defulan` | `webflow-embeds/defulan.html` | 同墾丁 | 同墾丁 |
+| 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v6.js`、`longdong-rock-estimate-v3.js` | `webflow-embeds/climbing-detail-v7.css`、`climbing-typography-v2.css` |
+| 德芙蘭 `/defulan` | `webflow-embeds/defulan.html` | 同墾丁，另有 `defulan-sector-map-v1.js` | 同墾丁，另有 `webflow-embeds/defulan-sector-map-v1.css` |
 | 全站選單 | `webflow-embeds/menu-overlay-full.html` | Embed 內部程式 | Embed 內部樣式 |
 
 上表是目前交接版本。後續以各 Embed **實際引用的檔名** 為準；舊版檔案保留作為歷史版本。首頁其他 Embed 不在上表的三個地點頁之內。
@@ -23,6 +23,8 @@
 - 龍洞九區位置圖由 `longdong-sector-map-v8.js` 與 `webflow-embeds/longdong-sector-map-v8.css` 提供，點地圖或下方卡片會雙向選取並聚焦。地圖以固定高度視窗呈現，可自由上下捲動；點選編號或下方卡片會捲到對應岩區，但不鎖定或放大視圖。九個岩區預設只有灰色輪廓，選取後只為該區填上網站資料色 #A9D9B6；後續新增地圖顏色也應沿用網站資料色票，集中在地圖 CSS 變數管理。地圖使用使用者提供的 Illustrator 原稿提取之 `webflow-embeds/longdong-map-vector-v3.svg`，保留原稿的海岸地形、道路、步道與九區邊界；九個標記位於原稿對應岩區內。地圖另以可切換中英文的文字標註道路、隧道、步道、停車場、和美國小、西靈巖寺與龍洞南口海洋公園，北方箭頭固定於地圖框左上角、北／N 置於箭頭下方；岩區卡片 hover 為灰底，選取後才顯示 #A9D9B6。龍洞最後一節不另留底部空白，直接銜接 Webflow footer 的既有內距。這是原稿比例的岩區示意位置，並非 GPS 導航或救援點編號。這一版僅用於龍洞。
 - 龍洞經典路線列表依校門口至後門排序。新增路線的岩區、英文名稱、類型與難度依 [TOCC 龍洞資料庫](https://tocc-climbing.github.io/longdong/#/) 的公開資料整理；原有七條的難度與顯示名稱依網站編輯者指定值。Disco 對應 TOCC 的「Disco大裂隙」；「自由裂隙」整條兩繩距以 P1/P2 較高的 5.9 標示。路線資料更新時請重新核對兩種來源。
 - 龍洞 CWA 預報的橫向資料列保留捲動，捲動條採低對比細線與深色軌道。出發前注意事項為無分隔線的單欄清單，先說明天然岩場資訊會變動，再依序提示安全資料、天候、裝備與環境。底部導覽的「出發／Go」使用前進箭頭；五個導覽連結皆以對應 section 的頂端作為捲動目標。
+- 墾丁與德芙蘭也使用低對比細捲動條、雙語路線名稱分行、單欄無分隔線的注意事項，以及「出發／Go」導覽。兩頁的注意內容保留各岩場自身的風險與通行資訊，五個導覽連結都對齊 section 頂端。
+- 德芙蘭位置圖由 `webflow-embeds/defulan-location-map-v1.svg`、`defulan-sector-map-v1.js` 和 `webflow-embeds/defulan-sector-map-v1.css` 提供，依網站編輯者提供的航空照片重繪為灰黑白線稿。標出台 8 線、支線道路、德芙蘭步道、停車場、公車站、廁所、露營區與原圖四個岩區；北方箭頭固定在地圖左上角。點選圖上編號或下方岩區卡片會選取並聚焦，僅被選取區顯示資料色 #A9D9B6，地圖可自由捲動。終極邊境、邊境左、邊境右共用原圖的「邊境區域」輪廓，三個編號只是對應下方字卡，不表示已確認的子區邊界；本圖是位置示意，並非精確導航。
 - 岩區名稱的中英文排列在 `webflow-embeds/area-names-v1.css`：目前語言排前，手機版（≤ 520px）讓另一語言固定另起一行；三個地點 Embed 都需載入此 CSS。
 - 共通文字層級在 `webflow-embeds/climbing-typography-v2.css`：桌機章節標題／重要數值／卡片名稱／內文／標籤／細節文字為 22/20/16/16/14/12px；手機 `max-width:520px` 為 18/16/14/14/12/10px。修改時一併檢查字高、字距、灰度、左右留白與中英文換行。
 
