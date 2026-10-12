@@ -3,7 +3,7 @@
  * Configure CWA_API_KEY as a Worker Secret. Never put the key in this file.
  * Optional variable ALLOWED_ORIGINS: comma-separated origin allowlist.
  * Optional KV binding CONDITIONS_HISTORY: recent station wind/heat history.
- * The hourly Cron prewarms Longdong, Kenting and Defulan station samples.
+ * The hourly Cron prewarms Longdong, Kenting, Defulan and Guanziling station samples.
  */
 
 const DEFAULT_ORIGINS = ["https://gowild.one", "https://www.gowild.one"];
@@ -30,7 +30,8 @@ export default {
     const routes = {
       "/api/longdong": { current: "F-B0053-005", weekly: ["F-B0053-001", "F-B0053-003"], conditionLocationName: "龍洞灣公園", lat: 25.111, lon: 121.919, stationId: "C0A950" },
       "/api/kenting": { current: "F-D0047-033", weekly: ["F-D0047-035"], conditionLocationName: "恆春鎮", lat: 21.926, lon: 120.829 },
-      "/api/defulan": { current: "F-D0047-073", weekly: ["F-D0047-075"], conditionLocationName: "和平區", lat: 24.174, lon: 120.974 }
+      "/api/defulan": { current: "F-D0047-073", weekly: ["F-D0047-075"], conditionLocationName: "和平區", lat: 24.174, lon: 120.974 },
+      "/api/guanziling": { current: "F-D0047-077", weekly: ["F-D0047-079"], conditionLocationName: "白河區", lat: 23.3283185, lon: 120.4889894, stationId: "C0X240" }
     };
     const route = routes[url.pathname];
     if (request.method !== "GET" || !route) {
@@ -44,7 +45,7 @@ export default {
     }
 
     const cache = caches.default;
-    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v24`, { method: "GET" });
+    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v25`, { method: "GET" });
     const cached = await cache.match(cacheKey);
     if (cached) {
       const responseHeaders = new Headers(cached.headers);
@@ -381,7 +382,8 @@ export default {
       const targets = [
         { area: "longdong", stationId: "C0A950", lat: 25.111, lon: 121.919 },
         { area: "kenting", lat: 21.926, lon: 120.829 },
-        { area: "defulan", lat: 24.174, lon: 120.974 }
+        { area: "defulan", lat: 24.174, lon: 120.974 },
+        { area: "guanziling", stationId: "C0X240", lat: 23.3283185, lon: 120.4889894 }
       ];
       for (const target of targets) {
         const station = stations.find(row => String(row.StationId ?? row.StationID ?? row.stationId ?? row.stationID ?? "") === target.stationId) ||

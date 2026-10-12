@@ -10,6 +10,7 @@
 | 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v16.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v10.js` | `webflow-embeds/longdong-embed-v13.css`、`climbing-typography-v2.css` |
 | 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v6.js`、`longdong-rock-estimate-v3.js`、`kenting-sector-map-v3.js` | `webflow-embeds/climbing-detail-v7.css`、`climbing-typography-v2.css` |
 | 德芙蘭 `/defulan` | `webflow-embeds/defulan.html` | 共用現況／天氣小工具，另有 `defulan-sector-map-v3.js` | 同墾丁，另有 `webflow-embeds/defulan-sector-map-v4.css` |
+| 關子嶺 `/guanziling` | `webflow-embeds/guanziling.html` | `climbing-conditions-widget-v5.js`、`weather-card-widget-v7.js`、`guanziling-sector-map-v1.js`、共用縮放與岩面估算 | `webflow-embeds/guanziling-detail-v1.css` |
 | 全站選單 | `webflow-embeds/menu-overlay-full.html` | Embed 內部程式 | Embed 內部樣式 |
 
 上表是目前交接版本。後續以各 Embed **實際引用的檔名** 為準；舊版檔案保留作為歷史版本。首頁新版內容 Embed 的安裝與原生表單保留方式見 `webflow-embeds/home-installation.md`。
@@ -17,7 +18,7 @@
 ## 架構與維護
 
 - Webflow 負責頁面框架、原有導覽與 footer；地點內文由各自的 Code Embed 提供。選單 Embed 放在現有 Navbar overlay 中，保留 overlay 原本的開關；現有 `.mobile-overlay.gw` 上保留 `fs-scrolldisable-element="when-visible"`。
-- Webflow 頁面從 jsDelivr 的 `designchen-tw/gowild-web@main` 載入前端 CSS/JS。瀏覽器小工具呼叫 `https://cwa-weather.designchenme.workers.dev/api/{longdong|kenting|defulan}`；Worker 向中央氣象署取得資料。Windy 和即時影像為第三方 iframe。
+- Webflow 頁面從 jsDelivr 的 `designchen-tw/gowild-web@main` 載入前端 CSS/JS。瀏覽器小工具呼叫 `https://cwa-weather.designchenme.workers.dev/api/{longdong|kenting|defulan|guanziling}`；Worker 向中央氣象署取得資料。Windy 和即時影像為第三方 iframe。
 - `cwa-weather-worker.js` 是 Worker 原始碼，`CWA_API_KEY` 只存在 Cloudflare Worker Secret。龍洞觀測歷史使用 KV binding `CONDITIONS_HISTORY`，每小時 `15 * * * *` 的 Cron Trigger 更新；詳細岩面推估規則見 `ROCK-CONDITION-RULES.md`。
 - 中英文切換在各 Embed 及小工具內實作。龍洞是三個地點頁共同的版面參考；墾丁與德芙蘭不顯示潮汐卡。
 - 攀登現況共用排版在 `webflow-embeds/climbing-conditions-layout-v3.css`：桌機所有卡片同一列（龍洞六欄、墾丁與德芙蘭五欄），卡片容器寬度 601–980px 時採三欄；墾丁與德芙蘭第二排風向／岩面各佔半寬；≤ 600px 時切換兩欄，兩欄時岩面推估與龍洞潮汐各自滿版。每排卡片透過 CSS subgrid 共用標題、主要數值、補充資料與來源四列，依內容自動決定列高，不保留固定高度的空白。三個地點 Embed 都需載入此 CSS；龍洞 `v30` 將上一次潮汐與標題包在同一標題區塊。
@@ -30,7 +31,7 @@
 - 岩區名稱的中英文排列在 `webflow-embeds/area-names-v1.css`：目前語言排前，手機版（≤ 520px）讓另一語言固定另起一行；三個地點 Embed 都需載入此 CSS。
 - 共通文字層級在 `webflow-embeds/climbing-typography-v2.css`：桌機章節標題／重要數值／卡片名稱／內文／標籤／細節文字為 22/20/16/16/14/12px；手機 `max-width:520px` 為 18/16/14/14/12/10px。修改時一併檢查字高、字距、灰度、左右留白與中英文換行。
 
-- 首頁 `webflow-embeds/home.html` 整合雙語介紹、DISCOVER／LEARN／EXPLORE 與 CONTACT。DISCOVER 依龍洞、德芙蘭、關子嶺、墾丁排序；關子嶺保留無連結卡片。EXPLORE 保留人物誌卡片為無連結 article；全站選單不提供人物誌連結，品牌文字上方使用指定的 `logo_GW-03.avif` Logo。語言按鈕只放在上方介紹區，切換整頁文字、卡片主副標題及聯絡表單文字；照片卡片呈現原始彩色，插畫卡片維持灰階。樣式與程式內嵌，不需要發布新的 CDN 檔案。首頁 Embed 放在完整 landing 動畫 section 後方，使用局部疊層蓋住 fixed 投影片；原有 200vh 動畫容器和 sticky 文字保留。底部導覽只在下方內容進入視窗後顯示。
+- 首頁 `webflow-embeds/home.html` 整合雙語介紹、DISCOVER／LEARN／EXPLORE 與 CONTACT。DISCOVER 依龍洞、德芙蘭、關子嶺、墾丁排序；關子嶺卡片連至 `/guanziling`。EXPLORE 保留人物誌卡片為無連結 article；全站選單不提供人物誌連結，品牌文字上方使用指定的 `logo_GW-03.avif` Logo。語言按鈕只放在上方介紹區，切換整頁文字、卡片主副標題及聯絡表單文字；照片卡片呈現原始彩色，插畫卡片維持灰階。樣式與程式內嵌，不需要發布新的 CDN 檔案。首頁 Embed 放在完整 landing 動畫 section 後方，使用局部疊層蓋住 fixed 投影片；原有 200vh 動畫容器和 sticky 文字保留。底部導覽只在下方內容進入視窗後顯示。
 - 首頁 CONTACT 會將頁面現有的 `Course Inquires` 原生 Webflow Form Block 移入 Embed，保留原始節點、欄位名稱、Webflow 識別與 Turnstile，不改提交處理；請勿刪除或複製原生 Form Block。語言切換不改動填寫值；表單保留 Webflow 原始單欄排版、灰底與 20px 圓角，不覆蓋欄位樣式。本機測試未發送真實訊息，發布後仍須確認 Webflow 後台收件。
 
 ## 修改與發布
@@ -43,3 +44,10 @@
 ## 新對話如何接手
 
 在 Codex 選用這個本機 repo `/Users/Guan-Wei/Documents/GitHub/gowild-web` 作為專案，開一個新對話並直接描述本次要改的頁面和問題。根目錄 `AGENTS.md` 會提供精簡的專案規則；只有需要架構或發布細節時再讀本 README。這能避免每個任務都帶入整段歷史對話。
+
+## 關子嶺頁面
+
+- 第一版依提供的14頁路書整理，詳細來源與發布步驟見 `webflow-embeds/guanziling-installation.md`。六區、50筆路書記錄（含一筆抱石），呈現12條原路書三星評價路線，不提供全部路線展開列表。名稱與級數依原書，未把歷史描述當成最新通行或固定點資訊。
+- `guanziling-location-map-v1.svg` 是可編輯來源，互動程式內嵌相同 SVG，以維持本機file預覽；修改來源後須同步 `guanziling-sector-map-v1.js` 的 SVG 字串。原圖未提供可靠北向，第一版不新增推測北箭頭。
+- 關子嶺使用獨立整合CSS與共用元件下一版；原有三頁保留原本引用，不改其行為。只有選取區域使用 #A9D9B6，hover為灰底，支援＋／－與手勢縮放。
+- Worker 新增 `/api/guanziling`，使用臺南 F-D0047-077／079、白河區預報、優先 C0X240 關子嶺測站，Cron也加入本站歷史。岩場定位23.3283185,120.4889894。省道影像為公路局清單中最近的台3線295K+500（直線約7.3km），非岩場現場。
