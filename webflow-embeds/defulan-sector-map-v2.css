@@ -1,0 +1,62 @@
+/* Defulan locator aligned to the editor-supplied vector, 1766.57983 × 1240.78784. */
+main.df-detail{--df-map-accent:#A9D9B6}
+main.df-detail .df-sector-map{width:100%;margin:0 auto 30px;scroll-margin-top:18px}
+main.df-detail .df-map-frame{
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  height:clamp(420px,58svh,560px);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:16px;
+  background:#090c0d;
+}
+main.df-detail .df-map-viewport{
+  width:100%;height:100%;overflow:auto;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(245,245,245,.26) rgba(245,245,245,.04);
+  overscroll-behavior:contain;
+  touch-action:pan-x pan-y;
+  overflow-anchor:none;
+}
+main.df-detail .df-map-viewport::-webkit-scrollbar{width:6px;height:6px}
+main.df-detail .df-map-viewport::-webkit-scrollbar-track{background:rgba(245,245,245,.04)}
+main.df-detail .df-map-viewport::-webkit-scrollbar-thumb{background:rgba(245,245,245,.26);border-radius:99px}
+main.df-detail .df-map-viewport:focus-visible{outline:2px solid #d8dede;outline-offset:-3px}
+main.df-detail .df-map-svg{display:block;width:100%;height:auto;aspect-ratio:1766.57983/1240.78784}
+main.df-detail .df-map-compass{
+  position:absolute;z-index:2;top:14px;left:14px;
+  display:flex;width:44px;flex-direction:column;align-items:center;gap:2px;
+  padding:7px 5px 5px;border:1px solid rgba(255,255,255,.2);
+  border-radius:10px;background:rgba(9,12,13,.88);color:#e0e3e4;
+  font-size:13px;font-weight:600;line-height:1;
+  box-shadow:0 2px 12px rgba(0,0,0,.32);pointer-events:none;
+}
+main.df-detail .df-map-compass svg{width:20px;height:26px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+main.df-detail .df-map-region{fill:var(--df-map-accent);fill-opacity:0;stroke:none;pointer-events:none;transition:fill-opacity .2s}
+main.df-detail .df-map-region.is-active{fill-opacity:.62;stroke:var(--df-map-accent);stroke-width:3}
+main.df-detail .df-map-label{
+  fill:#d7dddd;stroke:none;
+  font-family:inherit;font-size:36px;font-weight:400;letter-spacing:.01em;
+  pointer-events:none;
+}
+main.df-detail .df-map-label--area{fill:#f0f3f2;font-size:37px;font-weight:500}
+main.df-detail .df-map-label--trail,main.df-detail .df-map-label--minor{fill:#b4bfc0;font-size:31px}
+main.df-detail .df-map-label--road{fill:#e0e4e4;font-size:35px}
+main.df-detail[data-language="en"] .df-map-label{font-size:32px}
+main.df-detail[data-language="en"] .df-map-label--area{font-size:35px}
+main.df-detail .df-map-spot{cursor:pointer;outline:none}
+main.df-detail .df-map-spot__target{fill:transparent}
+main.df-detail .df-map-spot__ring{fill:#121819;stroke:#f0f2f2;stroke-width:2;transition:fill .2s,stroke .2s,stroke-width .2s}
+main.df-detail .df-map-spot text{fill:#f0f2f2;font-family:inherit;font-size:18px;font-weight:600;pointer-events:none}
+main.df-detail .df-map-spot:hover .df-map-spot__ring,main.df-detail .df-map-spot:focus-visible .df-map-spot__ring{fill:#3b4346;stroke:#fff;stroke-width:3}
+main.df-detail .df-map-spot.is-active .df-map-spot__ring{fill:var(--df-map-accent);stroke:var(--df-map-accent);stroke-width:3}
+main.df-detail .df-map-spot.is-active text{fill:#111517}
+main.df-detail .df-detail__area-grid article.df-map-linked-card{position:relative;transition:background .2s,box-shadow .2s}
+main.df-detail .df-detail__area-grid article.df-map-linked-card:is(:hover,:focus-within){background:rgba(255,255,255,.08);box-shadow:inset 0 2px 0 rgba(255,255,255,.32)}
+main.df-detail .df-detail__area-grid article.df-map-linked-card.is-map-selected{background:rgba(169,217,182,.1);box-shadow:inset 0 2px 0 var(--df-map-accent);opacity:1}
+main.df-detail .df-map-card-button{position:absolute;z-index:1;inset:0;width:100%;border:0;background:transparent;color:transparent;cursor:pointer}
+main.df-detail .df-map-card-button:focus-visible{outline:2px solid var(--df-map-accent);outline-offset:-3px}
+main.df-detail .df-map-caption{width:100%;margin:0 auto 26px;color:var(--gw-ink-muted,rgba(245,245,245,.48));font-size:12px;line-height:1.7}
+@media(max-width:900px){main.df-detail .df-map-svg{min-width:900px}}
+@media(max-width:520px){main.df-detail .df-sector-map{margin-bottom:24px}main.df-detail .df-map-frame{height:clamp(320px,52svh,430px)}main.df-detail .df-map-svg{min-width:960px}main.df-detail .df-map-caption{font-size:11px}}
+@media(prefers-reduced-motion:reduce){main.df-detail .df-map-region,main.df-detail .df-map-spot__ring,main.df-detail .df-detail__area-grid article.df-map-linked-card{transition:none}}

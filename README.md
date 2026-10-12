@@ -8,7 +8,7 @@
 | --- | --- | --- | --- |
 | 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v16.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v8.js` | `webflow-embeds/longdong-embed-v12.css`、`climbing-typography-v2.css` |
 | 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v6.js`、`longdong-rock-estimate-v3.js` | `webflow-embeds/climbing-detail-v7.css`、`climbing-typography-v2.css` |
-| 德芙蘭 `/defulan` | `webflow-embeds/defulan.html` | 同墾丁，另有 `defulan-sector-map-v1.js` | 同墾丁，另有 `webflow-embeds/defulan-sector-map-v1.css` |
+| 德芙蘭 `/defulan` | `webflow-embeds/defulan.html` | 同墾丁，另有 `defulan-sector-map-v2.js` | 同墾丁，另有 `webflow-embeds/defulan-sector-map-v2.css` |
 | 全站選單 | `webflow-embeds/menu-overlay-full.html` | Embed 內部程式 | Embed 內部樣式 |
 
 上表是目前交接版本。後續以各 Embed **實際引用的檔名** 為準；舊版檔案保留作為歷史版本。首頁其他 Embed 不在上表的三個地點頁之內。
@@ -24,7 +24,7 @@
 - 龍洞經典路線列表依校門口至後門排序。新增路線的岩區、英文名稱、類型與難度依 [TOCC 龍洞資料庫](https://tocc-climbing.github.io/longdong/#/) 的公開資料整理；原有七條的難度與顯示名稱依網站編輯者指定值。Disco 對應 TOCC 的「Disco大裂隙」；「自由裂隙」整條兩繩距以 P1/P2 較高的 5.9 標示。路線資料更新時請重新核對兩種來源。
 - 龍洞 CWA 預報的橫向資料列保留捲動，捲動條採低對比細線與深色軌道。出發前注意事項為無分隔線的單欄清單，先說明天然岩場資訊會變動，再依序提示安全資料、天候、裝備與環境。底部導覽的「出發／Go」使用前進箭頭；五個導覽連結皆以對應 section 的頂端作為捲動目標。
 - 墾丁與德芙蘭也使用低對比細捲動條、雙語路線名稱分行、單欄無分隔線的注意事項，以及「出發／Go」導覽。兩頁的注意內容保留各岩場自身的風險與通行資訊，五個導覽連結都對齊 section 頂端。
-- 德芙蘭位置圖由 `webflow-embeds/defulan-location-map-v1.svg`、`defulan-sector-map-v1.js` 和 `webflow-embeds/defulan-sector-map-v1.css` 提供，依網站編輯者提供的航空照片重繪為灰黑白線稿。標出台 8 線、支線道路、德芙蘭步道、停車場、公車站、廁所、露營區與原圖四個岩區；北方箭頭固定在地圖左上角。點選圖上編號或下方岩區卡片會選取並聚焦，僅被選取區顯示資料色 #A9D9B6，地圖可自由捲動。終極邊境、邊境左、邊境右共用原圖的「邊境區域」輪廓，三個編號只是對應下方字卡，不表示已確認的子區邊界；本圖是位置示意，並非精確導航。
+- 德芙蘭位置圖由 `webflow-embeds/defulan-location-map-v2.svg`、`defulan-sector-map-v2.js` 和 `webflow-embeds/defulan-sector-map-v2.css` 提供，採用網站編輯者更新的 SVG，保留原稿比例、道路、步道、地標圖示及岩區輪廓；原稿的中文外框文字由可切換語言的網站文字取代，位置依原稿對齊。使用者編輯的 `webflow-embeds/defulan-location-map-v1.svg` 保留為來源檔，網站引用另存的 v2，避免舊 CDN 快取。標出台 8 線、支線道路、德芙蘭步道、停車場、公車站、廁所、露營區、大甲溪與原圖四個岩區；北方箭頭固定在地圖左上角。點選圖上編號或下方岩區卡片會選取並聚焦，僅被選取區顯示資料色 #A9D9B6，地圖可自由捲動。終極邊境、邊境左、邊境右共用原圖的「邊境區域」輪廓，三個編號只是對應下方字卡，不表示已確認的子區邊界；本圖是位置示意，並非精確導航。
 - 岩區名稱的中英文排列在 `webflow-embeds/area-names-v1.css`：目前語言排前，手機版（≤ 520px）讓另一語言固定另起一行；三個地點 Embed 都需載入此 CSS。
 - 共通文字層級在 `webflow-embeds/climbing-typography-v2.css`：桌機章節標題／重要數值／卡片名稱／內文／標籤／細節文字為 22/20/16/16/14/12px；手機 `max-width:520px` 為 18/16/14/14/12/10px。修改時一併檢查字高、字距、灰度、左右留白與中英文換行。
 
