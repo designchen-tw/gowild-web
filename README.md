@@ -30,8 +30,8 @@
 - 岩區名稱的中英文排列在 `webflow-embeds/area-names-v1.css`：目前語言排前，手機版（≤ 520px）讓另一語言固定另起一行；三個地點 Embed 都需載入此 CSS。
 - 共通文字層級在 `webflow-embeds/climbing-typography-v2.css`：桌機章節標題／重要數值／卡片名稱／內文／標籤／細節文字為 22/20/16/16/14/12px；手機 `max-width:520px` 為 18/16/14/14/12/10px。修改時一併檢查字高、字距、灰度、左右留白與中英文換行。
 
-- 首頁 `webflow-embeds/home.html` 整合雙語介紹、DISCOVER／LEARN／EXPLORE 與 CONTACT。DISCOVER 依龍洞、德芙蘭、關子嶺、墾丁排序；關子嶺保留無連結卡片。EXPLORE 已移除尚未完成的人物誌。首頁與聯絡區的語言按鈕同步切換文字及卡片主副標題。樣式與程式內嵌，不需要發布新的 CDN 檔案。
-- 首頁 CONTACT 會將頁面現有的 `Course Inquires` 原生 Webflow Form Block 移入 Embed，保留原始節點、欄位名稱、Webflow 識別與 Turnstile，不改提交處理；請勿刪除或複製原生 Form Block。語言切換不改動填寫值。本機測試未發送真實訊息，發布後仍須確認 Webflow 後台收件。
+- 首頁 `webflow-embeds/home.html` 整合雙語介紹、DISCOVER／LEARN／EXPLORE 與 CONTACT。DISCOVER 依龍洞、德芙蘭、關子嶺、墾丁排序；關子嶺保留無連結卡片。EXPLORE 保留人物誌卡片為無連結 article；全站選單不提供人物誌連結，品牌文字上方使用首頁既有 Logo。首頁與聯絡區的語言按鈕同步切換文字及卡片主副標題。樣式與程式內嵌，不需要發布新的 CDN 檔案。首頁 Embed 放在完整 landing 動畫 section 後方，使用局部疊層蓋住 fixed 投影片；原有 200vh 動畫容器和 sticky 文字保留。底部導覽只在下方內容進入視窗後顯示。
+- 首頁 CONTACT 會將頁面現有的 `Course Inquires` 原生 Webflow Form Block 移入 Embed，保留原始節點、欄位名稱、Webflow 識別與 Turnstile，不改提交處理；請勿刪除或複製原生 Form Block。語言切換不改動填寫值；表單保留 Webflow 原始單欄排版、灰底與 20px 圓角，不覆蓋欄位樣式。本機測試未發送真實訊息，發布後仍須確認 Webflow 後台收件。
 
 ## 修改與發布
 
