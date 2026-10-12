@@ -1,0 +1,19 @@
+/* Shared controls are intentionally limited to two buttons. */
+:is(main.ld-detail,main.df-detail,main.kd-detail) .gw-map-viewport{touch-action:none;user-select:none;cursor:grab}
+:is(main.ld-detail,main.df-detail,main.kd-detail) .gw-map-viewport.is-dragging{cursor:grabbing}
+:is(main.ld-detail,main.df-detail,main.kd-detail) .gw-map-zoom{
+  position:absolute;z-index:3;top:14px;right:14px;
+  display:flex;flex-direction:column;align-items:center;
+  border:1px solid rgba(255,255,255,.2);border-radius:10px;
+  background:#171c1d;color:#e0e3e4;
+  box-shadow:0 2px 12px rgba(0,0,0,.32);overflow:hidden;
+}
+:is(main.ld-detail,main.df-detail,main.kd-detail) .gw-map-zoom button{
+  display:grid;place-items:center;width:44px;height:44px;padding:0;
+  border:0;border-radius:0;background:transparent;color:inherit;cursor:pointer;
+  touch-action:manipulation;
+}
+:is(main.ld-detail,main.df-detail,main.kd-detail) .gw-map-zoom button:not(:disabled):hover{background:#f0f2f2;color:#111517}
+:is(main.ld-detail,main.df-detail,main.kd-detail) .gw-map-zoom button:focus-visible{outline:2px solid #A9D9B6;outline-offset:-3px}
+:is(main.ld-detail,main.df-detail,main.kd-detail) .gw-map-zoom button:disabled{opacity:.35;cursor:default}
+:is(main.ld-detail,main.df-detail,main.kd-detail) .gw-map-zoom button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}

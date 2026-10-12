@@ -1,0 +1,153 @@
+/* Shared map zoom/pan controls. Responsive CSS defines each map's base size. */
+(() => {
+  window.GoWildMapZoom = ({ mount, viewport, svg }) => {
+    viewport.classList.add('gw-map-viewport');
+    const controls = document.createElement('div');
+    controls.className = 'gw-map-zoom';
+    controls.setAttribute('role', 'group');
+    controls.setAttribute('data-map-zoom-controls', '');
+    controls.innerHTML = `<button type="button" data-map-zoom-in><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></button><button type="button" data-map-zoom-out><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>`;
+    viewport.parentElement.appendChild(controls);
+    const zoomIn = mount.querySelector('[data-map-zoom-in]');
+    const zoomOut = mount.querySelector('[data-map-zoom-out]');
+    const minZoom = 1, maxZoom = 3, zoomStep = .25;
+    let zoom = 1;
+    let gesture = null;
+    let suppressClickUntil = 0;
+    const pointers = new Map();
+    let previousSize = null;
+
+    const syncZoomControls = () => {
+      zoomIn.disabled = zoom >= maxZoom - .001;
+      zoomOut.disabled = zoom <= minZoom + .001;
+      mount.dataset.zoom = String(zoom);
+    };
+    const center = () => ({ x: viewport.clientWidth / 2, y: viewport.clientHeight / 2 });
+    // Store the point in map coordinates so its screen position survives a resize.
+    const mapPointAt = point => {
+      const bounds = svg.getBoundingClientRect();
+      return { x: (viewport.scrollLeft + point.x) / bounds.width,
+        y: (viewport.scrollTop + point.y) / bounds.height };
+    };
+    const setZoom = (next, point = center(), anchor = mapPointAt(point)) => {
+      zoom = Math.min(maxZoom, Math.max(minZoom, next));
+      svg.style.setProperty('--gw-map-zoom', String(zoom));
+      const bounds = svg.getBoundingClientRect();
+      viewport.scrollLeft = anchor.x * bounds.width - point.x;
+      viewport.scrollTop = anchor.y * bounds.height - point.y;
+      syncZoomControls();
+      previousSize = size();
+    };
+    zoomIn.addEventListener('click', () => setZoom(zoom + zoomStep));
+    zoomOut.addEventListener('click', () => setZoom(zoom - zoomStep));
+    viewport.addEventListener('keydown', event => {
+      if (event.ctrlKey || event.metaKey || event.altKey) return;
+      if (event.key === '+' || event.key === '=' || event.key === '-') {
+        event.preventDefault();
+        setZoom(zoom + (event.key === '-' ? -zoomStep : zoomStep));
+      }
+    });
+    // Trackpad pinch is exposed as a control-wheel event by Chromium browsers.
+    viewport.addEventListener('wheel', event => {
+      if (!event.ctrlKey) return;
+      event.preventDefault();
+      const bounds = viewport.getBoundingClientRect();
+      const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewport.clientHeight : 1;
+      setZoom(zoom * Math.exp(-event.deltaY * unit * .01),
+        { x: event.clientX - bounds.left, y: event.clientY - bounds.top });
+    }, { passive: false });
+
+    const pointerPoint = event => {
+      const bounds = viewport.getBoundingClientRect();
+      return { x: event.clientX - bounds.left, y: event.clientY - bounds.top };
+    };
+    const pair = () => {
+      const [a, b] = [...pointers.values()];
+      return { point: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 },
+        distance: Math.max(1, Math.hypot(b.x - a.x, b.y - a.y)) };
+    };
+    const beginGesture = () => {
+      if (pointers.size >= 2) {
+        const { point, distance } = pair();
+        gesture = { type: 'pinch', zoom, distance, anchor: mapPointAt(point) };
+        suppressClickUntil = performance.now() + 400;
+      } else if (pointers.size === 1) {
+        gesture = { type: 'pan', point: [...pointers.values()][0],
+          left: viewport.scrollLeft, top: viewport.scrollTop, moved: false };
+      } else {
+        gesture = null;
+        viewport.classList.remove('is-dragging');
+      }
+    };
+    viewport.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      pointers.set(event.pointerId, pointerPoint(event));
+      // Capture on the original target so a stationary tap still selects a marker.
+      if (event.target.setPointerCapture) event.target.setPointerCapture(event.pointerId);
+      viewport.scrollTo({ left: viewport.scrollLeft, top: viewport.scrollTop, behavior: 'instant' });
+      beginGesture();
+    });
+    viewport.addEventListener('pointermove', event => {
+      if (!pointers.has(event.pointerId) || !gesture) return;
+      const point = pointerPoint(event);
+      pointers.set(event.pointerId, point);
+      if (gesture.type === 'pinch') {
+        const current = pair();
+        setZoom(gesture.zoom * current.distance / gesture.distance, current.point, gesture.anchor);
+      } else {
+        const dx = point.x - gesture.point.x, dy = point.y - gesture.point.y;
+        if (!gesture.moved && Math.hypot(dx, dy) < 6) return;
+        gesture.moved = true;
+        viewport.scrollLeft = gesture.left - dx;
+        viewport.scrollTop = gesture.top - dy;
+      }
+      event.preventDefault();
+      viewport.classList.add('is-dragging');
+      suppressClickUntil = performance.now() + 400;
+    });
+    const endPointer = event => {
+      if (!pointers.has(event.pointerId)) return;
+      if (gesture?.type === 'pinch' || gesture?.moved) suppressClickUntil = performance.now() + 400;
+      pointers.delete(event.pointerId);
+      beginGesture();
+    };
+    viewport.addEventListener('pointerup', endPointer);
+    viewport.addEventListener('pointercancel', endPointer);
+    viewport.addEventListener('lostpointercapture', endPointer);
+    viewport.addEventListener('click', event => {
+      if (event.detail && performance.now() < suppressClickUntil) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    }, true);
+    // Preserve the map center across the different responsive base sizes.
+    const size = () => {
+      const bounds = svg.getBoundingClientRect();
+      return { width: viewport.clientWidth, height: viewport.clientHeight,
+        mapWidth: bounds.width, mapHeight: bounds.height };
+    };
+    previousSize = size();
+    new ResizeObserver(() => {
+      const current = size(), previous = previousSize;
+      if (!current.width || !previous.mapWidth ||
+        (current.width === previous.width && current.height === previous.height &&
+         current.mapWidth === previous.mapWidth && current.mapHeight === previous.mapHeight)) return;
+      const anchor = { x: (viewport.scrollLeft + previous.width / 2) / previous.mapWidth,
+        y: (viewport.scrollTop + previous.height / 2) / previous.mapHeight };
+      setZoom(zoom, center(), anchor);
+      if (pointers.size) beginGesture();
+    }).observe(viewport);
+    syncZoomControls();
+    const setLanguage = language => {
+      const english = language === 'en';
+      controls.setAttribute('aria-label', english ? 'Map zoom' : '地圖縮放');
+      [[zoomIn, english ? 'Zoom in' : '放大地圖'],
+        [zoomOut, english ? 'Zoom out' : '縮小地圖']].forEach(([button, text]) => {
+        button.setAttribute('aria-label', text);
+        button.title = text;
+      });
+    };
+    setLanguage('zh');
+    return { setLanguage };
+  };
+})();
