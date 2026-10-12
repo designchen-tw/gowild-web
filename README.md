@@ -6,7 +6,7 @@
 
 | 頁面 | Webflow Embed | 前端小工具 | 樣式 |
 | --- | --- | --- | --- |
-| 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v15.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v8.js` | `webflow-embeds/longdong-embed-v10.css`、`climbing-typography-v2.css` |
+| 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v16.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v8.js` | `webflow-embeds/longdong-embed-v11.css`、`climbing-typography-v2.css` |
 | 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v5.js`、`longdong-rock-estimate-v3.js` | `webflow-embeds/climbing-detail-v6.css`、`climbing-typography-v2.css` |
 | 德芙蘭 `/defulan` | `webflow-embeds/defulan.html` | 同墾丁 | 同墾丁 |
 | 全站選單 | `webflow-embeds/menu-overlay-full.html` | Embed 內部程式 | Embed 內部樣式 |
@@ -22,6 +22,7 @@
 - 攀登現況共用排版在 `webflow-embeds/climbing-conditions-layout-v3.css`：桌機所有卡片同一列（龍洞六欄、墾丁與德芙蘭五欄），卡片容器寬度 601–980px 時採三欄；墾丁與德芙蘭第二排風向／岩面各佔半寬；≤ 600px 時切換兩欄，兩欄時岩面推估與龍洞潮汐各自滿版。每排卡片透過 CSS subgrid 共用標題、主要數值、補充資料與來源四列，依內容自動決定列高，不保留固定高度的空白。三個地點 Embed 都需載入此 CSS；龍洞 `v30` 將上一次潮汐與標題包在同一標題區塊。
 - 龍洞九區位置圖由 `longdong-sector-map-v8.js` 與 `webflow-embeds/longdong-sector-map-v8.css` 提供，點地圖或下方卡片會雙向選取並聚焦。地圖以固定高度視窗呈現，可自由上下捲動；點選編號或下方卡片會捲到對應岩區，但不鎖定或放大視圖。九個岩區預設只有灰色輪廓，選取後只為該區填上網站資料色 #A9D9B6；後續新增地圖顏色也應沿用網站資料色票，集中在地圖 CSS 變數管理。地圖使用使用者提供的 Illustrator 原稿提取之 `webflow-embeds/longdong-map-vector-v3.svg`，保留原稿的海岸地形、道路、步道與九區邊界；九個標記位於原稿對應岩區內。地圖另以可切換中英文的文字標註道路、隧道、步道、停車場、和美國小、西靈巖寺與龍洞南口海洋公園，北方箭頭固定於地圖框左上角、北／N 置於箭頭下方；岩區卡片 hover 為灰底，選取後才顯示 #A9D9B6。龍洞最後一節不另留底部空白，直接銜接 Webflow footer 的既有內距。這是原稿比例的岩區示意位置，並非 GPS 導航或救援點編號。這一版僅用於龍洞。
 - 龍洞經典路線列表依校門口至後門排序。新增路線的岩區、英文名稱、類型與難度依 [TOCC 龍洞資料庫](https://tocc-climbing.github.io/longdong/#/) 的公開資料整理；原有七條的難度與顯示名稱依網站編輯者指定值。Disco 對應 TOCC 的「Disco大裂隙」；「自由裂隙」整條兩繩距以 P1/P2 較高的 5.9 標示。路線資料更新時請重新核對兩種來源。
+- 龍洞 CWA 預報的橫向資料列保留捲動，捲動條採低對比細線與深色軌道。出發前注意事項改為單欄清單，先說明天然岩場資訊會變動，再依序提示安全資料、天候、裝備與環境。
 - 岩區名稱的中英文排列在 `webflow-embeds/area-names-v1.css`：目前語言排前，手機版（≤ 520px）讓另一語言固定另起一行；三個地點 Embed 都需載入此 CSS。
 - 共通文字層級在 `webflow-embeds/climbing-typography-v2.css`：桌機章節標題／重要數值／卡片名稱／內文／標籤／細節文字為 22/20/16/16/14/12px；手機 `max-width:520px` 為 18/16/14/14/12/10px。修改時一併檢查字高、字距、灰度、左右留白與中英文換行。
 

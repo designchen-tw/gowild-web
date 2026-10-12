@@ -1,7 +1,7 @@
 <!-- Long Dong detail page. Paste into a dedicated Webflow Code Embed. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v10.css?v=2026c12">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v11.css?v=2026c12b">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-typography-v2.css?v=2026c12">
 <main class="ld-detail" data-ld-detail>
 <nav class="ld-detail__nav" aria-label="龍洞頁面導覽">
@@ -72,7 +72,7 @@
 
 <section class="ld-detail__section ld-detail__safety" id="ld-safety" data-ld-section="safety">
 <header class="ld-detail__heading"><p class="ld-detail__eyebrow">BEFORE YOU CLIMB</p><h2>出發前，先確認現場資訊</h2></header>
-<div class="ld-detail__safety-grid"><p>天然岩場的固定點、落石、海況與通行狀態都可能變動。紙本指南提供背景與路線脈絡，最新固定點資料及安全公告請以 TOCC 和龍洞攀岩資料庫為準。</p><ul><li>先閱讀 TOCC 龍洞安全資訊與救援位置。</li><li>確認潮汐、浪況、天候及步道通行狀況。</li><li>依路線型態準備合適裝備，並由具備相應經驗的隊伍攀登。</li><li>尊重海岸生態、在地社群與其他使用者，帶走所有垃圾。</li></ul></div>
+<div class="ld-detail__safety-grid"><ul><li>天然岩場的固定點、落石、海況與通行狀態都可能變動。紙本指南提供背景與路線脈絡，最新固定點資料及安全公告請以 TOCC 和龍洞攀岩資料庫為準。</li><li>先閱讀 TOCC 龍洞安全資訊與救援位置。</li><li>確認潮汐、浪況、天候及步道通行狀況。</li><li>依路線型態準備合適裝備，並由具備相應經驗的隊伍攀登。</li><li>尊重海岸生態、在地社群與其他使用者，帶走所有垃圾。</li></ul></div>
 <section class="ld-detail__live-weather" id="ld-live-weather" aria-labelledby="ld-live-weather-title">
 <header class="ld-detail__live-heading"><p class="ld-detail__eyebrow">LIVE CONDITIONS</p><h2 id="ld-live-weather-title" data-lang-en="Live Weather & On-site Cameras">即時天氣與現場影像</h2></header>
 <div class="ld-detail__live-grid">
@@ -87,7 +87,7 @@
 <script>
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ["longdong-rock-estimate-v3.js", "longdong-conditions-widget-v30.js", "longdong-cwa-widget-v15.js", "longdong-sector-map-v8.js"].forEach(function (name) {
+  ["longdong-rock-estimate-v3.js", "longdong-conditions-widget-v30.js", "longdong-cwa-widget-v16.js", "longdong-sector-map-v8.js"].forEach(function (name) {
     var script = document.createElement("script");
     script.async = false;
     script.src = local ? "../" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/" + name;
@@ -106,8 +106,8 @@
     document.head.appendChild(previewStyle);
   }
   var styles = local
-    ? ["./longdong-embed-v10.css", "./climbing-typography-v2.css", "./climbing-conditions-layout-v3.css", "./area-names-v1.css", "./longdong-sector-map-v8.css"]
-    : ["https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v10.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-conditions-layout-v3.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/area-names-v1.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-sector-map-v8.css"];
+    ? ["./longdong-embed-v11.css", "./climbing-typography-v2.css", "./climbing-conditions-layout-v3.css", "./area-names-v1.css", "./longdong-sector-map-v8.css"]
+    : ["https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v11.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-conditions-layout-v3.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/area-names-v1.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-sector-map-v8.css"];
   styles.forEach(function (href) {
     var link = document.createElement("link");
     link.rel = "stylesheet";
