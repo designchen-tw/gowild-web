@@ -8,7 +8,7 @@
 2. 只替換 landing 動畫區後方的一般內容 Embed；不要移除或包住 landing 的動畫 section。已使用新版首頁時，直接更新目前的 `.html-code.test` Code Embed。
 3. Code Embed 必須接在完整 landing 動畫 section 的後面，與它同層，貼上 `home.html` 的全部內容。程式會為這個 Embed 設定獨立疊層及自動高度，使內容蓋住固定投影片；不更動 landing 的尺寸、定位或動畫。這個 Embed 不要放在 sticky 容器或 Form Block 裡。
 4. **保留原本名為 `Course Inquires` 的原生 Webflow Form Block**，維持它在頁面上、位於首頁 Embed 外。不要刪除、複製或更改欄位名稱。程式會把這個原有 Form Block 移到新版 CONTACT 裡，並隱藏原本空出的聯絡 section。
-5. 全站 overlay 選單另貼回更新後的 `menu-overlay-full.html`；DISCOVER 連結已改為北到南，EXPLORE 不再提供尚未完成的人物誌連結；選單品牌文字上方新增首頁既有 Logo。
+5. 全站 overlay 選單另貼回更新後的 `menu-overlay-full.html`；DISCOVER 連結已改為北到南，EXPLORE 不再提供尚未完成的人物誌連結；選單品牌文字上方使用指定的 `logo_GW-03.avif` Logo。
 6. Publish 首頁。實際執行 JavaScript 的發布頁面才會整合表單；Designer 畫布可能仍顯示原生表單原本的位置。
 
 ## 聯絡表單
@@ -22,9 +22,9 @@
 
 ## 完成與驗證範圍
 
-- 新增首頁／聯絡兩處同步的中文、EN 按鈕，完整納入指定雙語介紹。
+- 只在上方介紹區保留一組中文、EN 按鈕，切換整頁文字及表單內容；聯絡區不再顯示語言按鈕，完整納入指定雙語介紹。
 - DISCOVER 保留四張卡片，順序為龍洞 → 德芙蘭 → 關子嶺 → 墾丁；關子嶺維持無連結。
-- 四個指定照片 URL 均已套用。EXPLORE 為人物誌、岩壁攝影、攀岩鞋修補三張卡片；人物誌保留為無連結、不可點擊的 article。
+- 四個指定照片 URL 均已套用，照片以原始彩色呈現；插畫卡片仍維持灰階。EXPLORE 為人物誌、岩壁攝影、攀岩鞋修補三張卡片；人物誌保留為無連結、不可點擊的 article。
 - 中英文卡片主副標題隨語言交換，副標題固定另起一行。按鈕灰底、hover／鍵盤 focus 時白底。
 -「主頁」返回原本 landing 頂端；其他四個導覽指向各自 section，採一致的頂端留白，避免 Webflow 預設捲動重複接管。底部導覽進入下方內容後才顯示，landing 不顯示這組按鈕。
 - 表單沿用 Webflow 原始單欄排版、灰底和 20px 圓角；一般欄位高 40px，訊息欄高 120px，不使用另一套欄位樣式覆蓋。
