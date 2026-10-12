@@ -25,6 +25,7 @@
 - 龍洞 CWA 預報的橫向資料列保留捲動，捲動條採低對比細線與深色軌道。出發前注意事項為無分隔線的單欄清單，先說明天然岩場資訊會變動，再依序提示安全資料、天候、裝備與環境。底部導覽的「出發／Go」使用前進箭頭；五個導覽連結皆以對應 section 的頂端作為捲動目標。
 - 墾丁與德芙蘭也使用低對比細捲動條、雙語路線名稱分行、單欄無分隔線的注意事項，以及「出發／Go」導覽。兩頁的注意內容保留各岩場自身的風險與通行資訊，五個導覽連結都對齊 section 頂端。
 - 德芙蘭位置圖由 `webflow-embeds/defulan-location-map-v2.svg`、`defulan-sector-map-v2.js` 和 `webflow-embeds/defulan-sector-map-v2.css` 提供，採用網站編輯者更新的 SVG，保留原稿比例、道路、步道、地標圖示及岩區輪廓；原稿的中文外框文字由可切換語言的網站文字取代，位置依原稿對齊。使用者編輯的 `webflow-embeds/defulan-location-map-v1.svg` 保留為來源檔，網站引用另存的 v2，避免舊 CDN 快取。標出台 8 線、支線道路、德芙蘭步道、停車場、公車站、廁所、露營區、大甲溪與原圖四個岩區；北方箭頭固定在地圖左上角。點選圖上編號或下方岩區卡片會選取並聚焦，僅被選取區顯示資料色 #A9D9B6，地圖可自由捲動。終極邊境、邊境左、邊境右共用原圖的「邊境區域」輪廓，三個編號只是對應下方字卡，不表示已確認的子區邊界；本圖是位置示意，並非精確導航。
+- 德芙蘭推薦路線依六個岩區順序排列，同區依[路線列表](https://docs.google.com/spreadsheets/d/18rTDqJdxDHYv9Jf7z8TZdqs46thJxRLNGasWbvRmiHc/edit?gid=0#gid=0)的列序排列；目前共十條，新增咪嚕咕／Miruku（邊境左，傳統，15 m，5.11b，小號 cam、nut）與私釀／Bootlegger（金三角，運動，5.10b，9 bolts + anchor，原表未列高度）。行前資訊以 Facebook 群組公告為主要更新來源，並提供路線表、路線照片兩個輔助連結；頁面不再使用 Mountain Project 名稱或連結。
 - 岩區名稱的中英文排列在 `webflow-embeds/area-names-v1.css`：目前語言排前，手機版（≤ 520px）讓另一語言固定另起一行；三個地點 Embed 都需載入此 CSS。
 - 共通文字層級在 `webflow-embeds/climbing-typography-v2.css`：桌機章節標題／重要數值／卡片名稱／內文／標籤／細節文字為 22/20/16/16/14/12px；手機 `max-width:520px` 為 18/16/14/14/12/10px。修改時一併檢查字高、字距、灰度、左右留白與中英文換行。
 
