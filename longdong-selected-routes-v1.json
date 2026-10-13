@@ -1,0 +1,1446 @@
+{
+  "source": {
+    "sheetId": "1QHFNQSPgKgQrTNnYn246wfotOYqOkzHjLltZ26keBgg",
+    "url": "https://docs.google.com/spreadsheets/d/1QHFNQSPgKgQrTNnYn246wfotOYqOkzHjLltZ26keBgg/edit",
+    "attribution": "臺灣戶外攀岩協會（TOCC）固定點更新計畫",
+    "projectUrl": "https://www.tocc-climbing.org/rebolting-project"
+  },
+  "license": "CC BY-SA 4.0",
+  "sourceVersion": "b1056081dd80",
+  "sourceUpdatedAt": "2026-10-11T04:19:58.876Z",
+  "routes": [
+    {
+      "name": "擠不擠由你",
+      "en": "Choose Your Size",
+      "grade": "5.8",
+      "area": "校門口",
+      "areaId": "longdong/school-gate",
+      "sector": "門簷",
+      "sectorId": "longdong/school-gate-s3",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/nrkn3m"
+      ],
+      "infoZh": "校門口 · 門簷 · 傳統攀登",
+      "infoEn": "School Gate · Apprentice Rock · Trad"
+    },
+    {
+      "name": "輪迴",
+      "en": "Reincarnation",
+      "grade": "5.11c",
+      "area": "校門口",
+      "areaId": "longdong/school-gate",
+      "sector": "校門口",
+      "sectorId": "longdong/school-gate-s2",
+      "type": "sport",
+      "bolts": 3,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/6bkwbs"
+      ],
+      "infoZh": "校門口 · 運動攀登 · 3+2快扣",
+      "infoEn": "School Gate · Sport · 3+2 quickdraws"
+    },
+    {
+      "name": "Oh No!",
+      "en": "Oh No!",
+      "grade": "5.11c",
+      "area": "校門口",
+      "areaId": "longdong/school-gate",
+      "sector": "校門口",
+      "sectorId": "longdong/school-gate-s2",
+      "type": "sport",
+      "bolts": 6,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/57q6c4"
+      ],
+      "infoZh": "校門口 · 運動攀登 · 6+2快扣",
+      "infoEn": "School Gate · Sport · 6+2 quickdraws"
+    },
+    {
+      "name": "Oh!",
+      "en": "Oh!",
+      "grade": "5.8",
+      "area": "校門口",
+      "areaId": "longdong/school-gate",
+      "sector": "校門口",
+      "sectorId": "longdong/school-gate-s2",
+      "type": "sport",
+      "bolts": 8,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/ay42j5"
+      ],
+      "infoZh": "校門口 · 運動攀登 · 8+2快扣",
+      "infoEn": "School Gate · Sport · 8+2 quickdraws"
+    },
+    {
+      "name": "阿彌陀佛",
+      "en": "Stepover",
+      "grade": "5.10b",
+      "area": "校門口",
+      "areaId": "longdong/school-gate",
+      "sector": "校門口",
+      "sectorId": "longdong/school-gate-s2",
+      "type": "sport",
+      "bolts": 8,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/4h9qrg"
+      ],
+      "infoZh": "校門口 · 運動攀登 · 8+2快扣",
+      "infoEn": "School Gate · Sport · 8+2 quickdraws"
+    },
+    {
+      "name": "V槽",
+      "en": "V-Groove",
+      "grade": "5.10b",
+      "area": "校門口",
+      "areaId": "longdong/school-gate",
+      "sector": "人面岩",
+      "sectorId": "longdong/school-gate-s1",
+      "type": "sport",
+      "bolts": 8,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/92w6b2"
+      ],
+      "infoZh": "校門口 · 人面岩 · 運動攀登 · 8+2快扣",
+      "infoEn": "School Gate · Disco Buttress · Sport · 8+2 quickdraws"
+    },
+    {
+      "name": "無名小卒",
+      "en": "Nowhere Man",
+      "grade": "5.12a",
+      "area": "校門口",
+      "areaId": "longdong/school-gate",
+      "sector": "人面岩",
+      "sectorId": "longdong/school-gate-s1",
+      "type": "sport",
+      "bolts": 9,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/nceecg"
+      ],
+      "infoZh": "校門口 · 人面岩 · 運動攀登 · 9+2快扣",
+      "infoEn": "School Gate · Disco Buttress · Sport · 9+2 quickdraws"
+    },
+    {
+      "name": "水虎魚",
+      "en": "Piranha",
+      "grade": "5.11c",
+      "area": "校門口",
+      "areaId": "longdong/school-gate",
+      "sector": "人面岩",
+      "sectorId": "longdong/school-gate-s1",
+      "type": "sport",
+      "bolts": 10,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/nf9tsv"
+      ],
+      "infoZh": "校門口 · 人面岩 · 運動攀登 · 10+2快扣",
+      "infoEn": "School Gate · Disco Buttress · Sport · 10+2 quickdraws"
+    },
+    {
+      "name": "Disco大裂隙",
+      "en": "Disco Fistcrack",
+      "grade": "5.10a",
+      "area": "校門口",
+      "areaId": "longdong/school-gate",
+      "sector": "人面岩",
+      "sectorId": "longdong/school-gate-s1",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/bec7mg"
+      ],
+      "infoZh": "校門口 · 人面岩 · 傳統攀登",
+      "infoEn": "School Gate · Disco Buttress · Trad"
+    },
+    {
+      "name": "蔚藍的誘惑",
+      "en": "Crystal Blue Temptation",
+      "grade": "5.8",
+      "area": "鐘塔",
+      "areaId": "longdong/clocktower",
+      "sector": "短巷",
+      "sectorId": "longdong/clocktower-s6",
+      "type": "dws",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/maw78n"
+      ],
+      "infoZh": "鐘塔 · 短巷 · 深水抱石",
+      "infoEn": "Clock Tower · Short Lane · Deep-water soloing"
+    },
+    {
+      "name": "橢圓辦公室",
+      "en": "Oval Office",
+      "grade": "5.11a",
+      "area": "鐘塔",
+      "areaId": "longdong/clocktower",
+      "sector": "總統頭像山",
+      "sectorId": "longdong/clocktower-s5",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/9bvhke"
+      ],
+      "infoZh": "鐘塔 · 總統頭像山 · 傳統攀登",
+      "infoEn": "Clock Tower · Four Presidents · Trad"
+    },
+    {
+      "name": "剃刀邊緣",
+      "en": "One Way Ticket",
+      "grade": "5.10c",
+      "area": "鐘塔",
+      "areaId": "longdong/clocktower",
+      "sector": "鐘塔",
+      "sectorId": "longdong/clocktower-s4",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/vwhakz"
+      ],
+      "infoZh": "鐘塔 · 傳統攀登",
+      "infoEn": "Clock Tower · Trad"
+    },
+    {
+      "name": "斜線",
+      "en": "Diagonal",
+      "grade": "5.10d",
+      "area": "鐘塔",
+      "areaId": "longdong/clocktower",
+      "sector": "鐘塔",
+      "sectorId": "longdong/clocktower-s4",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/gshh2m"
+      ],
+      "infoZh": "鐘塔 · 傳統攀登",
+      "infoEn": "Clock Tower · Trad"
+    },
+    {
+      "name": "訓導主任",
+      "en": "Blind Reach",
+      "grade": "5.11d",
+      "area": "鐘塔",
+      "areaId": "longdong/clocktower",
+      "sector": "訓導處",
+      "sectorId": "longdong/clocktower-s1",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/ctse76"
+      ],
+      "infoZh": "鐘塔 · 訓導處 · 傳統攀登",
+      "infoEn": "Clock Tower · Discipline Area · Trad"
+    },
+    {
+      "name": "非暴力抵抗",
+      "en": "Civil Disobedience",
+      "grade": "5.9",
+      "area": "鐘塔",
+      "areaId": "longdong/clocktower",
+      "sector": "訓導處",
+      "sectorId": "longdong/clocktower-s1",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/q4e55t"
+      ],
+      "infoZh": "鐘塔 · 訓導處 · 傳統攀登",
+      "infoEn": "Clock Tower · Discipline Area · Trad"
+    },
+    {
+      "name": "觀護人",
+      "en": "Probation Officer",
+      "grade": "5.10b",
+      "area": "鐘塔",
+      "areaId": "longdong/clocktower",
+      "sector": "訓導處",
+      "sectorId": "longdong/clocktower-s1",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/ffwwrm"
+      ],
+      "infoZh": "鐘塔 · 訓導處 · 傳統攀登",
+      "infoEn": "Clock Tower · Discipline Area · Trad"
+    },
+    {
+      "name": "宇宙邊緣",
+      "en": "Edge of the Universe",
+      "grade": "5.10d",
+      "area": "長巷",
+      "areaId": "longdong/long-lane",
+      "sector": "佈告欄",
+      "sectorId": "longdong/long-lane-s1",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/y8kp9j"
+      ],
+      "infoZh": "長巷 · 佈告欄 · 傳統攀登",
+      "infoEn": "Long Lane · Bulletin Board · Trad"
+    },
+    {
+      "name": "黑洞",
+      "en": "Black Hole",
+      "grade": "5.11d",
+      "area": "長巷",
+      "areaId": "longdong/long-lane",
+      "sector": "佈告欄",
+      "sectorId": "longdong/long-lane-s1",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/s8z9e4"
+      ],
+      "infoZh": "長巷 · 佈告欄 · 傳統攀登",
+      "infoEn": "Long Lane · Bulletin Board · Trad"
+    },
+    {
+      "name": "倒走天梯",
+      "en": "Sky Ladder",
+      "grade": "5.10b",
+      "area": "長巷",
+      "areaId": "longdong/long-lane",
+      "sector": "佈告欄",
+      "sectorId": "longdong/long-lane-s1",
+      "type": "sport",
+      "bolts": 9,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/as6qw8"
+      ],
+      "infoZh": "長巷 · 佈告欄 · 運動攀登 · 9+2快扣",
+      "infoEn": "Long Lane · Bulletin Board · Sport · 9+2 quickdraws"
+    },
+    {
+      "name": "發想",
+      "en": "Plausible",
+      "grade": "5.10b",
+      "area": "長巷",
+      "areaId": "longdong/long-lane",
+      "sector": "佈告欄",
+      "sectorId": "longdong/long-lane-s1",
+      "type": "sport",
+      "bolts": 9,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/6h36pz"
+      ],
+      "infoZh": "長巷 · 佈告欄 · 運動攀登 · 9+2快扣",
+      "infoEn": "Long Lane · Bulletin Board · Sport · 9+2 quickdraws"
+    },
+    {
+      "name": "金門斜板",
+      "en": "Golden Gate Slab",
+      "grade": "5.8",
+      "area": "長巷",
+      "areaId": "longdong/long-lane",
+      "sector": "佈告欄",
+      "sectorId": "longdong/long-lane-s1",
+      "type": "sport",
+      "bolts": 4,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/4kfv2n"
+      ],
+      "infoZh": "長巷 · 佈告欄 · 運動攀登 · 4+2快扣",
+      "infoEn": "Long Lane · Bulletin Board · Sport · 4+2 quickdraws"
+    },
+    {
+      "name": "天勾",
+      "en": "Skyhook",
+      "grade": "5.11a",
+      "area": "長巷",
+      "areaId": "longdong/long-lane",
+      "sector": "長巷",
+      "sectorId": "longdong/long-lane-s2",
+      "type": "sport",
+      "bolts": 4,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/ebzsy6"
+      ],
+      "infoZh": "長巷 · 運動攀登 · 4+2快扣",
+      "infoEn": "Long Lane · Sport · 4+2 quickdraws"
+    },
+    {
+      "name": "凹洞懸岩",
+      "en": "Pocket Overhang",
+      "grade": "5.10a",
+      "area": "長巷",
+      "areaId": "longdong/long-lane",
+      "sector": "長巷",
+      "sectorId": "longdong/long-lane-s2",
+      "type": "sport",
+      "bolts": 7,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/x3djc5"
+      ],
+      "infoZh": "長巷 · 運動攀登 · 7+2快扣",
+      "infoEn": "Long Lane · Sport · 7+2 quickdraws"
+    },
+    {
+      "name": "杯弓蛇影",
+      "en": "Fear Only Fear Itself",
+      "grade": "5.11+",
+      "area": "長巷",
+      "areaId": "longdong/long-lane",
+      "sector": "長巷",
+      "sectorId": "longdong/long-lane-s2",
+      "type": "sport",
+      "bolts": 5,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/hbqcmf"
+      ],
+      "infoZh": "長巷 · 運動攀登 · 5+2快扣",
+      "infoEn": "Long Lane · Sport · 5+2 quickdraws"
+    },
+    {
+      "name": "十字裂隙",
+      "en": "Cross",
+      "grade": "5.9",
+      "area": "長巷",
+      "areaId": "longdong/long-lane",
+      "sector": "獨木橋畔",
+      "sectorId": "longdong/long-lane-s3",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/zms6ag"
+      ],
+      "infoZh": "長巷 · 獨木橋畔 · 傳統攀登",
+      "infoEn": "Long Lane · Wooden Bridge · Trad"
+    },
+    {
+      "name": "弒龍者",
+      "en": "Dragonslayer",
+      "grade": "5.9",
+      "area": "長巷",
+      "areaId": "longdong/long-lane",
+      "sector": "獨木橋畔",
+      "sectorId": "longdong/long-lane-s3",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/6vfuxh"
+      ],
+      "infoZh": "長巷 · 獨木橋畔 · 傳統攀登",
+      "infoEn": "Long Lane · Wooden Bridge · Trad"
+    },
+    {
+      "name": "白龍夢",
+      "en": "Dream of White Dragons",
+      "grade": "5.9",
+      "area": "長巷",
+      "areaId": "longdong/long-lane",
+      "sector": "獨木橋畔",
+      "sectorId": "longdong/long-lane-s3",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/5mfdep"
+      ],
+      "infoZh": "長巷 · 獨木橋畔 · 傳統攀登",
+      "infoEn": "Long Lane · Wooden Bridge · Trad"
+    },
+    {
+      "name": "白鯨記",
+      "en": "Moby Dick",
+      "grade": "5.10a",
+      "area": "音樂廳",
+      "areaId": "longdong/music-hall",
+      "sector": "鯨魚頭",
+      "sectorId": "longdong/music-hall-s7",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/3fbrqz"
+      ],
+      "infoZh": "音樂廳 · 鯨魚頭 · 傳統攀登",
+      "infoEn": "Music Hall · Whale’s Head · Trad"
+    },
+    {
+      "name": "星巴克",
+      "en": "Starbuck",
+      "grade": "5.10+",
+      "area": "音樂廳",
+      "areaId": "longdong/music-hall",
+      "sector": "鯨魚頭",
+      "sectorId": "longdong/music-hall-s7",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/wysr88"
+      ],
+      "infoZh": "音樂廳 · 鯨魚頭 · 傳統攀登",
+      "infoEn": "Music Hall · Whale’s Head · Trad"
+    },
+    {
+      "name": "亞哈船長",
+      "en": "Captain Ahab",
+      "grade": "5.11+",
+      "area": "音樂廳",
+      "areaId": "longdong/music-hall",
+      "sector": "鯨魚頭",
+      "sectorId": "longdong/music-hall-s7",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/z62yhv"
+      ],
+      "infoZh": "音樂廳 · 鯨魚頭 · 傳統攀登",
+      "infoEn": "Music Hall · Whale’s Head · Trad"
+    },
+    {
+      "name": "包廂內角",
+      "en": "Balcony Dihedral",
+      "grade": "5.10a",
+      "area": "音樂廳",
+      "areaId": "longdong/music-hall",
+      "sector": "包廂",
+      "sectorId": "longdong/music-hall-s6",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 2,
+      "risk": "",
+      "sourceIds": [
+        "longdong/z2tegg",
+        "longdong/tfyank"
+      ],
+      "infoZh": "音樂廳 · 包廂 · 傳統攀登 · 2Pitch",
+      "infoEn": "Music Hall · Balcony · Trad · 2Pitch"
+    },
+    {
+      "name": "結婚路線",
+      "en": "Wedding Route",
+      "grade": "5.7",
+      "area": "音樂廳",
+      "areaId": "longdong/music-hall",
+      "sector": "北面",
+      "sectorId": "longdong/music-hall-s4",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/n5wr77"
+      ],
+      "infoZh": "音樂廳 · 北面 · 傳統攀登",
+      "infoEn": "Music Hall · North Face · Trad"
+    },
+    {
+      "name": "小三角",
+      "en": "Small Triangle",
+      "grade": "5.9+",
+      "area": "音樂廳",
+      "areaId": "longdong/music-hall",
+      "sector": "北面",
+      "sectorId": "longdong/music-hall-s4",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/rtpfqe"
+      ],
+      "infoZh": "音樂廳 · 北面 · 傳統攀登",
+      "infoEn": "Music Hall · North Face · Trad"
+    },
+    {
+      "name": "大鼓",
+      "en": "Big Drum",
+      "grade": "5.11b",
+      "area": "音樂廳",
+      "areaId": "longdong/music-hall",
+      "sector": "正面",
+      "sectorId": "longdong/music-hall-s3",
+      "type": "sport",
+      "bolts": 8,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/d7xdgx"
+      ],
+      "infoZh": "音樂廳 · 正面 · 運動攀登 · 8+2快扣",
+      "infoEn": "Music Hall · Main Face · Sport · 8+2 quickdraws"
+    },
+    {
+      "name": "豎琴",
+      "en": "Fingercrack",
+      "grade": "5.11c",
+      "area": "音樂廳",
+      "areaId": "longdong/music-hall",
+      "sector": "正面",
+      "sectorId": "longdong/music-hall-s3",
+      "type": "sport",
+      "bolts": 8,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/jw4spg"
+      ],
+      "infoZh": "音樂廳 · 正面 · 運動攀登 · 8+2快扣",
+      "infoEn": "Music Hall · Main Face · Sport · 8+2 quickdraws"
+    },
+    {
+      "name": "Fucking Fall",
+      "en": "Fucking Fall",
+      "grade": "5.11a",
+      "area": "音樂廳",
+      "areaId": "longdong/music-hall",
+      "sector": "正面",
+      "sectorId": "longdong/music-hall-s3",
+      "type": "sport",
+      "bolts": 7,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/napnzf"
+      ],
+      "infoZh": "音樂廳 · 正面 · 運動攀登 · 7+2快扣",
+      "infoEn": "Music Hall · Main Face · Sport · 7+2 quickdraws"
+    },
+    {
+      "name": "自由裂隙",
+      "en": "Freedom Crack",
+      "grade": "5.9",
+      "area": "大禮堂",
+      "areaId": "longdong/grand-auditorium",
+      "sector": "西面",
+      "sectorId": "longdong/grand-auditorium-s4",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 2,
+      "risk": "",
+      "sourceIds": [
+        "longdong/dct4zy",
+        "longdong/a3g8gj",
+        "longdong/78evxc"
+      ],
+      "infoZh": "大禮堂 · 西面 · 傳統攀登 · 2Pitch",
+      "infoEn": "Grand Auditorium · West Wall · Trad · 2Pitch"
+    },
+    {
+      "name": "大懸岩",
+      "en": "The Great Roof",
+      "grade": "5.13b",
+      "area": "大禮堂",
+      "areaId": "longdong/grand-auditorium",
+      "sector": "西面",
+      "sectorId": "longdong/grand-auditorium-s4",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 2,
+      "risk": "",
+      "sourceIds": [
+        "longdong/h7fnue",
+        "longdong/zzj3r7"
+      ],
+      "infoZh": "大禮堂 · 西面 · 傳統攀登 · 2Pitch",
+      "infoEn": "Grand Auditorium · West Wall · Trad · 2Pitch"
+    },
+    {
+      "name": "十",
+      "en": "Ten",
+      "grade": "5.9+",
+      "area": "大禮堂",
+      "areaId": "longdong/grand-auditorium",
+      "sector": "西面",
+      "sectorId": "longdong/grand-auditorium-s4",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/zf47a8"
+      ],
+      "infoZh": "大禮堂 · 西面 · 傳統攀登",
+      "infoEn": "Grand Auditorium · West Wall · Trad"
+    },
+    {
+      "name": "龍路",
+      "en": "Via del Drago",
+      "grade": "5.10+",
+      "area": "大禮堂",
+      "areaId": "longdong/grand-auditorium",
+      "sector": "龍柱",
+      "sectorId": "longdong/grand-auditorium-s6",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 2,
+      "risk": "",
+      "sourceIds": [
+        "longdong/drdkqj",
+        "longdong/4x7zmd"
+      ],
+      "infoZh": "大禮堂 · 龍柱 · 傳統攀登 · 2Pitch",
+      "infoEn": "Grand Auditorium · Dragon Point Buttress · Trad · 2Pitch"
+    },
+    {
+      "name": "騙人的岩角",
+      "en": "Deceiving Arête",
+      "grade": "5.11a",
+      "area": "第一洞",
+      "areaId": "longdong/first-cave",
+      "sector": "龍脊背面下半部",
+      "sectorId": "longdong/first-cave-s7",
+      "type": "sport",
+      "bolts": 6,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/jrefpj"
+      ],
+      "infoZh": "第一洞 · 龍脊背面下半部 · 運動攀登 · 6+2快扣",
+      "infoEn": "First Cave · Lower Dragon Ridge · Sport · 6+2 quickdraws"
+    },
+    {
+      "name": "福利社",
+      "en": "Commissary Crack",
+      "grade": "5.10",
+      "area": "第一洞",
+      "areaId": "longdong/first-cave",
+      "sector": "龍脊背面下半部",
+      "sectorId": "longdong/first-cave-s7",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 2,
+      "risk": "",
+      "sourceIds": [
+        "longdong/y8g6e6"
+      ],
+      "infoZh": "第一洞 · 龍脊背面下半部 · 傳統攀登 · 2Pitch",
+      "infoEn": "First Cave · Lower Dragon Ridge · Trad · 2Pitch"
+    },
+    {
+      "name": "Sorry Erica",
+      "en": "Sorry Erica",
+      "grade": "5.10a",
+      "area": "第一洞",
+      "areaId": "longdong/first-cave",
+      "sector": "龍脊背面下半部",
+      "sectorId": "longdong/first-cave-s7",
+      "type": "sport",
+      "bolts": 7,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/zrhbb5"
+      ],
+      "infoZh": "第一洞 · 龍脊背面下半部 · 運動攀登 · 7+2快扣",
+      "infoEn": "First Cave · Lower Dragon Ridge · Sport · 7+2 quickdraws"
+    },
+    {
+      "name": "無尾熊",
+      "en": "Koala",
+      "grade": "5.10d",
+      "area": "第二洞",
+      "areaId": "longdong/second-cave",
+      "sector": "後院",
+      "sectorId": "longdong/second-cave-s1",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/gnn4mh"
+      ],
+      "infoZh": "第二洞 · 後院 · 傳統攀登",
+      "infoEn": "Second Cave · Back Porch · Trad"
+    },
+    {
+      "name": "榔頭時刻",
+      "en": "Hammer Time",
+      "grade": "5.10a",
+      "area": "第二洞",
+      "areaId": "longdong/second-cave",
+      "sector": "入口裂隙",
+      "sectorId": "longdong/second-cave-s3",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "PG",
+      "sourceIds": [
+        "longdong/aggdmw"
+      ],
+      "infoZh": "第二洞 · 入口裂隙 · 傳統攀登 · PG",
+      "infoEn": "Second Cave · Entrance Cracks · Trad · PG"
+    },
+    {
+      "name": "中將湯",
+      "en": "Zhong Jiang Soup",
+      "grade": "5.11c",
+      "area": "第二洞",
+      "areaId": "longdong/second-cave",
+      "sector": "入口裂隙",
+      "sectorId": "longdong/second-cave-s3",
+      "type": "sport",
+      "bolts": 14,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/hn63q8"
+      ],
+      "infoZh": "第二洞 · 入口裂隙 · 運動攀登 · 14+2快扣",
+      "infoEn": "Second Cave · Entrance Cracks · Sport · 14+2 quickdraws"
+    },
+    {
+      "name": "向陽懸岩",
+      "en": "Sunshine Overhang",
+      "grade": "5.9",
+      "area": "第二洞",
+      "areaId": "longdong/second-cave",
+      "sector": "陽光面",
+      "sectorId": "longdong/second-cave-s2",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/2umpm9"
+      ],
+      "infoZh": "第二洞 · 陽光面 · 傳統攀登",
+      "infoEn": "Second Cave · Sunshine Wall · Trad"
+    },
+    {
+      "name": "右衛門",
+      "en": "Uemon",
+      "grade": "5.9",
+      "area": "第二洞",
+      "areaId": "longdong/second-cave",
+      "sector": "入口裂隙",
+      "sectorId": "longdong/second-cave-s3",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/9c6yv9"
+      ],
+      "infoZh": "第二洞 · 入口裂隙 · 傳統攀登",
+      "infoEn": "Second Cave · Entrance Cracks · Trad"
+    },
+    {
+      "name": "殺人狂",
+      "en": "Psycho Killer",
+      "grade": "5.11d",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "貓屋",
+      "sectorId": "longdong/golden-valley-s1",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/gxpjt5"
+      ],
+      "infoZh": "黃金谷 · 貓屋 · 傳統攀登",
+      "infoEn": "Golden Valley · The Cathouse · Trad"
+    },
+    {
+      "name": "匏瓜抓狂",
+      "en": "BA Insanity",
+      "grade": "5.10a",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "貓屋",
+      "sectorId": "longdong/golden-valley-s1",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/gsrxkm"
+      ],
+      "infoZh": "黃金谷 · 貓屋 · 傳統攀登",
+      "infoEn": "Golden Valley · The Cathouse · Trad"
+    },
+    {
+      "name": "語言學家",
+      "en": "Cunning Linguist",
+      "grade": "5.10c",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "貓屋",
+      "sectorId": "longdong/golden-valley-s1",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/6sdj7z"
+      ],
+      "infoZh": "黃金谷 · 貓屋 · 傳統攀登",
+      "infoEn": "Golden Valley · The Cathouse · Trad"
+    },
+    {
+      "name": "貓戰",
+      "en": "Catfight",
+      "grade": "5.10c",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "伸展台",
+      "sectorId": "longdong/golden-valley-s2",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "PG",
+      "sourceIds": [
+        "longdong/9vwgud"
+      ],
+      "infoZh": "黃金谷 · 伸展台 · 傳統攀登 · PG",
+      "infoEn": "Golden Valley · Catwalk · Trad · PG"
+    },
+    {
+      "name": "華西街",
+      "en": "Snake Alley",
+      "grade": "5.10b",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "浪之外",
+      "sectorId": "longdong/golden-valley-s3",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 2,
+      "risk": "",
+      "sourceIds": [
+        "longdong/wyn6bu",
+        "longdong/kprzh9"
+      ],
+      "infoZh": "黃金谷 · 浪之外 · 傳統攀登 · 2Pitch",
+      "infoEn": "Golden Valley · Euro Wall · Trad · 2Pitch"
+    },
+    {
+      "name": "黃金浴",
+      "en": "Golden Shower",
+      "grade": "5.9",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "黃金岩",
+      "sectorId": "longdong/golden-valley-s4",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/sm6ph4"
+      ],
+      "infoZh": "黃金谷 · 黃金岩 · 傳統攀登",
+      "infoEn": "Golden Valley · Gold Wall · Trad"
+    },
+    {
+      "name": "珍珠項鍊",
+      "en": "PearlNecklace",
+      "grade": "5.10a",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "黃金岩",
+      "sectorId": "longdong/golden-valley-s4",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/6ssmhx"
+      ],
+      "infoZh": "黃金谷 · 黃金岩 · 傳統攀登",
+      "infoEn": "Golden Valley · Gold Wall · Trad"
+    },
+    {
+      "name": "白臉",
+      "en": "White-Faced Man",
+      "grade": "5.11b",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "黑岩",
+      "sectorId": "longdong/golden-valley-s5",
+      "type": "sport",
+      "bolts": 7,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/58745w"
+      ],
+      "infoZh": "黃金谷 · 黑岩 · 運動攀登 · 7+2快扣",
+      "infoEn": "Golden Valley · Black Wall · Sport · 7+2 quickdraws"
+    },
+    {
+      "name": "黑臉",
+      "en": "Black-Faced Man",
+      "grade": "5.12a",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "黑岩",
+      "sectorId": "longdong/golden-valley-s5",
+      "type": "sport",
+      "bolts": 8,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/4gw25p"
+      ],
+      "infoZh": "黃金谷 · 黑岩 · 運動攀登 · 8+2快扣",
+      "infoEn": "Golden Valley · Black Wall · Sport · 8+2 quickdraws"
+    },
+    {
+      "name": "黑魔法巫婆",
+      "en": "Black Magic Woman",
+      "grade": "5.10b",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "黑岩",
+      "sectorId": "longdong/golden-valley-s5",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/t84dek"
+      ],
+      "infoZh": "黃金谷 · 黑岩 · 傳統攀登",
+      "infoEn": "Golden Valley · Black Wall · Trad"
+    },
+    {
+      "name": "名不虛傳",
+      "en": "The Real Legend",
+      "grade": "5.13a",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "傳奇岩",
+      "sectorId": "longdong/golden-valley-s6",
+      "type": "sport",
+      "bolts": 13,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/xwcdvj"
+      ],
+      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 13+2快扣",
+      "infoEn": "Golden Valley · Legend Wall · Sport · 13+2 quickdraws"
+    },
+    {
+      "name": "黃金傳奇",
+      "en": "Golden Legend",
+      "grade": "5.13d",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "傳奇岩",
+      "sectorId": "longdong/golden-valley-s6",
+      "type": "sport",
+      "bolts": 15,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/unbhx9"
+      ],
+      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 15+2快扣",
+      "infoEn": "Golden Valley · Legend Wall · Sport · 15+2 quickdraws"
+    },
+    {
+      "name": "無名氏",
+      "en": "Mr. Anonymous",
+      "grade": "5.11d",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "傳奇岩",
+      "sectorId": "longdong/golden-valley-s6",
+      "type": "sport",
+      "bolts": 12,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/9hu944"
+      ],
+      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 12+2快扣",
+      "infoEn": "Golden Valley · Legend Wall · Sport · 12+2 quickdraws"
+    },
+    {
+      "name": "不方便",
+      "en": "Inconvenient",
+      "grade": "5.11a",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "傳奇岩",
+      "sectorId": "longdong/golden-valley-s6",
+      "type": "sport",
+      "bolts": 7,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/uweyd7"
+      ],
+      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 7+2快扣",
+      "infoEn": "Golden Valley · Legend Wall · Sport · 7+2 quickdraws"
+    },
+    {
+      "name": "非常不方便",
+      "en": "Very Inconvenient",
+      "grade": "5.12a",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "傳奇岩",
+      "sectorId": "longdong/golden-valley-s6",
+      "type": "sport",
+      "bolts": 11,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/u3dxdb"
+      ],
+      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 11+2快扣",
+      "infoEn": "Golden Valley · Legend Wall · Sport · 11+2 quickdraws"
+    },
+    {
+      "name": "細帶比基尼",
+      "en": "String Bikini",
+      "grade": "5.11a",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "比基尼洞穴",
+      "sectorId": "longdong/golden-valley-s7",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/b6nhd6"
+      ],
+      "infoZh": "黃金谷 · 比基尼洞穴 · 傳統攀登",
+      "infoEn": "Golden Valley · Bikini Cave · Trad"
+    },
+    {
+      "name": "黃粱一夢",
+      "en": "Aus der Traum",
+      "grade": "5.10b",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "龍船岩",
+      "sectorId": "longdong/golden-valley-s9",
+      "type": "sport",
+      "bolts": 10,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/pthe3h",
+        "longdong/msrqz9"
+      ],
+      "infoZh": "黃金谷 · 龍船岩 · 運動攀登 · 10+2快扣",
+      "infoEn": "Golden Valley · Dragon Boat Wall · Sport · 10+2 quickdraws"
+    },
+    {
+      "name": "決不",
+      "en": "Never",
+      "grade": "5.11a",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "龍船岩",
+      "sectorId": "longdong/golden-valley-s9",
+      "type": "sport",
+      "bolts": 11,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/fhnqd2"
+      ],
+      "infoZh": "黃金谷 · 龍船岩 · 運動攀登 · 11+2快扣",
+      "infoEn": "Golden Valley · Dragon Boat Wall · Sport · 11+2 quickdraws"
+    },
+    {
+      "name": "團隊合作",
+      "en": "Teamwork",
+      "grade": "5.10c",
+      "area": "黃金谷",
+      "areaId": "longdong/golden-valley",
+      "sector": "龍船岩",
+      "sectorId": "longdong/golden-valley-s9",
+      "type": "sport",
+      "bolts": 7,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/khuh2r"
+      ],
+      "infoZh": "黃金谷 · 龍船岩 · 運動攀登 · 7+2快扣",
+      "infoEn": "Golden Valley · Dragon Boat Wall · Sport · 7+2 quickdraws"
+    },
+    {
+      "name": "誰騙了誰?",
+      "en": "Who Fooled Who?",
+      "grade": "5.11a",
+      "area": "後門",
+      "areaId": "longdong/back-door",
+      "sector": "地下二樓",
+      "sectorId": "longdong/back-door-s3",
+      "type": "sport",
+      "bolts": 12,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/h85jpa"
+      ],
+      "infoZh": "後門 · 地下二樓 · 運動攀登 · 12+2快扣",
+      "infoEn": "Back Door · Basement · Sport · 12+2 quickdraws"
+    },
+    {
+      "name": "大家的福利",
+      "en": "Everybody's Welfare",
+      "grade": "5.11a",
+      "area": "後門",
+      "areaId": "longdong/back-door",
+      "sector": "地下二樓",
+      "sectorId": "longdong/back-door-s3",
+      "type": "sport",
+      "bolts": 9,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/ttp5g6"
+      ],
+      "infoZh": "後門 · 地下二樓 · 運動攀登 · 9+2快扣",
+      "infoEn": "Back Door · Basement · Sport · 9+2 quickdraws"
+    },
+    {
+      "name": "高檔快扣",
+      "en": "High Class Quickdraw",
+      "grade": "5.10d",
+      "area": "後門",
+      "areaId": "longdong/back-door",
+      "sector": "地下二樓",
+      "sectorId": "longdong/back-door-s3",
+      "type": "sport",
+      "bolts": 11,
+      "anchors": 3,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/t357dk"
+      ],
+      "infoZh": "後門 · 地下二樓 · 運動攀登 · 11+3快扣",
+      "infoEn": "Back Door · Basement · Sport · 11+3 quickdraws"
+    },
+    {
+      "name": "倩女驚魂",
+      "en": "Phantom Fright",
+      "grade": "5.10b",
+      "area": "後門",
+      "areaId": "longdong/back-door",
+      "sector": "地下二樓",
+      "sectorId": "longdong/back-door-s3",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/emuu2b"
+      ],
+      "infoZh": "後門 · 地下二樓 · 傳統攀登",
+      "infoEn": "Back Door · Basement · Trad"
+    },
+    {
+      "name": "好人阿郎",
+      "en": "Good Guy A-Lang",
+      "grade": "5.11c",
+      "area": "後門",
+      "areaId": "longdong/back-door",
+      "sector": "地下二樓",
+      "sectorId": "longdong/back-door-s3",
+      "type": "sport",
+      "bolts": 11,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/qn468g"
+      ],
+      "infoZh": "後門 · 地下二樓 · 運動攀登 · 11+2快扣",
+      "infoEn": "Back Door · Basement · Sport · 11+2 quickdraws"
+    },
+    {
+      "name": "赤頭",
+      "en": "Redhead",
+      "grade": "5.11a",
+      "area": "後門",
+      "areaId": "longdong/back-door",
+      "sector": "地下二樓",
+      "sectorId": "longdong/back-door-s3",
+      "type": "sport",
+      "bolts": 12,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/s97zfz"
+      ],
+      "infoZh": "後門 · 地下二樓 · 運動攀登 · 12+2快扣",
+      "infoEn": "Back Door · Basement · Sport · 12+2 quickdraws"
+    },
+    {
+      "name": "新法拉利",
+      "en": "New Ferrari",
+      "grade": "5.11c",
+      "area": "後門",
+      "areaId": "longdong/back-door",
+      "sector": "地下二樓",
+      "sectorId": "longdong/back-door-s3",
+      "type": "sport",
+      "bolts": 9,
+      "anchors": 2,
+      "pitches": 1,
+      "risk": "",
+      "sourceIds": [
+        "longdong/e44qgd"
+      ],
+      "infoZh": "後門 · 地下二樓 · 運動攀登 · 9+2快扣",
+      "infoEn": "Back Door · Basement · Sport · 9+2 quickdraws"
+    },
+    {
+      "name": "遺落的視界",
+      "en": "Lost World",
+      "grade": "5.9",
+      "area": "後門",
+      "areaId": "longdong/back-door",
+      "sector": "美好的懸岩",
+      "sectorId": "longdong/back-door-s6",
+      "type": "trad",
+      "bolts": null,
+      "anchors": null,
+      "pitches": 2,
+      "risk": "",
+      "sourceIds": [
+        "longdong/pgr5vy",
+        "longdong/ghtaan"
+      ],
+      "infoZh": "後門 · 美好的懸岩 · 傳統攀登 · 2Pitch",
+      "infoEn": "Back Door · P.O. Wall · Trad · 2Pitch"
+    }
+  ]
+}
