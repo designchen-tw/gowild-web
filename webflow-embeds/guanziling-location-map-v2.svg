@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1324.5 1383">
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1324.5 1383">
   <!-- Generator: Adobe Illustrator 29.1.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 142)  -->
   <defs>
     <style>
-      .st0, .st1, .st2, .st3 {
+      .st0, .st1, .st2, .st3, .st4 {
         isolation: isolate;
       }
 
-      .st4, .st5, .st6, .st7 {
+      .st5, .st6, .st7, .st8, .st4 {
         fill: none;
+      }
+
+      .st5, .st6, .st7, .st4 {
         stroke-linecap: round;
         stroke-width: 3px;
       }
 
-      .st4, .st5, .st7 {
+      .st5, .st6, .st4 {
         stroke: #626b6c;
         stroke-dasharray: 5 8;
       }
 
-      .st5 {
+      .st6 {
         stroke-opacity: .7;
       }
 
@@ -28,15 +31,15 @@
         font-size: 22px;
       }
 
-      .st8 {
+      .st9 {
         fill: #849397;
       }
 
-      .st6 {
+      .st7 {
         stroke: #ebefef;
       }
 
-      .st6, .st9 {
+      .st7, .st10 {
         stroke-linejoin: round;
       }
 
@@ -50,15 +53,11 @@
         font-weight: 300;
       }
 
-      .st7 {
-        opacity: .7;
-      }
-
-      .st10 {
+      .st11 {
         fill: #1a2223;
       }
 
-      .st9 {
+      .st10 {
         fill: #151a1b;
         stroke: #92999a;
         stroke-width: 2.5px;
@@ -68,63 +67,107 @@
         fill: #e2e4e4;
         font-size: 20px;
       }
+
+      .st8 {
+        stroke: #d2d6d7;
+        stroke-miterlimit: 2;
+        stroke-width: 3.4px;
+      }
+
+      .st4 {
+        opacity: .7;
+      }
     </style>
   </defs>
-  <g id="Layer_1">
-    <rect class="st10" x="-29.3" y="29.3" width="1383" height="1324.5" transform="translate(-29.3 1353.8) rotate(-90)"/>
+  <g id="Layer_11" data-name="Layer_1">
+    <rect class="st11" y=".1" width="1324.5" height="1383"/>
     <g id="trails">
       <g>
-        <path class="st7" d="M516.3,1242.2c9.5-5.2,47.3-22.3,49.2-43.9,4-47.3,25-174.6,25-174.6-9.3-30.7-14-57.7-14-81-3.3-16-3-37.7,1-65l9.1-55c.7-30,72.2-66.5,28.7-129.5l-5-119.2c0-10.1-8.2-18.2-18.2-18.2l-98.7-7.9c-10.1,0-18.2-8.2-18.2-18.2v-42.8c0-10.1-8.2-18.2-18.2-18.2h-145.5"/>
-        <path class="st4" d="M601.1,1023.7c25.3,14.7,35.9,13.7,64.6,2.4,27.3-8.7,41-33.3,41-74"/>
+        <path class="st4" d="M516.3,1242.2c9.5-5.2,47.3-22.3,49.2-43.9,4-47.3,25-174.6,25-174.6-9.3-30.7-14-57.7-14-81-3.3-16-3-37.7,1-65l9.1-55c.7-30,72.2-66.5,28.7-129.5l-5-119.2c0-10.1-8.2-18.2-18.2-18.2l-98.7-7.9c-10.1,0-18.2-8.2-18.2-18.2v-42.8c0-10.1-8.2-18.2-18.2-18.2h-145.5"/>
+        <path class="st5" d="M601.1,1023.7c25.3,14.7,35.9,13.7,64.6,2.4,27.3-8.7,41-33.3,41-74"/>
       </g>
     </g>
     <g id="_x34_sJX9O">
-      <image id="_x34_sJX9O1" data-name="_x34_sJX9O" width="1170" height="2080" transform="translate(1597.4 1397.2) rotate(-90)" xlink:href="guanziling-location-map-v2-1.png"/>
+      <image id="_x34_sJX9O1" class="st0" width="1170" height="2080" transform="translate(1597.4 1397.2) rotate(-90)" xlink:href="guanziling-location-map-v2-1.png"/>
     </g>
     <g id="north">
       <g id="north-arrow">
-        <path class="st6" d="M79,131.3v-50M67,97.3l12-18,12,18"/>
+        <path class="st7" d="M79,131.3v-50M67,97.3l12-18,12,18"/>
         <g id="north-label" class="st0">
           <g class="st0">
-            <text class="st1" transform="translate(71.1 156.3)"><tspan x="0" y="0">N</tspan></text>
+            <g class="st0">
+              <text class="st1" transform="translate(71.1 156.3)"><tspan x="0" y="0">N</tspan></text>
+            </g>
           </g>
         </g>
       </g>
     </g>
-    <path class="st5" d="M683.8,1121.3s6.7-56.3-89.1-86.7"/>
-    <path class="st4" d="M565.5,1211.9s35,20.9,49.2,29.1c25.4,14.7,33,64.5,27.9,151.2"/>
+    <path class="st6" d="M683.8,1121.3s6.7-56.3-89.1-86.7"/>
+    <path class="st5" d="M565.5,1211.9s35,20.9,49.2,29.1c25.4,14.7,33,64.5,27.9,151.2"/>
   </g>
   <g id="Layer_4">
     <g id="areas">
-      <path id="sector-1" class="st9" d="M410.2,1302.1c-12-12-13.3-26.3-4-43l16-17-7-15,39-18,20,15,24,7,9,28-14,22-32,13-51,8Z"/>
-      <path id="sector-2" class="st9" d="M693.5,1172l-18-23,11-30,20-10,8-23,32-8,35,14,12,26,34,8,15,32-20,22-48,7-26-9-55-6Z"/>
-      <path id="sector-3" class="st9" d="M368.2,702.2c-8-10.7-5.3-20,8-28l29,5,25-9,30,7,18-4,21,9-7,23-25,11-53-3-46-11ZM507.2,688.2c15.3-10.7,28.3-9,39,5l-10,23-26-4-3-24ZM555.2,710.2c16-12,31.7-11.3,47,2l13,38-19,33-43-2-7-39,9-32Z"/>
-      <path id="sector-4" class="st9" d="M679.6,918.4c-7.9-13.9-4.4-27.7,10.4-41.2l30.4-6.5,21.3-15.4,24.2,1.1,10.9,23.6,31.3,2,12.3,24-.7,27.3-29.9,11.9-22.4.2-25.4,16.3-20.7-11.9-26.8.2-15-31.6Z"/>
-      <path id="sector-5" class="st9" d="M264.2,456.6l-12-19,7-21,18-9,21,8,11,34-45,7ZM318.2,420.6c13.3-6,26.3-6.7,39-2h42s18-6,18-6l25,9,29-3,17,14-10,18-40-1-29,6-49-9-34,8-8-34ZM246.2,483.6l18-10,14,28-7,28-22-1-8-24,5-21Z"/>
-      <path id="sector-6" class="st9" d="M934.2,224.9l-17.9-15.1,1-22.5,19.7-7.8,10.9-21.2,26.7-3.8,18.1-12.7,25.7,10.6,23,9.9,2.2,29.9,23.1,20.2-5.5,28.5-35.5,6.5-19.7,15.9-25.6-8.4-23.4,5.4-22.6-35.4Z"/>
+      <path id="sector-1" class="st10" d="M410.2,1302.1c-12-12-13.3-26.3-4-43l16-17-7-15,39-18,20,15,24,7,9,28-14,22-32,13-51,8Z"/>
+      <path id="sector-2" class="st10" d="M693.5,1172l-18-23,11-30,20-10,8-23,32-8,35,14,12,26,34,8,15,32-20,22-48,7-26-9-55-6Z"/>
+      <path id="sector-3" class="st10" d="M368.2,702.2c-8-10.7-5.3-20,8-28l29,5,25-9,30,7,18-4,21,9-7,23-25,11-53-3-46-11ZM507.2,688.2c15.3-10.7,28.3-9,39,5l-10,23-26-4-3-24ZM555.2,710.2c16-12,31.7-11.3,47,2l13,38-19,33-43-2-7-39,9-32Z"/>
+      <path id="sector-4" class="st10" d="M679.6,918.4c-7.9-13.9-4.4-27.7,10.4-41.2l30.4-6.5,21.3-15.4,24.2,1.1,10.9,23.6,31.3,2,12.3,24-.7,27.3-29.9,11.9-22.4.2-25.4,16.3-20.7-11.9-26.8.2-15-31.6h.1Z"/>
+      <path id="sector-5" class="st10" d="M264.2,456.6l-12-19,7-21,18-9,21,8,11,34-45,7ZM318.2,420.6c13.3-6,26.3-6.7,39-2h42l18-6,25,9,29-3,17,14-10,18-40-1-29,6-49-9-34,8-8-34ZM246.2,483.6l18-10,14,28-7,28-22-1-8-24,5-21h0Z"/>
+      <path id="sector-6" class="st10" d="M934.2,224.9l-17.9-15.1,1-22.5,19.7-7.8,10.9-21.2,26.7-3.8,18.1-12.7,25.7,10.6,23,9.9,2.2,29.9,23.1,20.2-5.5,28.5-35.5,6.5-19.7,15.9-25.6-8.4-23.4,5.4-22.6-35.4h-.2Z"/>
     </g>
-    <path class="st5" d="M957.3,291.6s-91.7,103-81.9,185.1-2,202-58.5,225-116.5,21.9-131.4,0-70.3-8.5-70.3-8.5"/>
+    <path class="st6" d="M957.3,291.6s-91.7,103-81.9,185.1c9.8,82.1-2,202-58.5,225s-116.5,21.9-131.4,0-70.3-8.5-70.3-8.5"/>
   </g>
   <g id="Layer_3">
     <g id="area-labels">
-      <text class="st3" transform="translate(797 1107.7)"><tspan x="0" y="0">飛來石</tspan></text>
-      <text class="st3" transform="translate(341.3 1249.1)"><tspan x="0" y="0">終極岩</tspan></text>
-      <text class="st3" transform="translate(443.5 765.3)"><tspan x="0" y="0">集合場</tspan></text>
-      <text class="st3" transform="translate(797 865.2)"><tspan x="0" y="0">蓬萊島</tspan></text>
-      <text class="st3" transform="translate(347.4 505)"><tspan x="0" y="0">神秘谷</tspan></text>
-      <text class="st3" transform="translate(1090 202.6)"><tspan x="0" y="0">毒刺林</tspan></text>
+      <g class="st0">
+        <text class="st3" transform="translate(797 1107.7)"><tspan x="0" y="0">飛來石</tspan></text>
+      </g>
+      <g class="st0">
+        <text class="st3" transform="translate(341.3 1249.1)"><tspan x="0" y="0">終極岩</tspan></text>
+      </g>
+      <g class="st0">
+        <text class="st3" transform="translate(395.2 765.9)"><tspan x="0" y="0">集合場</tspan></text>
+      </g>
+      <g class="st0">
+        <text class="st3" transform="translate(797 865.2)"><tspan x="0" y="0">蓬萊島</tspan></text>
+      </g>
+      <g class="st0">
+        <text class="st3" transform="translate(309.2 514.8)"><tspan x="0" y="0">神秘谷</tspan></text>
+      </g>
+      <g class="st0">
+        <text class="st3" transform="translate(1024.6 280.7)"><tspan x="0" y="0">毒刺林</tspan></text>
+      </g>
     </g>
-    <circle class="st8" cx="585" cy="1221.5" r="16.4"/>
+    <circle class="st9" cx="585" cy="1221.5" r="16.4"/>
   </g>
   <g id="Layer_2">
     <g id="landmarks">
-      <text class="st2" transform="translate(662.2 1349.6)"><tspan x="0" y="0">入口方向</tspan></text>
-      <text class="st2" transform="translate(609.7 1213.6)"><tspan x="0" y="0">梯子</tspan></text>
-      <text class="st2" transform="translate(507.2 908.5)"><tspan x="0" y="0">林間步道</tspan></text>
-      <text class="st2" transform="translate(507.2 576.1)"><tspan x="0" y="0">約 2 分鐘*</tspan></text>
-      <text class="st2" transform="translate(902.6 501.6)"><tspan x="0" y="0">約 10 分鐘*</tspan></text>
-      <text class="st2" transform="translate(894.3 473.6)"><tspan x="0" y="0">往毒刺林岔路</tspan></text>
-      <text class="st2" transform="translate(1086.3 1349.6)"><tspan x="0" y="0">* 依路書步行描述；非比例地圖</tspan></text>
+      <g class="st0">
+        <text class="st2" transform="translate(662.2 1349.6)"><tspan x="0" y="0">入口方向</tspan></text>
+      </g>
+      <g class="st0">
+        <text class="st2" transform="translate(609.7 1213.6)"><tspan x="0" y="0">梯子</tspan></text>
+      </g>
+      <g class="st0">
+        <text class="st2" transform="translate(507.2 908.5)"><tspan x="0" y="0">林間步道</tspan></text>
+      </g>
+      <g class="st0">
+        <text class="st2" transform="translate(507.2 576.1)"><tspan x="0" y="0">約 2 分鐘*</tspan></text>
+      </g>
+      <g class="st0">
+        <text class="st2" transform="translate(902.6 501.6)"><tspan x="0" y="0">約 10 分鐘*</tspan></text>
+      </g>
+      <g class="st0">
+        <text class="st2" transform="translate(894.3 473.6)"><tspan x="0" y="0">往毒刺林岔路</tspan></text>
+      </g>
+      <g class="st0">
+        <text class="st2" transform="translate(1086.3 1349.6)"><tspan x="0" y="0">* 依路書步行描述；非比例地圖</tspan></text>
+      </g>
     </g>
   </g>
+  <circle class="st8" cx="453.6" cy="1255.6" r="26.4"/>
+  <circle class="st8" cx="759" cy="1132.5" r="26.4"/>
+  <circle class="st8" cx="747.9" cy="908.5" r="26.4"/>
+  <circle class="st8" cx="991.5" cy="202.6" r="26.4"/>
+  <circle class="st8" cx="403.2" cy="505.1" r="26.4"/>
+  <circle class="st8" cx="499.2" cy="756.8" r="26.4"/>
 </svg>
