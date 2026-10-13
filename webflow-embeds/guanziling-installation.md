@@ -3,7 +3,7 @@
 ## 貼回與發布
 
 1. 在 Webflow 建立頁面，slug 設為 `guanziling`，使用既有 Navbar 與 footer；將 `guanziling.html` 全文貼入內容 Code Embed。全文約 24,000 字元，低於 50,000 字元限制。頁面無額外 footer，保留原有 Webflow footer 內距。
-2. 發布本次新增的版本化 CSS/JS 至 repo 的 `main`，使 Embed 使用的 jsDelivr URL 可取得檔案。需新增 guanziling-detail-v1.css、guanziling-sector-map-v2.js、climbing-conditions-widget-v5.js、weather-card-widget-v7.js，以及可編輯 guanziling-location-map-v2.svg；共用 climbing-map-zoom-v1.js 與 longdong-rock-estimate-v3.js 已存在。
+2. 發布本次新增的版本化 CSS/JS 至 repo 的 `main`，使 Embed 使用的 jsDelivr URL 可取得檔案。需新增 guanziling-detail-v2.css、guanziling-sector-map-v3.js、climbing-conditions-widget-v5.js、weather-card-widget-v7.js，以及可編輯 guanziling-location-map-v2.svg；共用 climbing-map-zoom-v1.js 與 longdong-rock-estimate-v3.js 已存在。
 3. 在既有 Cloudflare `cwa-weather` Worker 部署更新的 `cwa-weather-worker.js`；保留 CWA_API_KEY Secret、ALLOWED_ORIGINS、CONDITIONS_HISTORY KV 與 `15 * * * *` Cron。無需新增或輸入前端授權碼。GitHub 更新不會自動部署 Worker。
 4. 以 Origin `https://gowild.one` 讀取 `/api/guanziling`，應回傳白河區預報、F-D0047-079、關子嶺測站（有資料時）與 `tides:null`。新端點未部署前為 404，本機 file 或 localhost 未在正式 Worker allowlist 中，預覽天氣資料會無法載入。
 5. `/guanziling` 頁發布後，再將更新的 `home.html` 貼回首頁；關子嶺卡片已改為 `/guanziling`，避免在新頁未發布前產生斷鏈。
