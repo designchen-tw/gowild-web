@@ -7,10 +7,10 @@
 | 頁面 | Webflow Embed | 前端小工具 | 樣式 |
 | --- | --- | --- | --- |
 | 首頁 `/` | `webflow-embeds/home.html` | Embed 內部中英文切換、導覽與原生表單整合 | Embed 內部樣式 |
-| 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v16.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v13.js` | `webflow-embeds/longdong-embed-v13.css`、`climbing-typography-v2.css` |
-| 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v6.js`、`longdong-rock-estimate-v3.js`、`kenting-sector-map-v6.js` | `webflow-embeds/climbing-detail-v7.css`、`climbing-typography-v2.css` |
+| 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v16.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v14.js` | `webflow-embeds/longdong-embed-v13.css`、`climbing-typography-v2.css` |
+| 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v6.js`、`longdong-rock-estimate-v3.js`、`kenting-sector-map-v7.js` | `webflow-embeds/climbing-detail-v7.css`、`climbing-typography-v2.css` |
 | 德芙蘭 `/defulan` | `webflow-embeds/defulan.html` | 共用現況／天氣小工具，另有 `defulan-sector-map-v6.js` | 同墾丁，另有 `webflow-embeds/defulan-sector-map-v7.css` |
-| 關子嶺 `/guanziling` | `webflow-embeds/guanziling.html` | `climbing-conditions-widget-v5.js`、`weather-card-widget-v7.js`、`guanziling-sector-map-v4.js`、共用縮放與岩面估算 | `webflow-embeds/guanziling-detail-v3.css` |
+| 關子嶺 `/guanziling` | `webflow-embeds/guanziling.html` | `climbing-conditions-widget-v5.js`、`weather-card-widget-v7.js`、`guanziling-sector-map-v5.js`、共用縮放與岩面估算 | `webflow-embeds/guanziling-detail-v3.css` |
 | 全站選單 | `webflow-embeds/menu-overlay-full.html` | Embed 內部程式 | Embed 內部樣式 |
 
 上表是目前交接版本。後續以各 Embed **實際引用的檔名** 為準；舊版檔案保留作為歷史版本。首頁新版內容 Embed 的安裝與原生表單保留方式見 `webflow-embeds/home-installation.md`。
@@ -22,7 +22,7 @@
 - `cwa-weather-worker.js` 是 Worker 原始碼，`CWA_API_KEY` 只存在 Cloudflare Worker Secret。龍洞觀測歷史使用 KV binding `CONDITIONS_HISTORY`，每小時 `15 * * * *` 的 Cron Trigger 更新；詳細岩面推估規則見 `ROCK-CONDITION-RULES.md`。
 - 中英文切換在各 Embed 及小工具內實作。龍洞是三個地點頁共同的版面參考；墾丁與德芙蘭不顯示潮汐卡。
 - 攀登現況共用排版在 `webflow-embeds/climbing-conditions-layout-v3.css`：桌機所有卡片同一列（龍洞六欄、墾丁與德芙蘭五欄），卡片容器寬度 601–980px 時採三欄；墾丁與德芙蘭第二排風向／岩面各佔半寬；≤ 600px 時切換兩欄，兩欄時岩面推估與龍洞潮汐各自滿版。每排卡片透過 CSS subgrid 共用標題、主要數值、補充資料與來源四列，依內容自動決定列高，不保留固定高度的空白。三個地點 Embed 都需載入此 CSS；龍洞 `v30` 將上一次潮汐與標題包在同一標題區塊。
-- 龍洞九區位置圖由 `longdong-sector-map-v13.js` 與 `webflow-embeds/longdong-sector-map-v13.css` 提供，點地圖或下方卡片會雙向選取並聚焦。地圖以固定高度視窗呈現，可自由上下捲動；點選編號或下方卡片會捲到對應岩區，並保留目前的縮放倍率。四頁地圖共用 `climbing-map-zoom-v1.js` 與 `webflow-embeds/climbing-map-zoom-v1.css`：右上角只有＋／－兩個按鈕，不顯示倍率，支援雙指縮放、單指／滑鼠拖曳、觸控板與鍵盤縮放。範圍為各頁預設比例的 1–3 倍，保留德芙蘭與墾丁手機版較小的初始比例。縮放以視窗中心或手勢中心為基準，定位後仍可自由移動。共用 JS 須排在地圖 JS 前載入。九個岩區預設只有灰色輪廓，選取後只為該區填上網站資料色 #A9D9B6；後續新增地圖顏色也應沿用網站資料色票，集中在地圖 CSS 變數管理。地圖使用使用者提供的 Illustrator 原稿提取之 `webflow-embeds/longdong-map-vector-v4.svg`，保留原稿的海岸地形、道路、步道與九區邊界；九個標記依新版岩區群組的邊界即時計算。地圖另以可切換中英文的文字標註道路、隧道、步道、停車場、和美國小、西靈巖寺與龍洞南口海洋公園，北方箭頭固定於地圖框左上角、北／N 置於箭頭下方；岩區卡片 hover 為灰底，選取後才顯示 #A9D9B6。龍洞最後一節不另留底部空白，直接銜接 Webflow footer 的既有內距。這是原稿比例的岩區示意位置，並非 GPS 導航或救援點編號。這一版僅用於龍洞。
+- 龍洞九區位置圖由 `longdong-sector-map-v14.js` 與 `webflow-embeds/longdong-sector-map-v14.css` 提供，點地圖或下方卡片會雙向選取並聚焦。地圖以固定高度視窗呈現，可自由上下捲動；點選編號或下方卡片會捲到對應岩區，並保留目前的縮放倍率。四頁地圖共用 `climbing-map-zoom-v1.js` 與 `webflow-embeds/climbing-map-zoom-v1.css`：右上角只有＋／－兩個按鈕，不顯示倍率，支援雙指縮放、單指／滑鼠拖曳、觸控板與鍵盤縮放。範圍為各頁預設比例的 1–3 倍，保留德芙蘭與墾丁手機版較小的初始比例。縮放以視窗中心或手勢中心為基準，定位後仍可自由移動。共用 JS 須排在地圖 JS 前載入。九個岩區預設只有灰色輪廓，選取後只為該區填上網站資料色 #A9D9B6；後續新增地圖顏色也應沿用網站資料色票，集中在地圖 CSS 變數管理。地圖使用使用者提供的 Illustrator 原稿提取之 `webflow-embeds/longdong-map-vector-v4.svg`，保留原稿的海岸地形、道路、步道與九區邊界；九個編號置於原稿圓圈中心；選取填色依岩區唯一幾何路徑識別，不依賴 Illustrator 匯出的 stN 樣式編號。地圖另以可切換中英文的文字標註道路、隧道、步道、停車場、和美國小、西靈巖寺與龍洞南口海洋公園，北方箭頭固定於地圖框左上角、北／N 置於箭頭下方；岩區卡片 hover 為灰底，選取後才顯示 #A9D9B6。龍洞最後一節不另留底部空白，直接銜接 Webflow footer 的既有內距。這是原稿比例的岩區示意位置，並非 GPS 導航或救援點編號。這一版僅用於龍洞。
 - 龍洞經典路線列表依校門口至後門排序。新增路線的岩區、英文名稱、類型與難度依 [TOCC 龍洞資料庫](https://tocc-climbing.github.io/longdong/#/) 的公開資料整理；原有七條的難度與顯示名稱依網站編輯者指定值。Disco 對應 TOCC 的「Disco大裂隙」；「自由裂隙」整條兩繩距以 P1/P2 較高的 5.9 標示。路線資料更新時請重新核對兩種來源。
 - 龍洞 CWA 預報的橫向資料列保留捲動，捲動條採低對比細線與深色軌道。出發前注意事項為無分隔線的單欄清單，先說明天然岩場資訊會變動，再依序提示安全資料、天候、裝備與環境。底部導覽的「出發／Go」使用前進箭頭；五個導覽連結皆以對應 section 的頂端作為捲動目標。
 - 墾丁與德芙蘭也使用低對比細捲動條、雙語路線名稱分行、單欄無分隔線的注意事項，以及「出發／Go」導覽。兩頁的注意內容保留各岩場自身的風險與通行資訊，五個導覽連結都對齊 section 頂端。
@@ -52,6 +52,6 @@
 - 關子嶺使用獨立整合CSS與共用元件下一版；原有三頁保留原本引用，不改其行為。只有選取區域使用 #A9D9B6，hover為灰底，支援＋／－與手勢縮放。
 - Worker 新增 `/api/guanziling`，使用臺南 F-D0047-077／079、白河區預報、優先 C0X240 關子嶺測站，Cron也加入本站歷史。岩場定位23.3283185,120.4889894。省道影像為公路局清單中最近的台3線295K+500（直線約7.3km），非岩場現場。
 
-目前四張可編輯地圖為 `webflow-embeds/longdong-map-vector-v4.svg`、`defulan-location-map-v3.svg`、`kenting-location-map-v4.svg`、`guanziling-location-map-v2.svg`。龍洞、德芙蘭與墾丁的編輯 SVG 含中文參考標籤；頁面載入對應的 `-art.svg` 幾何圖，再由 JS 在選取區塊之上顯示可切換語言的標籤。修改前述三張編輯 SVG 時，需同步各自 `-art.svg` 與 JS 中的標籤位置。關子嶺 SVG 直接內嵌在地圖 JS 中，亦須同步。
+目前四張可編輯地圖為 `webflow-embeds/longdong-map-vector-v4.svg`、`defulan-location-map-v3.svg`、`kenting-sail-rock-map-v1.svg`、`guanziling-location-map-v2.svg`。四頁地圖 JS 直接內嵌來源 SVG，再加入編號、選取與中英文切換；編號置於編輯者畫出的圓圈中心。修改 SVG 後須同步產生新版 JS 並更新 Embed 引用。墾丁填色圖層插入原圖層的實際父層，保留文字及地標在上方。關子嶺卡片順序的飛來石／終極岩分別對應來源的 `sector-2`／`sector-1`。
 
 - 墾丁新來源圖為 `webflow-embeds/kenting-sail-rock-map-v1.svg`，由使用者提供的 Sail Rock 地圖複製。四頁新版地圖 JS 直接內嵌各自更新的 SVG，卡片／地圖編號依最新座標互相定位；更新編輯來源後需重新產生版本化 JS，並更新各 HTML Embed 的載入檔名。
