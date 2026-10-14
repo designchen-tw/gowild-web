@@ -73,3 +73,7 @@
 首頁與四個岩場頁共用 `webflow-embeds/page-sections-v1.css`。每頁五個可見的主section明確標上 `data-gw-page-section` 與 `data-gw-section-tone`，依序為黑、淺灰黑（#0b0d0e）、黑、淺灰黑、黑；不以DOM的nth-child判定，避免隱藏的路線資料section打亂底色。每個區塊只使用一條上方細線，第一區省略上方分線，移除舊soft／TOCC區塊下緣分線，避免雙線。桌機上下內距統一為clamp(72px,7vw,104px)，≤520px統一56px；最末區塊下方統一0，不新增底部留白，直接接續Webflow footer。龍洞舊的`#ld-safety`零內距規則由共用CSS明確覆寫。內容仍以岩場1080px、首頁1264px置中，手機左右共用18px頁面留白，卡片內距另由卡片樣式管理。
 
 首頁的fixed投影片、sticky landing、原生Webflow聯絡表單與全站overlay選單不屬於此主section樣式範圍。首頁現在也會載入這份共用CDN樣式；更新時需重貼首頁及四個岩場頁Embed，再重新Publish。舊的`climbing-live-section-v1.css`保留供舊Embed使用，新版不再引用。
+
+## Hamburger展開選單
+
+`webflow-embeds/menu-overlay-full.html`為hamburger展開後的共用選單Embed，需貼回 `.mobile-overlay.gw > .menu-icon-items-section`，外層保留Finsweet的`fs-scrolldisable-element="when-visible"`。展開面板統一使用#0b0d0e底色；三個分類採一致內距及單一分類間細線，學習分類加上極淡底色以區分段落。子選單改成上方細線與淡底，連結hover為灰底，目前頁面為淡綠底及#A9D9B6文字。每個連結至少44px高，面板在各種高度都能向下捲動，避免展開後項目被裁切；原有hamburger開關、accordion、關子嶺入口與目前頁面判斷保留。樣式內嵌，這次只需替換選單Embed並Publish。
