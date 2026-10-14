@@ -1,0 +1,32 @@
+(()=>{
+const root=document.querySelector('[data-ld-detail]');if(!root||root.dataset.ready)return;root.dataset.ready='true';
+const translations={
+'龍洞':'Long Dong','岩場':'Crag','路線':'Routes','安全':'Safety',
+'沿著海岸，走進九個區域':'Nine Sectors Along the Coast','各區的岩壁形態、接近方式與路線風格不同。出發前請先查看最新地圖及岩場資訊。':'Each sector has its own wall features, approach, and climbing styles. Check the latest map and crag information before you go.',
+'校門口':'School Gate','北側入口，龍洞攀岩文化的經典起點。':'The northern entrance and a classic starting point for Long Dong climbing.',
+'鐘塔':'Clock Tower','裂隙與立體岩形交錯，傳統攀登特色鮮明。':'A mix of cracks and sculpted features, known for traditional climbing.',
+'長巷':'Long Lane','沿海岸延伸的岩壁，包含多種攀登風格。':'A long stretch of coastal cliff with varied climbing styles.',
+'音樂廳':'Music Hall','路線密集、風格多元，常見經典裂隙線。':'A dense area with varied climbing and classic crack lines.',
+'大禮堂':'Grand Auditorium','開闊的岩壁地形，亦有多繩距攀登路線。':'An expansive cliff with multipitch routes.',
+'第一洞':'First Cave','海蝕洞與岩壁地形相鄰，留意海況與潮汐。':'Sea caves sit beside the climbing walls; check surf and tides.',
+'第二洞':'Second Cave','洞穴、岩稜與海岸景觀交織的區域。':'A mix of caves, ridges, and coastal views.',
+'黃金谷':'Golden Valley','金色砂岩峭壁，是龍洞具代表性的攀登區。':'Golden sandstone cliffs make this one of Long Dong’s signature areas.',
+'後門':'Back Door','南端岩區，涵蓋運動與傳統攀登路線。':'The southern sector, with both sport and traditional routes.',
+'幾條值得認識的經典路線':'Classic Routes to Know','依岩區順序整理，每區先隨機顯示最多 5 條，可展開查看全部推薦路線。':'Listed in area order. Each area starts with up to five random picks; expand to see all recommended routes.',
+'校門口 · 傳統攀登':'School Gate · Trad','校門口 · 運動攀登':'School Gate · Sport','鐘塔 · 傳統攀登':'Clock Tower · Trad','長巷 · 傳統攀登':'Long Lane · Trad','音樂廳 · 傳統攀登':'Music Hall · Trad','黃金谷 · 傳統攀登':'Golden Valley · Trad','黃金谷 · 運動攀登':'Golden Valley · Sport','第二洞 · 傳統攀登':'Second Cave · Trad','第一洞 · 傳統攀登・2Pitch':'First Cave · Trad · 2 pitches','大禮堂 · 傳統攀登・2Pitch':'Grand Auditorium · Trad · 2 pitches','後門 · 運動攀登':'Back Door · Sport',
+'所列路線由岩友實際攀登，難度級數依攀登經驗重新評估與修正，可能與原路書標示有所差異，且路線難度不等同於攀登風險。':'These routes have been climbed by local climbers, and their grades reassessed through climbing experience. Grades may differ from the original guidebook and do not indicate climbing risk.','攀登前請充分確認路線資訊、所需裝備、撤退方式及隊伍能力，並參考最新路書與岩場資訊。':'Before climbing, check route information, required gear, retreat options, and your team’s abilities. Consult the latest guidebook and crag information.',
+'讓攀岩場域得以長久存在。':'Keeping climbing areas open for generations.','臺灣戶外攀岩協會（TOCC）於 2020 年成立，是以非營利方式運作的社會團體。協會串連攀岩社群，投入天然岩場安全固定點維護與監測、救援計畫與急救器材、生態保育、環境清潔，以及岩場永續發展。龍洞的維護仰賴社群長期參與。了解岩場規範、尊重環境並支持公共維護，也是攀登文化的一部分。':'Founded in 2020, the Taiwan Outdoor Climbers’ Coalition (TOCC) is a nonprofit organization that connects the climbing community. Its work includes anchor maintenance and monitoring, rescue planning and first-aid equipment, habitat conservation, crag cleanups, and long-term stewardship. Long Dong depends on continued community care. Learning local practices, respecting the environment, and supporting shared maintenance are part of climbing here.',
+'深入認識 TOCC':'Learn More About TOCC','出發前，先確認現場資訊':'Check Current Conditions Before You Climb','天然岩場的固定點、落石與通行狀態都可能變動，本指南僅提供簡略背景與路線脈絡，最新資料及安全公告請以 TOCC 和龍洞攀岩資料庫為準。':'Anchors, rockfall, and access conditions at natural crags can change. This guide provides only brief background and route context; consult TOCC and the Long Dong climbing database for the latest information and safety notices.',
+'先閱讀 TOCC 龍洞安全資訊與救援位置。':'Read TOCC’s Long Dong safety information and rescue locations.','確認潮汐、浪況、天候及步道通行狀況。':'Check tides, surf, weather, and trail access.','依路線型態準備合適裝備，並由具備相應經驗的隊伍攀登。':'Bring gear suited to the route and climb with a team that has the right experience.','尊重海岸生態、在地社群與其他使用者，帶走所有垃圾。':'Respect coastal habitats, local communities, and other visitors. Pack out all rubbish.',
+
+
+};
+const localized=[...root.querySelectorAll('[data-lang-en]')].map(el=>[el,el.textContent]),textNodes=[],walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let textNode;while(textNode=walker.nextNode()){if(!textNode.parentElement.closest('[data-lang-en],[data-route-title],[data-area-title],.ld-detail__language'))textNodes.push(textNode)}
+const setLanguage=lang=>{root.dataset.language=lang;root.querySelector('.ld-detail__nav').setAttribute('aria-label',lang==='en'?'Long Dong page navigation':'龍洞頁面導覽');root.querySelectorAll('[data-lang-choice]').forEach(item=>{const active=item.dataset.langChoice===lang;item.classList.toggle('is-active',active);item.setAttribute('aria-pressed',String(active))});localized.forEach(([item,zh])=>{item.textContent=lang==='en'?item.dataset.langEn:(item.dataset.langZh||zh)});textNodes.forEach(node=>{if(!node.isConnected)return;const original=(node.__zhText!==undefined?node.__zhText:(node.__zhText=node.nodeValue)),key=original.trim(),translated=lang==='en'?translations[key]:null;if(translated){node.nodeValue=original.replace(key,translated)}else if(lang==='zh'){node.nodeValue=original}});document.dispatchEvent(new Event('ld-language-change'))};
+root.querySelectorAll('[data-lang-choice]').forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.langChoice)));setLanguage('zh');
+const sections=[...root.querySelectorAll('[data-ld-section]')],links=[...root.querySelectorAll('[data-ld-link]')],reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const setActive=id=>links.forEach(link=>{const active=link.dataset.ldLink===id;link.classList.toggle('is-active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')});
+root.querySelectorAll('.ld-detail__nav a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();const id=link.dataset.ldLink,href=link.getAttribute('href'),target=root.querySelector(href);setActive(id);if(target){target.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});history.replaceState(null,'',href)}}));
+let ticking=false;const sync=()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{const y=scrollY||document.documentElement.scrollTop,max=document.documentElement.scrollHeight-innerHeight;if(y<=24)setActive('home');else if(max-y<=24)setActive('weather');else{let current=sections[0];sections.forEach(section=>{if(section.getBoundingClientRect().top<=innerHeight*.38)current=section});setActive(current.dataset.ldSection)}ticking=false})};
+addEventListener('scroll',sync,{passive:true});addEventListener('resize',sync);sync();
+})();
