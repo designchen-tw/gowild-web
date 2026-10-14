@@ -1,0 +1,42 @@
+/* Route-only sector cards follow the Longdong sector browser. */
+main.gw-sector-browser .gw-sector-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 18px;align-items:stretch;width:100%;max-width:none}
+main.gw-sector-browser .gw-sector-grid > article.gw-sector-card{position:relative;min-width:0;min-height:0;padding:18px 16px 20px;border:0;border-top:1px solid rgba(255,255,255,.14);border-radius:0;background:transparent;box-shadow:none;transition:background .2s,border-color .2s}
+main.gw-sector-browser .gw-sector-grid > article.gw-sector-card:is(:hover,:focus-within){background:rgba(255,255,255,.06);border-top-color:rgba(255,255,255,.32);box-shadow:none}
+main.gw-sector-browser .gw-sector-grid > article.gw-sector-card.gw-sector-card--active{grid-column:1/-1;padding:24px 20px 28px;border-top:2px solid #A9D9B6;background:rgba(169,217,182,.07);opacity:1;box-shadow:none;scroll-margin-top:20px}
+main.gw-sector-browser .gw-sector-grid > article.gw-sector-card > div:first-child{margin-bottom:8px}
+main.gw-sector-browser .gw-sector-grid > article.gw-sector-card > p{max-width:none;padding:0;color:var(--gw-ink-muted,rgba(245,245,245,.48))!important;font-size:var(--gw-type-label,14px)!important;line-height:1.5!important}
+main.gw-sector-browser .gw-sector-card--active [data-area-cn],
+main.gw-sector-browser .gw-sector-card--active [data-area-en]{font-size:15px;font-weight:400;color:rgba(245,245,245,.48)}
+main.gw-sector-browser:not([data-language="en"]) .gw-sector-card--active [data-area-cn],
+main.gw-sector-browser[data-language="en"] .gw-sector-card--active [data-area-en]{color:#f5f5f5;font-size:clamp(18px,1.8vw,24px);font-weight:500}
+main.gw-sector-browser .gw-sector-card--active :is(.df-detail__area-number,.kd-detail__area-number,.gz-detail__area-number){color:#A9D9B6;font-size:16px}
+main.gw-sector-browser .gw-sector-card-button{position:absolute;inset:0;z-index:1;width:100%;height:100%;padding:0;border:0;border-radius:0;background:transparent;color:transparent;cursor:pointer}
+main.gw-sector-browser .gw-sector-card-button:focus-visible{outline:2px solid #A9D9B6;outline-offset:-3px}
+main.gw-sector-browser .gw-sector-panel{position:relative;z-index:2;min-width:0;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.17)}
+main.gw-sector-browser .gw-sector-panel h4{margin:0 0 18px;color:#A9D9B6;font-size:13px;font-weight:500;letter-spacing:.08em}
+main.gw-sector-browser .gw-sector-panel__scroll{max-height:min(390px,44svh);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.3) transparent}
+main.gw-sector-browser .gw-sector-panel__scroll:focus-visible{outline:2px solid #A9D9B6;outline-offset:2px}
+main.gw-sector-browser .gw-sector-panel [hidden]{display:none!important}
+main.gw-sector-browser .gw-sector-panel ol{margin:0;padding:0;list-style:none}
+main.gw-sector-browser .gw-sector-panel li{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0;padding:12px 10px 12px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+main.gw-sector-browser .gw-sector-panel li:first-child{padding-top:0}
+main.gw-sector-browser .gw-sector-panel li > div{min-width:0}
+main.gw-sector-browser .gw-sector-panel h5{display:flex;flex-direction:column;gap:2px;margin:0 0 5px;font-size:14px;font-weight:500;line-height:1.45;overflow-wrap:anywhere}
+main.gw-sector-browser .gw-sector-panel__primary{color:#f5f5f5;font-size:14px;font-weight:500}
+main.gw-sector-browser .gw-sector-panel__secondary{color:rgba(245,245,245,.48);font-size:12px;font-weight:400;line-height:1.4}
+main.gw-sector-browser .gw-sector-panel li p,
+main.gw-sector-browser .gw-sector-panel__empty{margin:0;padding:0;color:rgba(245,245,245,.52)!important;font-size:12px!important;line-height:1.5!important}
+main.gw-sector-browser .gw-sector-panel li strong{flex:none;color:#f5f5f5;font-size:13px;font-weight:500;font-variant-numeric:tabular-nums}
+@media(max-width:760px){main.gw-sector-browser .gw-sector-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){
+  main.gw-sector-browser .gw-sector-grid{gap:0 10px}
+  main.gw-sector-browser .gw-sector-grid > article.gw-sector-card{padding:14px 18px 16px}
+  main.gw-sector-browser .gw-sector-grid > article.gw-sector-card.gw-sector-card--active{padding:20px 20px 18px}
+  main.gw-sector-browser .gw-sector-card--active [data-area-cn],main.gw-sector-browser .gw-sector-card--active [data-area-en]{font-size:12px}
+  main.gw-sector-browser:not([data-language="en"]) .gw-sector-card--active [data-area-cn],main.gw-sector-browser[data-language="en"] .gw-sector-card--active [data-area-en]{font-size:18px}
+  main.gw-sector-browser .gw-sector-panel{margin-top:16px;padding-top:14px}
+  main.gw-sector-browser .gw-sector-panel h4{margin-bottom:14px}
+  main.gw-sector-browser .gw-sector-panel__scroll{max-height:min(320px,40svh)}
+  main.gw-sector-browser .gw-sector-panel li{padding:12px 4px 12px 0}
+}
+@media(prefers-reduced-motion:reduce){main.gw-sector-browser .gw-sector-grid > article.gw-sector-card{transition:none}}

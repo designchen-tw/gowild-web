@@ -8,9 +8,9 @@
 | --- | --- | --- | --- |
 | 首頁 `/` | `webflow-embeds/home.html` | Embed 內部中英文切換、導覽與原生表單整合 | Embed 內部樣式 |
 | 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v16.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v19.js`、`longdong-page-v2.js`、`longdong-routes-v4.js`、`longdong-sector-browser-v1.js` | `webflow-embeds/longdong-embed-v13.css`、`climbing-typography-v2.css`、`longdong-sector-browser-v1.css` |
-| 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v6.js`、`longdong-rock-estimate-v3.js`、`kenting-sector-map-v8.js` | `webflow-embeds/climbing-detail-v7.css`、`climbing-typography-v2.css` |
-| 德芙蘭 `/defulan` | `webflow-embeds/defulan.html` | 共用現況／天氣小工具，另有 `defulan-sector-map-v7.js` | 同墾丁，另有 `webflow-embeds/defulan-sector-map-v7.css` |
-| 關子嶺 `/guanziling` | `webflow-embeds/guanziling.html` | `climbing-conditions-widget-v5.js`、`weather-card-widget-v7.js`、`guanziling-sector-map-v6.js`、共用縮放與岩面估算 | `webflow-embeds/guanziling-detail-v3.css` |
+| 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v6.js`、`longdong-rock-estimate-v3.js`、`kenting-sector-map-v9.js` | `webflow-embeds/climbing-detail-v7.css`、`climbing-typography-v2.css` |
+| 德芙蘭 `/defulan` | `webflow-embeds/defulan.html` | 共用現況／天氣小工具，另有 `defulan-sector-map-v8.js` | 同墾丁，另有 `webflow-embeds/defulan-sector-map-v7.css` |
+| 關子嶺 `/guanziling` | `webflow-embeds/guanziling.html` | `climbing-conditions-widget-v5.js`、`weather-card-widget-v7.js`、`guanziling-sector-map-v7.js`、共用縮放與岩面估算 | `webflow-embeds/guanziling-detail-v3.css` |
 | 全站選單 | `webflow-embeds/menu-overlay-full.html` | Embed 內部程式 | Embed 內部樣式 |
 
 上表是目前交接版本。後續以各 Embed **實際引用的檔名** 為準；舊版檔案保留作為歷史版本。首頁新版內容 Embed 的安裝與原生表單保留方式見 `webflow-embeds/home-installation.md`。
@@ -26,7 +26,7 @@
 - 龍洞推薦路線共75條，於選取岩區卡片內依級數由簡單到難列出，級數相同保持原資料順序。描述省略已選取的大分區，保留細分區；細分區與大分區同名時仍顯示一次細分區名稱（例如Oh!為校門口，英文School Gate Crag）。`longdong-sector-browser-v1.js`與`webflow-embeds/longdong-sector-browser-v1.css`管理字卡、排序與雙語內容；`longdong-routes-v4.js`和Embed中隱藏的路線來源提供75條路線與56個細分區資料。`longdong-page-v2.js`管理語言與導覽，Embed維持Webflow的50,000字元限制。
 - 龍洞 CWA 預報的橫向資料列保留捲動，捲動條採低對比細線與深色軌道。出發前注意事項為無分隔線的單欄清單，先說明天然岩場資訊會變動，再依序提示安全資料、天候、裝備與環境。底部導覽的「出發／Go」使用前進箭頭；五個導覽依序為「龍洞／Longdong、岩場／Crag、TOCC、出發／Go、天氣／Weather」，皆以對應section頂端作為捲動目標。路線整併至岩場卡片，天氣指向`#ld-live-weather`的即時天氣與現場影像；捲至頁尾時反白天氣。
 - 墾丁與德芙蘭也使用低對比細捲動條、雙語路線名稱分行、單欄無分隔線的注意事項，以及「出發／Go」導覽。兩頁的注意內容保留各岩場自身的風險與通行資訊，五個導覽連結都對齊 section 頂端。
-- 德芙蘭位置圖由 `webflow-embeds/defulan-location-map-v3.svg`、`defulan-sector-map-v7.js` 和 `webflow-embeds/defulan-sector-map-v7.css` 提供，採用網站編輯者更新的 SVG，保留原稿比例、道路、步道、地標圖示及岩區輪廓；原稿地名保留，英文版依原稿文字切換翻譯，位置依原稿對齊。使用者編輯的 `webflow-embeds/defulan-location-map-v1.svg` 保留為來源檔，網站互動圖直接內嵌更新後的 SVG，並在切換英文時轉換原圖地名。標出台 8 線、支線道路、德芙蘭步道、停車場、公車站、廁所、露營區、大甲溪與原圖四個岩區；北方箭頭固定在地圖左上角。點選圖上編號或下方岩區卡片會選取並聚焦，僅被選取區顯示資料色 #A9D9B6，地圖可自由捲動。手機版預設地圖從固定 960px 改為容器的 200%（最小 640px），讓一次可看見更多相對位置。終極邊境、邊境左、邊境右共用原圖的「邊境區域」輪廓，三個編號只是對應下方字卡，不表示已確認的子區邊界；本圖是位置示意，並非精確導航。
+- 德芙蘭位置圖由 `webflow-embeds/defulan-location-map-v3.svg`、`defulan-sector-map-v8.js` 和 `webflow-embeds/defulan-sector-map-v7.css` 提供，採用網站編輯者更新的 SVG，保留原稿比例、道路、步道、地標圖示及岩區輪廓；原稿地名保留，英文版依原稿文字切換翻譯，位置依原稿對齊。使用者編輯的 `webflow-embeds/defulan-location-map-v1.svg` 保留為來源檔，網站互動圖直接內嵌更新後的 SVG，並在切換英文時轉換原圖地名。標出台 8 線、支線道路、德芙蘭步道、停車場、公車站、廁所、露營區、大甲溪與原圖四個岩區；北方箭頭固定在地圖左上角。點選圖上編號或下方岩區卡片會選取並聚焦，僅被選取區顯示資料色 #A9D9B6，地圖可自由捲動。手機版預設地圖從固定 960px 改為容器的 200%（最小 640px），讓一次可看見更多相對位置。終極邊境、邊境左、邊境右共用原圖的「邊境區域」輪廓，三個編號只是對應下方字卡，不表示已確認的子區邊界；本圖是位置示意，並非精確導航。
 - 德芙蘭推薦路線依六個岩區順序排列，同區依[路線列表](https://docs.google.com/spreadsheets/d/18rTDqJdxDHYv9Jf7z8TZdqs46thJxRLNGasWbvRmiHc/edit?gid=0#gid=0)的列序排列；目前共十條，新增咪嚕咕／Miruku（邊境左，傳統，15 m，5.11b，小號 cam、nut）與私釀／Bootlegger（金三角，運動，5.10b，9 bolts + anchor，原表未列高度）。行前資訊以 Facebook 群組公告為主要更新來源，並提供路線表、路線照片兩個輔助連結；頁面不再使用 Mountain Project 名稱或連結。
 - 岩區名稱的中英文排列在 `webflow-embeds/area-names-v1.css`：目前語言排前，手機版（≤ 520px）讓另一語言固定另起一行；三個地點 Embed 都需載入此 CSS。
 - 共通文字層級在 `webflow-embeds/climbing-typography-v2.css`：桌機章節標題／重要數值／卡片名稱／內文／標籤／細節文字為 22/20/16/16/14/12px；手機 `max-width:520px` 為 18/16/14/14/12/10px。修改時一併檢查字高、字距、灰度、左右留白與中英文換行。
@@ -47,9 +47,9 @@
 
 ## 關子嶺頁面
 
-- 第一版依提供的14頁路書整理，詳細來源與發布步驟見 `webflow-embeds/guanziling-installation.md`。六區、50筆路書記錄（含一筆抱石），呈現12條原路書三星評價路線，不提供全部路線展開列表。名稱與級數依原書，未把歷史描述當成最新通行或固定點資訊。
+- 第一版依提供的14頁路書整理，詳細來源與發布步驟見 `webflow-embeds/guanziling-installation.md`。六區、50筆路書記錄（含一筆抱石），目前摘錄14條推薦路線，依岩區選取後由易到難顯示，不提供完整路書路線列表。名稱與級數依原書，未把歷史描述當成最新通行或固定點資訊。
 - `guanziling-location-map-v2.svg` 是可編輯來源，互動程式內嵌編輯後的 SVG，以維持本機檔案預覽；修改來源後須同步產生新版地圖 JS。網站版會移除來源 SVG 中的手繪參考底圖，保留新北向箭頭與岩區路徑。
-- 關子嶺使用獨立整合CSS與共用元件下一版；原有三頁保留原本引用，不改其行為。只有選取區域使用 #A9D9B6，hover為灰底，支援＋／－與手勢縮放。
+- 關子嶺保留獨立整合CSS，岩區字卡共用新的路線展開元件，天氣採四頁共用的獨立區塊樣式。只有選取區域使用 #A9D9B6，hover為灰底，支援＋／－與手勢縮放。
 - Worker 新增 `/api/guanziling`，使用臺南 F-D0047-077／079、白河區預報、優先 C0X240 關子嶺測站，Cron也加入本站歷史。岩場定位23.3283185,120.4889894。省道影像為公路局清單中最近的台3線295K+500（直線約7.3km），非岩場現場。
 
 目前四張可編輯地圖集中在 `webflow-embeds/svg/`：`longdong-map-vector-v4.svg`、`defulan-location-map-v3.svg`、`kenting-sail-rock-map-v1.svg`、`guanziling-location-map-v2.svg`。四頁地圖 JS 直接內嵌來源 SVG，再加入編號、選取與中英文切換；編號置於編輯者畫出的圓圈中心。修改 SVG 後須同步產生新版 JS 並更新 Embed 引用。墾丁填色圖層插入原圖層的實際父層，保留文字及地標在上方。關子嶺卡片順序的飛來石／終極岩分別對應來源的 `sector-2`／`sector-1`。
@@ -61,3 +61,9 @@
 龍洞的舊獨立經典路線區塊保留為隱藏資料來源，以Embed內的critical CSS避免載入時閃現，並移除其導覽與scroll spy標記。細分區小窗不再是正式介面；目前互動統一使用展開岩區字卡。手機地圖至少覆蓋視窗高度；龍洞縮放、拖曳與岩區定位均限制於SVG邊界，避免底部滑出黑色空白。來源與授權記錄留在資料檔。
 
 四頁地圖以 `webflow-embeds/svg/` 內的最新來源為準，編號依來源圓圈及字卡順序定位。岩區名稱與編號都可用點擊、Enter 或空白鍵選取；名稱、圓圈、輪廓填色及字卡同步呈現 #A9D9B6。英文名稱依實際載入字體及右側空間換行；置於圓圈上下的名稱保留置中對應，語言切換保留選取狀態。德芙蘭「邊境區域」名稱對應三張邊境字卡：已有邊境選取時保持該字卡，未選取時定位終極邊境；三個編號仍可各自選取。SVG 原稿保留不覆寫。
+
+## 岩區字卡與獨立天氣區塊
+
+德芙蘭、墾丁與關子嶺共用 `climbing-sector-browser-v1.js` 和 `webflow-embeds/climbing-sector-browser-v1.css`。點地圖名稱、編號或字卡後，只有選取卡移到第一個並展開該區推薦路線，其餘卡依原岩區順序排列；不顯示細分區。路線依級數由易到難排列（a/b區間按兩者中間排序），同級保留原順序；描述省略已在外層顯示的岩區名稱。無推薦路線的區域顯示雙語空狀態。選取卡為非常淡的綠底，hover為灰底，保留手機左右內距與地圖縮放樣式。原路線區塊保留為隱藏資料來源，注意文字移至岩區列表後方；三頁導覽移除路線並在最後新增天氣。
+
+四頁即時天氣與現場影像現在為 `main` 下的獨立section，使用 `webflow-embeds/climbing-live-section-v1.css` 在上方繪製全寬細分隔線，並統一與行前注意區塊的留白。龍洞也需重貼HTML。全站選單DISCOVER與首頁卡片皆按龍洞、德芙蘭、關子嶺、墾丁排列，關子嶺連至 `/guanziling`；選單也能在關子嶺頁標示目前所在頁面。首頁關子嶺英文名稱統一為Guanziling，仍沿用Webflow原生聯絡表單。

@@ -71,6 +71,7 @@
         <div class="gw-menu-dropdown" id="gw-menu-discover" aria-hidden="true" inert><div class="gw-menu-dropdown-inner"><div class="gw-menu-submenu">
           <a href="/longdong">龍洞 Long Dong</a>
           <a href="/defulan">德芙蘭 Defulan</a>
+          <a href="/guanziling">關子嶺 Guanziling</a>
           <a href="/kenting">墾丁 Kenting</a>
         </div></div></div>
       </div>
@@ -143,11 +144,11 @@
       var path=location.pathname.replace(/\/+$/,'')||'/';
       if(path==='/multi-pitch'||path==='/rock-rescue-skill')return 'learn';
       if(path==='/photography')return 'explore';
-      if(path==='/longdong'||path==='/kenting'||path==='/defulan')return 'discover';
+      if(path==='/longdong'||path==='/kenting'||path==='/defulan'||path==='/guanziling')return 'discover';
       if(path==='/'){
-        if(location.hash==='#ld-learn')return 'learn';
-        if(location.hash==='#ld-explore')return 'explore';
-        if(location.hash==='#ld-discover')return 'discover';
+        if((location.hash==='#ld-learn'||location.hash==='#gw-home-learn'))return 'learn';
+        if((location.hash==='#ld-explore'||location.hash==='#gw-home-explore'))return 'explore';
+        if((location.hash==='#ld-discover'||location.hash==='#gw-home-discover'))return 'discover';
       }
       return null;
     }

@@ -1,12 +1,13 @@
+<style>main.df-detail #df-routes{display:none!important}</style>
 <!-- Defulan detail page. Paste into a dedicated Webflow Code Embed. -->
-<main class="df-detail" data-df-detail data-condition-endpoint="/api/defulan" data-condition-lat="24.174" data-condition-lon="120.974" data-condition-language-event="df-language-change">
+<main class="df-detail gw-sector-browser" data-gw-sector-browser="df" data-df-detail data-condition-endpoint="/api/defulan" data-condition-lat="24.174" data-condition-lon="120.974" data-condition-language-event="df-language-change">
   <nav class="df-detail__nav" aria-label="德芙蘭頁面導覽">
     <a href="#df-overview" data-df-link="overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10.5 8.5-7 8.5 7M5.5 9.5v10h13v-10M9.5 19.5v-6h5v6"/></svg><span>德芙蘭</span></a>
-    <a href="#df-areas" data-df-link="areas"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span>岩區</span></a>
-    <a href="#df-routes" data-df-link="routes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20 9 4l3 8 3-5 4 13M8 8h3m3 6h3"/></svg><span>路線</span></a>
+    <a href="#df-areas" data-df-link="areas"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span data-lang-zh="岩場" data-lang-en="Crag">岩場</span></a>
     <a href="#df-visit" data-df-link="visit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M12 3v18M5.6 5.6l12.8 12.8m0-12.8L5.6 18.4"/><circle cx="12" cy="12" r="9"/></svg><span>行前</span></a>
     <a href="#df-safety" data-df-link="safety"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="18" r="1.5"/><path d="M8 16 18 6m-6 0h6v6"/></svg><span data-lang-zh="出發" data-lang-en="Go">出發</span></a>
-  </nav>
+  <a href="#df-live-weather" data-df-link="weather"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v2M2 8h2m-.5-4.5 1.4 1.4M11.5 3.5l-1.4 1.4M6.8 11.8A4 4 0 1 1 11 6.2M7 19h10a4 4 0 1 0-.8-7.9A5.5 5.5 0 0 0 6 12.2 3.5 3.5 0 0 0 7 19Z"/></svg><span data-lang-en="Weather">天氣</span></a>
+</nav>
 
   <section class="df-detail__section" id="df-overview" data-df-section="overview">
     <header class="df-detail__heading"><p class="df-detail__eyebrow" data-lang-zh="台灣・台中市・和平區" data-lang-en="Heping · Taichung · Taiwan">台灣・台中市・和平區</p><h2 data-lang-zh="德芙蘭" data-lang-en="Defulan">德芙蘭</h2><p data-tagline data-lang-zh="從谷關山林走向岩壁，在技術岩面與裂隙間，找到自己的攀登節奏。" data-lang-en="Follow Guguan’s forest trails to the rock, where technical faces and cracks set the pace.">從谷關山林走向岩壁，在技術岩面與裂隙間，找到自己的攀登節奏。</p><div class="df-detail__language" role="group" aria-label="Language"><button type="button" data-lang-choice="zh" class="is-active" aria-pressed="true">中文</button><button type="button" data-lang-choice="en" aria-pressed="false">EN</button></div></header>
@@ -29,7 +30,7 @@
     </div>
   </section>
 
-  <section class="df-detail__section" id="df-routes" data-df-section="routes">
+  <section class="df-detail__section" id="df-routes" aria-hidden="true">
     <header class="df-detail__heading"><p class="df-detail__eyebrow">SELECTED ROUTES</p><h2>先從路線表認識岩場</h2><p>以下是路線表中的代表路線摘錄，名稱、難度、長度與裝備均依表格記載；攀登前請核對最新版本。</p></header>
     <div class="df-detail__route-list">
       <article data-route-sector="1"><div><h3 data-route-title><span class="df-detail__route-pair"><span data-route-cn>健康長壽・繁榮昌盛</span><span data-route-en>Live Long and Prosper</span></span></h3><p data-lang-zh="終極邊境 · 運動 · 15 m · 5 bolt + anchor" data-lang-en="Final Frontier · Sport · 15 m · 5 bolts + anchor">終極邊境 · 運動 · 15 m · 5 bolt + anchor</p></div><strong>5.10d</strong></article>
@@ -67,7 +68,10 @@
   <section class="df-detail__section df-detail__safety" id="df-safety" data-df-section="safety">
     <header class="df-detail__heading"><p class="df-detail__eyebrow">CLIMB WITH CARE</p><h2>共享山林，先把安全放在前面</h2></header>
     <div class="df-detail__safety-grid"><ul><li>德芙蘭岩場和步道可能仍有變動。崖頂坡陡且有鬆動石土，落石可能危及下方攀登者；戶外攀岩有固有風險，請由具備相應經驗的隊伍自行評估。</li><li>全程戴岩盔，注意崖頂和斜坡上方的落石；有人在下方時不要高繞至崖頂。</li><li>遵守警示帶、告示牌和開發者指示；不要進入開發中的路線區域。</li><li>路線掛有固定繩或標示開發中時，請勿攀爬，也不要移除固定繩。</li><li>第一顆 bolt 偏高的路線，先使用掛繩竿保護；若現場有共享掛繩竿，使用後放回原處。</li><li>把垃圾全部帶走，使用停車場公共廁所；尊重步道使用者並降低噪音。</li><li>若發現落石或固定點異常，請停止使用並回報當地攀岩社群。</li></ul></div>
-    <section class="df-detail__live-weather" id="df-live-weather" aria-labelledby="df-live-weather-title">
+    
+  </section>
+
+<section class="df-detail__section df-detail__live-weather gw-live-section" id="df-live-weather" data-df-section="weather" aria-labelledby="df-live-weather-title">
       <header class="df-detail__live-heading"><p class="df-detail__eyebrow">LIVE CONDITIONS</p><h2 id="df-live-weather-title" data-lang-zh="即時天氣與現場影像" data-lang-en="Live Weather & On-site Cameras">即時天氣與現場影像</h2></header>
       <div class="df-detail__live-grid">
         <article class="df-detail__live-card gw-weather__live-card gw-weather__live-card--cwa" data-cwa-widget data-cwa-location="和平區" data-cwa-endpoint="/api/defulan" data-cwa-language-event="df-language-change" data-cwa-days="5" data-cwa-source-href="https://www.cwa.gov.tw/V8/C/W/Town/Town.html?TID=6602900"></article>
@@ -76,7 +80,6 @@
         <article class="df-detail__live-card df-detail__live-card--camera"><div class="df-detail__live-card-head"><h3 data-lang-zh="現場即時影像" data-lang-en="Live Camera">現場即時影像</h3><a href="https://tw.live/cam/?id=CCTV-25-0080-030-002" target="_blank" rel="noopener" data-lang-zh="備用影像來源" data-lang-en="Camera fallback">備用影像來源</a></div><div class="df-detail__live-frame"><img src="https://cctv-ss03.thb.gov.tw:443/T8-030K+600" alt="台8線30K+600松鶴路段即時影像" loading="lazy" referrerpolicy="no-referrer"></div><p class="df-detail__live-caption" data-lang-zh="即時影像串流由交通部公路局提供。" data-lang-en="Live camera stream provided by the Directorate General of Highways.">即時影像串流由交通部公路局提供。</p><p class="df-detail__live-caption" data-lang-zh="若畫面暫時無法載入，可使用上方備用來源查看。" data-lang-en="If the stream is temporarily unavailable, use the fallback link above.">若畫面暫時無法載入，可使用上方備用來源查看。</p></article>
       </div>
     </section>
-  </section>
 </main>
 
 <style>
@@ -149,7 +152,7 @@
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   if (local) document.documentElement.classList.add("gw-local-font-preview");
-  ["climbing-typography-v2.css", "climbing-detail-v7.css", "climbing-conditions-layout-v3.css", "area-names-v1.css", "defulan-sector-map-v7.css", "climbing-map-zoom-v1.css"].forEach(function (name) {
+  ["climbing-typography-v2.css", "climbing-detail-v7.css", "climbing-conditions-layout-v3.css", "area-names-v1.css", "defulan-sector-map-v7.css", "climbing-map-zoom-v1.css", "climbing-sector-browser-v1.css", "climbing-live-section-v1.css"].forEach(function (name) {
     var link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = local ? "./" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/" + name;
@@ -198,14 +201,14 @@
     const sections=[...root.querySelectorAll('[data-df-section]')],links=[...root.querySelectorAll('[data-df-link]')],reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
     const setActive=id=>links.forEach(link=>{const active=link.dataset.dfLink===id;link.classList.toggle('is-active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')});
     root.querySelectorAll('.df-detail__nav a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();const id=link.dataset.dfLink,href=link.getAttribute('href'),target=root.querySelector(href);setActive(id);if(target){target.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});history.replaceState(null,'',href)}}));
-    let ticking=false;const sync=()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{const y=scrollY||document.documentElement.scrollTop,max=document.documentElement.scrollHeight-innerHeight;if(y<=24)setActive('overview');else if(max-y<=24)setActive('safety');else{let current=sections[0];sections.forEach(section=>{if(section.getBoundingClientRect().top<=innerHeight*.38)current=section});setActive(current.dataset.dfSection)}ticking=false})};
+    let ticking=false;const sync=()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{const y=scrollY||document.documentElement.scrollTop,max=document.documentElement.scrollHeight-innerHeight;if(y<=24)setActive('overview');else if(max-y<=24)setActive('weather');else{let current=sections[0];sections.forEach(section=>{if(section.getBoundingClientRect().top<=innerHeight*.38)current=section});setActive(current.dataset.dfSection)}ticking=false})};
     addEventListener('scroll',sync,{passive:true});addEventListener('resize',sync);sync();
   })();
 </script>
 <script>
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ["longdong-rock-estimate-v3.js", "climbing-conditions-widget-v4.js", "weather-card-widget-v6.js", "climbing-map-zoom-v1.js", "defulan-sector-map-v7.js"].forEach(function (name) {
+  ["longdong-rock-estimate-v3.js", "climbing-conditions-widget-v4.js", "weather-card-widget-v6.js", "climbing-map-zoom-v1.js", "defulan-sector-map-v8.js", "climbing-sector-browser-v1.js"].forEach(function (name) {
     var script = document.createElement("script");
     script.async = false;
     script.src = local ? "../" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/" + name;
