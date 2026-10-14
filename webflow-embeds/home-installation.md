@@ -1,6 +1,6 @@
 # 首頁 Embed 安裝
 
-`home.html` 是可整份貼回 Webflow 的首頁內容 Embed。HTML、CSS 與程式都在同一檔案，不需要先推送新的 CDN 檔案。
+`home.html` 是可整份貼回 Webflow 的首頁內容 Embed。內容、卡片及表單程式保留在同一檔案；主section的底色、分隔線與間距由共用CDN樣式 `page-sections-v1.css` 提供，貼回前需確認此樣式已更新至GitHub。
 
 ## 貼回的位置
 
@@ -30,3 +30,5 @@
 - 表單沿用 Webflow 原始單欄排版、灰底和 20px 圓角；一般欄位高 40px，訊息欄高 120px，不使用另一套欄位樣式覆蓋。
 - 本機改以完整首頁結構、Webflow CSS 與互動程式驗證，包含 fixed 投影片、sticky landing、下方內容疊層、無連結人物誌、原生表單及選單 Logo。預覽會阻止所有表單提交，未送出任何真實訊息。
 - **尚未發布到 Webflow，也尚未驗證後台實際收件。** Publish 後請以一筆測試訊息確認兩種語言的送出結果，以及 Site settings → Forms 的收件與通知。
+
+- 主section已與四個岩場頁統一：黑／淺灰黑交替、區塊之間單一細線、桌機及手機各採一致上下間距。首頁1264px內容寬度及landing動畫結構保留。

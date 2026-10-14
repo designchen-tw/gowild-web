@@ -31,7 +31,7 @@
 - 岩區名稱的中英文排列在 `webflow-embeds/area-names-v1.css`：目前語言排前，手機版（≤ 520px）讓另一語言固定另起一行；三個地點 Embed 都需載入此 CSS。
 - 共通文字層級在 `webflow-embeds/climbing-typography-v2.css`：桌機章節標題／重要數值／卡片名稱／內文／標籤／細節文字為 22/20/16/16/14/12px；手機 `max-width:520px` 為 18/16/14/14/12/10px。修改時一併檢查字高、字距、灰度、左右留白與中英文換行。
 
-- 首頁 `webflow-embeds/home.html` 整合雙語介紹、DISCOVER／LEARN／EXPLORE 與 CONTACT。DISCOVER 依龍洞、德芙蘭、關子嶺、墾丁排序；關子嶺卡片連至 `/guanziling`。EXPLORE 保留人物誌卡片為無連結 article；全站選單不提供人物誌連結，品牌文字上方使用指定的 `logo_GW-03.avif` Logo。語言按鈕只放在上方介紹區，切換整頁文字、卡片主副標題及聯絡表單文字；照片卡片呈現原始彩色，插畫卡片維持灰階。樣式與程式內嵌，不需要發布新的 CDN 檔案。首頁 Embed 放在完整 landing 動畫 section 後方，使用局部疊層蓋住 fixed 投影片；原有 200vh 動畫容器和 sticky 文字保留。底部導覽只在下方內容進入視窗後顯示。
+- 首頁 `webflow-embeds/home.html` 整合雙語介紹、DISCOVER／LEARN／EXPLORE 與 CONTACT。DISCOVER 依龍洞、德芙蘭、關子嶺、墾丁排序；關子嶺卡片連至 `/guanziling`。EXPLORE 保留人物誌卡片為無連結 article；全站選單不提供人物誌連結，品牌文字上方使用指定的 `logo_GW-03.avif` Logo。語言按鈕只放在上方介紹區，切換整頁文字、卡片主副標題及聯絡表單文字；照片卡片呈現原始彩色，插畫卡片維持灰階。內容樣式與程式內嵌，主區塊底色與間距共用 `page-sections-v1.css`。首頁 Embed 放在完整 landing 動畫 section 後方，使用局部疊層蓋住 fixed 投影片；原有 200vh 動畫容器和 sticky 文字保留。底部導覽只在下方內容進入視窗後顯示。
 - 首頁 CONTACT 會將頁面現有的 `Course Inquires` 原生 Webflow Form Block 移入 Embed，保留原始節點、欄位名稱、Webflow 識別與 Turnstile，不改提交處理；請勿刪除或複製原生 Form Block。語言切換不改動填寫值；表單保留 Webflow 原始單欄排版、灰底與 20px 圓角，不覆蓋欄位樣式。本機測試未發送真實訊息，發布後仍須確認 Webflow 後台收件。
 
 ## 修改與發布
@@ -66,4 +66,10 @@
 
 德芙蘭、墾丁與關子嶺共用 `climbing-sector-browser-v1.js` 和 `webflow-embeds/climbing-sector-browser-v1.css`。點地圖名稱、編號或字卡後，只有選取卡移到第一個並展開該區推薦路線，其餘卡依原岩區順序排列；不顯示細分區。路線依級數由易到難排列（a/b區間按兩者中間排序），同級保留原順序；描述省略已在外層顯示的岩區名稱。無推薦路線的區域顯示雙語空狀態。選取卡為非常淡的綠底，hover為灰底，保留手機左右內距與地圖縮放樣式。原路線區塊保留為隱藏資料來源，注意文字移至岩區列表後方；三頁導覽移除路線並在最後新增天氣。
 
-四頁即時天氣與現場影像現在為 `main` 下的獨立section，使用 `webflow-embeds/climbing-live-section-v1.css` 在上方繪製全寬細分隔線，並統一與行前注意區塊的留白。龍洞也需重貼HTML。全站選單DISCOVER與首頁卡片皆按龍洞、德芙蘭、關子嶺、墾丁排列，關子嶺連至 `/guanziling`；選單也能在關子嶺頁標示目前所在頁面。首頁關子嶺英文名稱統一為Guanziling，仍沿用Webflow原生聯絡表單。
+四頁即時天氣與現場影像現在為 `main` 下的獨立section，使用 `webflow-embeds/page-sections-v1.css` 統一全頁主區塊的留白、全寬分隔線與交錯底色。龍洞也需重貼HTML。全站選單DISCOVER與首頁卡片皆按龍洞、德芙蘭、關子嶺、墾丁排列，關子嶺連至 `/guanziling`；選單也能在關子嶺頁標示目前所在頁面。首頁關子嶺英文名稱統一為Guanziling，仍沿用Webflow原生聯絡表單。
+
+## 全頁主區塊排版
+
+首頁與四個岩場頁共用 `webflow-embeds/page-sections-v1.css`。每頁五個可見的主section明確標上 `data-gw-page-section` 與 `data-gw-section-tone`，依序為黑、淺灰黑（#0b0d0e）、黑、淺灰黑、黑；不以DOM的nth-child判定，避免隱藏的路線資料section打亂底色。每個區塊只使用一條上方細線，第一區省略上方分線，移除舊soft／TOCC區塊下緣分線，避免雙線。桌機上下內距統一為clamp(72px,7vw,104px)，≤520px統一56px；最末區塊下方統一0，不新增底部留白，直接接續Webflow footer。龍洞舊的`#ld-safety`零內距規則由共用CSS明確覆寫。內容仍以岩場1080px、首頁1264px置中，手機左右共用18px頁面留白，卡片內距另由卡片樣式管理。
+
+首頁的fixed投影片、sticky landing、原生Webflow聯絡表單與全站overlay選單不屬於此主section樣式範圍。首頁現在也會載入這份共用CDN樣式；更新時需重貼首頁及四個岩場頁Embed，再重新Publish。舊的`climbing-live-section-v1.css`保留供舊Embed使用，新版不再引用。

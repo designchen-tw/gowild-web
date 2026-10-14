@@ -1,0 +1,32 @@
+/* Shared section rhythm for the homepage and all four crag pages. */
+main[data-gw-section-system]{
+  --gw-section-space:clamp(72px,7vw,104px);
+  --gw-section-gutter:clamp(22px,6vw,88px);
+  --gw-section-content:1080px;
+  --gw-section-base:#000;
+  --gw-section-soft:#0b0d0e;
+  --gw-section-line:rgba(255,255,255,.1);
+}
+main.gw-home[data-gw-section-system]{--gw-section-content:1264px}
+main[data-gw-section-system] > section[data-gw-page-section]{
+  box-sizing:border-box;
+  width:100%;
+  max-width:none!important;
+  margin:0!important;
+  padding-block:var(--gw-section-space)!important;
+  padding-inline:max(var(--gw-section-gutter),calc((100% - var(--gw-section-content))/2))!important;
+  border:0!important;
+  border-top:1px solid var(--gw-section-line)!important;
+  background:var(--gw-section-base)!important;
+  scroll-margin-top:28px;
+}
+main[data-gw-section-system] > section[data-gw-section-tone="soft"]{background:var(--gw-section-soft)!important}
+main[data-gw-section-system] > section[data-gw-section-first]{border-top:0!important}
+/* Override the old Longdong footer rule, which removed checklist spacing by ID. */
+main[data-gw-section-system] > #ld-safety[data-gw-page-section]{padding-bottom:var(--gw-section-space)!important}
+/* Webflow's footer supplies its own spacing after the final section. */
+main[data-gw-section-system] > section[data-gw-section-last]{padding-bottom:0!important}
+@media(max-width:520px){
+  main[data-gw-section-system]{--gw-section-space:56px;--gw-section-gutter:18px}
+  main[data-gw-section-system] > section[data-gw-page-section]{scroll-margin-top:24px}
+}
