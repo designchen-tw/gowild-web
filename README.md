@@ -76,4 +76,4 @@
 
 ## Hamburger展開選單
 
-`webflow-embeds/menu-overlay-full.html`為hamburger展開後的共用選單Embed，需貼回 `.mobile-overlay.gw > .menu-icon-items-section`，外層保留Finsweet的`fs-scrolldisable-element="when-visible"`。展開面板統一使用#0b0d0e底色；三個分類採一致內距及單一分類間細線，學習分類加上極淡底色以區分段落。子選單改成上方細線與淡底，連結hover為灰底，目前頁面為淡綠底及#A9D9B6文字。每個連結至少44px高，面板在各種高度都能向下捲動，避免展開後項目被裁切；原有hamburger開關、accordion、關子嶺入口與目前頁面判斷保留。樣式內嵌，這次只需替換選單Embed並Publish。
+`webflow-embeds/menu-overlay-full.html`為hamburger展開後的共用選單Embed，需貼回 `.mobile-overlay.gw > .menu-icon-items-section`，外層保留Finsweet的`fs-scrolldisable-element="when-visible"`。展開面板統一使用#0b0d0e底色；三個分類收合時採一致內距，不顯示分類底色與分隔線；展開後只有子選單使用上方細線與淡底。選單品牌、分類及連結字級為桌機15px、≤600px手機14px，連結hover為灰底，目前頁面為淡綠底及#A9D9B6文字。每個連結至少44px高，面板在各種高度都能向下捲動，避免展開後項目被裁切；原有hamburger開關、accordion、關子嶺入口與目前頁面判斷保留。樣式內嵌，這次只需替換選單Embed並Publish。
