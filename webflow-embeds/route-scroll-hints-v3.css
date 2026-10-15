@@ -1,0 +1,128 @@
+/* Keep arrow controls beside the list so they never cover route text or add a trailing row. */
+main .gw-route-scroll-hints{display:grid;grid-template-columns:minmax(0,1fr) 36px;column-gap:4px;min-width:0;max-width:100%;align-items:stretch}
+main .gw-route-scroll-hints.is-overflowing{grid-template-columns:minmax(0,1fr) 36px;column-gap:4px}
+main .gw-route-scroll-hints > :first-child{min-width:0}
+main .gw-route-scroll-hints__rail{position:relative;min-width:0}
+main .gw-route-scroll-hints [hidden]{display:none!important}
+main .gw-route-scroll-hints__button{position:absolute;right:0;display:grid;place-items:center;width:36px;height:36px;margin:0;padding:8px;border:0;border-radius:6px;background:transparent;color:#A9D9B6;cursor:pointer;touch-action:manipulation;transition:background .15s,color .15s}
+main .gw-route-scroll-hints__button--up{top:0}
+main .gw-route-scroll-hints__button--down{bottom:0}
+main .gw-route-scroll-hints__button:hover{background:rgba(255,255,255,.07);color:#d0ebd7}
+main .gw-route-scroll-hints__button:focus-visible{outline:2px solid #A9D9B6;outline-offset:-2px}
+main .gw-route-scroll-hints__button svg{display:block;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+@media(prefers-reduced-motion:reduce){main .gw-route-scroll-hints__button{transition:none}}
+
+/* Shared number/control alignment; Longdong retains its additional subsector column. */
+main:is(.ld-sector-browser,.gw-sector-browser){
+  --gw-route-control-width:36px;
+  --gw-sector-card-inset:20px;
+  --gw-route-text-inset:16px;
+}
+main.ld-detail.ld-sector-browser .ld-detail__sector-grid > article{
+  padding-inline:var(--gw-sector-card-inset);
+}
+main.ld-detail.ld-sector-browser .ld-detail__sector-grid .ld-detail__area-header{
+  grid-template-columns:minmax(0,1fr) var(--gw-route-control-width);
+}
+main.ld-detail.ld-sector-browser .ld-detail__sector-grid .ld-detail__area-number{
+  width:var(--gw-route-control-width);
+  min-width:0;
+  text-align:center;
+}
+/* Keep the same column even when its arrows are hidden, so short lists align too. */
+main.ld-detail.ld-sector-browser .gw-route-scroll-hints{
+  grid-template-columns:minmax(0,1fr) var(--gw-route-control-width);
+  column-gap:4px;
+}
+main.ld-detail.ld-sector-browser .gw-route-scroll-hints__button{
+  width:var(--gw-route-control-width);
+}
+main.ld-detail.ld-sector-browser .ld-sector-expanded__route-scroll{
+  padding-inline:var(--gw-route-text-inset);
+  scrollbar-gutter:stable both-edges;
+}
+main.ld-detail.ld-sector-browser .ld-sector-expanded__routes li{
+  padding-inline:0;
+}
+@media(min-width:701px){
+  main.ld-detail.ld-sector-browser .ld-sector-expanded__columns{
+    align-items:stretch;
+  }
+  main.ld-detail.ld-sector-browser .ld-sector-expanded__subsectors{
+    position:relative;
+    border-right:0;
+  }
+  main.ld-detail.ld-sector-browser .ld-sector-expanded__subsectors::after{
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    width:1px;
+    background:rgba(255,255,255,.14);
+    pointer-events:none;
+  }
+  main.ld-detail.ld-sector-browser .ld-sector-expanded h4{
+    line-height:1.5;
+  }
+  /* Match the list's text inset and native scrollbar gutters without changing its heading baseline. */
+  main.ld-detail.ld-sector-browser .ld-sector-expanded__routes h4{
+    margin-right:calc(var(--gw-route-control-width) + 4px);
+    padding-inline:var(--gw-route-text-inset);
+    overflow:hidden;
+    scrollbar-width:thin;
+    scrollbar-gutter:stable both-edges;
+  }
+}
+@media(max-width:700px){
+  main.ld-detail.ld-sector-browser .ld-sector-expanded__subsectors ul{
+    padding-inline:var(--gw-route-text-inset);
+    scrollbar-gutter:stable both-edges;
+  }
+}
+
+/* Route-only cards use the same spacing as Longdong, including non-scrollable and empty lists. */
+main.gw-sector-browser .gw-sector-grid > article.gw-sector-card{padding-inline:var(--gw-sector-card-inset)}
+main.gw-sector-browser .gw-sector-grid :is(.df-detail__area-header,.kd-detail__area-header,.gz-detail__area-header){grid-template-columns:minmax(0,1fr) var(--gw-route-control-width)}
+main.gw-sector-browser .gw-sector-grid :is(.df-detail__area-number,.kd-detail__area-number,.gz-detail__area-number){width:var(--gw-route-control-width);min-width:0;text-align:center}
+main.gw-sector-browser .gw-sector-panel__scroll{padding-inline:var(--gw-route-text-inset);scrollbar-gutter:stable both-edges}
+main.gw-sector-browser .gw-sector-panel li{padding-inline:0}
+main.gw-sector-browser .gw-sector-panel h4{margin-right:calc(var(--gw-route-control-width) + 4px);padding-inline:var(--gw-route-text-inset);overflow:hidden;scrollbar-width:thin;scrollbar-gutter:stable both-edges;line-height:1.5}
+main.gw-sector-browser .gw-sector-panel__empty{margin-right:calc(var(--gw-route-control-width) + 4px);padding-inline:var(--gw-route-text-inset)}
+/* Additional Longdong departure resources match the site's quiet pill buttons. */
+main.ld-detail .ld-detail__safety-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:1080px;margin:28px auto 0}
+main.ld-detail .ld-detail__safety-links .ld-detail__button{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#f5f5f5}
+main.ld-detail .ld-detail__safety-links .ld-detail__button:hover{background:#f5f5f5;color:#080808}
+main.ld-detail .ld-detail__safety-links .ld-detail__button:focus-visible{outline:2px solid #A9D9B6;outline-offset:3px}
+
+/* On phones, match the visible code's right inset to the title's left inset.
+   The arrows retain their 36px hit area and follow the code's center using its font metrics. */
+@media(max-width:700px){
+  main.ld-detail.ld-sector-browser .ld-detail__sector-grid .ld-detail__area-number,
+  main.gw-sector-browser .gw-sector-grid :is(.df-detail__area-number,.kd-detail__area-number,.gz-detail__area-number){
+    text-align:right;
+    letter-spacing:.02em;
+  }
+  main:is(.ld-sector-browser,.gw-sector-browser) .gw-route-scroll-hints__button{
+    font:inherit;
+    font-size:16px;
+    font-weight:400;
+    letter-spacing:.02em;
+    font-variant-numeric:tabular-nums;
+    transform:translateX(calc((var(--gw-route-control-width) - 2ch - .04em) / 2));
+  }
+}
+
+/* Reclaim the space before the right-aligned mobile controls on all crag pages.
+   The existing button width/right anchor keeps the arrows aligned with the sector code. */
+@media(max-width:700px){
+  main.ld-detail.ld-sector-browser .gw-route-scroll-hints,
+  main.gw-sector-browser .gw-route-scroll-hints{
+    grid-template-columns:minmax(0,1fr) 28px;
+    column-gap:0;
+  }
+  main.gw-sector-browser .gw-sector-panel h4,
+  main.gw-sector-browser .gw-sector-panel__empty{
+    margin-right:28px;
+  }
+}
