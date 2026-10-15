@@ -36,7 +36,7 @@
   <section class="kd-detail__section" id="kd-routes" aria-hidden="true">
     <header class="kd-detail__heading"><p class="kd-detail__eyebrow">CLASSIC LINES</p><h2>從路書挑幾條代表路線</h2><p>以下難度、簡介和岩區依路書整理，供行前認識風格使用；實際狀況請以現場與最新資訊為準。</p></header>
     <div class="kd-detail__route-list"></div>
-    <p class="kd-detail__note" data-lang-zh="星號、級數與固定點資料依路書整理。請查閱完整描述與最新資訊，並確認裝備、下降方式及現場狀況。" data-lang-en="Stars, grades and protection details follow the guide. Read the full descriptions and current updates, and check gear, descent options and on-site conditions.">星號、級數與固定點資料依路書整理。請查閱完整描述與最新資訊，並確認裝備、下降方式及現場狀況。</p>
+    <p class="kd-detail__note" data-lang-zh="路線名稱、級數與固定點資料依路書整理。請查閱完整描述與最新資訊，並確認裝備、下降方式及現場狀況。" data-lang-en="Route names, grades and protection details follow the guide. Read the full descriptions and current updates, and check gear, descent options and on-site conditions.">路線名稱、級數與固定點資料依路書整理。請查閱完整描述與最新資訊，並確認裝備、下降方式及現場狀況。</p>
   </section>
 
   <section class="kd-detail__section kd-detail__visit" id="kd-visit" data-kd-section="visit" data-gw-page-section="3" data-gw-section-tone="base">
@@ -145,7 +145,7 @@
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   if (local) document.documentElement.classList.add("gw-local-font-preview");
-  ["climbing-typography-v2.css", "climbing-detail-v7.css", "climbing-conditions-layout-v3.css", "area-names-v1.css", "kenting-sector-map-v8.css", "climbing-map-zoom-v1.css", "climbing-sector-browser-v2.css", "page-sections-v1.css", "route-scroll-hints-v4.css"].forEach(function (name) {
+  ["climbing-typography-v2.css", "climbing-detail-v7.css", "climbing-conditions-layout-v3.css", "area-names-v1.css", "kenting-sector-map-v9.css", "climbing-map-zoom-v1.css", "climbing-sector-browser-v2.css", "page-sections-v1.css", "route-scroll-hints-v5.css"].forEach(function (name) {
     var link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = local ? "./" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/" + name;
@@ -204,7 +204,7 @@
 <script>
 (function () {
   var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ["longdong-rock-estimate-v3.js", "climbing-conditions-widget-v4.js", "weather-card-widget-v6.js", "climbing-map-zoom-v4.js", "kenting-sector-map-v10.js", "kenting-routes-v1.js", "climbing-sector-browser-v1.js", "route-scroll-hints-v1.js"].forEach(function (name) {
+  ["longdong-rock-estimate-v3.js", "climbing-conditions-widget-v4.js", "weather-card-widget-v6.js", "climbing-map-zoom-v5.js", "kenting-sector-map-v10.js", "kenting-routes-v2.js", "climbing-sector-browser-v1.js", "route-scroll-hints-v1.js"].forEach(function (name) {
     var script = document.createElement("script");
     script.async = false;
     script.src = local ? "../" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/" + name;

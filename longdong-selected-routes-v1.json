@@ -44,8 +44,8 @@
       "sourceIds": [
         "longdong/6bkwbs"
       ],
-      "infoZh": "校門口 · 運動攀登 · 3+2快扣",
-      "infoEn": "School Gate · Sport · 3+2 quickdraws"
+      "infoZh": "校門口 · 運動攀登 · 3 bolts + anchor",
+      "infoEn": "School Gate · Sport · 3 bolts + anchor"
     },
     {
       "name": "Oh No!",
@@ -63,8 +63,8 @@
       "sourceIds": [
         "longdong/57q6c4"
       ],
-      "infoZh": "校門口 · 運動攀登 · 6+2快扣",
-      "infoEn": "School Gate · Sport · 6+2 quickdraws"
+      "infoZh": "校門口 · 運動攀登 · 6 bolts + anchor",
+      "infoEn": "School Gate · Sport · 6 bolts + anchor"
     },
     {
       "name": "Oh!",
@@ -82,8 +82,8 @@
       "sourceIds": [
         "longdong/ay42j5"
       ],
-      "infoZh": "校門口 · 運動攀登 · 8+2快扣",
-      "infoEn": "School Gate · Sport · 8+2 quickdraws"
+      "infoZh": "校門口 · 運動攀登 · 8 bolts + anchor",
+      "infoEn": "School Gate · Sport · 8 bolts + anchor"
     },
     {
       "name": "阿彌陀佛",
@@ -101,8 +101,8 @@
       "sourceIds": [
         "longdong/4h9qrg"
       ],
-      "infoZh": "校門口 · 運動攀登 · 8+2快扣",
-      "infoEn": "School Gate · Sport · 8+2 quickdraws"
+      "infoZh": "校門口 · 運動攀登 · 8 bolts + anchor",
+      "infoEn": "School Gate · Sport · 8 bolts + anchor"
     },
     {
       "name": "V槽",
@@ -120,8 +120,8 @@
       "sourceIds": [
         "longdong/92w6b2"
       ],
-      "infoZh": "校門口 · 人面岩 · 運動攀登 · 8+2快扣",
-      "infoEn": "School Gate · Disco Buttress · Sport · 8+2 quickdraws"
+      "infoZh": "校門口 · 人面岩 · 運動攀登 · 8 bolts + anchor",
+      "infoEn": "School Gate · Disco Buttress · Sport · 8 bolts + anchor"
     },
     {
       "name": "無名小卒",
@@ -139,8 +139,8 @@
       "sourceIds": [
         "longdong/nceecg"
       ],
-      "infoZh": "校門口 · 人面岩 · 運動攀登 · 9+2快扣",
-      "infoEn": "School Gate · Disco Buttress · Sport · 9+2 quickdraws"
+      "infoZh": "校門口 · 人面岩 · 運動攀登 · 9 bolts + anchor",
+      "infoEn": "School Gate · Disco Buttress · Sport · 9 bolts + anchor"
     },
     {
       "name": "水虎魚",
@@ -158,8 +158,8 @@
       "sourceIds": [
         "longdong/nf9tsv"
       ],
-      "infoZh": "校門口 · 人面岩 · 運動攀登 · 10+2快扣",
-      "infoEn": "School Gate · Disco Buttress · Sport · 10+2 quickdraws"
+      "infoZh": "校門口 · 人面岩 · 運動攀登 · 10 bolts + anchor",
+      "infoEn": "School Gate · Disco Buttress · Sport · 10 bolts + anchor"
     },
     {
       "name": "Disco大裂隙",
@@ -367,8 +367,8 @@
       "sourceIds": [
         "longdong/as6qw8"
       ],
-      "infoZh": "長巷 · 佈告欄 · 運動攀登 · 9+2快扣",
-      "infoEn": "Long Lane · Bulletin Board · Sport · 9+2 quickdraws"
+      "infoZh": "長巷 · 佈告欄 · 運動攀登 · 9 bolts + anchor",
+      "infoEn": "Long Lane · Bulletin Board · Sport · 9 bolts + anchor"
     },
     {
       "name": "發想",
@@ -386,8 +386,8 @@
       "sourceIds": [
         "longdong/6h36pz"
       ],
-      "infoZh": "長巷 · 佈告欄 · 運動攀登 · 9+2快扣",
-      "infoEn": "Long Lane · Bulletin Board · Sport · 9+2 quickdraws"
+      "infoZh": "長巷 · 佈告欄 · 運動攀登 · 9 bolts + anchor",
+      "infoEn": "Long Lane · Bulletin Board · Sport · 9 bolts + anchor"
     },
     {
       "name": "金門斜板",
@@ -405,8 +405,8 @@
       "sourceIds": [
         "longdong/4kfv2n"
       ],
-      "infoZh": "長巷 · 佈告欄 · 運動攀登 · 4+2快扣",
-      "infoEn": "Long Lane · Bulletin Board · Sport · 4+2 quickdraws"
+      "infoZh": "長巷 · 佈告欄 · 運動攀登 · 4 bolts + anchor",
+      "infoEn": "Long Lane · Bulletin Board · Sport · 4 bolts + anchor"
     },
     {
       "name": "天勾",
@@ -424,8 +424,8 @@
       "sourceIds": [
         "longdong/ebzsy6"
       ],
-      "infoZh": "長巷 · 運動攀登 · 4+2快扣",
-      "infoEn": "Long Lane · Sport · 4+2 quickdraws"
+      "infoZh": "長巷 · 運動攀登 · 4 bolts + anchor",
+      "infoEn": "Long Lane · Sport · 4 bolts + anchor"
     },
     {
       "name": "凹洞懸岩",
@@ -443,8 +443,8 @@
       "sourceIds": [
         "longdong/x3djc5"
       ],
-      "infoZh": "長巷 · 運動攀登 · 7+2快扣",
-      "infoEn": "Long Lane · Sport · 7+2 quickdraws"
+      "infoZh": "長巷 · 運動攀登 · 7 bolts + anchor",
+      "infoEn": "Long Lane · Sport · 7 bolts + anchor"
     },
     {
       "name": "杯弓蛇影",
@@ -462,8 +462,8 @@
       "sourceIds": [
         "longdong/hbqcmf"
       ],
-      "infoZh": "長巷 · 運動攀登 · 5+2快扣",
-      "infoEn": "Long Lane · Sport · 5+2 quickdraws"
+      "infoZh": "長巷 · 運動攀登 · 5 bolts + anchor",
+      "infoEn": "Long Lane · Sport · 5 bolts + anchor"
     },
     {
       "name": "十字裂隙",
@@ -653,8 +653,8 @@
       "sourceIds": [
         "longdong/d7xdgx"
       ],
-      "infoZh": "音樂廳 · 正面 · 運動攀登 · 8+2快扣",
-      "infoEn": "Music Hall · Main Face · Sport · 8+2 quickdraws"
+      "infoZh": "音樂廳 · 正面 · 運動攀登 · 8 bolts + anchor",
+      "infoEn": "Music Hall · Main Face · Sport · 8 bolts + anchor"
     },
     {
       "name": "豎琴",
@@ -672,8 +672,8 @@
       "sourceIds": [
         "longdong/jw4spg"
       ],
-      "infoZh": "音樂廳 · 正面 · 運動攀登 · 8+2快扣",
-      "infoEn": "Music Hall · Main Face · Sport · 8+2 quickdraws"
+      "infoZh": "音樂廳 · 正面 · 運動攀登 · 8 bolts + anchor",
+      "infoEn": "Music Hall · Main Face · Sport · 8 bolts + anchor"
     },
     {
       "name": "Fucking Fall",
@@ -691,8 +691,8 @@
       "sourceIds": [
         "longdong/napnzf"
       ],
-      "infoZh": "音樂廳 · 正面 · 運動攀登 · 7+2快扣",
-      "infoEn": "Music Hall · Main Face · Sport · 7+2 quickdraws"
+      "infoZh": "音樂廳 · 正面 · 運動攀登 · 7 bolts + anchor",
+      "infoEn": "Music Hall · Main Face · Sport · 7 bolts + anchor"
     },
     {
       "name": "自由裂隙",
@@ -790,8 +790,8 @@
       "sourceIds": [
         "longdong/jrefpj"
       ],
-      "infoZh": "第一洞 · 龍脊背面下半部 · 運動攀登 · 6+2快扣",
-      "infoEn": "First Cave · Lower Dragon Ridge · Sport · 6+2 quickdraws"
+      "infoZh": "第一洞 · 龍脊背面下半部 · 運動攀登 · 6 bolts + anchor",
+      "infoEn": "First Cave · Lower Dragon Ridge · Sport · 6 bolts + anchor"
     },
     {
       "name": "福利社",
@@ -828,8 +828,8 @@
       "sourceIds": [
         "longdong/zrhbb5"
       ],
-      "infoZh": "第一洞 · 龍脊背面下半部 · 運動攀登 · 7+2快扣",
-      "infoEn": "First Cave · Lower Dragon Ridge · Sport · 7+2 quickdraws"
+      "infoZh": "第一洞 · 龍脊背面下半部 · 運動攀登 · 7 bolts + anchor",
+      "infoEn": "First Cave · Lower Dragon Ridge · Sport · 7 bolts + anchor"
     },
     {
       "name": "無尾熊",
@@ -885,8 +885,8 @@
       "sourceIds": [
         "longdong/hn63q8"
       ],
-      "infoZh": "第二洞 · 入口裂隙 · 運動攀登 · 14+2快扣",
-      "infoEn": "Second Cave · Entrance Cracks · Sport · 14+2 quickdraws"
+      "infoZh": "第二洞 · 入口裂隙 · 運動攀登 · 14 bolts + anchor",
+      "infoEn": "Second Cave · Entrance Cracks · Sport · 14 bolts + anchor"
     },
     {
       "name": "向陽懸岩",
@@ -1076,8 +1076,8 @@
       "sourceIds": [
         "longdong/58745w"
       ],
-      "infoZh": "黃金谷 · 黑岩 · 運動攀登 · 7+2快扣",
-      "infoEn": "Golden Valley · Black Wall · Sport · 7+2 quickdraws"
+      "infoZh": "黃金谷 · 黑岩 · 運動攀登 · 7 bolts + anchor",
+      "infoEn": "Golden Valley · Black Wall · Sport · 7 bolts + anchor"
     },
     {
       "name": "黑臉",
@@ -1095,8 +1095,8 @@
       "sourceIds": [
         "longdong/4gw25p"
       ],
-      "infoZh": "黃金谷 · 黑岩 · 運動攀登 · 8+2快扣",
-      "infoEn": "Golden Valley · Black Wall · Sport · 8+2 quickdraws"
+      "infoZh": "黃金谷 · 黑岩 · 運動攀登 · 8 bolts + anchor",
+      "infoEn": "Golden Valley · Black Wall · Sport · 8 bolts + anchor"
     },
     {
       "name": "黑魔法巫婆",
@@ -1133,8 +1133,8 @@
       "sourceIds": [
         "longdong/xwcdvj"
       ],
-      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 13+2快扣",
-      "infoEn": "Golden Valley · Legend Wall · Sport · 13+2 quickdraws"
+      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 13 bolts + anchor",
+      "infoEn": "Golden Valley · Legend Wall · Sport · 13 bolts + anchor"
     },
     {
       "name": "黃金傳奇",
@@ -1152,8 +1152,8 @@
       "sourceIds": [
         "longdong/unbhx9"
       ],
-      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 15+2快扣",
-      "infoEn": "Golden Valley · Legend Wall · Sport · 15+2 quickdraws"
+      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 15 bolts + anchor",
+      "infoEn": "Golden Valley · Legend Wall · Sport · 15 bolts + anchor"
     },
     {
       "name": "無名氏",
@@ -1171,8 +1171,8 @@
       "sourceIds": [
         "longdong/9hu944"
       ],
-      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 12+2快扣",
-      "infoEn": "Golden Valley · Legend Wall · Sport · 12+2 quickdraws"
+      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 12 bolts + anchor",
+      "infoEn": "Golden Valley · Legend Wall · Sport · 12 bolts + anchor"
     },
     {
       "name": "不方便",
@@ -1190,8 +1190,8 @@
       "sourceIds": [
         "longdong/uweyd7"
       ],
-      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 7+2快扣",
-      "infoEn": "Golden Valley · Legend Wall · Sport · 7+2 quickdraws"
+      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 7 bolts + anchor",
+      "infoEn": "Golden Valley · Legend Wall · Sport · 7 bolts + anchor"
     },
     {
       "name": "非常不方便",
@@ -1209,8 +1209,8 @@
       "sourceIds": [
         "longdong/u3dxdb"
       ],
-      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 11+2快扣",
-      "infoEn": "Golden Valley · Legend Wall · Sport · 11+2 quickdraws"
+      "infoZh": "黃金谷 · 傳奇岩 · 運動攀登 · 11 bolts + anchor",
+      "infoEn": "Golden Valley · Legend Wall · Sport · 11 bolts + anchor"
     },
     {
       "name": "細帶比基尼",
@@ -1248,8 +1248,8 @@
         "longdong/pthe3h",
         "longdong/msrqz9"
       ],
-      "infoZh": "黃金谷 · 龍船岩 · 運動攀登 · 10+2快扣",
-      "infoEn": "Golden Valley · Dragon Boat Wall · Sport · 10+2 quickdraws"
+      "infoZh": "黃金谷 · 龍船岩 · 運動攀登 · 10 bolts + anchor",
+      "infoEn": "Golden Valley · Dragon Boat Wall · Sport · 10 bolts + anchor"
     },
     {
       "name": "決不",
@@ -1267,8 +1267,8 @@
       "sourceIds": [
         "longdong/fhnqd2"
       ],
-      "infoZh": "黃金谷 · 龍船岩 · 運動攀登 · 11+2快扣",
-      "infoEn": "Golden Valley · Dragon Boat Wall · Sport · 11+2 quickdraws"
+      "infoZh": "黃金谷 · 龍船岩 · 運動攀登 · 11 bolts + anchor",
+      "infoEn": "Golden Valley · Dragon Boat Wall · Sport · 11 bolts + anchor"
     },
     {
       "name": "團隊合作",
@@ -1286,8 +1286,8 @@
       "sourceIds": [
         "longdong/khuh2r"
       ],
-      "infoZh": "黃金谷 · 龍船岩 · 運動攀登 · 7+2快扣",
-      "infoEn": "Golden Valley · Dragon Boat Wall · Sport · 7+2 quickdraws"
+      "infoZh": "黃金谷 · 龍船岩 · 運動攀登 · 7 bolts + anchor",
+      "infoEn": "Golden Valley · Dragon Boat Wall · Sport · 7 bolts + anchor"
     },
     {
       "name": "誰騙了誰?",
@@ -1305,8 +1305,8 @@
       "sourceIds": [
         "longdong/h85jpa"
       ],
-      "infoZh": "後門 · 地下二樓 · 運動攀登 · 12+2快扣",
-      "infoEn": "Back Door · Basement · Sport · 12+2 quickdraws"
+      "infoZh": "後門 · 地下二樓 · 運動攀登 · 12 bolts + anchor",
+      "infoEn": "Back Door · Basement · Sport · 12 bolts + anchor"
     },
     {
       "name": "大家的福利",
@@ -1324,8 +1324,8 @@
       "sourceIds": [
         "longdong/ttp5g6"
       ],
-      "infoZh": "後門 · 地下二樓 · 運動攀登 · 9+2快扣",
-      "infoEn": "Back Door · Basement · Sport · 9+2 quickdraws"
+      "infoZh": "後門 · 地下二樓 · 運動攀登 · 9 bolts + anchor",
+      "infoEn": "Back Door · Basement · Sport · 9 bolts + anchor"
     },
     {
       "name": "高檔快扣",
@@ -1343,8 +1343,8 @@
       "sourceIds": [
         "longdong/t357dk"
       ],
-      "infoZh": "後門 · 地下二樓 · 運動攀登 · 11+3快扣",
-      "infoEn": "Back Door · Basement · Sport · 11+3 quickdraws"
+      "infoZh": "後門 · 地下二樓 · 運動攀登 · 11 bolts + anchor",
+      "infoEn": "Back Door · Basement · Sport · 11 bolts + anchor"
     },
     {
       "name": "倩女驚魂",
@@ -1381,8 +1381,8 @@
       "sourceIds": [
         "longdong/qn468g"
       ],
-      "infoZh": "後門 · 地下二樓 · 運動攀登 · 11+2快扣",
-      "infoEn": "Back Door · Basement · Sport · 11+2 quickdraws"
+      "infoZh": "後門 · 地下二樓 · 運動攀登 · 11 bolts + anchor",
+      "infoEn": "Back Door · Basement · Sport · 11 bolts + anchor"
     },
     {
       "name": "赤頭",
@@ -1400,8 +1400,8 @@
       "sourceIds": [
         "longdong/s97zfz"
       ],
-      "infoZh": "後門 · 地下二樓 · 運動攀登 · 12+2快扣",
-      "infoEn": "Back Door · Basement · Sport · 12+2 quickdraws"
+      "infoZh": "後門 · 地下二樓 · 運動攀登 · 12 bolts + anchor",
+      "infoEn": "Back Door · Basement · Sport · 12 bolts + anchor"
     },
     {
       "name": "新法拉利",
@@ -1419,8 +1419,8 @@
       "sourceIds": [
         "longdong/e44qgd"
       ],
-      "infoZh": "後門 · 地下二樓 · 運動攀登 · 9+2快扣",
-      "infoEn": "Back Door · Basement · Sport · 9+2 quickdraws"
+      "infoZh": "後門 · 地下二樓 · 運動攀登 · 9 bolts + anchor",
+      "infoEn": "Back Door · Basement · Sport · 9 bolts + anchor"
     },
     {
       "name": "遺落的視界",
