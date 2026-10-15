@@ -88,3 +88,10 @@
 龍洞「出發」區塊新增救援資訊圖、急救器材清單、意外事故通報群組三個雙語外部連結，採灰底、hover白底按鈕。此次四頁都需替換完整Embed並重新Publish；GitHub發布不會自動改寫Webflow頁面。
 
 手機版（≤700px）四頁的岩場編碼採靠右，文字右側與標題左側皆保留20px；箭頭依16px兩位等寬數字寬度向右平移，中心持續對齊編碼。手機箭頭欄由36px加4px間距縮為28px無間距，推薦路線增加12px寬度；短清單保留相同欄位，沒有箭頭。原本36px按鈕點擊區、路線兩側16px內距及桌機樣式維持原設定。共用JS仍為route-scroll-hints-v1.js，四頁Embed皆改載入route-scroll-hints-v3.css。
+
+
+## 龍洞救援器材與手機地圖初始視野
+
+龍洞地圖改採編輯者新增的 `webflow-embeds/svg/longdong-map-vector-edit.svg`，由 `longdong-sector-map-v20.js` 內嵌；保留六處器材圖示與九區數字、名稱、選取填色。`longdong-rescue-v1.js`／`webflow-embeds/longdong-rescue-v1.css` 將附圖器材資料顯示於展開字卡的名稱與編碼間：校門口與鐘塔列急救器材／長背板，長巷、第一洞、黃金谷與後門另列卷式擔架。僅在選取卡顯示，手機使用短直列，支援中英文；資料為本次提供圖表的轉錄。救援資訊圖按鈕改連編輯者提供的Google Drive檔案。
+
+龍洞與墾丁的手機版初始視野依2026-10-15提供的兩張圖設定（≤520px）：龍洞SVG基準寬175%，靠右顯示、來源座標頂端40；墾丁SVG基準寬333%，來源座標左上3290／440，以中央攀登區為主要視野。兩頁手機地圖框採約1.04:1的寬高比例，對應參考圖接近正方形的視窗。對應CSS為longdong-sector-map-v18.css與kenting-sector-map-v8.css，墾丁地圖JS為kenting-sector-map-v10.js。兩頁改用climbing-map-zoom-v3.js，在樣式／字體載入及SVG尺寸改變時套用初始位置；使用者開始拖曳、縮放或選取岩區後，保留其操作視野，不再套用初始位置。拖曳與縮放仍限制於SVG邊界。桌機初始比例與既有定位維持原設定，另兩頁維持原縮放版本。此次龍洞與墾丁需重貼完整Embed並Publish。
