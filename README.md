@@ -79,3 +79,10 @@
 `webflow-embeds/menu-overlay-full.html`為hamburger展開後的共用選單Embed，需貼回 `.mobile-overlay.gw > .menu-icon-items-section`，外層保留Finsweet的`fs-scrolldisable-element="when-visible"`。展開面板統一使用#0b0d0e底色；三個分類收合時採一致內距，不顯示分類底色與分隔線；展開後只有子選單使用上方細線與淡底。選單品牌、分類及連結字級為桌機14px、≤600px手機13px，連結hover為灰底，目前頁面為淡綠底及#A9D9B6文字。每個連結至少44px高，面板在各種高度都能向下捲動，避免展開後項目被裁切；原有hamburger開關、accordion、關子嶺入口與目前頁面判斷保留。樣式內嵌，這次只需替換選單Embed並Publish。
 
 推薦路線清單的最後一筆以CSS `li:last-child` 移除下方分隔線與padding；單筆路線同時套用首尾規則。龍洞清單改用內容高度及max-height，桌機與手機都不再強制最小／固定高度，避免短清單末尾產生可繼續滑動的錯覺。其他三頁沿用內容高度及max-height。
+
+
+## 推薦路線捲動提示
+
+四個岩場 Embed 共同載入 `route-scroll-hints-v1.js` 與 `webflow-embeds/route-scroll-hints-v1.css`。清單實際超出可見高度時，右側才顯示淺綠色箭頭：頂端只有向下、中段上下皆有、底端只有向上；可點擊捲動，保留手勢與鍵盤操作。語言、岩區、手機標籤、字體與視窗大小改變後重新檢查。短清單不顯示箭頭，仍預留36px控制欄，讓岩場編碼、箭頭及清單欄位維持對齊。四頁字卡左右內距20px，清單扣除控制欄後兩側各16px，原生捲軸預留空間對稱，末筆仍沒有底部線或額外空白。龍洞手機細分區採相同文字內距，桌機分隔線隨較高的欄位延伸至內容底部、停在下方留白上緣；推薦路線標題對齊路線名稱並與細分區標題平行。
+
+龍洞「出發」區塊新增救援資訊圖、急救器材清單、意外事故通報群組三個雙語外部連結，採灰底、hover白底按鈕。此次四頁都需替換完整Embed並重新Publish；GitHub發布不會自動改寫Webflow頁面。
