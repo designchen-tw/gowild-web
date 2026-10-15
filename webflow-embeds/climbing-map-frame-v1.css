@@ -1,0 +1,30 @@
+/* A shared viewport size: zoom changes the SVG, never the surrounding frame. */
+main:is(.ld-detail,.kd-detail,.df-detail,.gz-detail) :is(.ld-sector-map,.kd-sector-map,.df-sector-map,.gz-sector-map){
+  width:100%;max-width:1080px;margin-inline:auto;
+}
+main:is(.ld-detail,.kd-detail,.df-detail,.gz-detail) :is(.ld-map-frame,.kd-map-frame,.df-map-frame,.gz-map-frame){
+  position:relative;box-sizing:border-box;width:100%;
+  height:clamp(440px,65svh,650px);aspect-ratio:auto;
+  overflow:hidden;border-radius:16px;
+}
+main:is(.ld-detail,.kd-detail,.df-detail,.gz-detail) :is(.ld-map-viewport,.kd-map-viewport,.df-map-viewport,.gz-map-viewport){
+  position:absolute;inset:0;width:100%;height:100%;min-height:0;
+  box-sizing:border-box;overflow:auto;overscroll-behavior:none;
+  touch-action:none;user-select:none;cursor:grab;
+}
+main:is(.ld-detail,.kd-detail,.df-detail,.gz-detail) .gw-map-viewport.is-dragging{cursor:grabbing}
+/* Match the source artboard so fitting the whole map has no contrasting exposed band. */
+main.ld-detail :is(.ld-map-frame,.ld-map-viewport){background:#0b0d0e}
+main.kd-detail :is(.kd-map-frame,.kd-map-viewport){background:#252c2e}
+main.df-detail :is(.df-map-frame,.df-map-viewport){background:#1c2123}
+main.gz-detail :is(.gz-map-frame,.gz-map-viewport){background:#1a2223}
+main:is(.ld-detail,.kd-detail,.df-detail,.gz-detail) :is(.ld-map-svg,.kd-map-svg,.df-map-svg,.gz-map-svg){
+  max-width:none;margin:0;
+}
+/* Guanziling's old 100% minimum prevented zooming out to the full artboard. */
+main.gz-detail .gz-map-svg{min-width:0}
+@media(max-width:520px){
+  main:is(.ld-detail,.kd-detail,.df-detail,.gz-detail) :is(.ld-map-frame,.kd-map-frame,.df-map-frame,.gz-map-frame){
+    height:auto;aspect-ratio:1.04 / 1;
+  }
+}
