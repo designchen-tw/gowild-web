@@ -14,7 +14,7 @@
  const local=location.protocol==='file:'||/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
  if(local)document.documentElement.classList.add('gw-local-font-preview');
  const base=local?'./':'https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/';
- ['guanziling-detail-v3.css','climbing-sector-browser-v2.css','page-sections-v1.css','route-scroll-hints-v3.css'].forEach(name=>{const link=document.createElement('link');link.rel='stylesheet';link.href=base+name;document.head.appendChild(link)});
+ ['guanziling-detail-v3.css','climbing-sector-browser-v2.css','page-sections-v1.css','route-scroll-hints-v4.css'].forEach(name=>{const link=document.createElement('link');link.rel='stylesheet';link.href=base+name;document.head.appendChild(link)});
  const root=document.querySelector('[data-gz-detail]');if(!root)return;
  const setLanguage=lang=>{root.dataset.language=lang;root.querySelectorAll('[data-lang-zh][data-lang-en]').forEach(el=>el.textContent=el.dataset[lang==='en'?'langEn':'langZh']);root.querySelectorAll('[data-lang-choice]').forEach(b=>{const active=b.dataset.langChoice===lang;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',active)});root.querySelector('nav').setAttribute('aria-label',lang==='en'?'Guanziling page navigation':'關子嶺頁面導覽');document.dispatchEvent(new Event('gz-language-change'))};
  root.querySelectorAll('[data-lang-choice]').forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.langChoice)));setLanguage('zh');

@@ -1,0 +1,1027 @@
+{
+  "source": "https://docs.google.com/document/d/1eWAfK_ZjobLdsywtLUkmQh_xHGcdSH6Fzs32ZoEwUUU/edit",
+  "retrieved": "2026-10-15",
+  "selection": "Only route headings with two or three stars; one-star and unstarred projects omitted",
+  "routes": [
+    {
+      "id": "kd-guide-01-01",
+      "sector": 1,
+      "zh": "遺落海岸",
+      "en": "Lost coast",
+      "grade": "5.11a",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-01-02",
+      "sector": 1,
+      "zh": "小精靈",
+      "en": "Kodama",
+      "grade": "5.10b",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-01-03",
+      "sector": 1,
+      "zh": "亞克路",
+      "en": "Yakul",
+      "grade": "5.11b",
+      "stars": 2,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-01-04",
+      "sector": 1,
+      "zh": "山獸神",
+      "en": "Forest Spirit",
+      "grade": "5.11d",
+      "stars": 3,
+      "bolts": 7,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-01-05",
+      "sector": 1,
+      "zh": "夜行者",
+      "en": "Nightwalker",
+      "grade": "5.11b",
+      "stars": 2,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-01-06",
+      "sector": 1,
+      "zh": "樹靈",
+      "en": "Tree Spirit",
+      "grade": "5.10d",
+      "stars": 2,
+      "bolts": 7,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-01-07",
+      "sector": 1,
+      "zh": "邪魔",
+      "en": "Demon",
+      "grade": "5.10b",
+      "stars": 2,
+      "bolts": 8,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-01-08",
+      "sector": 1,
+      "zh": "森林人",
+      "en": "Forester",
+      "grade": "5.11b",
+      "stars": 3,
+      "bolts": 7,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-02-02",
+      "sector": 2,
+      "zh": "有期徒刑",
+      "en": "Imprisonment",
+      "grade": "5.10a",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-02-03",
+      "sector": 2,
+      "zh": "菊石",
+      "en": "Ammonites",
+      "grade": "5.9",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "tree"
+    },
+    {
+      "id": "kd-guide-02-04",
+      "sector": 2,
+      "zh": "Displaying Very Little Talent",
+      "en": "Displaying Very Little Talent",
+      "grade": "5.9",
+      "stars": 2,
+      "bolts": 3,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-02-05",
+      "sector": 2,
+      "zh": "小魚",
+      "en": "Small Fish",
+      "grade": "5.10a",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-02-06",
+      "sector": 2,
+      "zh": "鵝掌藤",
+      "en": "Umbrella Tree",
+      "grade": "5.9",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-01",
+      "sector": 3,
+      "zh": "沙塵暴",
+      "en": "Sand storm",
+      "grade": "5.11c",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-02",
+      "sector": 3,
+      "zh": "芝麻湯圓",
+      "en": "Sesame dumplings",
+      "grade": "5.11a",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-03",
+      "sector": 3,
+      "zh": "奇爬",
+      "en": "ChiClimb",
+      "grade": "5.12b",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-04",
+      "sector": 3,
+      "zh": "沙行者",
+      "en": "Sand walker",
+      "grade": "5.11b",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-05",
+      "sector": 3,
+      "zh": "風花雪月",
+      "en": "Romantic",
+      "grade": "5.12a",
+      "stars": 2,
+      "bolts": 3,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-06",
+      "sector": 3,
+      "zh": "陽光男孩",
+      "en": "Sunny boy",
+      "grade": "5.12b",
+      "stars": 3,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-07",
+      "sector": 3,
+      "zh": "阿法",
+      "en": "Alpha",
+      "grade": "5.13c/d",
+      "stars": 3,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-08",
+      "sector": 3,
+      "zh": "貝塔",
+      "en": "Beta",
+      "grade": "5.13b/c",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-09",
+      "sector": 3,
+      "zh": "日正當中",
+      "en": "High noon",
+      "grade": "5.11c",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-10",
+      "sector": 3,
+      "zh": "Lock and Trust",
+      "en": "Lock and Trust",
+      "grade": "5.12a",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-11",
+      "sector": 3,
+      "zh": "呼去啦",
+      "en": "Hail Mary",
+      "grade": "5.12b",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-12",
+      "sector": 3,
+      "zh": "斜陽",
+      "en": "Slanting sunlight",
+      "grade": "5.10d",
+      "stars": 3,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-13",
+      "sector": 3,
+      "zh": "落山風",
+      "en": "Katabatic winds",
+      "grade": "5.12a",
+      "stars": 2,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-14",
+      "sector": 3,
+      "zh": "閃電",
+      "en": "Lightning",
+      "grade": "5.12a",
+      "stars": 3,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-15",
+      "sector": 3,
+      "zh": "Happy Crimper",
+      "en": "Happy Crimper",
+      "grade": "5.12a",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-16",
+      "sector": 3,
+      "zh": "望著大海",
+      "en": "Staring at the sea",
+      "grade": "5.12c",
+      "stars": 3,
+      "bolts": 7,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-17",
+      "sector": 3,
+      "zh": "沒有弱點的男人",
+      "en": "Man with no weakness",
+      "grade": "5.12a",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-18",
+      "sector": 3,
+      "zh": "看起來我可以",
+      "en": "Looks like I can do it",
+      "grade": "5.11c",
+      "stars": 3,
+      "bolts": 7,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-19",
+      "sector": 3,
+      "zh": "12 Plus",
+      "en": "12 Plus",
+      "grade": "5.13a/b",
+      "stars": 2,
+      "bolts": 7,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-20",
+      "sector": 3,
+      "zh": "壞爸爸",
+      "en": "Bad Dad",
+      "grade": "5.12d",
+      "stars": 3,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-21",
+      "sector": 3,
+      "zh": "岩徑偕行",
+      "en": "The Rock Path",
+      "grade": "5.13a",
+      "stars": 3,
+      "bolts": 8,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-22",
+      "sector": 3,
+      "zh": "魔女橋",
+      "en": "Witch’s Bridge",
+      "grade": "5.13d",
+      "stars": 3,
+      "bolts": 7,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-23",
+      "sector": 3,
+      "zh": "Zeta",
+      "en": "Zeta",
+      "grade": "5.14a",
+      "stars": 3,
+      "bolts": 9,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-24",
+      "sector": 3,
+      "zh": "偷電賊",
+      "en": "Thieves of Power",
+      "grade": "5.12c/d",
+      "stars": 3,
+      "bolts": 9,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-25",
+      "sector": 3,
+      "zh": "燒了老闆",
+      "en": "Burn the Lao ban",
+      "grade": "5.12b",
+      "stars": 3,
+      "bolts": 7,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-26",
+      "sector": 3,
+      "zh": "看起來我的菜",
+      "en": "Looks like my style",
+      "grade": "5.12c",
+      "stars": 3,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-27",
+      "sector": 3,
+      "zh": "蛻變",
+      "en": "Meta",
+      "grade": "5.13d",
+      "stars": 3,
+      "bolts": 7,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-28",
+      "sector": 3,
+      "zh": "揍普丁",
+      "en": "Punching Putin",
+      "grade": "5.12c",
+      "stars": 3,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-29",
+      "sector": 3,
+      "zh": "兒童樂園",
+      "en": "Children’s Paradise",
+      "grade": "5.12b",
+      "stars": 2,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-30",
+      "sector": 3,
+      "zh": "垂降學家",
+      "en": "Abseilist",
+      "grade": "5.10a",
+      "stars": 3,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-31",
+      "sector": 3,
+      "zh": "不算",
+      "en": "Bu Suan",
+      "grade": "5.12c",
+      "stars": 2,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-32",
+      "sector": 3,
+      "zh": "生態學家",
+      "en": "Ecologist",
+      "grade": "5.12d",
+      "stars": 3,
+      "bolts": 7,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-33",
+      "sector": 3,
+      "zh": "越嶺獵鹿",
+      "en": "Crossing the ridge to hunt the deer",
+      "grade": "5.10a",
+      "stars": 3,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-34",
+      "sector": 3,
+      "zh": "米漿",
+      "en": "Rice Milk",
+      "grade": "5.10a",
+      "stars": 2,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-35",
+      "sector": 3,
+      "zh": "Slab小練習",
+      "en": "Slab小練習",
+      "grade": "5.11a",
+      "stars": 3,
+      "bolts": 7,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-36",
+      "sector": 3,
+      "zh": "露出半個龜頭",
+      "en": "Show me your tortoise head",
+      "grade": "5.10c",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-37",
+      "sector": 3,
+      "zh": "拉麵",
+      "en": "Ramen",
+      "grade": "5.10a/b",
+      "stars": 2,
+      "bolts": 3,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-03-38",
+      "sector": 3,
+      "zh": "小翠",
+      "en": "Xiao cuì",
+      "grade": "5.10a",
+      "stars": 2,
+      "bolts": 3,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-01",
+      "sector": 4,
+      "zh": "Style bender",
+      "en": "Style bender",
+      "grade": "5.11b",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-04",
+      "sector": 4,
+      "zh": "Snapdragon",
+      "en": "Snapdragon",
+      "grade": "5.12c",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-05",
+      "sector": 4,
+      "zh": "龍珠",
+      "en": "Dragon ball",
+      "grade": "5.12d",
+      "stars": 3,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-06",
+      "sector": 4,
+      "zh": "龍珠左",
+      "en": "Dragon ball left",
+      "grade": "5.12b",
+      "stars": 2,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-07",
+      "sector": 4,
+      "zh": "龍王",
+      "en": "Dragon King",
+      "grade": "5.14a",
+      "stars": 3,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-08",
+      "sector": 4,
+      "zh": "飛龍",
+      "en": "Flying Dragon",
+      "grade": "5.13b/c",
+      "stars": 3,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-09",
+      "sector": 4,
+      "zh": "飛龍在天",
+      "en": "Flying Dragon in the sky",
+      "grade": "5.13c",
+      "stars": 3,
+      "bolts": 7,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-10",
+      "sector": 4,
+      "zh": "豆豆龍",
+      "en": "Totoro",
+      "grade": "5.13a/b",
+      "stars": 3,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-11",
+      "sector": 4,
+      "zh": "泡泡龍",
+      "en": "Bubble Bubble",
+      "grade": "5.11c/12b",
+      "stars": 3,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-12",
+      "sector": 4,
+      "zh": "短小精幹",
+      "en": "Short and lean",
+      "grade": "5.11d",
+      "stars": 3,
+      "bolts": 3,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-15",
+      "sector": 4,
+      "zh": "新竹客家人",
+      "en": "Hsinchu Hakkas",
+      "grade": "5.10d",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-16",
+      "sector": 4,
+      "zh": "醉西瓜",
+      "en": "Drunken watermelon",
+      "grade": "5.12a",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-17",
+      "sector": 4,
+      "zh": "火龍果",
+      "en": "Dragon Fruit",
+      "grade": "5.10b",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-18",
+      "sector": 4,
+      "zh": "龍水宮廟",
+      "en": "Longshui Temple",
+      "grade": "5.10b",
+      "stars": 3,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-19",
+      "sector": 4,
+      "zh": "哇沙米",
+      "en": "Wasabi",
+      "grade": "5.12c",
+      "stars": 3,
+      "bolts": 3,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-20",
+      "sector": 4,
+      "zh": "One finger wonder",
+      "en": "One finger wonder",
+      "grade": "5.12d",
+      "stars": 3,
+      "bolts": 3,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-21",
+      "sector": 4,
+      "zh": "審判日",
+      "en": "Judgement Day",
+      "grade": "5.13c",
+      "stars": 2,
+      "bolts": 3,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-22",
+      "sector": 4,
+      "zh": "左下右上",
+      "en": "Bottom left top right",
+      "grade": "5.10c",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-23",
+      "sector": 4,
+      "zh": "K.O.T.",
+      "en": "K.O.T.",
+      "grade": "5.12b",
+      "stars": 2,
+      "bolts": 3,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-24",
+      "sector": 4,
+      "zh": "鬼頭刀",
+      "en": "Dolphinfish",
+      "grade": "5.12a/b",
+      "stars": 2,
+      "bolts": 3,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-04-27",
+      "sector": 4,
+      "zh": "短腿大臉",
+      "en": "Short legs big face",
+      "grade": "5.10a",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-05-02",
+      "sector": 5,
+      "zh": "Looks so wrong, feels so right",
+      "en": "Looks so wrong, feels so right",
+      "grade": "5.12b",
+      "stars": 2,
+      "bolts": null,
+      "anchor": null
+    },
+    {
+      "id": "kd-guide-05-03",
+      "sector": 5,
+      "zh": "要有光",
+      "en": "Let there be light",
+      "grade": "5.13a",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-05-04",
+      "sector": 5,
+      "zh": "暗影",
+      "en": "Shadow",
+      "grade": "5.13a/12c",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-05-05",
+      "sector": 5,
+      "zh": "暗黑物質",
+      "en": "Dark matter",
+      "grade": "5.11b",
+      "stars": 3,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-05-06",
+      "sector": 5,
+      "zh": "魔鬼藏在細節裡",
+      "en": "Devil in the detail",
+      "grade": "5.12b",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-05-07",
+      "sector": 5,
+      "zh": "黑暗誘惑",
+      "en": "Dark moors enticing",
+      "grade": "5.13a/b",
+      "stars": 3,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-05-08",
+      "sector": 5,
+      "zh": "暗黑能量",
+      "en": "Dark energy",
+      "grade": "5.12c",
+      "stars": 3,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-05-09",
+      "sector": 5,
+      "zh": "保力達B",
+      "en": "Pailyta-B",
+      "grade": "5.12a",
+      "stars": 2,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-05-10",
+      "sector": 5,
+      "zh": "暗靈魂",
+      "en": "Dark Souls",
+      "grade": "5.12a",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-05-11",
+      "sector": 5,
+      "zh": "金鋼",
+      "en": "King Kong",
+      "grade": "5.11b",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-05-13",
+      "sector": 5,
+      "zh": "恆春姑娘",
+      "en": "Hengchun girl",
+      "grade": "5.11b",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-06-01",
+      "sector": 6,
+      "zh": "Power of love",
+      "en": "Power of love",
+      "grade": "5.11a",
+      "stars": 2,
+      "bolts": 2,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-06-02",
+      "sector": 6,
+      "zh": "Love of power",
+      "en": "Love of power",
+      "grade": "5.12a",
+      "stars": 2,
+      "bolts": 2,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-07-01",
+      "sector": 7,
+      "zh": "更生人",
+      "en": "Rehabilitated person",
+      "grade": "5.10a",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-07-02",
+      "sector": 7,
+      "zh": "萌萌寶貝",
+      "en": "Mongmong Baby",
+      "grade": "5.10d",
+      "stars": 3,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-07-03",
+      "sector": 7,
+      "zh": "鬼佬",
+      "en": "Ghost face man",
+      "grade": "5.11b",
+      "stars": 3,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-07-04",
+      "sector": 7,
+      "zh": "土土寶貝",
+      "en": "Tuh-tuh Baby",
+      "grade": "5.11a",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-07-05",
+      "sector": 7,
+      "zh": "新年",
+      "en": "New Year",
+      "grade": "5.11d",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-07-06",
+      "sector": 7,
+      "zh": "後面好痛喔",
+      "en": "That hurt like a butt cheek on the stick",
+      "grade": "5.11b",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-07-07",
+      "sector": 7,
+      "zh": "水牛",
+      "en": "Buffalo",
+      "grade": "5.10c/d",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-07-08",
+      "sector": 7,
+      "zh": "柏拉圖的洞穴",
+      "en": "Plato's cave",
+      "grade": "5.10b",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-07-09",
+      "sector": 7,
+      "zh": "重蹈覆徹",
+      "en": "Follow the track of an overturned cart",
+      "grade": "5.10b",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-07-10",
+      "sector": 7,
+      "zh": "白水牛",
+      "en": "White Buffalo",
+      "grade": "5.10c",
+      "stars": 2,
+      "bolts": 6,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-07-11",
+      "sector": 7,
+      "zh": "Jessie’s Route",
+      "en": "Jessie’s Route",
+      "grade": "5.8",
+      "stars": 2,
+      "bolts": null,
+      "anchor": null
+    },
+    {
+      "id": "kd-guide-07-12",
+      "sector": 7,
+      "zh": "Addie’s Route",
+      "en": "Addie’s Route",
+      "grade": "5.7",
+      "stars": 2,
+      "bolts": null,
+      "anchor": null
+    },
+    {
+      "id": "kd-guide-08-02",
+      "sector": 8,
+      "zh": "蝸牛漫步",
+      "en": "Snail Pace",
+      "grade": "5.10a",
+      "stars": 2,
+      "bolts": 3,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-08-04",
+      "sector": 8,
+      "zh": "愛麗絲之路",
+      "en": "Alice’s Route",
+      "grade": "5.10b",
+      "stars": 2,
+      "bolts": 4,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-08-05",
+      "sector": 8,
+      "zh": "Last action hero",
+      "en": "Last action hero",
+      "grade": "5.11a",
+      "stars": 3,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-08-06",
+      "sector": 8,
+      "zh": "黏黏彈",
+      "en": "Sticky Goo",
+      "grade": "5.10c",
+      "stars": 2,
+      "bolts": 5,
+      "anchor": "anchor"
+    },
+    {
+      "id": "kd-guide-08-07",
+      "sector": 8,
+      "zh": "飯糰",
+      "en": "Rice ball",
+      "grade": "5.10a",
+      "stars": 2,
+      "bolts": 6,
+      "anchor": "anchor"
+    }
+  ]
+}
