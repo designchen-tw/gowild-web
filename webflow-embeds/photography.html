@@ -3,7 +3,7 @@ Keep Webflow's navbar, menu overlay and footer outside this Embed. -->
 <script>
 (function () {
   var local = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ['photography-v1.css', 'page-sections-v1.css'].forEach(function (name) {
+  ['photography-v2.css', 'page-sections-v1.css'].forEach(function (name) {
     var link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = local ? './' + name : 'https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/' + name;
@@ -50,14 +50,13 @@ Keep Webflow's navbar, menu overlay and footer outside this Embed. -->
       <iframe src="https://www.instagram.com/yongchunhero/embed/" title="yongchunhero Instagram 公開貼文" data-photo-title-zh="yongchunhero Instagram 公開貼文" data-photo-title-en="Instagram posts by yongchunhero" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" referrerpolicy="strict-origin-when-cross-origin" data-photo-instagram></iframe>
       <a class="ld-photo__embed-link" href="https://www.instagram.com/yongchunhero/" target="_blank" rel="noopener noreferrer" data-photo-preview-link aria-label="在 Instagram 查看永春岩選的攝影作品" data-photo-aria-zh="在 Instagram 查看永春岩選的攝影作品" data-photo-aria-en="View Yongchun’s photography on Instagram"><span class="ld-photo__sr-only" data-photo-zh="在 Instagram 查看作品" data-photo-en="View photography on Instagram">在 Instagram 查看作品</span></a>
     </div>
-    <p class="ld-photo__note" data-photo-zh="Instagram 會直接提供帳號貼文；若嵌入內容未顯示，請使用上方按鈕前往帳號頁面。貼文與照片版權均屬各創作者。" data-photo-en="Posts are provided directly by Instagram. If the preview is unavailable, use the button above to visit the profile. All posts and photographs belong to their respective creators.">Instagram 會直接提供帳號貼文；若嵌入內容未顯示，請使用上方按鈕前往帳號頁面。貼文與照片版權均屬各創作者。</p>
   </section>
 </main>
 <script>
 (function () {
   var local = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   var script = document.createElement('script');
-  script.src = local ? '../photography-page-v1.js' : 'https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/photography-page-v1.js';
+  script.src = local ? '../photography-page-v2.js' : 'https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/photography-page-v2.js';
   document.head.appendChild(script);
 })();
 </script>
