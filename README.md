@@ -1,5 +1,8 @@
 # GO WILD 網站原始碼
 
+首頁內容區已與目前Webflow footer對齊：介紹內文、DISCOVER／LEARN／EXPLORE卡片及聯絡表單統一桌機15vw、≤991px為7vw、≤767px為5vw的水平留白。LEARN五張卡片改用編輯者指定的彩色照片，救援使用編輯者更正的rescue.avif照片。landing固定投影片、sticky動畫及原生表單整合程式保留。需重貼 `webflow-embeds/home.html` 完整Embed並Publish。
+
+
 五個學習課程頁共用 `course-pages-v5.css`，內容與原生表單外層的水平留白跟隨目前Webflow footer：桌機15vw、≤991px為7vw、≤767px為5vw，取消原本1080px內容上限。首頁移除台灣嚮導卡片；overlay menu改為「多繩距攀登 Multi-pitch Climbing」及「繩索操作與救援技術 Rope & Rescue Skills」。需重貼五頁、首頁及menu overlay完整Embed並Publish。
 
 
