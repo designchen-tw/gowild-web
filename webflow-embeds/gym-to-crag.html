@@ -3,7 +3,7 @@ Keep Webflow navbar, menu overlay and footer. This is an editorial course guide;
 <script>
 (function () {
   var local = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ['course-pages-v4.css','course-guides-v1.css','page-sections-v1.css'].forEach(function (name) {
+  ['course-pages-v5.css','course-guides-v1.css','page-sections-v1.css'].forEach(function (name) {
     var link = document.createElement('link'); link.rel = 'stylesheet';
     link.href = local ? './' + name : 'https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/' + name;
     document.head.appendChild(link);

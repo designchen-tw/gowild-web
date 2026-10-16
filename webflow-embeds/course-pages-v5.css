@@ -1,0 +1,72 @@
+@font-face{font-family:"GW Course Avenir";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d666_Avenir%20LT%20Std%2045%20Book.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"GW Course Avenir";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d669_Avenir%20LT%20Std%2065%20Medium.otf") format("opentype");font-weight:600;font-display:swap}
+main.gw-course{--course-ink:#f5f5f5;--course-body:rgba(245,245,245,.68);--course-muted:rgba(245,245,245,.48);--course-line:rgba(255,255,255,.14);--course-body-size:16px;position:relative;width:100%;overflow:clip;background:#000;color:var(--course-ink);font-family:"GW Course Avenir","PingFang TC","Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;font-size:var(--course-body-size);font-weight:400;line-height:1.72;font-synthesis:none;-webkit-font-smoothing:antialiased}
+/* Match the current Webflow footer: 15vw desktop, 7vw tablet, 5vw mobile. */
+body{--gw-course-page-gutter:15vw}
+main.gw-course[data-gw-section-system]{--gw-section-gutter:var(--gw-course-page-gutter);--gw-section-content:100%}
+main.gw-course *{box-sizing:border-box}
+main.gw-course :is(h1,h2,h3,p,a,button,label,input,textarea,select){font-family:inherit;font-style:normal}
+main.gw-course [hidden]{display:none!important}
+[data-gw-course-embed]{display:block;width:100%;height:auto;min-height:0;overflow:visible}
+main.gw-course :is(a,button,input,textarea,select):focus-visible{outline:2px solid #A9D9B6;outline-offset:4px}
+main.gw-course .gw-course__section{display:flow-root;padding:clamp(72px,7vw,104px) var(--gw-course-page-gutter);scroll-margin-top:28px}
+main.gw-course .gw-course__notice{display:flex;align-items:flex-start;gap:14px;width:100%;margin:0 auto 40px;padding:18px 22px;border:1px solid var(--course-line);border-radius:12px;background:rgba(255,255,255,.055);color:var(--course-body)}
+main.gw-course .gw-course__notice>svg{flex:none;width:20px;height:20px;margin-top:3px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+main.gw-course .gw-course__notice-label{display:block;margin:0 0 3px;color:var(--course-muted);font-size:12px;line-height:1.4;letter-spacing:.06em}
+main.gw-course .gw-course__notice p{margin:0;font-size:14px;line-height:1.7;font-weight:400}
+main.gw-course .gw-course__heading{max-width:800px;margin:0 auto 36px;text-align:center}
+main.gw-course .gw-course__eyebrow{margin:0 0 14px;color:var(--course-muted);font-size:14px;line-height:1.4;font-weight:400;letter-spacing:.08em;overflow-wrap:anywhere}
+main.gw-course .gw-course__heading :is(h1,h2){margin:0;color:var(--course-ink);font-size:22px;font-weight:600;line-height:1.4;letter-spacing:-.015em;text-wrap:balance}
+main.gw-course .gw-course__lead{max-width:720px;margin:14px auto 0;color:var(--course-body);font-size:var(--course-body-size);font-weight:400;line-height:1.72}
+main.gw-course .gw-course__language{display:flex;width:max-content;max-width:100%;margin:22px auto 0;padding:3px;border:1px solid rgba(255,255,255,.17);border-radius:99px;background:rgba(255,255,255,.04)}
+main.gw-course .gw-course__language button{min-width:54px;min-height:36px;padding:7px 12px;border:0;border-radius:99px;background:transparent;color:var(--course-body);font-size:14px;line-height:1.2;cursor:pointer}
+main.gw-course .gw-course__language button:is(:hover,.is-active){background:rgba(255,255,255,.16);color:var(--course-ink)}
+main.gw-course .gw-course__translation-note{margin:22px 0 0;color:var(--course-body);font-size:14px;font-weight:400;line-height:1.75;text-align:left;overflow-wrap:break-word}
+main.gw-course .gw-course__copy{width:100%;margin:auto}
+main.gw-course .gw-course__copy p{margin:0 0 22px;color:var(--course-body);font-size:var(--course-body-size);font-weight:400;line-height:1.85;overflow-wrap:break-word}
+main.gw-course .gw-course__copy p:last-child{margin-bottom:0}
+main.gw-course .gw-course__goals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 40px;width:100%;margin:auto}
+main.gw-course .gw-course__goal{display:grid;grid-template-columns:2.5ch minmax(0,1fr);gap:14px;min-width:0;padding:22px 0;border-top:1px solid var(--course-line)}
+main.gw-course .gw-course__goal:last-child:nth-child(odd){grid-column:1/-1}
+main.gw-course .gw-course__goal-number{color:var(--course-muted);font-size:14px;line-height:1.6;font-variant-numeric:tabular-nums}
+main.gw-course .gw-course__goal h3{margin:0 0 10px;color:var(--course-ink);font-size:16px;font-weight:600;line-height:1.5}
+main.gw-course .gw-course__goal p{margin:0;color:var(--course-body);font-size:var(--course-body-size);font-weight:400;line-height:1.72}
+main.gw-course .gw-course__resources{display:flex;justify-content:center;flex-wrap:wrap;margin:28px auto 0}
+main.gw-course .gw-course__button{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:auto;max-width:100%;min-height:44px;margin:0;padding:11px 20px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(255,255,255,.08);color:var(--course-ink);font-size:14px;font-weight:400;line-height:1.5;text-align:center;text-decoration:none;cursor:pointer;transition:background .2s,color .2s}
+main.gw-course .gw-course__button svg{flex:none;width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+main.gw-course .gw-course__button:hover{background:#f5f5f5;color:#080808}
+main.gw-course :is(.gw-course__form-mount,.gw-course__form-fallback){max-width:760px;margin:auto}
+main.gw-course .gw-course__form-fallback{text-align:center;color:var(--course-body)}
+main.gw-course .gw-course__form-fallback p{margin:0 0 18px;font-size:var(--course-body-size)}
+main.gw-course [data-course-pdf-status]{flex-basis:100%;margin:12px 0 0;color:var(--course-body);font-size:14px;line-height:1.7;text-align:center}
+/* Contain the enquiry heading margin so the black main background cannot show between it and the native form. */
+/* Native Webflow forms stay outside this component and keep their original field styles. */
+/* Align only the original section's outer horizontal gutter with the new course sections. */
+body :is(section,div)[data-gw-native-course-section]{box-sizing:border-box;width:100%;max-width:none;margin-inline:0;padding-block:0;background:#0b0d0e!important;padding-inline:var(--gw-course-page-gutter)}
+@media(max-width:991px){body{--gw-course-page-gutter:7vw}}
+@media(max-width:767px){body{--gw-course-page-gutter:5vw}}
+main.gw-course .gw-course__nav{position:fixed;z-index:1000;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;width:clamp(350px,44vw,520px);max-width:calc(100% - 32px);padding:7px;border:1px solid rgba(255,255,255,.2);border-radius:22px;background:rgba(27,29,31,.7);box-shadow:0 12px 42px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.09);backdrop-filter:blur(26px) saturate(150%);-webkit-backdrop-filter:blur(26px) saturate(150%);transform:translateX(-50%)}
+main.gw-course .gw-course__nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:0;min-height:52px;padding:4px 3px;border:1px solid transparent;border-radius:14px;color:var(--course-muted);font-size:14px;font-weight:400;line-height:1.3;text-align:center;text-decoration:none;transition:background .2s,color .2s}
+main.gw-course .gw-course__nav svg{flex:none;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+main.gw-course .gw-course__nav a:is(:hover,.is-active){border-color:rgba(255,255,255,.1);background:rgba(255,255,255,.11);color:var(--course-ink)}
+@media(max-width:700px){main.gw-course .gw-course__goals{grid-template-columns:minmax(0,1fr);gap:0}}
+@media(max-width:520px){
+  main.gw-course{--course-body-size:14px}
+  main.gw-course .gw-course__notice{margin-bottom:30px;padding:16px;gap:12px}
+  main.gw-course .gw-course__notice p{font-size:14px}
+  main.gw-course .gw-course__heading{margin-bottom:30px}
+  main.gw-course .gw-course__translation-note{font-size:12px}
+  main.gw-course .gw-course__heading :is(h1,h2){font-size:17px}
+  main.gw-course :is(.gw-course__eyebrow,.gw-course__language button){font-size:12px}
+  main.gw-course .gw-course__goal{padding:20px 0;gap:12px}
+  main.gw-course .gw-course__goal h3{font-size:16px}
+  main.gw-course .gw-course__goal-number{font-size:12px}
+  main.gw-course .gw-course__button{font-size:12px;padding-inline:16px}
+  main.gw-course .gw-course__nav{bottom:calc(10px + env(safe-area-inset-bottom));width:calc(100% - 20px);max-width:440px;padding:5px;border-radius:19px;gap:2px}
+  main.gw-course .gw-course__nav a{min-height:48px;border-radius:13px;font-size:12px}
+  main.gw-course .gw-course__nav svg{width:17px;height:17px}
+}
+@media(prefers-reduced-motion:reduce){main.gw-course :is(.gw-course__button,.gw-course__nav a){transition:none}}
+
+/* Match the existing Webflow copyright footer only on these two course pages. */
+body:has(main.gw-course:is([data-course-slug="multi-pitch"],[data-course-slug="rock-rescue-skill"])) .block-for-copyright.gw{background:#0b0d0e!important}

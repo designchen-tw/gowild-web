@@ -3,7 +3,7 @@
 - `/multi-pitch` 使用 `multi-pitch.html`。
 - `/rock-rescue-skill` 使用 `rock-rescue-skill.html`。
 
-兩頁共用 `course-pages-v4.css`、`course-pages-v3.js`、`course-pdf-lightbox-v2.js` 及現有 `page-sections-v1.css`，提供頂端單一中英文切換、四項浮動導覽、灰底白色hover按鈕、課程內容的交替淺底／分線／間距。原生表單保留原有Webflow欄位版型與樣式，翻譯顯示文字並統一外層左右留白。英文版的語言切換下方顯示AI翻譯與公司介紹說明，中文版隱藏。首頁與選單已有正確連結，無需重貼它們。
+兩頁共用 `course-pages-v5.css`、`course-pages-v3.js`、`course-pdf-lightbox-v2.js` 及現有 `page-sections-v1.css`，提供頂端單一中英文切換、四項浮動導覽、灰底白色hover按鈕、課程內容的交替淺底／分線／間距。原生表單保留原有Webflow欄位版型與樣式，翻譯顯示文字並統一外層左右留白。英文版的語言切換下方顯示AI翻譯與公司介紹說明，中文版隱藏。首頁與選單已有正確連結，無需重貼它們。
 
 ## Webflow 安裝
 
@@ -20,7 +20,7 @@
 
 兩頁第一個內容為 **2026** 公告：「今年已無新開課計劃，請持續關注。」英文為「No new courses are planned for the rest of this year. Please stay tuned.」。年度是編輯內容，不會跨年自動重設公告。
 
-新版不改變form／input／select的id、name、data-name、required、option value、已輸入內容、勾選狀態、後台收件設定或Turnstile，也不改表單位置、class、style或欄位原生外觀。外層原生section以data屬性標記，僅統一左右留白：與新版課程區塊同用1080px內容上限及相同水平gutter，手機≤520px為18px。公告、概述、對象與目標清單也使用相同內容邊界；標題仍置中。新增section id只用於導覽定位。
+新版不改變form／input／select的id、name、data-name、required、option value、已輸入內容、勾選狀態、後台收件設定或Turnstile，也不改表單位置、class、style或欄位原生外觀。外層原生section以data屬性標記，僅統一左右留白：與目前Webflow footer相同：桌機15vw，≤991px為7vw，≤767px為5vw，不再套用1080px內容上限。公告、概述、對象與目標清單也使用相同內容邊界；標題仍置中。新增section id只用於導覽定位。
 
 ## PDF 預覽驗證
 

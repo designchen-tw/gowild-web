@@ -4,7 +4,7 @@ Keep the Webflow navbar, menu overlay, footer and generated Webflow scripts. See
 <script>
 (function () {
   var local = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ['course-pages-v4.css','page-sections-v1.css'].forEach(function (name) {
+  ['course-pages-v5.css','page-sections-v1.css'].forEach(function (name) {
     var link = document.createElement('link'); link.rel = 'stylesheet';
     link.href = local ? './' + name : 'https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/' + name;
     document.head.appendChild(link);

@@ -6,14 +6,14 @@
 | `/gym-to-crag` | `gym-to-crag.html` — 岩館到戶外 |
 | `/trad-climbing` | `trad-climbing.html` — 傳統攀登 |
 
-三頁共用 `course-pages-v4.css`、`page-sections-v1.css` 與 `course-pages-v3.js`。運動攀登使用 `course-guides-v2.css`，另外兩頁使用 `course-guides-v1.css`。沿用已完成課程頁的字級、中英文切換、四項浮動導覽、灰底白色hover按鈕、左右留白、章節淺底與分線，以及最後區塊與Webflow footer相同的#0b0d0e底色。英文版語言切換下方保留AI翻譯與公司說明。
+三頁共用 `course-pages-v5.css`、`page-sections-v1.css` 與 `course-pages-v3.js`。運動攀登使用 `course-guides-v2.css`，另外兩頁使用 `course-guides-v1.css`。沿用已完成課程頁的字級、中英文切換、四項浮動導覽、灰底白色hover按鈕、與footer對齊的左右留白（桌機15vw、≤991px為7vw、≤767px為5vw）、章節淺底與分線，以及最後區塊與Webflow footer相同的#0b0d0e底色。英文版語言切換下方保留AI翻譯與公司說明。
 
 ## 安裝
 
 1. 新建上述三個Webflow靜態頁，保留全站Navbar、hamburger menu與footer。若複製現有課程頁，刪除舊課程內容、原生諮詢表單、舊PDF按鈕與Adobe初始化程式。此三頁是推薦介紹，不是GO WILD承辦課程，不放GO WILD報名表單、PDF viewer或停開課公告。
 2. 每頁新增一個Code Embed，貼入同名HTML檔完整內容，置於Navbar下方的內容區。
-3. 更新首頁 `home.html` 的完整Embed：原有三張學習卡片已連往新頁；其餘卡片及首頁landing/sticky/原生表單整合均保留。
-4. 更新hamburger內的 `menu-overlay-full.html`：LEARN新增三項連結，順序為運動攀登、Gym to Crag、傳統攀登、多繩距、繩索操作與救援；在新頁開選單時會展開LEARN並標示目前頁。
+3. 更新首頁 `home.html` 的完整Embed：原有三張學習卡片已連往新頁；首頁另移除台灣嚮導卡片；其餘卡片及首頁landing/sticky/原生表單整合均保留。
+4. 更新hamburger內的 `menu-overlay-full.html`：LEARN新增三項連結，順序為運動攀登、Gym to Crag、傳統攀登、多繩距攀登 Multi-pitch Climbing、繩索操作與救援技術 Rope & Rescue Skills；在新頁開選單時會展開LEARN並標示目前頁。
 5. 三個頁面建立後，再一併Publish新頁、首頁與選單，避免新入口指向尚未發布的網址。GitHub更新不會自動建立或發布Webflow頁面。
 
 ## 內容編輯

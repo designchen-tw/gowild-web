@@ -1,5 +1,8 @@
 # GO WILD 網站原始碼
 
+五個學習課程頁共用 `course-pages-v5.css`，內容與原生表單外層的水平留白跟隨目前Webflow footer：桌機15vw、≤991px為7vw、≤767px為5vw，取消原本1080px內容上限。首頁移除台灣嚮導卡片；overlay menu改為「多繩距攀登 Multi-pitch Climbing」及「繩索操作與救援技術 Rope & Rescue Skills」。需重貼五頁、首頁及menu overlay完整Embed並Publish。
+
+
 新增三個攀登學習與課程推薦頁：`/sport-climbing`（運動攀登）、`/gym-to-crag`（岩館到戶外）、`/trad-climbing`（傳統攀登）。沿用目前課程頁的中英文、字級、章節、導覽與footer底色，提供概念、完整學習方向及推薦單位，不放GO WILD報名表單或停開課公告。傳統攀登內容聚焦單繩距的保護點、器械、先鋒與確保、拆點、下降撤收，移除繩隊交接內容，推薦百合搖滾；運動攀登與Gym to Crag推薦位置保留待填。首頁三張卡片及hamburger LEARN入口已接上新頁，需在Webflow建立三個slug並重貼新頁、首頁、選單Embed後Publish。安裝與內容來源見 `webflow-embeds/course-guides-installation.md`。
 
 
@@ -35,7 +38,7 @@
 | --- | --- | --- | --- |
 | 首頁 `/` | `webflow-embeds/home.html` | Embed 內部中英文切換、導覽與原生表單整合 | Embed 內部樣式 |
 | 岩壁攝影 `/photography` | `webflow-embeds/photography.html` | `photography-page-v2.js`：中英文、區塊導覽、手機固定Instagram預覽 | `webflow-embeds/photography-v2.css`、共用 `page-sections-v1.css` |
-| 多繩距攀登 `/multi-pitch` | `webflow-embeds/multi-pitch.html` | `course-pages-v3.js`：中英文、原生表單翻譯與區塊導覽；`course-pdf-lightbox-v2.js`：Adobe Lightbox | `webflow-embeds/course-pages-v4.css`、`page-sections-v1.css` |
+| 多繩距攀登 `/multi-pitch` | `webflow-embeds/multi-pitch.html` | `course-pages-v3.js`：中英文、原生表單翻譯與區塊導覽；`course-pdf-lightbox-v2.js`：Adobe Lightbox | `webflow-embeds/course-pages-v5.css`、`page-sections-v1.css` |
 | 繩索操作與救援技術 `/rock-rescue-skill` | `webflow-embeds/rock-rescue-skill.html` | 同上 | 同上 |
 | 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v16.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v19.js`、`longdong-page-v2.js`、`longdong-routes-v4.js`、`longdong-sector-browser-v1.js` | `webflow-embeds/longdong-embed-v13.css`、`climbing-typography-v2.css`、`longdong-sector-browser-v2.css` |
 | 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v6.js`、`longdong-rock-estimate-v3.js`、`kenting-sector-map-v9.js` | `webflow-embeds/climbing-detail-v7.css`、`climbing-typography-v2.css` |
