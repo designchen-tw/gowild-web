@@ -1,6 +1,6 @@
 # GO WILD 網站原始碼
 
-新增三個攀登學習與課程推薦頁：`/sport-climbing`（運動先鋒）、`/gym-to-crag`（岩館到戶外）、`/trad-climbing`（傳統攀登）。沿用目前課程頁的中英文、字級、章節、導覽與footer底色，提供概念、完整學習方向及推薦單位，不放GO WILD報名表單或停開課公告。傳統攀登推薦百合搖滾；運動先鋒與Gym to Crag推薦位置保留待填。首頁三張卡片及hamburger LEARN入口已接上新頁，需在Webflow建立三個slug並重貼新頁、首頁、選單Embed後Publish。安裝與內容來源見 `webflow-embeds/course-guides-installation.md`。
+新增三個攀登學習與課程推薦頁：`/sport-climbing`（運動攀登）、`/gym-to-crag`（岩館到戶外）、`/trad-climbing`（傳統攀登）。沿用目前課程頁的中英文、字級、章節、導覽與footer底色，提供概念、完整學習方向及推薦單位，不放GO WILD報名表單或停開課公告。傳統攀登推薦百合搖滾；運動攀登與Gym to Crag推薦位置保留待填。首頁三張卡片及hamburger LEARN入口已接上新頁，需在Webflow建立三個slug並重貼新頁、首頁、選單Embed後Publish。安裝與內容來源見 `webflow-embeds/course-guides-installation.md`。
 
 
 ## 四頁最小倍率填滿視窗（目前修正版，2026-10-15）
