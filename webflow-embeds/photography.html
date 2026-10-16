@@ -1,0 +1,63 @@
+<!-- GO WILD /photography. Replace the existing photography Embed with this complete block.
+Keep Webflow's navbar, menu overlay and footer outside this Embed. -->
+<script>
+(function () {
+  var local = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  ['photography-v1.css', 'page-sections-v1.css'].forEach(function (name) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = local ? './' + name : 'https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/' + name;
+    document.head.appendChild(link);
+  });
+})();
+</script>
+<main class="ld-photo" data-ld-photo data-language="zh" lang="zh-Hant" data-gw-section-system>
+  <nav class="ld-photo__nav" aria-label="岩壁攝影頁面導覽" data-photo-aria-zh="岩壁攝影頁面導覽" data-photo-aria-en="Photography page navigation">
+    <a href="#ld-photo-intro" data-photo-link="intro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h4l2-3h4l2 3h4v13H4Z"/><circle cx="12" cy="13" r="4"/></svg><span data-photo-zh="攝影" data-photo-en="Photography">攝影</span></a>
+    <a href="#ld-photo-climber" data-photo-link="climber"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 15.5 10.5 13l2 1 3.5-4.5M9 8h.01"/></svg><span>Levi</span></a>
+    <a href="#ld-photo-yongchun" data-photo-link="yongchun"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 15c2-1 3-4 5-4s3 3 5 3 3-2 4-3M7 8h.01"/></svg><span data-photo-zh="永春岩選" data-photo-en="Yongchun">永春岩選</span></a>
+  </nav>
+
+  <section class="ld-photo__section ld-photo__intro" id="ld-photo-intro" data-photo-section="intro" data-gw-page-section="0" data-gw-section-tone="base" data-gw-section-first aria-labelledby="ld-photo-title">
+    <header class="ld-photo__heading">
+      <p class="ld-photo__eyebrow">WALLS &amp; PEOPLE</p>
+      <h1 id="ld-photo-title" data-photo-zh="岩壁攝影" data-photo-en="Climbing Photography">岩壁攝影</h1>
+      <p data-photo-zh="從海岸岩壁的光線，到攀登者專注的瞬間。透過兩個攝影帳號，看看龍洞與攀岩生活的不同視角。" data-photo-en="From light on the sea cliffs to a climber’s moment of focus, explore two photographers’ perspectives on Longdong and climbing life.">從海岸岩壁的光線，到攀登者專注的瞬間。透過兩個攝影帳號，看看龍洞與攀岩生活的不同視角。</p>
+      <div class="ld-photo__language" role="group" aria-label="語言 Language">
+        <button type="button" class="is-active" data-photo-language="zh" aria-pressed="true">中文</button>
+        <button type="button" data-photo-language="en" aria-pressed="false">EN</button>
+      </div>
+    </header>
+    <div class="ld-photo__profiles">
+      <a href="#ld-photo-climber" class="ld-photo__profile-link" data-photo-jump><span>Levi</span><small data-photo-zh="海崖攀登・影像紀錄" data-photo-en="Sea cliffs · Climbing photography">海崖攀登・影像紀錄</small></a>
+      <a href="#ld-photo-yongchun" class="ld-photo__profile-link" data-photo-jump><span data-photo-zh="永春岩選" data-photo-en="Yongchun">永春岩選</span><small data-photo-zh="攀岩者與自然紀實" data-photo-en="Climbers · Documentary photography">攀岩者與自然紀實</small></a>
+    </div>
+  </section>
+
+  <section class="ld-photo__section" id="ld-photo-climber" data-photo-section="climber" data-gw-page-section="1" data-gw-section-tone="soft" aria-labelledby="ld-photo-levi-title">
+    <div class="ld-photo__creator-head"><div><p class="ld-photo__eyebrow">SEA CLIFF CLIMBING PHOTOGRAPHY</p><h2 id="ld-photo-levi-title">Levi</h2><p>Long Dong Climber · Taiwan</p></div><a class="ld-photo__button" href="https://www.instagram.com/longdong_climber/" target="_blank" rel="noopener noreferrer" data-photo-zh="前往 Instagram" data-photo-en="View on Instagram">前往 Instagram</a></div>
+    <div class="ld-photo__bio"><p data-photo-zh="以海崖攀登為主題，捕捉岩壁上的動作、光線與海景。想詢問照片，可透過 Instagram 私訊攝影帳號。" data-photo-en="Climbing photography focused on sea cliffs, capturing movement, light, and coastal views. For photo enquiries, contact the photographer directly on Instagram.">以海崖攀登為主題，捕捉岩壁上的動作、光線與海景。想詢問照片，可透過 Instagram 私訊攝影帳號。</p></div>
+    <div class="ld-photo__embed-wrap">
+      <iframe src="https://www.instagram.com/longdong_climber/embed/" title="longdong_climber Instagram 公開貼文" data-photo-title-zh="longdong_climber Instagram 公開貼文" data-photo-title-en="Instagram posts by longdong_climber" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" referrerpolicy="strict-origin-when-cross-origin" data-photo-instagram></iframe>
+      <a class="ld-photo__embed-link" href="https://www.instagram.com/longdong_climber/" target="_blank" rel="noopener noreferrer" data-photo-preview-link aria-label="在 Instagram 查看 Levi 的攝影作品" data-photo-aria-zh="在 Instagram 查看 Levi 的攝影作品" data-photo-aria-en="View Levi’s photography on Instagram"><span class="ld-photo__sr-only" data-photo-zh="在 Instagram 查看作品" data-photo-en="View photography on Instagram">在 Instagram 查看作品</span></a>
+    </div>
+  </section>
+
+  <section class="ld-photo__section" id="ld-photo-yongchun" data-photo-section="yongchun" data-gw-page-section="2" data-gw-section-tone="base" data-gw-section-last aria-labelledby="ld-photo-yongchun-title">
+    <div class="ld-photo__creator-head"><div><p class="ld-photo__eyebrow">WILDLIFE-DOCUMENTARY PHOTOGRAPHY</p><h2 id="ld-photo-yongchun-title" data-photo-zh="永春岩選" data-photo-en="Yongchun">永春岩選</h2><p>Rock Climbers in Their Natural Habitat · Taiwan</p></div><a class="ld-photo__button" href="https://www.instagram.com/yongchunhero/" target="_blank" rel="noopener noreferrer" data-photo-zh="前往 Instagram" data-photo-en="View on Instagram">前往 Instagram</a></div>
+    <div class="ld-photo__bio"><p data-photo-zh="以紀實視角記錄攀岩者在自然岩場中的樣貌，從人物、岩壁到戶外日常，呈現攀岩生活的現場感。" data-photo-en="A documentary view of climbers in their natural habitat: people, rock, and everyday moments outdoors, capturing the experience of climbing life.">以紀實視角記錄攀岩者在自然岩場中的樣貌，從人物、岩壁到戶外日常，呈現攀岩生活的現場感。</p></div>
+    <div class="ld-photo__embed-wrap">
+      <iframe src="https://www.instagram.com/yongchunhero/embed/" title="yongchunhero Instagram 公開貼文" data-photo-title-zh="yongchunhero Instagram 公開貼文" data-photo-title-en="Instagram posts by yongchunhero" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" referrerpolicy="strict-origin-when-cross-origin" data-photo-instagram></iframe>
+      <a class="ld-photo__embed-link" href="https://www.instagram.com/yongchunhero/" target="_blank" rel="noopener noreferrer" data-photo-preview-link aria-label="在 Instagram 查看永春岩選的攝影作品" data-photo-aria-zh="在 Instagram 查看永春岩選的攝影作品" data-photo-aria-en="View Yongchun’s photography on Instagram"><span class="ld-photo__sr-only" data-photo-zh="在 Instagram 查看作品" data-photo-en="View photography on Instagram">在 Instagram 查看作品</span></a>
+    </div>
+    <p class="ld-photo__note" data-photo-zh="Instagram 會直接提供帳號貼文；若嵌入內容未顯示，請使用上方按鈕前往帳號頁面。貼文與照片版權均屬各創作者。" data-photo-en="Posts are provided directly by Instagram. If the preview is unavailable, use the button above to visit the profile. All posts and photographs belong to their respective creators.">Instagram 會直接提供帳號貼文；若嵌入內容未顯示，請使用上方按鈕前往帳號頁面。貼文與照片版權均屬各創作者。</p>
+  </section>
+</main>
+<script>
+(function () {
+  var local = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  var script = document.createElement('script');
+  script.src = local ? '../photography-page-v1.js' : 'https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/photography-page-v1.js';
+  document.head.appendChild(script);
+})();
+</script>
