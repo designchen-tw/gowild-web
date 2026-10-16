@@ -3,21 +3,25 @@
 - `/multi-pitch` 使用 `multi-pitch.html`。
 - `/rock-rescue-skill` 使用 `rock-rescue-skill.html`。
 
-兩頁共用 `course-pages-v1.css`、`course-pages-v1.js` 及現有 `page-sections-v1.css`，提供頂端單一中英文切換、四項浮動導覽、灰底白色hover按鈕、交替淺底／分線／間距及最後區塊無底部留白。首頁與選單已有正確連結，無需重貼它們。
+兩頁共用 `course-pages-v2.css`、`course-pages-v2.js`、`course-pdf-lightbox-v1.js` 及現有 `page-sections-v1.css`，提供頂端單一中英文切換、四項浮動導覽、灰底白色hover按鈕、課程內容的交替淺底／分線／間距。原生表單整個區塊保留原有Webflow版型與樣式，只增加文字翻譯與統一外層左右留白。首頁與選單已有正確連結，無需重貼它們。
 
 ## Webflow 安裝
 
 1. 保留現有 Navbar、hamburger menu overlay、footer、Webflow自動產生的scripts。
 2. 將舊課程標題、課程概述、適合對象、課程目標、舊PDF按鈕等內容替換成一個Code Embed，貼上對應HTML完整內容。新Embed應是Navbar下方第一個內容區塊，公告才會顯示在最上方。
-3. **保留現有原生 Course Inquires Form Block**（`.w-form` 包含 `#wf-form-Course-Inquires`），放在Embed外面、同一頁，保留原本 `data-wf-page-id`、`data-wf-element-id`、Turnstile、所有欄位名稱及Webflow頁面設定。不要另外複製表單或手寫新的form。
-4. 共用程式會將同一個原生Form Block移到新版「課程諮詢」區塊，並隱藏原來空下來的表單section。新舊內容不要重複保留。表單仍由Webflow原本的提交程式處理，不使用自訂API或取代submit事件。
-5. 新PDF按鈕直接連原本的2026課程大綱，在新分頁開啟；可移除舊Adobe PDF Lightbox專用Embed與初始化程式，避免殘留空白或無用載入。
+3. **保留現有原生課程表單的整個section與Form Block**（`.w-form` 包含 `#wf-form-Course-Inquires`），留在Embed外面與原本位置，保留class、style、`data-wf-page-id`、`data-wf-element-id`、Turnstile、所有欄位名稱及Webflow頁面設定。不要另外複製表單或手寫新的form。
+4. 新版不再搬移表單、不加入表單class或欄位樣式覆寫；僅統一原生section的外層左右留白。共用程式只翻譯原生區塊的標籤、placeholder、選項顯示文字與送出／等待／成功／失敗文案；切回中文恢復原文。新版Embed的備用諮詢區塊會隱藏，浮動「諮詢」導覽改定位至原本表單section，避免出現兩個表單或兩個標題。提交仍由Webflow原本的程式處理。
+5. **保留新版HTML內的PDF按鈕，不要另外新增按鈕。** 每頁HTML已包含唯一的 `#open-pdf-btn` 按鈕與 `#adobe-pdf-view` 容器，並由共用程式載入Adobe SDK。請刪除原本另外放置的舊PDF按鈕，以及舊Adobe PDF Embed中的SDK script／渲染div／初始化程式，避免同ID重複或點一次開啟兩次。新版按鈕沿用使用者提供的Client ID `1ab7bac71c454175860f77e0c80b3a03`，以 `LIGHT_BOX`、`exitPDFViewerType: CLOSE` 開啟各頁原本對應的2026 PDF，不會讓救援課程誤開多繩距PDF。
 6. Publish兩個課程頁。實際送出與後台收件請在Webflow正式頁以測試資料驗證；本機檢查不會提交表單或寄送訊息。
 
 ## 內容與公告
 
-中文課程概述、適合對象、目標及PDF網址取自2026-10-16的兩個現有正式頁，依原文整理段落並翻譯英文，未新增價格、日期或課程時數。舊的「匯款前請先聯絡講師確定開課日期」提示以課程諮詢取代，避免與停開課公告衝突。
+中文課程概述、適合對象、目標及PDF網址取自2026-10-16的兩個現有正式頁，依原文整理段落並翻譯英文，未新增價格、日期或課程時數。「課程概述／Course Overview」小標題已移除，介紹內文保留。舊的「匯款前請先聯絡講師確定開課日期」提示以課程諮詢取代，避免與停開課公告衝突。
 
 兩頁第一個內容為 **2026** 公告：「今年已無新開課計劃，請持續關注。」英文為「No new courses are planned for the rest of this year. Please stay tuned.」。年度是編輯內容，不會跨年自動重設公告。
 
-新版不改變form／input／select的id、name、data-name、required、option value、已輸入內容、勾選狀態、後台收件設定或Turnstile。語言切換只改標籤、placeholder、option顯示文字、送出／等待與成功／錯誤文案。輸入欄保留兩側圓角，textarea使用圓角矩形。
+新版不改變form／input／select的id、name、data-name、required、option value、已輸入內容、勾選狀態、後台收件設定或Turnstile，也不改表單位置、class、style或欄位原生外觀。外層原生section以data屬性標記，僅統一左右留白：與新版課程區塊同用1080px內容上限及相同水平gutter，手機≤520px為18px。公告、概述、對象與目標清單也使用相同內容邊界；標題仍置中。新增section id只用於導覽定位。
+
+## PDF 預覽驗證
+
+SDK尚未就緒或被阻擋時，按鈕仍可直接開啟原PDF；Adobe預覽失敗時也會退回原PDF。PDF Embed API會檢查Client ID所允許的網站網域，本機file預覽與Webflow測試網域未必能使用現有金鑰；正式Lightbox需在已授權網域Publish後確認。[Adobe 官方說明](https://developer.adobe.com/document-services/docs/overview/pdf-embed-api/gettingstarted)
