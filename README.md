@@ -32,7 +32,7 @@
 | --- | --- | --- | --- |
 | 首頁 `/` | `webflow-embeds/home.html` | Embed 內部中英文切換、導覽與原生表單整合 | Embed 內部樣式 |
 | 岩壁攝影 `/photography` | `webflow-embeds/photography.html` | `photography-page-v2.js`：中英文、區塊導覽、手機固定Instagram預覽 | `webflow-embeds/photography-v2.css`、共用 `page-sections-v1.css` |
-| 多繩距攀登 `/multi-pitch` | `webflow-embeds/multi-pitch.html` | `course-pages-v3.js`：中英文、原生表單翻譯與區塊導覽；`course-pdf-lightbox-v1.js`：Adobe Lightbox | `webflow-embeds/course-pages-v3.css`、`page-sections-v1.css` |
+| 多繩距攀登 `/multi-pitch` | `webflow-embeds/multi-pitch.html` | `course-pages-v3.js`：中英文、原生表單翻譯與區塊導覽；`course-pdf-lightbox-v2.js`：Adobe Lightbox | `webflow-embeds/course-pages-v4.css`、`page-sections-v1.css` |
 | 繩索操作與救援技術 `/rock-rescue-skill` | `webflow-embeds/rock-rescue-skill.html` | 同上 | 同上 |
 | 龍洞 `/longdong` | `webflow-embeds/longdong.html` | `longdong-conditions-widget-v30.js`、`longdong-cwa-widget-v16.js`、`longdong-rock-estimate-v3.js`、`longdong-sector-map-v19.js`、`longdong-page-v2.js`、`longdong-routes-v4.js`、`longdong-sector-browser-v1.js` | `webflow-embeds/longdong-embed-v13.css`、`climbing-typography-v2.css`、`longdong-sector-browser-v2.css` |
 | 墾丁 `/kenting` | `webflow-embeds/kenting.html` | `climbing-conditions-widget-v4.js`、`weather-card-widget-v6.js`、`longdong-rock-estimate-v3.js`、`kenting-sector-map-v9.js` | `webflow-embeds/climbing-detail-v7.css`、`climbing-typography-v2.css` |
@@ -42,7 +42,7 @@
 
 上表是目前交接版本。後續以各 Embed **實際引用的檔名** 為準；舊版檔案保留作為歷史版本。首頁新版內容 Embed 的安裝與原生表單保留方式見 `webflow-embeds/home-installation.md`。
 
-兩個課程頁依2026-10-16正式頁整理既有中文內容與PDF、補上英文，頁首均有2026公告「今年已無新開課計劃，請持續關注。」。v3將原生Webflow Course Inquires表單保留在原本section、位置與樣式，只翻譯顯示文字並統一外層section左右留白，英文切換下方新增AI翻譯與公司介紹說明，Embed提供與其他章節相同樣式的「報名諮詢／Course Enquiries」標題，移除「課程概述」小標題，沿用後台收件、欄位識別、輸入值及Turnstile，不搬移節點、不覆寫表單CSS、不另寫送出API。PDF按鈕與渲染容器已整合至各頁HTML，使用提供的Adobe Client ID與Lightbox／Close設定；每頁開啟各自PDF，SDK載入一次，原始PDF連結保留為備援。安裝與舊按鈕／Adobe Embed移除方式見 `webflow-embeds/course-installation.md`。首頁與menu overlay無需修改。
+兩個課程頁依2026-10-16正式頁整理既有中文內容與PDF、補上英文，頁首均有2026公告「今年已無新開課計劃，請持續關注。」。v3將原生Webflow Course Inquires表單保留在原本section、位置與樣式，只翻譯顯示文字並統一外層section左右留白，英文切換下方新增AI翻譯與公司介紹說明，Embed提供與其他章節相同樣式的「報名諮詢／Course Enquiries」標題，移除「課程概述」小標題，沿用後台收件、欄位識別、輸入值及Turnstile，不搬移節點、不覆寫表單CSS、不另寫送出API。PDF按鈕與渲染容器已整合至各頁HTML，使用提供的Adobe Client ID與Lightbox／Close設定；每頁開啟各自PDF，SDK載入一次，預覽隱藏下載與列印功能，入口改用button，SDK載入或預覽失敗僅顯示提示，不直接開啟PDF原檔。諮詢section使用flow-root，避免標題下方36px外距塌陷到區塊外而露出黑底。兩課程頁的Webflow copyright footer亦固定為最後區塊的#0b0d0e底色。安裝與舊按鈕／Adobe Embed移除方式見 `webflow-embeds/course-installation.md`。首頁與menu overlay無需修改。
 
 攝影頁沿用原本Levi與永春岩選的帳號及介紹，使用單一頂端中英文切換、灰底白色hover按鈕、與岩場頁相同的區塊分線／淺底／間距。介紹段落採一般內文（桌機16px、手機14px、字重400、行高1.72）。桌機與手機均使用固定Instagram預覽，透過覆蓋帳號連結阻止iframe接收滾輪、觸控與鍵盤輸入，滑動交由整頁處理；點預覽或CTA開啟原帳號。移除底部Instagram／版權說明，最後一節不另外留白。完整替換原Embed後Publish，見 `webflow-embeds/photography-installation.md`。
 
