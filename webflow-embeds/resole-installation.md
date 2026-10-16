@@ -20,3 +20,5 @@ Embed 包含完整樣式、SVG 與程式，不需另貼 CSS/JS 載入器。預�
 頁面引用 Vibram、La Sportiva、SCARPA、TENAYA、UNPARALLEL 公開資料；Vibram 修補型錄標註為 2020 年，實際材料供應需向修補者確認。
 
 字級對齊課程頁：標題桌機22px／≤520px 17px，內文16px／14px，小標題16px；英文輔助標籤、引用連結與來源清單14px／12px。材料英文標籤使用灰色，淺綠僅保留連結互動與鍵盤焦點。
+
+中英文切換包含額外提供資訊的頁首／章節眉標、材料副標、段落、來源連結與清單、導覽及語言選擇無障礙名稱。與中文主標同義的 FROM LAST TO SHOE、RUBBER & CONSTRUCTION、CARE & REPAIR 保留英文眉標；A SECOND LIFE 與首頁標語含不同意義，隨語言切換。品牌與型號維持原名，來源連結的 URL 不隨語言變更。
