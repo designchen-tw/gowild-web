@@ -1,0 +1,21 @@
+/* Editorial learning guides: reuse course typography, navigation and section rhythm. */
+main.gw-course[data-gw-course-guide] .gw-guide__role{margin:26px 0 0;color:var(--course-muted);font-size:14px;line-height:1.75}
+main.gw-course[data-gw-course-guide] .gw-guide__concepts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+main.gw-course[data-gw-course-guide] .gw-guide__concept{display:grid;grid-template-columns:2.5ch minmax(0,1fr);gap:14px;min-width:0;padding:22px 0 0;border-top:1px solid var(--course-line)}
+main.gw-course[data-gw-course-guide] :is(.gw-guide__concept,.gw-guide__provider) h3{margin:0 0 12px;color:var(--course-ink);font-size:16px;font-weight:600;line-height:1.5}
+main.gw-course[data-gw-course-guide] :is(.gw-guide__concept,.gw-guide__provider) p{margin:0;color:var(--course-body);font-size:var(--course-body-size);font-weight:400;line-height:1.8;overflow-wrap:break-word}
+main.gw-course[data-gw-course-guide] .gw-guide__provider{width:100%;padding:24px 0 0;border-top:1px solid var(--course-line)}
+main.gw-course[data-gw-course-guide] .gw-guide__provider .gw-course__button{margin-top:24px}
+main.gw-course[data-gw-course-guide] .gw-guide__provider--pending{min-height:112px;display:flex;align-items:flex-start}
+main.gw-course[data-gw-course-guide] .gw-guide__provider--pending p{color:var(--course-muted)}
+main.gw-course[data-gw-course-guide] .gw-guide__provider-note{margin:28px 0 0;color:var(--course-muted);font-size:14px;line-height:1.75}
+body:has(main.gw-course[data-gw-course-guide]) .block-for-copyright.gw{background:#0b0d0e!important}
+@media(max-width:800px){main.gw-course[data-gw-course-guide] .gw-guide__concepts{grid-template-columns:minmax(0,1fr);gap:26px}}
+@media(max-width:520px){
+ main.gw-course[data-gw-course-guide] :is(.gw-guide__role,.gw-guide__provider-note){font-size:12px}
+ main.gw-course[data-gw-course-guide] .gw-guide__concept{gap:12px;padding-top:20px}
+ main.gw-course[data-gw-course-guide] .gw-guide__provider{padding-top:20px}
+}
+
+main.gw-course[data-course-slug="sport-climbing"] .gw-guide__chapter-heading{margin-top:44px}
+@media(max-width:520px){main.gw-course[data-course-slug="sport-climbing"] .gw-guide__chapter-heading{margin-top:32px}}

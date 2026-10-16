@@ -80,8 +80,11 @@
       <div class="gw-menu-group" data-gw-section="learn">
         <button class="gw-menu-toggle" type="button" aria-expanded="false" aria-controls="gw-menu-learn">學習 LEARN <span class="gw-menu-chevron" aria-hidden="true"></span></button>
         <div class="gw-menu-dropdown" id="gw-menu-learn" aria-hidden="true" inert><div class="gw-menu-dropdown-inner"><div class="gw-menu-submenu">
-          <a href="/multi-pitch">多繩距攀登課程 Multi-pitch Climbing</a>
-          <a href="/rock-rescue-skill">繩索操作與救援技術 Rope Rescue</a>
+          <a href="/sport-climbing">運動攀登 Sport Climbing</a>
+          <a href="/gym-to-crag">岩館到戶外 Gym to Crag</a>
+          <a href="/trad-climbing">傳統攀登 Traditional Climbing</a>
+          <a href="/multi-pitch">多繩距攀登 Multi-pitch Climbing</a>
+          <a href="/rock-rescue-skill">繩索操作與救援技術 Rope &amp; Rescue Skills</a>
         </div></div></div>
       </div>
       <div class="gw-menu-group" data-gw-section="explore">
@@ -144,7 +147,7 @@
 
     function currentSection(){
       var path=location.pathname.replace(/\/+$/,'')||'/';
-      if(path==='/multi-pitch'||path==='/rock-rescue-skill')return 'learn';
+      if(['/sport-climbing','/gym-to-crag','/trad-climbing','/multi-pitch','/rock-rescue-skill'].indexOf(path)!==-1)return 'learn';
       if(path==='/photography')return 'explore';
       if(path==='/longdong'||path==='/kenting'||path==='/defulan'||path==='/guanziling')return 'discover';
       if(path==='/'){
