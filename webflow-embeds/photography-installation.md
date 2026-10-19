@@ -1,4 +1,4 @@
-# 岩壁攝影 /photography · v3.1.0
+# 岩壁攝影 /photography · v3.1.1
 
 將 `webflow-embeds/photography.html` 完整取代 Webflow `/photography` 的舊 Embed，再 Publish。保留 Webflow 原有 navbar、menu overlay 與 footer。GitHub 推送不會自動發布 Webflow。
 
@@ -13,3 +13,5 @@
 - 水平留白沿用首頁及課程頁：15vw／≤991px 7vw／≤767px 5vw。最後一個章節下方無額外留白，銜接原有黑色 footer。
 
 本地預覽建置工具保存於工作區 photography-preview。正式 Embed 不含該預覽頁首或模擬 footer。
+
+Levi 副標為「@longdong_climber・攝影作品」，英文「@longdong_climber · Photography」；移除舊有海崖攝影介紹段落及其英文版本。
