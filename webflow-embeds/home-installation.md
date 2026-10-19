@@ -40,3 +40,5 @@
 - 2026-10-19：EXPLORE 的攀岩鞋修補卡片啟用 `/resole`；menu overlay 的 EXPLORE 新增相同入口，並支援 `/resole` 目前頁面標示。首頁關子嶺卡片替換為編輯者指定的 IMG_5719.avif，沿用彩色照片樣式。需重貼首頁與 menu overlay Embed，再於 Webflow Publish。攝影頁新圖集僅在本地預覽，未納入本次發布。
 
 - 2026-10-19 手機圖卡標籤：≤767px 英文使用短版、桌機保留完整描述，中文維持原文。切換語言與跨螢幕斷點會自動更新。中英文標籤左右內距一致：桌機12px、手機10px，手機維持單行與原字級，極窄時以省略符避免外溢。完整首頁 Embed 已內嵌共用區塊 CSS，無須額外載入器；保留原有 landing、navbar、原生表單及 footer。需重貼首頁 HTML 再 Publish。
+
+- 2026-10-19 EXPLORE 改為「岩壁攝影 Climbing Photography」與「攀岩鞋修補 Climbing Shoe Resole」兩張等寬卡片，依此順序排列，暫時移除人物誌。全首頁11張卡片的中英文主副標題與 overlay menu 名稱核對統一；龍洞使用 Long Dong，德芙蘭使用 Defulan，繩索操作與救援技術使用 Rope & Rescue Skills。照片、手機短標籤、內距與原生表單程式保留。需重貼首頁及 menu overlay Embed 再 Publish。
