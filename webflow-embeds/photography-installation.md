@@ -1,4 +1,4 @@
-# 岩壁攝影 /photography · v3.1.5
+# 岩壁攝影 /photography · v3.1.6
 
 將 `webflow-embeds/photography.html` 完整取代 Webflow `/photography` 的舊 Embed，再 Publish。保留 Webflow 原有 navbar、menu overlay 與 footer。GitHub 推送不會自動發布 Webflow。
 
@@ -19,3 +19,5 @@ Longdong Climber 副標為「@longdong_climber・攝影作品」，英文「@lon
 最上方攝影師導覽卡的 Longdong Climber 副標在中英文模式均為 @longdong_climber。
 
 攝影師顯示名稱統一 Longdong Climber，包含導覽、作品標題、縮圖替代文字及大圖署名；移除「龍洞・台灣」與英文地點標語，未保留空白佔位。
+
+首頁介紹涵蓋台灣各地岩場與攀岩生活，並同步中英文。
