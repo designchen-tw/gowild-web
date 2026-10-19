@@ -1,17 +1,135 @@
-<!-- GO WILD /photography. Replace the existing photography Embed with this complete block.
-Keep Webflow's navbar, menu overlay and footer outside this Embed. -->
-<script>
-(function () {
-  var local = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ['photography-v2.css', 'page-sections-v1.css'].forEach(function (name) {
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = local ? './' + name : 'https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/' + name;
-    document.head.appendChild(link);
-  });
-})();
-</script>
-<main class="ld-photo" data-ld-photo data-language="zh" lang="zh-Hant" data-gw-section-system>
+<!-- GO WILD /photography · v3.0.0. Replace the complete Webflow Embed. Keep the existing navbar, menu overlay and footer. CSS and scripts are included below; no additional loader is required. -->
+<style>@font-face{font-family:"GW Photo Avenir";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d666_Avenir%20LT%20Std%2045%20Book.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"GW Photo Avenir";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d669_Avenir%20LT%20Std%2065%20Medium.otf") format("opentype");font-weight:600;font-style:normal;font-display:swap}
+main.ld-photo{--gw-type-body:16px;--photo-white:#f5f5f5;--photo-gray:rgba(245,245,245,.68);--photo-muted:rgba(245,245,245,.48);--photo-line:rgba(255,255,255,.14);position:relative;width:100%;overflow:clip;background:#000;color:var(--photo-white);font-family:"GW Photo Avenir","PingFang TC","Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;font-weight:400;font-size:var(--gw-type-body);line-height:1.7;font-synthesis:none;-webkit-font-smoothing:antialiased}
+main.ld-photo *{box-sizing:border-box}
+main.ld-photo :is(h1,h2,p){font-family:inherit;font-style:normal}
+main.ld-photo :is(a,button){font-family:inherit}
+main.ld-photo [hidden]{display:none!important}
+main.ld-photo :is(a,button):focus-visible{outline:2px solid #A9D9B6;outline-offset:4px}
+main.ld-photo .ld-photo__section{max-width:1080px;margin:auto;padding:clamp(72px,7vw,104px) clamp(22px,6vw,88px);scroll-margin-top:28px}
+main.ld-photo .ld-photo__heading{max-width:760px;margin:0 auto 36px;text-align:center}
+main.ld-photo .ld-photo__eyebrow{margin:0 0 14px;color:var(--photo-muted);font-size:14px;font-weight:400;line-height:1.4;letter-spacing:.08em;overflow-wrap:anywhere}
+main.ld-photo :is(.ld-photo__heading h1,.ld-photo__creator-head h2){margin:0;color:var(--photo-white);font-size:22px;font-weight:600;line-height:1.4;letter-spacing:-.015em;text-wrap:balance}
+main.ld-photo .ld-photo__heading>p:last-of-type{max-width:650px;margin:14px auto 0;color:var(--photo-gray);font-size:var(--gw-type-body);font-weight:400;line-height:1.72;letter-spacing:0}
+main.ld-photo .ld-photo__language{display:flex;width:max-content;max-width:100%;margin:22px auto 0;padding:3px;border:1px solid rgba(255,255,255,.17);border-radius:99px;background:rgba(255,255,255,.04)}
+main.ld-photo .ld-photo__language button{min-width:54px;min-height:36px;padding:7px 12px;border:0;border-radius:99px;background:transparent;color:var(--photo-gray);font-size:14px;line-height:1.2;cursor:pointer}
+main.ld-photo .ld-photo__language button:is(:hover,.is-active){background:rgba(255,255,255,.16);color:var(--photo-white)}
+main.ld-photo .ld-photo__profiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px;margin:auto;border-block:1px solid var(--photo-line)}
+main.ld-photo .ld-photo__profile-link{display:flex;min-width:0;flex-direction:column;gap:8px;padding:22px 24px;color:var(--photo-white);text-decoration:none;transition:background .2s}
+main.ld-photo .ld-photo__profile-link+.ld-photo__profile-link{border-left:1px solid var(--photo-line)}
+main.ld-photo .ld-photo__profile-link:hover{background:rgba(255,255,255,.07)}
+main.ld-photo .ld-photo__profile-link span{font-size:16px;font-weight:600;line-height:1.5}
+main.ld-photo .ld-photo__profile-link small{color:var(--photo-gray);font-size:14px;line-height:1.6;overflow-wrap:anywhere}
+main.ld-photo .ld-photo__creator-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin:0 0 20px}
+main.ld-photo .ld-photo__creator-head>div{min-width:0}
+main.ld-photo .ld-photo__creator-head>div>p:last-child{margin:8px 0 0;color:var(--photo-muted);font-size:14px;line-height:1.6;overflow-wrap:anywhere}
+main.ld-photo .ld-photo__bio{margin:0 0 28px}
+main.ld-photo .ld-photo__bio p{max-width:760px;margin:0;color:var(--photo-gray);font-size:var(--gw-type-body);font-weight:400;line-height:1.72;letter-spacing:0}
+main.ld-photo .ld-photo__button{display:inline-flex;flex:none;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border:1px solid rgba(255,255,255,.2);border-radius:99px;background:rgba(255,255,255,.08);color:var(--photo-white);font-size:14px;font-weight:600;line-height:1.3;text-decoration:none;transition:background .2s,color .2s}
+main.ld-photo .ld-photo__button:hover{background:#f5f5f5;color:#080808}
+main.ld-photo .ld-photo__embed-wrap{position:relative;isolation:isolate;width:100%;height:clamp(620px,78vw,900px);margin:0;overflow:hidden;border:1px solid var(--photo-line);border-radius:16px;background:#fff}
+main.ld-photo .ld-photo__embed-wrap iframe{display:block;width:100%;height:100%;border:0;background:#fff;pointer-events:none}
+/* All viewports use a fixed preview; wheel/touch gestures stay on the page. */
+main.ld-photo .ld-photo__embed-link{position:absolute;z-index:1;inset:0;display:block;touch-action:pan-y pinch-zoom}
+main.ld-photo .ld-photo__embed-link:focus-visible{outline-offset:-4px}
+main.ld-photo .ld-photo__sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+main.ld-photo .ld-photo__nav{position:fixed;z-index:1000;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;width:clamp(330px,40vw,480px);max-width:calc(100% - 32px);padding:7px;border:1px solid rgba(255,255,255,.2);border-radius:22px;background:rgba(27,29,31,.7);box-shadow:0 12px 42px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.09);backdrop-filter:blur(26px) saturate(150%);-webkit-backdrop-filter:blur(26px) saturate(150%);transform:translateX(-50%)}
+main.ld-photo .ld-photo__nav a{display:flex;min-width:0;min-height:52px;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:4px 3px;border:1px solid transparent;border-radius:14px;color:var(--photo-muted);font-size:14px;font-weight:400;line-height:1.3;text-align:center;text-decoration:none;overflow-wrap:anywhere;transition:background .2s,color .2s}
+main.ld-photo .ld-photo__nav svg{flex:none;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+main.ld-photo .ld-photo__nav a:is(:hover,.is-active){border-color:rgba(255,255,255,.1);background:rgba(255,255,255,.11);color:var(--photo-white)}
+@media(max-width:600px){
+  main.ld-photo{--gw-type-body:14px;}
+  main.ld-photo :is(.ld-photo__heading h1,.ld-photo__creator-head h2){font-size:17px}
+  main.ld-photo .ld-photo__eyebrow{font-size:12px}
+  main.ld-photo :is(.ld-photo__heading>p:last-of-type,.ld-photo__bio p){font-size:var(--gw-type-body)}
+  main.ld-photo .ld-photo__heading{margin-bottom:30px}
+  main.ld-photo .ld-photo__profile-link{padding:18px 16px}
+  main.ld-photo .ld-photo__profile-link small{font-size:12px}
+  main.ld-photo .ld-photo__creator-head{flex-direction:column;align-items:flex-start;gap:18px}
+  main.ld-photo .ld-photo__creator-head>div>p:last-child{font-size:12px}
+  main.ld-photo .ld-photo__button{padding:0 16px;font-size:12px}
+  main.ld-photo .ld-photo__embed-wrap{height:var(--photo-preview-height,402px);border-radius:12px;touch-action:pan-y pinch-zoom}
+  /* The link shields the cross-origin frame from gestures; swipes scroll the page. */
+  main.ld-photo .ld-photo__embed-wrap iframe{width:var(--photo-preview-width,100%);height:400px;pointer-events:none;transform:scale(var(--photo-preview-scale,1));transform-origin:top left}
+  main.ld-photo .ld-photo__nav{bottom:calc(10px + env(safe-area-inset-bottom));width:calc(100% - 20px);max-width:440px;padding:5px;border-radius:19px;gap:2px}
+  main.ld-photo .ld-photo__nav a{min-height:48px;border-radius:13px;font-size:12px}
+  main.ld-photo .ld-photo__nav svg{width:17px;height:17px}
+}
+@media(prefers-reduced-motion:reduce){main.ld-photo :is(.ld-photo__nav a,.ld-photo__button,.ld-photo__profile-link){transition:none}}
+
+/* Shared section rhythm for the homepage and all four crag pages. */
+main[data-gw-section-system]{
+  --gw-section-space:clamp(72px,7vw,104px);
+  --gw-section-gutter:clamp(22px,6vw,88px);
+  --gw-section-content:1080px;
+  --gw-section-base:#000;
+  --gw-section-soft:#0b0d0e;
+  --gw-section-line:rgba(255,255,255,.1);
+}
+main.gw-home[data-gw-section-system]{--gw-section-content:1264px}
+main[data-gw-section-system] > section[data-gw-page-section]{
+  box-sizing:border-box;
+  width:100%;
+  max-width:none!important;
+  margin:0!important;
+  padding-block:var(--gw-section-space)!important;
+  padding-inline:max(var(--gw-section-gutter),calc((100% - var(--gw-section-content))/2))!important;
+  border:0!important;
+  border-top:1px solid var(--gw-section-line)!important;
+  background:var(--gw-section-base)!important;
+  scroll-margin-top:28px;
+}
+main[data-gw-section-system] > section[data-gw-section-tone="soft"]{background:var(--gw-section-soft)!important}
+main[data-gw-section-system] > section[data-gw-section-first]{border-top:0!important}
+/* Override the old Longdong footer rule, which removed checklist spacing by ID. */
+main[data-gw-section-system] > #ld-safety[data-gw-page-section]{padding-bottom:var(--gw-section-space)!important}
+/* Webflow's footer supplies its own spacing after the final section. */
+main[data-gw-section-system] > section[data-gw-section-last]{padding-bottom:0!important}
+@media(max-width:520px){
+  main[data-gw-section-system]{--gw-section-space:56px;--gw-section-gutter:18px}
+  main[data-gw-section-system] > section[data-gw-page-section]{scroll-margin-top:24px}
+}
+
+/* Photography v3.0.0: approved compact gallery and centered creator sections. */
+main.ld-photo[data-gw-section-system]{--gw-section-gutter:15vw;--gw-section-content:100%;--gw-type-body:16px}
+main.ld-photo :is(h1,h2,h3,p,button){font-family:inherit;font-style:normal}
+main.ld-photo .ld-photo__profiles,main.ld-photo .ld-photo__bio p{max-width:none}
+main.ld-photo .ld-photo__creator-head{display:block;text-align:center}
+main.ld-photo .ld-photo__creator-actions{display:flex;justify-content:center;margin-top:28px}
+main.ld-photo .ld-photo__creator-actions .ld-photo__button{white-space:nowrap}
+main.ld-photo .ld-photo__bio{text-align:center}
+main.ld-photo .ld-photo__profile-link{align-items:center;text-align:center}
+main.ld-photo .ld-photo__bio p{font-size:14px;font-weight:400;line-height:1.8;color:var(--photo-gray)}
+main.ld-photo .ld-photo__gallery-heading{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;margin:24px 0 16px;padding-top:20px;border-top:1px solid var(--photo-line)}
+main.ld-photo .ld-photo__gallery-heading h3{margin:0;font-size:16px;line-height:1.5;font-weight:600}
+main.ld-photo .ld-photo__gallery-heading p{margin:0;color:var(--photo-muted);font-size:12px;font-weight:400;line-height:1.7}
+main.ld-photo .ld-photo__gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+main.ld-photo .ld-photo__shot{display:block;min-width:0;margin:0;padding:0}
+main.ld-photo .ld-photo__shot button{display:block;width:100%;aspect-ratio:1;overflow:hidden;margin:0;padding:0;border:0;background:transparent;cursor:zoom-in;line-height:0;border-radius:4px}
+main.ld-photo .ld-photo__shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:4px;background:#161c18}
+main.ld-photo .ld-photo__viewer{position:fixed;inset:0;box-sizing:border-box;width:100vw;max-width:none;height:100dvh;max-height:100dvh;margin:0;padding:20px max(20px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));border:0;background:#080b09;color:#f5f5f5;overflow:hidden;font:14px/1.5 "GW Photo Avenir","PingFang TC",sans-serif}
+main.ld-photo .ld-photo__viewer[open]{display:flex;flex-direction:column;gap:16px}
+main.ld-photo .ld-photo__viewer::backdrop{background:rgba(0,0,0,.94)}
+main.ld-photo .ld-photo__viewer-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;flex:none}
+main.ld-photo .ld-photo__viewer-bar p{margin:0;color:var(--photo-gray);font-size:14px;display:flex;gap:14px}
+main.ld-photo .ld-photo__viewer button{display:grid;place-items:center;flex:none;width:44px;height:44px;padding:10px;border:1px solid var(--photo-line);border-radius:50%;background:#1a201c;color:#f5f5f5;cursor:pointer}
+main.ld-photo .ld-photo__viewer button:hover{background:#f5f5f5;color:#000}
+main.ld-photo .ld-photo__viewer button:focus-visible{outline:2px solid #a9d9b6;outline-offset:3px}
+main.ld-photo .ld-photo__viewer svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+main.ld-photo .ld-photo__viewer-stage{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:0;flex:1}
+main.ld-photo .ld-photo__viewer-image{display:flex;align-items:center;justify-content:center;position:relative;flex:1;min-width:0;min-height:0;height:100%}
+main.ld-photo .ld-photo__viewer-image img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+main.ld-photo .ld-photo__viewer-image p{position:absolute;inset:auto 10px;color:var(--photo-gray);font-size:14px;text-align:center}
+main.ld-photo .ld-photo__viewer-credit{margin:0;text-align:center;flex:none;font-size:12px;color:var(--photo-muted)}
+main.ld-photo .ld-photo__viewer-credit a{color:inherit;text-underline-offset:4px}
+main.ld-photo :is(.ld-photo__heading h1,.ld-photo__creator-head h2){font-size:22px}
+main.ld-photo .ld-photo__eyebrow,main.ld-photo .ld-photo__creator-head>div>p:last-child,main.ld-photo .ld-photo__button{font-size:14px}
+@media(max-width:991px){main.ld-photo[data-gw-section-system]{--gw-section-gutter:7vw}main.ld-photo .ld-photo__gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){main.ld-photo[data-gw-section-system]{--gw-section-gutter:5vw}main.ld-photo .ld-photo__gallery{gap:8px}}
+@media(max-width:520px){main.ld-photo .ld-photo__bio p{font-size:12px}main.ld-photo .ld-photo__creator-actions{margin-top:24px}main.ld-photo[data-gw-section-system]{--gw-type-body:14px}main.ld-photo :is(.ld-photo__heading h1,.ld-photo__creator-head h2){font-size:17px}main.ld-photo .ld-photo__eyebrow,main.ld-photo .ld-photo__creator-head>div>p:last-child,main.ld-photo .ld-photo__button,main.ld-photo .ld-photo__gallery-heading p{font-size:12px}main.ld-photo .ld-photo__viewer{padding:12px;gap:12px}main.ld-photo .ld-photo__viewer-stage{gap:8px}main.ld-photo .ld-photo__viewer-stage>button{width:36px;height:36px;padding:7px}main.ld-photo .ld-photo__gallery-heading{margin-top:22px}}
+</style>
+<main class="ld-photo" data-ld-photo data-photo-version="3.0.0" data-language="zh" lang="zh-Hant" data-gw-section-system>
   <nav class="ld-photo__nav" aria-label="岩壁攝影頁面導覽" data-photo-aria-zh="岩壁攝影頁面導覽" data-photo-aria-en="Photography page navigation">
     <a href="#ld-photo-intro" data-photo-link="intro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h4l2-3h4l2 3h4v13H4Z"/><circle cx="12" cy="13" r="4"/></svg><span data-photo-zh="攝影" data-photo-en="Photography">攝影</span></a>
     <a href="#ld-photo-climber" data-photo-link="climber"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 15.5 10.5 13l2 1 3.5-4.5M9 8h.01"/></svg><span>Levi</span></a>
@@ -35,28 +153,169 @@ Keep Webflow's navbar, menu overlay and footer outside this Embed. -->
   </section>
 
   <section class="ld-photo__section" id="ld-photo-climber" data-photo-section="climber" data-gw-page-section="1" data-gw-section-tone="soft" aria-labelledby="ld-photo-levi-title">
-    <div class="ld-photo__creator-head"><div><p class="ld-photo__eyebrow">SEA CLIFF CLIMBING PHOTOGRAPHY</p><h2 id="ld-photo-levi-title">Levi</h2><p>Long Dong Climber · Taiwan</p></div><a class="ld-photo__button" href="https://www.instagram.com/longdong_climber/" target="_blank" rel="noopener noreferrer" data-photo-zh="前往 Instagram" data-photo-en="View on Instagram">前往 Instagram</a></div>
+    <div class="ld-photo__creator-head"><div><p class="ld-photo__eyebrow" data-photo-zh="海崖攀登・攝影作品" data-photo-en="SEA CLIFF CLIMBING PHOTOGRAPHY">海崖攀登・攝影作品</p><h2 id="ld-photo-levi-title">Levi</h2><p data-photo-zh="龍洞・台灣" data-photo-en="Long Dong Climber · Taiwan">龍洞・台灣</p></div></div>
     <div class="ld-photo__bio"><p data-photo-zh="以海崖攀登為主題，捕捉岩壁上的動作、光線與海景。想詢問照片，可透過 Instagram 私訊攝影帳號。" data-photo-en="Climbing photography focused on sea cliffs, capturing movement, light, and coastal views. For photo enquiries, contact the photographer directly on Instagram.">以海崖攀登為主題，捕捉岩壁上的動作、光線與海景。想詢問照片，可透過 Instagram 私訊攝影帳號。</p></div>
-    <div class="ld-photo__embed-wrap">
-      <iframe src="https://www.instagram.com/longdong_climber/embed/" title="longdong_climber Instagram 公開貼文" data-photo-title-zh="longdong_climber Instagram 公開貼文" data-photo-title-en="Instagram posts by longdong_climber" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" referrerpolicy="strict-origin-when-cross-origin" data-photo-instagram></iframe>
-      <a class="ld-photo__embed-link" href="https://www.instagram.com/longdong_climber/" target="_blank" rel="noopener noreferrer" data-photo-preview-link aria-label="在 Instagram 查看 Levi 的攝影作品" data-photo-aria-zh="在 Instagram 查看 Levi 的攝影作品" data-photo-aria-en="View Levi’s photography on Instagram"><span class="ld-photo__sr-only" data-photo-zh="在 Instagram 查看作品" data-photo-en="View photography on Instagram">在 Instagram 查看作品</span></a>
-    </div>
+    <div class="ld-photo__gallery-heading"><h3 data-photo-zh="精選影像" data-photo-en="Selected Photographs">精選影像</h3><p data-photo-zh="點選照片查看大圖" data-photo-en="Select a photograph to view it full size">點選照片查看大圖</p></div><div class="ld-photo__gallery" aria-label="Levi 精選作品" data-photo-aria-zh="Levi 精選作品" data-photo-aria-en="Selected photographs by Levi"><figure class="ld-photo__shot"><button type="button" data-gallery-open="0" aria-haspopup="dialog" aria-controls="levi-photo-viewer" data-photo-aria-zh="查看 Levi 精選作品 1" data-photo-aria-en="View selected photograph 1 by Levi" aria-label="查看 Levi 精選作品 1"><img src="https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad5b536bcd00643953a011d_6I4A9515.avif" alt="Levi 攀岩攝影精選作品 1" data-gallery-alt-zh="Levi 攀岩攝影精選作品 1" data-gallery-alt-en="Selected climbing photograph 1 by Levi" loading="eager" decoding="async"></button></figure><figure class="ld-photo__shot"><button type="button" data-gallery-open="1" aria-haspopup="dialog" aria-controls="levi-photo-viewer" data-photo-aria-zh="查看 Levi 精選作品 2" data-photo-aria-en="View selected photograph 2 by Levi" aria-label="查看 Levi 精選作品 2"><img src="https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad5b5364e2a37c46742954f_IMG_3728.avif" alt="Levi 攀岩攝影精選作品 2" data-gallery-alt-zh="Levi 攀岩攝影精選作品 2" data-gallery-alt-en="Selected climbing photograph 2 by Levi" loading="eager" decoding="async"></button></figure><figure class="ld-photo__shot"><button type="button" data-gallery-open="2" aria-haspopup="dialog" aria-controls="levi-photo-viewer" data-photo-aria-zh="查看 Levi 精選作品 3" data-photo-aria-en="View selected photograph 3 by Levi" aria-label="查看 Levi 精選作品 3"><img src="https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad5b48ebcd006439539d656_IMG_8852.avif" alt="Levi 攀岩攝影精選作品 3" data-gallery-alt-zh="Levi 攀岩攝影精選作品 3" data-gallery-alt-en="Selected climbing photograph 3 by Levi" loading="lazy" decoding="async"></button></figure><figure class="ld-photo__shot"><button type="button" data-gallery-open="3" aria-haspopup="dialog" aria-controls="levi-photo-viewer" data-photo-aria-zh="查看 Levi 精選作品 4" data-photo-aria-en="View selected photograph 4 by Levi" aria-label="查看 Levi 精選作品 4"><img src="https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad5b48e1e8e1b5b0bdcaad1_IMG_0232.avif" alt="Levi 攀岩攝影精選作品 4" data-gallery-alt-zh="Levi 攀岩攝影精選作品 4" data-gallery-alt-en="Selected climbing photograph 4 by Levi" loading="lazy" decoding="async"></button></figure><figure class="ld-photo__shot"><button type="button" data-gallery-open="4" aria-haspopup="dialog" aria-controls="levi-photo-viewer" data-photo-aria-zh="查看 Levi 精選作品 5" data-photo-aria-en="View selected photograph 5 by Levi" aria-label="查看 Levi 精選作品 5"><img src="https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad5b48e0211ce1645b6667b_6I4A7835.avif" alt="Levi 攀岩攝影精選作品 5" data-gallery-alt-zh="Levi 攀岩攝影精選作品 5" data-gallery-alt-en="Selected climbing photograph 5 by Levi" loading="lazy" decoding="async"></button></figure><figure class="ld-photo__shot"><button type="button" data-gallery-open="5" aria-haspopup="dialog" aria-controls="levi-photo-viewer" data-photo-aria-zh="查看 Levi 精選作品 6" data-photo-aria-en="View selected photograph 6 by Levi" aria-label="查看 Levi 精選作品 6"><img src="https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad5b48d4e2a37c467426a09_IMG_5217.jpg" alt="Levi 攀岩攝影精選作品 6" data-gallery-alt-zh="Levi 攀岩攝影精選作品 6" data-gallery-alt-en="Selected climbing photograph 6 by Levi" loading="lazy" decoding="async"></button></figure></div>
+    <div class="ld-photo__creator-actions"><a class="ld-photo__button" href="https://www.instagram.com/longdong_climber/" target="_blank" rel="noopener noreferrer" data-photo-zh="前往 Instagram" data-photo-en="View on Instagram">前往 Instagram</a></div>
   </section>
 
   <section class="ld-photo__section" id="ld-photo-yongchun" data-photo-section="yongchun" data-gw-page-section="2" data-gw-section-tone="base" data-gw-section-last aria-labelledby="ld-photo-yongchun-title">
-    <div class="ld-photo__creator-head"><div><p class="ld-photo__eyebrow">WILDLIFE-DOCUMENTARY PHOTOGRAPHY</p><h2 id="ld-photo-yongchun-title" data-photo-zh="永春岩選" data-photo-en="Yongchun">永春岩選</h2><p>Rock Climbers in Their Natural Habitat · Taiwan</p></div><a class="ld-photo__button" href="https://www.instagram.com/yongchunhero/" target="_blank" rel="noopener noreferrer" data-photo-zh="前往 Instagram" data-photo-en="View on Instagram">前往 Instagram</a></div>
+    <div class="ld-photo__creator-head"><div><p class="ld-photo__eyebrow">WILDLIFE-DOCUMENTARY PHOTOGRAPHY</p><h2 id="ld-photo-yongchun-title" data-photo-zh="永春岩選" data-photo-en="Yongchun">永春岩選</h2><p>Rock Climbers in Their Natural Habitat · Taiwan</p></div></div>
     <div class="ld-photo__bio"><p data-photo-zh="以紀實視角記錄攀岩者在自然岩場中的樣貌，從人物、岩壁到戶外日常，呈現攀岩生活的現場感。" data-photo-en="A documentary view of climbers in their natural habitat: people, rock, and everyday moments outdoors, capturing the experience of climbing life.">以紀實視角記錄攀岩者在自然岩場中的樣貌，從人物、岩壁到戶外日常，呈現攀岩生活的現場感。</p></div>
     <div class="ld-photo__embed-wrap">
       <iframe src="https://www.instagram.com/yongchunhero/embed/" title="yongchunhero Instagram 公開貼文" data-photo-title-zh="yongchunhero Instagram 公開貼文" data-photo-title-en="Instagram posts by yongchunhero" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" referrerpolicy="strict-origin-when-cross-origin" data-photo-instagram></iframe>
       <a class="ld-photo__embed-link" href="https://www.instagram.com/yongchunhero/" target="_blank" rel="noopener noreferrer" data-photo-preview-link aria-label="在 Instagram 查看永春岩選的攝影作品" data-photo-aria-zh="在 Instagram 查看永春岩選的攝影作品" data-photo-aria-en="View Yongchun’s photography on Instagram"><span class="ld-photo__sr-only" data-photo-zh="在 Instagram 查看作品" data-photo-en="View photography on Instagram">在 Instagram 查看作品</span></a>
     </div>
+    <div class="ld-photo__creator-actions"><a class="ld-photo__button" href="https://www.instagram.com/yongchunhero/" target="_blank" rel="noopener noreferrer" data-photo-zh="前往 Instagram" data-photo-en="View on Instagram">前往 Instagram</a></div>
   </section>
-</main>
-<script>
-(function () {
-  var local = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  var script = document.createElement('script');
-  script.src = local ? '../photography-page-v2.js' : 'https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/photography-page-v2.js';
-  document.head.appendChild(script);
+<dialog id="levi-photo-viewer" class="ld-photo__viewer" aria-labelledby="levi-viewer-title">
+<div class="ld-photo__viewer-bar"><p id="levi-viewer-title">Levi <span aria-hidden="true">·</span> <span data-gallery-counter aria-live="polite">1 / 6</span></p><button type="button" data-gallery-close data-photo-aria-zh="關閉照片" data-photo-aria-en="Close photograph" aria-label="關閉照片"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+<div class="ld-photo__viewer-stage"><button type="button" data-gallery-previous data-photo-aria-zh="上一張照片" data-photo-aria-en="Previous photograph" aria-label="上一張照片"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button><div class="ld-photo__viewer-image"><img data-gallery-full alt=""><p data-gallery-error hidden data-photo-zh="照片暫時無法載入，請稍後再試。" data-photo-en="This photograph could not load. Please try again later.">照片暫時無法載入，請稍後再試。</p></div><button type="button" data-gallery-next data-photo-aria-zh="下一張照片" data-photo-aria-en="Next photograph" aria-label="下一張照片"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button></div><p class="ld-photo__viewer-credit">© Levi · <a href="https://www.instagram.com/longdong_climber/" target="_blank" rel="noopener noreferrer">@longdong_climber</a></p></dialog></main>
+<script>/* Photography language/navigation and fixed Instagram previews on every viewport. */
+(() => {
+  const root = document.querySelector('[data-ld-photo]');
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = 'true';
+  const sections = [...root.querySelectorAll('[data-photo-section]')];
+  const links = [...root.querySelectorAll('[data-photo-link]')];
+  const languageButtons = [...root.querySelectorAll('[data-photo-language]')];
+  const frames = [...root.querySelectorAll('[data-photo-instagram]')];
+  const previews = [...root.querySelectorAll('[data-photo-preview-link]')];
+  const mobile = matchMedia('(max-width:600px)');
+  const reduced = matchMedia('(prefers-reduced-motion:reduce)');
+  const setLanguage = language => {
+    const english = language === 'en';
+    root.dataset.language = english ? 'en' : 'zh';
+    root.setAttribute('lang', english ? 'en' : 'zh-Hant');
+    root.querySelectorAll('[data-photo-zh][data-photo-en]').forEach(element => {
+      element.textContent = element.dataset[english ? 'photoEn' : 'photoZh'];
+    });
+    root.querySelectorAll('[data-photo-aria-zh][data-photo-aria-en]').forEach(element => {
+      element.setAttribute('aria-label', element.dataset[english ? 'photoAriaEn' : 'photoAriaZh']);
+    });
+    frames.forEach(frame => {
+      frame.title = frame.dataset[english ? 'photoTitleEn' : 'photoTitleZh'];
+    });
+    languageButtons.forEach(button => {
+      const active = button.dataset.photoLanguage === root.dataset.language;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+  };
+  languageButtons.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.photoLanguage)));
+  setLanguage(root.dataset.language);
+
+  const setActive = id => links.forEach(link => {
+    const active = link.dataset.photoLink === id;
+    link.classList.toggle('is-active', active);
+    if (active) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+  root.querySelectorAll('[data-photo-link],[data-photo-jump]').forEach(link => {
+    link.addEventListener('click', event => {
+      const href = link.getAttribute('href');
+      const target = sections.find(section => '#' + section.id === href);
+      if (!target) return;
+      event.preventDefault();
+      setActive(target.dataset.photoSection);
+      target.scrollIntoView({ behavior: reduced.matches ? 'auto' : 'smooth', block: 'start' });
+      history.replaceState(null, '', href);
+    });
+  });
+  let pending = false;
+  const syncNavigation = () => {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(() => {
+      let current = sections[0];
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top <= innerHeight * .38) current = section;
+      });
+      if (current) setActive(current.dataset.photoSection);
+      pending = false;
+    });
+  };
+
+  const sizePreviews = () => {
+    if (!mobile.matches) return;
+    frames.forEach(frame => {
+      const wrap = frame.parentElement;
+      const width = wrap.clientWidth;
+      if (!width) return;
+      // Instagram's profile embed expects at least 326px; fit narrow phones without a horizontal scroller.
+      const scale = Math.min(1, width / 326);
+      wrap.style.setProperty('--photo-preview-scale', String(scale));
+      wrap.style.setProperty('--photo-preview-width', Math.max(326, width) + 'px');
+      wrap.style.setProperty('--photo-preview-height', (400 * scale + 2) + 'px');
+    });
+  };
+  const syncFrames = () => {
+    frames.forEach(frame => {
+      frame.setAttribute('scrolling', 'no');
+      frame.setAttribute('tabindex', '-1');
+      frame.setAttribute('aria-hidden', 'true');
+    });
+    previews.forEach(link => {
+      link.setAttribute('tabindex', '0');
+      link.setAttribute('aria-hidden', 'false');
+    });
+    sizePreviews();
+  };
+  mobile.addEventListener('change', syncFrames);
+  if (typeof ResizeObserver !== 'undefined') {
+    const observer = new ResizeObserver(sizePreviews);
+    frames.forEach(frame => observer.observe(frame.parentElement));
+  }
+  addEventListener('resize', () => { sizePreviews(); syncNavigation(); });
+  addEventListener('scroll', syncNavigation, { passive: true });
+  syncFrames();
+  syncNavigation();
+})();
+
+/* Native dialog keeps focus inside the photograph viewer; no autoplay or third-party gallery. */
+(() => {
+  const root=document.querySelector('[data-ld-photo]');
+  if(!root)return;
+  const openers=[...root.querySelectorAll('[data-gallery-open]')];
+  const dialog=root.querySelector('#levi-photo-viewer');
+  if(!dialog||!openers.length)return;
+  const full=dialog.querySelector('[data-gallery-full]');
+  const counter=dialog.querySelector('[data-gallery-counter]');
+  const error=dialog.querySelector('[data-gallery-error]');
+  let current=0,trigger=null,previousOverflow='';
+  const english=()=>root.dataset.language==='en';
+  function syncLanguage(){
+    openers.forEach(button=>{const img=button.querySelector('img');img.alt=img.dataset[english()?'galleryAltEn':'galleryAltZh'];});
+    if(dialog.open)full.alt=openers[current].querySelector('img').alt;
+  }
+  function show(index){
+    current=(index+openers.length)%openers.length;
+    const img=openers[current].querySelector('img');
+    error.hidden=true;
+    full.hidden=false;
+    full.alt=img.dataset[english()?'galleryAltEn':'galleryAltZh'];
+    full.src=img.currentSrc||img.src;
+    counter.textContent=(current+1)+' / '+openers.length;
+  }
+  openers.forEach((button,index)=>button.addEventListener('click',()=>{
+    if(typeof dialog.showModal!=='function'){window.open(button.querySelector('img').src,'_blank','noopener');return;}
+    trigger=button;
+    show(index);
+    previousOverflow=document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow='hidden';
+    dialog.querySelector('[data-gallery-close]').focus();
+  }));
+  dialog.querySelector('[data-gallery-close]').addEventListener('click',()=>dialog.close());
+  dialog.querySelector('[data-gallery-previous]').addEventListener('click',()=>show(current-1));
+  dialog.querySelector('[data-gallery-next]').addEventListener('click',()=>show(current+1));
+  dialog.addEventListener('keydown',event=>{
+    if(event.key==='ArrowLeft'){event.preventDefault();show(current-1);}
+    if(event.key==='ArrowRight'){event.preventDefault();show(current+1);}
+  });
+  dialog.addEventListener('close',()=>{document.body.style.overflow=previousOverflow;trigger?.focus({preventScroll:true});});
+  full.addEventListener('error',()=>{full.hidden=true;error.hidden=false;});
+  root.querySelectorAll('[data-photo-language]').forEach(button=>button.addEventListener('click',syncLanguage));
+  syncLanguage();
 })();
 </script>
