@@ -143,4 +143,4 @@
 
 ## 岩石之外 /outside-of-rock
 
-`webflow-embeds/outside-of-rock.html` 是上線用內容 Embed，內含受頁面範圍限制的樣式，使用固定 commit 的 `outside-of-rock-v5.js` 載入雙語學習內容與互動。首頁 EXPLORE 第三張卡片與 menu overlay 已接上 `/outside-of-rock`。保留原生 Webflow navbar 與 footer；桌機／平板／手機左右留白為15vw／7vw／5vw，黑與淺灰黑區塊交替，最後一節不留額外底部空白，copyright footer 黑底。安裝及來源說明見 `webflow-embeds/outside-of-rock-installation.md`；GitHub 更新不會自動發布 Webflow。
+`webflow-embeds/outside-of-rock.html` 是上線用內容 Embed，內含受頁面範圍限制的樣式，使用固定 commit 的 `outside-of-rock-v6.js` 載入雙語學習內容與互動。首頁 EXPLORE 第三張卡片與 menu overlay 已接上 `/outside-of-rock`。保留原生 Webflow navbar 與 footer；桌機／平板／手機左右留白為15vw／7vw／5vw，黑與淺灰黑區塊交替，最後一節不留額外底部空白，copyright footer 黑底。安裝及來源說明見 `webflow-embeds/outside-of-rock-installation.md`；GitHub 更新不會自動發布 Webflow。
