@@ -1,4 +1,4 @@
-# 岩石之外 /outside-of-rock · v1.0.5
+# 岩石之外 /outside-of-rock · v1.0.6
 
 1. 在 Webflow 建立或使用 `/outside-of-rock` 頁面，沿用其他內容頁的 navbar、hamburger menu 與 copyright footer。
 2. 將 `webflow-embeds/outside-of-rock.html` 完整貼進主內容的 Code Embed。此檔已包含頁面 CSS 及載入器，勿另貼本地預覽的 header 或 footer。
@@ -24,7 +24,7 @@
 
 ## 載入與驗證
 
-內容較長，互動及詳細課程資料集中於根目錄的 `outside-of-rock-v6.js`。Embed 固定引用同一 Git commit 的 jsDelivr 網址，避免可變 main 分支造成不同版本混用。完整 Embed 保持低於50,000字元。腳本載入失敗時提供重新整理提示與官方來源連結。
+內容較長，互動及詳細課程資料集中於根目錄的 `outside-of-rock-v7.js`。Embed 固定引用同一 Git commit 的 jsDelivr 網址，避免可變 main 分支造成不同版本混用。完整 Embed 保持低於50,000字元。腳本載入失敗時提供重新整理提示與官方來源連結。
 
 執行檢查：十種活動目標、三種雪崩路線與鍵盤操作、十項技能、四種急救課程、三個嚮導體系、雙語說明、展開狀態保留、所有區塊錨點、唯一ID、CSS／JS語法，以及首頁修改範圍。未在本輪執行瀏覽器實際渲染檢查；Publish後應以正式網站確認字體與Webflow外層結構。
 
@@ -43,3 +43,5 @@
 2026-10-20 v1.0.5：阿式登山的雪地與岩石移動明列「冰爪、冰斧、自我確保與雪坡制動；岩石路線需傳統攀登能力、多繩距與下降。」描述補上因活動涉及雪地，建議提早學習雪崩相關知識並依地形安排訓練。中英文同步，其他路徑與版面不變；僅需重貼本頁 Embed 並 Publish。
 
 同版新增「雪崩安全訓練」技術模組，包含雙語先備能力、適用活動、雪崩形成與地形、預報判讀、行程規劃、團隊決策及同伴救援等學習主題，附 Avalanche Canada 官方入門及訓練連結。
+
+2026-10-20 v1.0.6：所有外部連結箭頭使用Unicode文字呈現序列U+2197 U+FE0E（VS15），保留原箭頭字形與樣式。靜態HTML及載入失敗備援使用數字字元實體，動態來源／課程連結使用JS Unicode轉義；中英文切換後均保留文字呈現標記。不新增SVG或修改CSS。已檢查實際輸出的字碼序列，未進行iPhone實機驗證；僅需重貼本頁Embed並Publish。規格：https://www.unicode.org/reports/tr51/#Presentation_Style
