@@ -1,4 +1,4 @@
-# 岩石之外 /outside-of-rock · v1.0.0
+# 岩石之外 /outside-of-rock · v1.0.1
 
 1. 在 Webflow 建立或使用 `/outside-of-rock` 頁面，沿用其他內容頁的 navbar、hamburger menu 與 copyright footer。
 2. 將 `webflow-embeds/outside-of-rock.html` 完整貼進主內容的 Code Embed。此檔已包含頁面 CSS 及載入器，勿另貼本地預覽的 header 或 footer。
@@ -24,8 +24,10 @@
 
 ## 載入與驗證
 
-內容較長，互動及詳細課程資料集中於根目錄的 `outside-of-rock-v1.js`。Embed 固定引用同一 Git commit 的 jsDelivr 網址，避免可變 main 分支造成不同版本混用。完整 Embed 保持低於50,000字元。腳本載入失敗時提供重新整理提示與官方來源連結。
+內容較長，互動及詳細課程資料集中於根目錄的 `outside-of-rock-v2.js`。Embed 固定引用同一 Git commit 的 jsDelivr 網址，避免可變 main 分支造成不同版本混用。完整 Embed 保持低於50,000字元。腳本載入失敗時提供重新整理提示與官方來源連結。
 
 執行檢查：六種活動目標、三種雪崩路線與鍵盤操作、九項技能、四種急救課程、三個嚮導體系、雙語說明、展開狀態保留、所有區塊錨點、唯一ID、CSS／JS語法，以及首頁修改範圍。未在本輪執行瀏覽器實際渲染檢查；Publish後應以正式網站確認字體與Webflow外層結構。
 
 內容保留本地預覽已整理的官方來源；本輪複查 Avalanche Canada 訓練、AMGA Mountain Guide Programs 與 NOLS Wilderness Medicine 主頁，未宣稱全面重新審核所有課程先修、時數及認可。課程與職業資格以各機構最新公告為準。
+
+2026-10-20 v1.0.1：移除全部六種活動目標卡片的「往下查看相關課程 ↓」及英文跳轉連結，保留底部章節導覽與其他官方來源連結。更新後需重貼本頁 Embed 並 Publish；首頁及 menu 不必重貼。
