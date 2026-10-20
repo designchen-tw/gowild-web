@@ -44,3 +44,5 @@
 - 2026-10-19 EXPLORE 改為「岩壁攝影 Climbing Photography」與「攀岩鞋修補 Climbing Shoe Resole」三欄版面的前兩張卡片，依此順序排列；第三欄留空，不新增空白卡片，暫時移除人物誌。全首頁11張卡片的中英文主副標題與 overlay menu 名稱核對統一；龍洞使用 Long Dong，德芙蘭使用 Defulan，繩索操作與救援技術使用 Rope & Rescue Skills。照片、手機短標籤、內距與原生表單程式保留。需重貼首頁及 menu overlay Embed 再 Publish。
 
 - 2026-10-20：EXPLORE 第三張加入「岩石之外 Outside of Rock」，連結 `/outside-of-rock`，採指定 IMG_1367.avif 彩色縮圖；桌機維持三欄，手機沿用兩欄。同步 menu overlay 的 EXPLORE 入口與目前頁面判定。請重貼首頁與 menu overlay，再 Publish。
+
+- 2026-10-20：EXPLORE「攀岩鞋修補」卡片改用指定 IMG_0951.avif 照片，沿用彩色照片樣式與既有裁切比例；卡片文字、連結、順序及手機排列保留。僅需更新首頁 Embed 並 Publish。
