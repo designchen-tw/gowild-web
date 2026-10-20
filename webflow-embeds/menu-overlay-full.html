@@ -92,6 +92,7 @@
         <div class="gw-menu-dropdown" id="gw-menu-explore" aria-hidden="true" inert><div class="gw-menu-dropdown-inner"><div class="gw-menu-submenu">
           <a href="/photography">岩壁攝影 Climbing Photography</a>
           <a href="/resole">攀岩鞋修補 Climbing Shoe Resole</a>
+          <a href="/outside-of-rock">岩石之外 Outside of Rock</a>
         </div></div></div>
       </div>
     </div>
@@ -149,7 +150,7 @@
     function currentSection(){
       var path=location.pathname.replace(/\/+$/,'')||'/';
       if(['/sport-climbing','/gym-to-crag','/trad-climbing','/multi-pitch','/rock-rescue-skill'].indexOf(path)!==-1)return 'learn';
-      if(path==='/photography'||path==='/resole')return 'explore';
+      if(path==='/photography'||path==='/resole'||path==='/outside-of-rock')return 'explore';
       if(path==='/longdong'||path==='/kenting'||path==='/defulan'||path==='/guanziling')return 'discover';
       if(path==='/'){
         if((location.hash==='#ld-learn'||location.hash==='#gw-home-learn'))return 'learn';

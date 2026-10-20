@@ -140,3 +140,7 @@
 
 龍洞使用 `climbing-map-zoom-v6.js` 與 `longdong-sector-map-v21.js`。寬度超過520px時，縮小下限改為地圖寬度貼齊視窗，長地圖保留上下捲動，避免縮成窄條、右側露底。手機仍可縮至全圖，載入時的預設視野不變；墾丁維持原版本。需重新貼上龍洞完整HTML Embed並Publish。
 
+
+## 岩石之外 /outside-of-rock
+
+`webflow-embeds/outside-of-rock.html` 是上線用內容 Embed，內含受頁面範圍限制的樣式，使用固定 commit 的 `outside-of-rock-v1.js` 載入雙語學習內容與互動。首頁 EXPLORE 第三張卡片與 menu overlay 已接上 `/outside-of-rock`。保留原生 Webflow navbar 與 footer；桌機／平板／手機左右留白為15vw／7vw／5vw，黑與淺灰黑區塊交替，最後一節不留額外底部空白，copyright footer 黑底。安裝及來源說明見 `webflow-embeds/outside-of-rock-installation.md`；GitHub 更新不會自動發布 Webflow。
