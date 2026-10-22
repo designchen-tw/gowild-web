@@ -1,5 +1,8 @@
 # 攀登學習與課程推薦頁
 
+> 2026-10-22 更新：本頁已加入與首頁一致的深淺色主題。請使用目前完整 HTML Embed，並參照 `content-theme-installation.md` 的最新部署方式。配色與底部導航設定以該文件為準；原有內容、照片、課程 PDF 與表單提交功能保留。
+
+
 | Webflow slug | 完整 HTML Embed |
 | --- | --- |
 | `/sport-climbing` | `sport-climbing.html` — 運動攀登 |

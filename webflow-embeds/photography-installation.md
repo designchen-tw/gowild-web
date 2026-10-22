@@ -1,5 +1,8 @@
 # 岩壁攝影 /photography · v3.1.6
 
+> 2026-10-22 更新：本頁已加入與首頁一致的深淺色主題。請使用目前完整 HTML Embed，並參照 `content-theme-installation.md` 的最新部署方式。配色與底部導航設定以該文件為準；原有內容、照片、課程 PDF 與表單提交功能保留。
+
+
 將 `webflow-embeds/photography.html` 完整取代 Webflow `/photography` 的舊 Embed，再 Publish。保留 Webflow 原有 navbar、menu overlay 與 footer。GitHub 推送不會自動發布 Webflow。
 
 此版本將 CSS、SVG icon、語言切換與圖集程式包含在同一個 Embed，不再載入 photography-v2.css、page-sections-v1.css 或 photography-page-v2.js。若先前另外貼了舊版攝影頁載入器，請移除該額外載入器，避免舊程式重複綁定。
@@ -10,7 +13,7 @@
 - 移除查看大圖的提示文字；介紹為桌機14px、手機12px。章節標題22px／17px，名稱與主文維持現有層級。
 - 永春岩選使用指定六張精選，採與 Longdong Climber 相同的圖集樣式，移除 Instagram iframe。介紹改為「龍洞紀實攝影／攀岩者與他們的棲息地」，英文為「LONGDONG DOCUMENTARY PHOTOGRAPHY／Climbers and Their Habitat」。兩位攝影師的圖集各自循環六張，版權標示與 Instagram 連結依點選攝影師更新，不跨圖集混合。
 - 中文／EN 切換涵蓋介紹、按鈕、提示、圖像替代文字與大圖無障礙名稱；品牌及帳號保留原名。
-- 水平留白沿用首頁及課程頁：15vw／≤991px 7vw／≤767px 5vw。最後一個章節下方無額外留白，銜接原有黑色 footer。
+- 水平留白沿用首頁及課程頁：15vw／≤991px 7vw／≤767px 5vw。最後一個章節下方無額外留白，銜接依主題切換的原有 footer。
 
 本地預覽建置工具保存於工作區 photography-preview。正式 Embed 不含該預覽頁首或模擬 footer。
 
