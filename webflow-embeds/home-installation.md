@@ -1,6 +1,6 @@
 # 首頁 Embed 安裝
 
-> 2026-10-22 原生表單統一版：首頁、多繩距與繩索操作／救援共用 `webflow-native-form-v1.css`。三頁都保留 Webflow 表單原本的 section、父層、class、欄位與按鈕尺寸、字級和圓角；取消首頁額外的送出按鈕版型。僅共用配色、綠色聚焦框與既有中英文切換。請完整重貼這三頁的主內容 Embed 後 Publish，保留原生表單；選單與首頁 Page Code 不需更換。
+> 2026-10-22 原生表單統一版：首頁、多繩距與繩索操作／救援共用 `webflow-native-form-v2.css`。三頁都保留 Webflow 表單原本的 section、父層、class、欄位與按鈕尺寸、字級和圓角；取消首頁額外的送出按鈕版型。僅共用配色、綠色聚焦框與既有中英文切換。請完整重貼這三頁的主內容 Embed 後 Publish，保留原生表單；選單與首頁 Page Code 不需更換。
 
 `home.html` 是可整份貼回 Webflow 的首頁內容 Embed。內容、卡片及表單程式保留在同一檔案；主section的底色、分隔線與間距由共用CDN樣式 `page-sections-v1.css` 提供，貼回前需確認此樣式已更新至GitHub。
 
@@ -53,7 +53,7 @@
 ## 2026-10-22 首頁＋Overlay Menu 主題版
 
 - 主頁與選單重新對照當日線上發布內容（2026-10-22 02:19:46 UTC）。原文、雙語資料、字體、字級、字重、行高、字距、版面 CSS、頁面 JS、landing 動畫及原生表單程式保留；新增樣式只調整配色。
-- 重貼 `home.html` 與 `menu-overlay-full.html` 後 Publish。兩份 Embed 已內嵌主題 CSS／JS；首頁原生表單配色另載入版本固定的 `webflow-native-form-v1.css`。保留 navbar、原生 Form Block、footer、hamburger 的 Webflow 互動及 overlay 的 Finsweet 設定。
+- 重貼 `home.html` 與 `menu-overlay-full.html` 後 Publish。兩份 Embed 已內嵌主題 CSS／JS；首頁原生表單配色另載入版本固定的 `webflow-native-form-v2.css`。保留 navbar、原生 Form Block、footer、hamburger 的 Webflow 互動及 overlay 的 Finsweet 設定。
 - 選單新增月亮／太陽圖示切換（36×30px），預設深色，選擇儲存在 `gw-color-theme-v1`。本次啟用首頁及 overlay；其他內容頁保留原配色。一般首頁圖卡透明底，保留框線；照片及照片上的字標沿用原樣。
 - Overlay 與首頁 navbar 使用新版 Logo：深色底為 `6ad9712b794a5603e6bb48f9_logo_GW-white.avif`，淺色底為 `6ad9712cb9c80fb6fc1287b1_logo_GW-black.avif`。僅換來源，尺寸和文字設定不變。首頁 navbar、hamburger 線條、footer 及原生表單顏色配合主題。
 - 已檢查保留原 CSS／JS、僅新增配色覆寫、主題儲存與失敗回復、Logo、語言及表單輸入值保留、選單展開狀態、重複初始化。未由代理 Publish Webflow、未送出正式表單測試。
