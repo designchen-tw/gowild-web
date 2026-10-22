@@ -1,8 +1,7 @@
+<script>(function(){var h=document.documentElement,t='dark';h.setAttribute('data-gw-page-theme','longdong');try{t=window.GWColorTheme?GWColorTheme.get():localStorage.getItem('gw-color-theme-v1')}catch(e){}h.setAttribute('data-gw-theme',t==='light'?'light':'dark')})();</script>
 <!-- Long Dong detail page. Paste into a dedicated Webflow Code Embed. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v13.css?v=20261012-route-order">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-typography-v2.css?v=2026c12">
 <style>main.ld-detail #ld-classics{display:none!important}</style>
 <main data-gw-section-system class="ld-detail ld-sector-browser" data-ld-detail>
 <nav class="ld-detail__nav" aria-label="龍洞頁面導覽">
@@ -78,37 +77,4 @@
 </div>
 </section>
 </main>
-
-
-<script>
-(function () {
-  var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  ["longdong-page-v2.js", "longdong-rock-estimate-v3.js", "longdong-conditions-widget-v30.js", "longdong-cwa-widget-v16.js", "climbing-map-zoom-v8.js", "longdong-routes-v4.js", "longdong-sector-map-v22.js", "longdong-sector-browser-v1.js", "route-scroll-hints-v1.js", "longdong-rescue-v1.js"].forEach(function (name) {
-    var script = document.createElement("script");
-    script.async = false;
-    script.src = local ? "../" + name : "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/" + name;
-    document.head.appendChild(script);
-  });
-})();
-</script>
-
-<script>
-(function () {
-  var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  if (local) {
-    document.documentElement.classList.add("gw-local-font-preview");
-    var previewStyle = document.createElement("style");
-    previewStyle.textContent = "html.gw-local-font-preview,html.gw-local-font-preview body{margin:0;background:#000}";
-    document.head.appendChild(previewStyle);
-  }
-  var styles = local
-    ? ["./longdong-embed-v13.css", "./climbing-typography-v2.css", "./climbing-conditions-layout-v3.css", "./area-names-v1.css", "./longdong-sector-map-v18.css", "./climbing-map-zoom-v1.css", "./longdong-routes-v5.css", "./longdong-sector-browser-v2.css", "./page-sections-v1.css", "./route-scroll-hints-v5.css", "./longdong-rescue-v1.css", "./climbing-map-frame-v1.css"]
-    : ["https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-embed-v13.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-conditions-layout-v3.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/area-names-v1.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-sector-map-v18.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-map-zoom-v1.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-routes-v5.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-sector-browser-v2.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/page-sections-v1.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/route-scroll-hints-v5.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/longdong-rescue-v1.css", "https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/webflow-embeds/climbing-map-frame-v1.css"];
-  styles.forEach(function (href) {
-    var link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = href;
-    document.head.appendChild(link);
-  });
-})();
-</script>
+<script>(function(){var local=location.protocol==='file:'||/^(localhost|127\.0\.0\.1)$/.test(location.hostname),base='https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@525d6f52a0bc00d5f03d84b6c2252474b6d732cc/';if(local){document.documentElement.classList.add('gw-local-font-preview');var s=document.createElement('style');s.textContent='html.gw-local-font-preview,html.gw-local-font-preview body{margin:0;background:var(--ld-theme-bg,#000)}';document.head.appendChild(s)}["longdong-embed-v13.css","climbing-typography-v2.css","climbing-conditions-layout-v3.css","area-names-v1.css","longdong-sector-map-v18.css","climbing-map-zoom-v1.css","longdong-routes-v5.css","longdong-sector-browser-v2.css","page-sections-v1.css","route-scroll-hints-v5.css","longdong-rescue-v1.css","climbing-map-frame-v1.css","longdong-theme-v1.css"].forEach(function(n){var l=document.createElement('link');l.rel='stylesheet';l.href=local?'./'+n:base+'webflow-embeds/'+n;document.head.appendChild(l)});["longdong-theme-v1.js","longdong-page-v2.js","longdong-rock-estimate-v3.js","longdong-conditions-widget-v30.js","longdong-cwa-widget-v16.js","climbing-map-zoom-v8.js","longdong-routes-v4.js","longdong-sector-map-v23.js","longdong-sector-browser-v1.js","route-scroll-hints-v1.js","longdong-rescue-v1.js"].forEach(function(n){var s=document.createElement('script');s.async=false;s.src=local?'../'+n:base+n;document.head.appendChild(s)})})();</script>
