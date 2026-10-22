@@ -1,5 +1,7 @@
 # 首頁 Embed 安裝
 
+> 2026-10-22 原生表單統一版：首頁、多繩距與繩索操作／救援共用 `webflow-native-form-v1.css`。三頁都保留 Webflow 表單原本的 section、父層、class、欄位與按鈕尺寸、字級和圓角；取消首頁額外的送出按鈕版型。僅共用配色、綠色聚焦框與既有中英文切換。請完整重貼這三頁的主內容 Embed 後 Publish，保留原生表單；選單與首頁 Page Code 不需更換。
+
 `home.html` 是可整份貼回 Webflow 的首頁內容 Embed。內容、卡片及表單程式保留在同一檔案；主section的底色、分隔線與間距由共用CDN樣式 `page-sections-v1.css` 提供，貼回前需確認此樣式已更新至GitHub。
 
 ## 貼回的位置
@@ -7,7 +9,7 @@
 1. 保留首頁現有的 Navbar、fixed 投影片（`.go-wild-slide.main-page`）、200vh 動畫區（`.selection-from-animation`）、其中的 sticky 文字（`.gw-landing-wording`）、Webflow 聯絡 Form Block 與 Footer。
 2. 只替換 landing 動畫區後方的一般內容 Embed；不要移除或包住 landing 的動畫 section。已使用新版首頁時，直接更新目前的 `.html-code.test` Code Embed。
 3. Code Embed 必須接在完整 landing 動畫 section 的後面，與它同層，貼上 `home.html` 的全部內容。程式會為這個 Embed 設定獨立疊層及自動高度，使內容蓋住固定投影片；不更動 landing 的尺寸、定位或動畫。這個 Embed 不要放在 sticky 容器或 Form Block 裡。
-4. **保留原本名為 `Course Inquires` 的原生 Webflow Form Block**，維持它在頁面上、位於首頁 Embed 外。不要刪除、複製或更改欄位名稱。程式會把這個原有 Form Block 移到新版 CONTACT 裡，並隱藏原本空出的聯絡 section。
+4. **保留原本名為 `Course Inquires` 的原生 Webflow Form Block**，維持它在頁面上、位於首頁 Embed 外。不要刪除、複製或更改欄位名稱。原生表單 section 保留在首頁 Embed 後方、footer 前方，程式不再搬移 Form Block，也不隱藏原生 section；舊 CONTACT 標題隱藏，沿用 Embed 的聯絡標題。
 5. 全站 overlay 選單另貼回更新後的 `menu-overlay-full.html`；DISCOVER 連結已改為北到南，EXPLORE 不再提供尚未完成的人物誌連結；選單品牌文字上方使用指定的 `logo_GW-03.avif` Logo。
 6. Publish 首頁。實際執行 JavaScript 的發布頁面才會整合表單；Designer 畫布可能仍顯示原生表單原本的位置。
 
@@ -51,7 +53,7 @@
 ## 2026-10-22 首頁＋Overlay Menu 主題版
 
 - 主頁與選單重新對照當日線上發布內容（2026-10-22 02:19:46 UTC）。原文、雙語資料、字體、字級、字重、行高、字距、版面 CSS、頁面 JS、landing 動畫及原生表單程式保留；新增樣式只調整配色。
-- 重貼 `home.html` 與 `menu-overlay-full.html` 後 Publish。兩份 Embed 均已內嵌主題 CSS／JS，不需上傳額外 CDN 資產。保留 navbar、原生 Form Block、footer、hamburger 的 Webflow 互動及 overlay 的 Finsweet 設定。
+- 重貼 `home.html` 與 `menu-overlay-full.html` 後 Publish。兩份 Embed 已內嵌主題 CSS／JS；首頁原生表單配色另載入版本固定的 `webflow-native-form-v1.css`。保留 navbar、原生 Form Block、footer、hamburger 的 Webflow 互動及 overlay 的 Finsweet 設定。
 - 選單新增月亮／太陽圖示切換（36×30px），預設深色，選擇儲存在 `gw-color-theme-v1`。本次啟用首頁及 overlay；其他內容頁保留原配色。一般首頁圖卡透明底，保留框線；照片及照片上的字標沿用原樣。
 - Overlay 與首頁 navbar 使用新版 Logo：深色底為 `6ad9712b794a5603e6bb48f9_logo_GW-white.avif`，淺色底為 `6ad9712cb9c80fb6fc1287b1_logo_GW-black.avif`。僅換來源，尺寸和文字設定不變。首頁 navbar、hamburger 線條、footer 及原生表單顏色配合主題。
 - 已檢查保留原 CSS／JS、僅新增配色覆寫、主題儲存與失敗回復、Logo、語言及表單輸入值保留、選單展開狀態、重複初始化。未由代理 Publish Webflow、未送出正式表單測試。
