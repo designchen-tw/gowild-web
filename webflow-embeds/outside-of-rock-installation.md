@@ -1,4 +1,4 @@
-# 岩石之外 /outside-of-rock · v1.1.5
+# 岩石之外 /outside-of-rock · v1.1.6
 
 1. 在 Webflow 建立或使用 `/outside-of-rock` 頁面，沿用其他內容頁的 navbar、hamburger menu 與 copyright footer。
 2. 將 `webflow-embeds/outside-of-rock.html` 完整貼進主內容的 Code Embed。此檔已包含頁面 CSS 及載入器，勿另貼本地預覽的 header 或 footer。
@@ -65,3 +65,6 @@
 
 
 2026-10-22 v1.1.5：活動選項與認識活動的對應標題改為「阿式滑雪登山」，英文保留 Ski mountaineering。新增 outside-of-rock-v8.js，Embed固定引用已推送commit4650fc4f0e03c910fa39786eebbf3357f0d2cf9d；中英文切換後名稱不會還原。沿用v1.1.4的首頁導覽間距與目前深淺色毛玻璃設定。僅需重貼本頁完整Embed並Publish，首頁、選單及Page Code不需更換。
+
+
+2026-10-22 v1.1.6：移除主內容的獨立堆疊隔離（isolation由isolate改為auto），讓固定導覽的z-index:1000能與後方原生footer在同一層級比較，避免頁尾遮蓋。導覽位置、尺寸、毛玻璃、深淺色與選單開啟時的隱藏規則均保留；資料仍引用已發布v8，無新CDN依賴。已檢查此次HTML除版本號與該屬性外完全一致，完整Embed48,513字元。未進行iPhone實機或瀏覽器視覺驗證，需發布後確認滑至頁尾的顯示。僅需重新貼上本頁Embed並Publish。
