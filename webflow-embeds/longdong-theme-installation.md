@@ -24,9 +24,13 @@
 
 ## 版本與驗證
 
-- 新增 `longdong-theme-v1.js`、`webflow-embeds/longdong-theme-v2.css`、`longdong-sector-map-v23.js`，只在龍洞 Embed 引用。其他三個岩場頁維持原有檔案。
+- 新增 `longdong-theme-v1.js`、`webflow-embeds/longdong-theme-v3.css`、`longdong-sector-map-v23.js`，只在龍洞 Embed 引用。其他三個岩場頁維持原有檔案。
 - 所有本頁 CSS／JS 載入器使用固定 Git commit，並保留 file／localhost 的本機引用方式。互動資料與原有 worker API／更新頻率不變。
 - 程式檢查包含九區圖形／編碼／字卡選取、75條路線順序與難度排序、中英文與救援資訊、實際縮放程式的點選／拖曳／雙指防誤選與最小倍率、30次主題切換的路線／縮放保留、晚載入widget與SVG樣式的深淺色優先級、原HTML main完整一致、CSS／JS語法與Webflow字數限制。
 - 未進行瀏覽器實際渲染或iPhone實機驗證；發布後確認地圖區域點選、淺色即時影像、潮汐卡、頁尾與Safari工具列顯示。
 
-固定資源 commit：`32c81b85a72f18302b18c1284084f013df7f8625`。完整 Embed：47790 字元。
+固定資源 commit：`ddf4ab95071afee873ea43301eaf1148d309f410`。完整 Embed：47790 字元。
+
+## 淺色連結按鈕底色
+
+在主底色 `#F6F7F3` 的區塊，連結按鈕使用 `#EDF0EB`；在交替底色 `#EDF0EB` 的區塊，按鈕使用 `#F6F7F3`。文字為 `#262626`，保留細框線；hover為深灰底白字。僅調整帶有各頁 `*-detail__button` 樣式的超連結，不影響語言切換、導航、地圖控制與預報選項。深色主題維持原樣。

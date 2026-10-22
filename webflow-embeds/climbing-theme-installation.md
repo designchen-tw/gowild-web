@@ -39,7 +39,7 @@
 
 - 共用主題控制：`climbing-theme-v1.js`。
 - 各頁新增 `*-page-v1.js`、`webflow-embeds/*-page-v1.css`，從原Embed移出初始化與原樣式，避免重複載入，頁面主內容保持原樣。
-- 各頁色彩覆寫：`webflow-embeds/defulan-theme-v2.css`、`guanziling-theme-v2.css`、`kenting-theme-v2.css`。
+- 各頁色彩覆寫：`webflow-embeds/defulan-theme-v3.css`、`guanziling-theme-v3.css`、`kenting-theme-v3.css`。
 - 地圖版本：`defulan-sector-map-v9.js`、`guanziling-sector-map-v8.js`、`kenting-sector-map-v11.js`。
 - 三份Embed使用固定Git commit載入全部CSS／JS；本機file／localhost則使用對應本機檔案。直接開啟三份Embed即可預覽。
 - 含目前選單與模擬navbar／footer的完整本地預覽在 `/Users/Guan-Wei/Desktop/Web/portfolio/crag-theme-release/` 的 `defulan-preview.html`、`guanziling-preview.html`、`kenting-preview.html`。模擬殼層未包含在上線Embed。
@@ -50,4 +50,8 @@
 
 配色檢查涵蓋三頁深淺色、手機／平板／桌機、hover／focus及widget樣式晚載入，包含單一綠線、五種狀態色、地圖背景／編碼、透明影像、首頁一致導航與底部零留白。另確認原HTML main與SVG向量完整一致，所有CSS／JS可解析，Embed低於Webflow 50,000字元限制。未進行瀏覽器實際渲染或iPhone實機驗證。
 
-固定資源 commit：`d5f14f2d798612ea9471dffb22888ccd109bd575`。完整Embed字元數：defulan 17533、kenting 13921、guanziling 22685。
+固定資源 commit：`ddf4ab95071afee873ea43301eaf1148d309f410`。完整Embed字元數：defulan 17533、kenting 13921、guanziling 22685。
+
+## 淺色連結按鈕底色
+
+在主底色 `#F6F7F3` 的區塊，連結按鈕使用 `#EDF0EB`；在交替底色 `#EDF0EB` 的區塊，按鈕使用 `#F6F7F3`。文字為 `#262626`，保留細框線；hover為深灰底白字。僅調整帶有各頁 `*-detail__button` 樣式的超連結，不影響語言切換、導航、地圖控制與預報選項。深色主題維持原樣。
