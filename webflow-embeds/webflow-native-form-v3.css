@@ -1,0 +1,61 @@
+/* Colors only inside the original Webflow Form Block. Webflow owns field and
+   button geometry, typography, grid, radii and submission behavior. */
+html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]){
+ --gw-form-checkmark:url("https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg");
+ --gw-form-text:#f5f5f5;
+ --gw-form-body:rgba(245,245,245,.68);
+ --gw-form-muted:rgba(245,245,245,.5);
+ --gw-form-line:rgba(255,255,255,.18);
+ --gw-form-accent:#a9d9b6;
+ --gw-form-focus:#fff;
+ --gw-form-checkbox-border:#fff;
+ --gw-form-button:rgba(255,255,255,.18);
+ --gw-form-hover:#f5f5f5;
+ --gw-form-hover-text:#080808;
+ color-scheme:dark;
+}
+html[data-gw-page-theme][data-gw-theme="light"] body :is([data-gw-native-home-section],[data-gw-native-course-section]){
+ --gw-form-checkmark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 11'%3E%3Cpath fill='none' stroke='%23296744' stroke-width='2' stroke-miterlimit='10' d='M11 2L5.5 8.5 2 5'/%3E%3C/svg%3E");
+ --gw-form-text:#262626;
+ --gw-form-body:#4d4d4d;
+ --gw-form-muted:#666;
+ --gw-form-line:rgba(0,0,0,.18);
+ --gw-form-accent:#296744;
+ --gw-form-focus:#296744;
+ --gw-form-checkbox-border:rgba(0,0,0,.18);
+ --gw-form-button:#f6f7f3;
+ --gw-form-hover:#262626;
+ --gw-form-hover-text:#fff;
+ color-scheme:light;
+}
+html[data-gw-page-theme="home"][data-gw-theme="light"] body [data-gw-native-home-section]{--gw-form-button:#edf0eb}
+html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form{
+ color:var(--gw-form-text);
+}
+html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form :is(.course-booking-text,.w-form-label){color:var(--gw-form-body)}
+html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form #wf-form-Course-Inquires .form-styles{
+ background-color:var(--gw-form-button)!important;
+ color:var(--gw-form-text)!important;
+ border-color:var(--gw-form-line)!important;
+ color-scheme:inherit!important;
+}
+html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form #wf-form-Course-Inquires .form-styles::placeholder{color:var(--gw-form-muted);opacity:1}
+html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form #wf-form-Course-Inquires .form-styles:focus{border-color:var(--gw-form-focus)!important}
+html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form :is(input[type="checkbox"],input[type="radio"]){accent-color:var(--gw-form-accent)}
+html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form .w-checkbox-input--inputType-custom{background-color:transparent;border-color:var(--gw-form-checkbox-border)}
+html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form .w-checkbox-input--inputType-custom.w--redirected-checked{background-color:transparent;background-image:var(--gw-form-checkmark);border-color:var(--gw-form-checkbox-border)}
+html[data-gw-page-theme][data-gw-theme="light"] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form .w-checkbox-input--inputType-custom.w--redirected-checked{border-color:var(--gw-form-accent)}
+html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form [type="submit"]{
+ background-color:var(--gw-form-button)!important;
+ color:var(--gw-form-text)!important;
+ border-color:var(--gw-form-line)!important;
+}
+@media(hover:hover) and (pointer:fine){
+ html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form [type="submit"]:hover{background-color:var(--gw-form-hover)!important;color:var(--gw-form-hover-text)!important}
+}
+html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form [type="submit"]:focus-visible{background-color:var(--gw-form-hover)!important;color:var(--gw-form-hover-text)!important}
+html[data-gw-page-theme][data-gw-theme] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form :is(.w-form-done,.w-form-fail){background-color:transparent!important;color:var(--gw-form-body)!important}
+
+/* Retain the Designer background image and its responsive position/size.
+   White artwork becomes dark on the light field without filtering its text. */
+html[data-gw-page-theme][data-gw-theme="light"] body :is([data-gw-native-home-section],[data-gw-native-course-section]) .w-form #wf-form-Course-Inquires .form-styles.selection{background-blend-mode:difference}
