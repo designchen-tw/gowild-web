@@ -46,3 +46,53 @@
 - 2026-10-20：EXPLORE 第三張加入「岩石之外 Outside of Rock」，連結 `/outside-of-rock`，採指定 IMG_1367.avif 彩色縮圖；桌機維持三欄，手機沿用兩欄。同步 menu overlay 的 EXPLORE 入口與目前頁面判定。請重貼首頁與 menu overlay，再 Publish。
 
 - 2026-10-20：EXPLORE「攀岩鞋修補」卡片改用指定 IMG_0951.avif 照片，沿用彩色照片樣式與既有裁切比例；卡片文字、連結、順序及手機排列保留。僅需更新首頁 Embed 並 Publish。
+
+
+## 2026-10-22 首頁＋Overlay Menu 主題版
+
+- 主頁與選單重新對照當日線上發布內容（2026-10-22 02:19:46 UTC）。原文、雙語資料、字體、字級、字重、行高、字距、版面 CSS、頁面 JS、landing 動畫及原生表單程式保留；新增樣式只調整配色。
+- 重貼 `home.html` 與 `menu-overlay-full.html` 後 Publish。兩份 Embed 均已內嵌主題 CSS／JS，不需上傳額外 CDN 資產。保留 navbar、原生 Form Block、footer、hamburger 的 Webflow 互動及 overlay 的 Finsweet 設定。
+- 選單新增月亮／太陽圖示切換（36×30px），預設深色，選擇儲存在 `gw-color-theme-v1`。本次啟用首頁及 overlay；其他內容頁保留原配色。一般首頁圖卡透明底，保留框線；照片及照片上的字標沿用原樣。
+- Overlay 與首頁 navbar 使用新版 Logo：深色底為 `6ad9712b794a5603e6bb48f9_logo_GW-white.avif`，淺色底為 `6ad9712cb9c80fb6fc1287b1_logo_GW-black.avif`。僅換來源，尺寸和文字設定不變。首頁 navbar、hamburger 線條、footer 及原生表單顏色配合主題。
+- 已檢查保留原 CSS／JS、僅新增配色覆寫、主題儲存與失敗回復、Logo、語言及表單輸入值保留、選單展開狀態、重複初始化。未由代理 Publish Webflow、未送出正式表單測試。
+
+
+### 2026-10-22 灰階與選單密度調整
+
+- 已核對線上 menu 的初始 src 與主題程式，深色皆使用新版 `6ad9712b794a5603e6bb48f9_logo_GW-white.avif`。
+- 淺色首頁未選取文字改為中性灰階；選取底色與文字可保留綠色。淺色 menu 的未選文字統一 `#666666`，黑色品牌 Logo 以 `brightness(0) invert(.4)`、opacity 1 呈現相同灰度；目前頁面、展開分類及已選主題可以使用綠色。首頁 navbar Logo 配合原品牌文字灰度。
+- 兩條分隔線之間的分類區域縮短：桌機群組上下內距 8px、手機 6px，保留原字級及按鈕高度。Instagram 圖示由 39px／32px 改為 22px／20px，降低預設透明度。
+- 首頁和 menu 各自內嵌對應的淺色規則，兩份都需更新後 Publish；不需額外 CDN 檔案。
+
+
+### 2026-10-22 選單 Hover 與展開符號
+
+- 此次只需重貼 `menu-overlay-full.html` 並 Publish；首頁 Embed 內容未變。
+- 深色品牌文字與 Logo 同為 `#adadad`，淺色同為 `#666666`；Logo 使用實心灰度，沒有透明度淡化。
+- Hover／鍵盤 focus 時，文字與圖片採完全不透明的顏色：深色為白、淺色為黑；選取狀態在未 hover 時保留既有設定。Instagram 保留較小尺寸，以灰度而非透明度降低平時存在感。
+- 三個分類展開符號改用 SVG，桌機 10px、手機 8px；與文字水平置中，展開時僅原地旋轉，移除舊的垂直位移。
+
+
+
+### 2026-10-22 Safari 首屏與選單測試版
+
+- 首頁 Page Settings → Inside `<head>` 使用 `home-safari-native-scroll-page-code.html`，完整替換之前的首屏測試程式。Designer 首屏維持 Sticky、Top 0、高度 100svh，外層維持原本 200vh；不要併用先前的 12px／calc 高度或 JavaScript 捲動位移版本。
+- 支援原生 scroll timeline 的瀏覽器，在寬度 767px 以下，或觸控裝置橫向且高度不超過 600px 時，使用 CSS 位移模擬首屏停留。直向保留 Webflow 的原有透明度動畫；手機橫向文字及遮罩改以首屏捲動區間完成淡入。不支援功能的瀏覽器保留 Designer sticky。
+- 重新貼上完整 `menu-overlay-full.html`：選單外框使用 100dvh，內文保留原本安全區與捲動設定。選單開啟時同步 html／body 背景至選單實際顏色，切換主題時更新，關閉後移除覆寫；原 Webflow 開關動畫及 Finsweet 鎖定保留。
+- 已檢查語法、首屏進退場範圍、橫向的時間軸變數、選單開關與主題同步、關閉還原、原表單節點與資料保留、Embed 長度。代理尚未 Publish；Safari 工具列顏色與橫向實際效果仍需發布後以 iPhone 驗證。
+
+
+
+### 2026-10-22 選單主題切換效能調整
+
+- 選單開啟時，以 visibility 暫時隱藏被全畫面選單蓋住的首頁首屏、內容及浮動導覽，保留高度、原表單節點與資料，避免背後照片標籤及模糊效果持續繪製；選單關閉時在繪製前還原。首頁 Page Code 不變。
+- 主題控制只更新有差異的屬性；選取相同主題不再重新同步。立即同步會取消尚未執行的排程，選單顏色與可見性一次讀取後才寫入，保留已確認有效的上下取色圖層。
+- 實際程式的 DOM 模擬測試通過：100 次交替切換始終只有兩個取色節點，關閉後移除；重複同步／選取相同主題的根節點屬性寫入從 200 次減為 0 次。此數字是程式測試結果，不代表 iPhone 幀率量測。
+- 首頁主題控制與選單 Embed 原始檔同步更新。現有網站先載入選單的主題控制，因此此次只需重新貼上完整 menu-overlay-full.html 並 Publish；首頁 Page Code 不需更換。尚未由代理發布 Webflow，實際流暢度仍需 iPhone 對照。
+
+
+### 2026-10-22 淺色首頁底部導覽陰影
+
+- 本次完整替換 `home.html` 並 Publish；沿用上一版已修正 Instagram 觸控 hover 的 `menu-overlay-full.html`，選單與首頁 Page Code 不需重貼。
+- 僅淺色首頁導覽取消外擴陰影，改為內側細亮線與較不透明的灰白底；模糊調整為16px並取消增色，補上相同的 WebKit 屬性。避免大範圍深色陰影在 Safari 底部瀏覽器介面附近出現明顯截斷；未更動導覽位置、尺寸、安全區、選取色或深色主題。
+- 已核對原內容與所有腳本完全一致，只有一條限定淺色首頁的外觀覆寫；選單檔案與上一版相同，完整首頁 Embed 48,956 字元。需 Publish 後以 iPhone 確認實際捲動顯示，未宣稱已完成實機驗證。

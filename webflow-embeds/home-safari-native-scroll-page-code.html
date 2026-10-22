@@ -1,0 +1,165 @@
+<!-- Homepage Page Settings > Custom Code > Inside <head>.
+     Replace the previous entire scroll-pin test block; do not combine versions.
+     Designer: Sticky, Top 0, Height 100svh; keep the outer section height.
+     Safari 26.4+ is recommended for threaded scroll-driven animations.
+     Portrait Webflow opacity animations and slideshow are preserved.
+     Short touch-screen landscape uses a hero-local text/mask timeline.
+     Unsupported browsers keep the Designer's original native sticky. -->
+<style id="gw-home-native-scroll-style">
+@keyframes gw-home-native-pin {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, var(--gw-native-pin-travel, 0px), 0); }
+}
+
+@media screen and (max-width: 767px), screen and (pointer: coarse) and (orientation: landscape) and (max-height: 600px) {
+  @supports (animation-timeline: scroll(root block)) and (animation-range-start: 1px) {
+    html[data-gw-home-native-pin]
+    .selection-for-animation > .gw-landing-slideshow,
+    html[data-gw-home-native-pin]
+    .selection-from-animation > .gw-landing-wording {
+      position: relative !important;
+      top: auto !important;
+      transition: none !important;
+      animation: gw-home-native-pin 1s linear both !important;
+      animation-timeline: scroll(root block) !important;
+      animation-range-start: var(--gw-native-pin-start, 0px) !important;
+      animation-range-end: var(--gw-native-pin-end, 1px) !important;
+    }
+  }
+}
+
+/* In phone landscape the original whole-page opacity trigger can be reached
+   only after the short hero has already left the viewport. */
+@keyframes gw-home-landscape-copy {
+  0%, 20% { opacity: 0; }
+  80%, 100% { opacity: 1; }
+}
+@keyframes gw-home-landscape-mask {
+  0%, 15% { opacity: 0; }
+  80%, 100% { opacity: 0.9; }
+}
+@media screen and (pointer: coarse) and (orientation: landscape) and (max-height: 600px) {
+  @supports (animation-timeline: scroll(root block)) and (animation-range-start: 1px) {
+    html[data-gw-home-native-pin] .selection-for-animation .heading-for-course-title.main-page.gw-animation,
+    html[data-gw-home-native-pin] .selection-from-animation .heading-for-course-title.main-page.gw-animation {
+      animation: gw-home-landscape-copy 1s linear both !important;
+      animation-timeline: scroll(root block) !important;
+      animation-range-start: var(--gw-native-pin-start, 0px) !important;
+      animation-range-end: var(--gw-native-pin-end, 1px) !important;
+    }
+    html[data-gw-home-native-pin] .selection-for-animation .black-block,
+    html[data-gw-home-native-pin] .selection-from-animation .black-block {
+      animation: gw-home-landscape-mask 1s linear both !important;
+      animation-timeline: scroll(root block) !important;
+      animation-range-start: var(--gw-native-pin-start, 0px) !important;
+      animation-range-end: var(--gw-native-pin-end, 1px) !important;
+    }
+  }
+}
+</style>
+
+<script>
+(() => {
+  if (window.GWHomeNativeScrollPin) return;
+  const supported = window.CSS &&
+    CSS.supports('animation-timeline', 'scroll(root block)') &&
+    CSS.supports('animation-range-start', '1px');
+  if (!supported) return;
+
+  const root = document.documentElement;
+  const mobile = window.matchMedia('(max-width: 767px), (pointer: coarse) and (orientation: landscape) and (max-height: 600px)');
+  const keys = ['--gw-native-pin-start', '--gw-native-pin-end', '--gw-native-pin-travel'];
+  let section;
+  let hero;
+  let frame = 0;
+  let destroyed = false;
+  let resizeObserver;
+  let bodyObserver;
+
+  // Avoid a first mobile paint with the Designer's native sticky positioning.
+  if (mobile.matches) root.setAttribute('data-gw-home-native-pin', '');
+
+  function clear() {
+    root.removeAttribute('data-gw-home-native-pin');
+    if (hero) keys.forEach(key => hero.style.removeProperty(key));
+    if (section) keys.forEach(key => section.style.removeProperty(key));
+  }
+
+  function measure() {
+    frame = 0;
+    if (destroyed || !hero) return;
+    if (!mobile.matches) {
+      clear();
+      return;
+    }
+    if (document.body.classList.contains('fs-scrolldisable-disable')) return;
+
+    const bounds = section.getBoundingClientRect();
+    const start = bounds.top + window.scrollY;
+    const travel = Math.max(0, section.clientHeight - hero.offsetHeight);
+    const values = [start, start + Math.max(travel, 1), travel];
+    values.forEach((value, index) => {
+      const next = `${Math.round(value * 1000) / 1000}px`;
+      if (hero.style.getPropertyValue(keys[index]) !== next) {
+        hero.style.setProperty(keys[index], next);
+      }
+    });
+    // Descendants use these inherited variables for the landscape opacity
+    // timeline. The hero keeps its variables for the translation keyframes.
+    keys.forEach(key => {
+      const value = hero.style.getPropertyValue(key);
+      if (section.style.getPropertyValue(key) !== value) section.style.setProperty(key, value);
+    });
+    root.setAttribute('data-gw-home-native-pin', '');
+  }
+
+  // No scroll listener and no per-scroll JavaScript positioning.
+  function schedule() {
+    if (!destroyed && !frame) frame = requestAnimationFrame(measure);
+  }
+
+  function init() {
+    if (destroyed) return;
+    section = document.querySelector('.selection-for-animation, .selection-from-animation');
+    hero = section && section.querySelector(':scope > .gw-landing-slideshow, :scope > .gw-landing-wording');
+    if (!hero) {
+      destroy();
+      return;
+    }
+    window.addEventListener('resize', schedule);
+    window.addEventListener('load', schedule);
+    window.addEventListener('pageshow', schedule);
+    mobile.addEventListener('change', schedule);
+    if (window.ResizeObserver) {
+      resizeObserver = new ResizeObserver(schedule);
+      resizeObserver.observe(section);
+      resizeObserver.observe(hero);
+    }
+    bodyObserver = new MutationObserver(schedule);
+    bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+    measure();
+  }
+
+  function destroy() {
+    destroyed = true;
+    if (frame) cancelAnimationFrame(frame);
+    document.removeEventListener('DOMContentLoaded', init);
+    window.removeEventListener('resize', schedule);
+    window.removeEventListener('load', schedule);
+    window.removeEventListener('pageshow', schedule);
+    mobile.removeEventListener('change', schedule);
+    if (resizeObserver) resizeObserver.disconnect();
+    if (bodyObserver) bodyObserver.disconnect();
+    clear();
+    delete window.GWHomeNativeScrollPin;
+  }
+
+  window.GWHomeNativeScrollPin = { refresh: schedule, destroy };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();
+</script>

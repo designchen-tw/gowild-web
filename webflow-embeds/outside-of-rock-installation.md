@@ -1,10 +1,9 @@
-# 岩石之外 /outside-of-rock · v1.0.6
+# 岩石之外 /outside-of-rock · v1.1.0
 
 1. 在 Webflow 建立或使用 `/outside-of-rock` 頁面，沿用其他內容頁的 navbar、hamburger menu 與 copyright footer。
 2. 將 `webflow-embeds/outside-of-rock.html` 完整貼進主內容的 Code Embed。此檔已包含頁面 CSS 及載入器，勿另貼本地預覽的 header 或 footer。
-3. 首頁完整換成更新後的 `webflow-embeds/home.html`，保留既有 landing 動畫、navbar、原生表單與 footer。
-4. 全站 menu overlay 換成更新後的 `webflow-embeds/menu-overlay-full.html`。EXPLORE 的三個入口依序為攝影、岩鞋修補、岩石之外；新頁會標示目前位置。
-5. Publish 上述頁面及全站選單。GitHub 更新不會自動發布 Webflow。
+3. 沿用目前已支援月亮／太陽切換的全站 menu overlay，本次不需重貼首頁或選單，也不需更動首頁 Page Code。
+4. Publish `/outside-of-rock`。此檔為可直接貼上的完整 Embed；GitHub 更新不會自動發布 Webflow。
 
 ## 頁面設定
 
@@ -16,9 +15,9 @@
 
 - 使用 Avenir、22px 桌機／17px 手機章節標題、16px／14px 內文、灰色輔助文字與網站資料綠色 #A9D9B6。
 - 左右留白：桌機15vw、≤991px 7vw、≤767px 5vw，不另加超寬螢幕的內容上限。
-- 七個主區塊黑／#0b0d0e交替，區塊之間單一細線；桌機上下留白 clamp(72px,7vw,104px)，≤520px為56px；最後一節下方0，copyright footer維持黑色，不額外建立footer。
+- 七個主區塊深色採黑／#0b0d0e交替；淺色採 #f6f7f3／#edf0eb 交替，區塊之間單一細線；桌機上下留白 clamp(72px,7vw,104px)，≤520px為56px；最後一節下方0，copyright footer跟隨最後區塊的主題底色，不額外建立footer。
 - 五項底部導覽：路徑、技能、雪崩、急救、嚮導。所有錨點均指向主區塊上緣，scroll-margin-top為24px。
-- CSS 與互動均限制在 `#outside-of-rock`，不改寫全站表單、menu 或其他元件的語言與樣式。
+- 內容 CSS 與互動限制在 `#outside-of-rock`；原生 Webflow navbar／footer 的配色以 `data-gw-page-theme="outside"` 限定本頁，不更動表單、其他頁面或選單的版面。
 - 活動目標、雪崩分頁支援中英文；雪崩分頁可用方向鍵、Home／End。技能、急救及嚮導項目在語言切換後保留展開狀態。
 - 首頁使用指定 IMG_1367.avif 彩色縮圖，桌機EXPLORE三欄，較窄畫面沿用原兩欄，不新增獨立首頁章節。
 
@@ -45,3 +44,10 @@
 同版新增「雪崩安全訓練」技術模組，包含雙語先備能力、適用活動、雪崩形成與地形、預報判讀、行程規劃、團隊決策及同伴救援等學習主題，附 Avalanche Canada 官方入門及訓練連結。
 
 2026-10-20 v1.0.6：所有外部連結箭頭使用Unicode文字呈現序列U+2197 U+FE0E（VS15），保留原箭頭字形與樣式。靜態HTML及載入失敗備援使用數字字元實體，動態來源／課程連結使用JS Unicode轉義；中英文切換後均保留文字呈現標記。不新增SVG或修改CSS。已檢查實際輸出的字碼序列，未進行iPhone實機驗證；僅需重貼本頁Embed並Publish。規格：https://www.unicode.org/reports/tr51/#Presentation_Style
+
+
+2026-10-22 v1.1.0：加入正式深淺色主題，沿用首頁 `gw-color-theme-v1` 偏好與全站選單的月亮／太陽切換。淺色使用灰白底、灰階主文與輔助文字，路徑／課程／嚮導卡片為透明底框線；選取項目使用淡綠底與深綠文字。原生頂部導覽、hamburger、Logo、footer 及地形線稿同步換色，最後區塊底部不增加留白。
+
+保留所有原有內容、字體、字級、響應式尺寸、左右間距、錨點、Unicode 文字箭頭與固定版本 v7 資料腳本。CSS 使用明確 `&` 語法的標準巢狀規則壓縮重複選擇器，完整 Embed 48,964 字元，無新增外部載入依賴。需使用支援標準 CSS nesting 的現代瀏覽器（Safari 16.5+、Chrome 112+、Firefox 117+）。
+
+已檢查巢狀展開後的選擇器、優先級與規則順序一致；原版所有字體、留白與版面宣告未變。已執行選單與頁面不同載入順序、儲存偏好／儲存被阻擋、反覆主題切換、雙語輔助標籤、原生 Logo、互動資料與展開狀態檢查。淺色主文、內文、輔助文字與選取文字對兩種底色對比均高於 4.5:1。本輪未進行 iPhone 實機或瀏覽器實際渲染驗證，發布後仍須確認 Safari 上下介面色與 Webflow 原生元件的呈現。
