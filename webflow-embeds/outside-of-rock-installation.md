@@ -1,4 +1,4 @@
-# 岩石之外 /outside-of-rock · v1.1.4
+# 岩石之外 /outside-of-rock · v1.1.5
 
 1. 在 Webflow 建立或使用 `/outside-of-rock` 頁面，沿用其他內容頁的 navbar、hamburger menu 與 copyright footer。
 2. 將 `webflow-embeds/outside-of-rock.html` 完整貼進主內容的 Code Embed。此檔已包含頁面 CSS 及載入器，勿另貼本地預覽的 header 或 footer。
@@ -23,7 +23,7 @@
 
 ## 載入與驗證
 
-內容較長，互動及詳細課程資料集中於根目錄的 `outside-of-rock-v7.js`。Embed 固定引用同一 Git commit 的 jsDelivr 網址，避免可變 main 分支造成不同版本混用。完整 Embed 保持低於50,000字元。腳本載入失敗時提供重新整理提示與官方來源連結。
+內容較長，互動及詳細課程資料集中於根目錄的 `outside-of-rock-v8.js`。Embed 固定引用同一 Git commit 的 jsDelivr 網址，避免可變 main 分支造成不同版本混用。完整 Embed 保持低於50,000字元。腳本載入失敗時提供重新整理提示與官方來源連結。
 
 執行檢查：十種活動目標、三種雪崩路線與鍵盤操作、十項技能、四種急救課程、三個嚮導體系、雙語說明、展開狀態保留、所有區塊錨點、唯一ID、CSS／JS語法，以及首頁修改範圍。未在本輪執行瀏覽器實際渲染檢查；Publish後應以正式網站確認字體與Webflow外層結構。
 
@@ -62,3 +62,6 @@
 
 
 2026-10-22 v1.1.4：移除導覽舊版覆蓋（桌機44vw窄版、手機12px字級與圖文4px間距），容器／按鈕／圖示尺寸與間距以首頁為準。桌機寬clamp(390px,52vw,570px)，內距7px、欄距3px；圖文間距3px；手機520px以下採左右10px、最大寬440px、內距5px、欄距2px，標籤字級10px。保留深色50%／淺色55%底色、16px毛玻璃與內側亮線。已比對320至1920px共11種寬度，導覽相關版面宣告與首頁一致，其他CSS、內容及互動腳本未變。完整Embed48,516字元；本次僅需重貼岩石之外Embed並Publish。
+
+
+2026-10-22 v1.1.5：活動選項與認識活動的對應標題改為「阿式滑雪登山」，英文保留 Ski mountaineering。新增 outside-of-rock-v8.js，Embed固定引用已推送commit4650fc4f0e03c910fa39786eebbf3357f0d2cf9d；中英文切換後名稱不會還原。沿用v1.1.4的首頁導覽間距與目前深淺色毛玻璃設定。僅需重貼本頁完整Embed並Publish，首頁、選單及Page Code不需更換。
