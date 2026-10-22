@@ -24,6 +24,13 @@
 - 點選字卡後置於第一張並展開推薦路線，其餘卡依原順序排列；路線依難度排序。三頁保留只有推薦路線、沒有細分區的設計，空清單與捲動箭頭維持既有縮排。
 - 保留所有原有中英文內容、路線、連結、氣象端點與更新頻率。墾丁的102條路線、德芙蘭10條、關子嶺14條均未新增或刪改。
 
+## 淺色地圖地形層次修正
+
+- 水面 `#FAFBF8` 最淺；海岸 `#EDF0E8`、一般陸地 `#E0E5DC`、樹林 `#CCD2C8`、較深區域 `#BAC4B5` 依序加深。道路、步道與建物各有對應灰綠階，文字仍維持原本灰階。
+- 德芙蘭大甲溪及墾丁海面依原圖實際水域形狀著色；關子嶺沒有水域圖形，不額外繪製水面，以林地與岩區面區分層次。地圖視窗與SVG原稿底圖使用相同陸地／林地色，避免縮小後透底或出現接縫。
+- 三頁外框統一為1px細線、16px圓角、無額外陰影；移除關子嶺原本固定深色的框線差異。深色地形原配色與所有地圖／天氣／路線腳本保持原樣。
+- 已檢查深淺色、手機／平板／桌機及widget晚載入時的樣式優先級，並確認水面到林地的亮度順序；未進行瀏覽器實際渲染或iPhone實機驗證。
+
 ## 天氣圖示
 
 `weather-card-widget-v8.js` 沿用支援三頁的v7，僅套用龍洞修正後的陰天雲朵路徑，雲朵與描邊均落在32×32圖示範圍內。目前天氣、近期預報、五日預報與逐時明細共用此修正。
@@ -32,7 +39,7 @@
 
 - 共用主題控制：`climbing-theme-v1.js`。
 - 各頁新增 `*-page-v1.js`、`webflow-embeds/*-page-v1.css`，從原Embed移出初始化與原樣式，避免重複載入，頁面主內容保持原樣。
-- 各頁色彩覆寫：`webflow-embeds/defulan-theme-v1.css`、`guanziling-theme-v1.css`、`kenting-theme-v1.css`。
+- 各頁色彩覆寫：`webflow-embeds/defulan-theme-v2.css`、`guanziling-theme-v2.css`、`kenting-theme-v2.css`。
 - 地圖版本：`defulan-sector-map-v9.js`、`guanziling-sector-map-v8.js`、`kenting-sector-map-v11.js`。
 - 三份Embed使用固定Git commit載入全部CSS／JS；本機file／localhost則使用對應本機檔案。直接開啟三份Embed即可預覽。
 - 含目前選單與模擬navbar／footer的完整本地預覽在 `/Users/Guan-Wei/Desktop/Web/portfolio/crag-theme-release/` 的 `defulan-preview.html`、`guanziling-preview.html`、`kenting-preview.html`。模擬殼層未包含在上線Embed。
@@ -43,4 +50,4 @@
 
 配色檢查涵蓋三頁深淺色、手機／平板／桌機、hover／focus及widget樣式晚載入，包含單一綠線、五種狀態色、地圖背景／編碼、透明影像、首頁一致導航與底部零留白。另確認原HTML main與SVG向量完整一致，所有CSS／JS可解析，Embed低於Webflow 50,000字元限制。未進行瀏覽器實際渲染或iPhone實機驗證。
 
-固定資源 commit：`64db88eb178f511c6218b42e720d76437a23363d`。完整Embed字元數：defulan 17533、kenting 13921、guanziling 22685。
+固定資源 commit：`d5f14f2d798612ea9471dffb22888ccd109bd575`。完整Embed字元數：defulan 17533、kenting 13921、guanziling 22685。
