@@ -3,7 +3,7 @@
 完整替換首頁 `home.html`、多繩距 `multi-pitch.html`、繩索操作／救援 `rock-rescue-skill.html` 的主內容 Code Embed，再於 Webflow Publish。保留原生 Form Block 及完整父層 section，位於內容 Embed 之後、footer 之前。不要複製表單、改欄位名稱、加入新的收件端點或刪除原生 Webflow scripts／Turnstile。首頁 Page Code、menu overlay、footer 元件本次不需更換。
 
 - 首頁不再搬移原生表單，也取消送出按鈕另外設定的寬高、字級、圓角、內外距。三頁欄位、選單、訊息框、送出按鈕的排版、尺寸與兩側圓角由原生 Webflow CSS 決定。
-- 共用 `webflow-native-form-v3.css` 只設定表單內的顏色。深色保留原生半透明底；淺色在 `#F6F7F3` 區塊使用 `#EDF0EB` 欄位／按鈕，在 `#EDF0EB` 區塊使用 `#F6F7F3`。文字用中性灰階。
+- 共用 `webflow-native-form-v4.css` 只設定表單內的顏色。深色保留原生半透明底；淺色在 `#F6F7F3` 區塊使用 `#EDF0EB` 欄位／按鈕，在 `#EDF0EB` 區塊使用 `#F6F7F3`。文字用中性灰階。
 - 欄位聚焦時維持原框線粗細與圓角，深色框恢復 Webflow 白色 `#FFFFFF`、淺色框 `#296744`。僅滑鼠裝置顯示送出按鈕 hover，鍵盤 focus 保留對應回饋。
 - 首頁中英文標籤（含原本 for 與名字欄位 id 不同的標籤）與 placeholder、送出／等待／成功／失敗訊息維持切換。課程原有技能選項翻譯保留。原生表單節點、父層、id、name、data-name、required、option value、輸入內容、勾選狀態、Webflow page／element 識別及 Turnstile 保留；提交仍由 Webflow 處理。
 - 原生表單 section 外層繼續對齊 footer：15vw／7vw／5vw，無額外底部空白。首頁舊 CONTACT 小標題隱藏，使用 Embed 的聯絡標題；聯絡導覽在原生表單範圍內保留。
@@ -16,4 +16,8 @@
 
 ## 外框與下拉箭頭修正
 
-深色欄位聚焦恢復原生 Webflow 白框，深色勾選框亦使用白框；淺色欄位聚焦與勾選維持綠色。兩個課程頁另改載 `content-theme-v2.css`，僅將原生欄位的 `background` 縮寫改成 `background-color`，避免清除 Designer 設定的背景圖、大小與位置。淺色選單對原有白色箭頭使用背景混色，呈現深色箭頭；不對欄位文字或整個元件套用反相。原生箭頭圖片、尺寸、手機與桌機定位保留。
+深色欄位聚焦恢復原生 Webflow 白框，深色勾選框未勾選時使用灰框，勾選後才使用白框；淺色欄位聚焦與勾選維持綠色。兩個課程頁另改載 `content-theme-v2.css`，僅將原生欄位的 `background` 縮寫改成 `background-color`，避免清除 Designer 設定的背景圖、大小與位置。淺色選單對原有白色箭頭使用背景混色，呈現深色箭頭；不對欄位文字或整個元件套用反相。原生箭頭圖片、尺寸、手機與桌機定位保留。
+
+## Placeholder 與勾選框層級
+
+深色 placeholder 改為 `rgba(245,245,245,.4)`，淺色為 `#8A8A8A`，都比實際輸入值更淡；標籤與輸入值顏色維持原設定。深色未勾選外框使用 `rgba(255,255,255,.35)` 灰框，勾選後為白框與原 Webflow 白勾勾。淺色仍為未勾選灰框、勾選後綠框綠勾勾，兩種主題均透明底。原有深色聚焦白框、淺色聚焦綠框、選單背景箭頭及表單提交流程保留。
