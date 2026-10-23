@@ -170,7 +170,7 @@ App v7 僅修正提前顯示的品牌列水平位置：補回原生 Webflow Navb
 
 ## 龍洞浪況與跨日潮汐（2026-10-24）
 
-龍洞改用 `longdong-conditions-widget-v32.js`、`webflow-embeds/longdong-conditions-layout-v4.css` 及 `webflow-embeds/longdong-theme-v4.css`。浪況卡在潮汐前，兩張卡共用同一淡藍底色；桌機七欄、平板 3／2／2、手機 2／2／1／2。上一次乾／滿潮的標籤、時間及跨日數字統一使用輔助字級（12px／手機10px），不受主要數值字級覆蓋。
+龍洞改用 `longdong-conditions-widget-v32.js`、`webflow-embeds/longdong-conditions-layout-v5.css` 及 `webflow-embeds/longdong-theme-v4.css`。浪況卡在潮汐前，兩張卡共用同一淡藍底色；桌機第一排五張、第二排浪況／潮汐各半寬，平板 3／2／2、手機 2／2／1／2。上一次乾／滿潮的標籤、時間及跨日數字統一使用輔助字級（12px／手機10px），不受主要數值字級覆蓋。
 
 Worker 新增龍洞浮標（46694A）的示性波高、平均週期及浪向。資料來自氣象署官方即時海況表，來源為觀測，卡片來源列會明示觀測時間。缺測不當成零；逾3小時資料標為過期。沿用15分鐘快取，不增加前端輪詢。浪高顏色：≤0.3m綠、<0.6m藍、<1.5m黃、<2.5m橘，其餘紅；屬畫面級距，非岸邊安全或通行判定。
 
