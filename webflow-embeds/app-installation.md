@@ -1,4 +1,4 @@
-# GO WILD App v4：Webflow 全站安裝
+# GO WILD App v5：Webflow 全站安裝
 
 維護仍使用原本的 Webflow、Code Embed、GitHub 與天氣 Worker。此版本不建立獨立網站，不註冊 Service Worker，不新增離線資料、推播、會員或表單 API。
 
@@ -24,8 +24,9 @@
 - 安裝入口由共用腳本加到現有 `.gw-menu-panel`，放在主題切換之後。入口僅使用文字與小圖示、沒有按鈕底色或外框；視窗的內文與步驟置中。入口文字與提示皆可隨中文／英文切換，已安裝模式隱藏入口。沒有自動跳出的宣傳提示或安裝追蹤。
 - 提示主標題 22px／手機18px、內文16px／14px、步驟14px／12px、細節12px／10px；灰階文字，依文字寬度加左右20px留白的灰底圓角按鈕，滑鼠 hover 白底，鍵盤 focus 綠框。淺色主題使用 `#F6F7F3` 底與 `#EDF0EB` 按鈕；深色跟隨既有底色與灰階。
 - 頁面與選單更新須照原流程 Publish。App 在 hamburger 左側新增細線重新整理圖示，重新載入目前網址；有未送出的表單時先確認，取消會保留輸入。一般瀏覽器不新增此圖示。
-- App 頁面最頂端支援單指下拉重新整理，依進度顯示「繼續下拉以重新整理」／「放開即可重新整理」。導覽列、Logo、重新整理及原生 hamburger 共用同一 CSS 位移；內容預留區一起伸展，不包覆或 transform 頁面主容器，避免改變原有 fixed 導覽的定位基準。放開不足門檻會回復，達門檻則沿用手動重新整理與未送出表單確認。
-- 只在 App、根頁面頂端且選單／PDF／dialog 未開啟時接受下拉。保留左右邊緣返回、橫向手勢、多點縮放與內層可捲動地圖／列表；非被接管的手勢不 preventDefault。非 passive touchmove 只在符合頂端候選手勢期間暫時註冊，結束即移除，不新增常態捲動監聽或輪詢。手機物理手勢仍需以實機檢查，桌面預覽只能確認樣式及事件邏輯。
+- v5 移除整套下拉重新整理：沒有 touchstart／touchmove／touchend 攔截、提示、動態留白、translate 或高度過場。App 頂端列與兩個操作圖示固定 top；保留垂直 overscroll 限制與固定高度占位，使用「↻」手動更新。
+- App Head 在首頁提供返回恢復控制器，先於舊 Page Code 取得 `GWHomeNativeScrollPin`，舊程式的既有 guard 會避免重複初始化；首頁原本的 `home-safari-native-scroll-page-code.html` CSS 仍保留，不必重貼。只在 installed App 的首頁、支援 CSS scroll timeline 時生效。
+- 離頁時取消並清空未執行 RAF；pageshow／回到前景時重新量測，並在同一繪製階段重新綁定自己的 CSS 時間軸。Finsweet body inline style 鎖定期間不量測，解除後同步範圍；不重啟 Webflow IX2、slider 或表單，不設 scroll handler、永久 RAF 迴圈或每次返回自動 reload。
 - App 離開超過15分鐘再回到前景會重新載入一次，讓已開啟畫面取得新頁面；沒有背景輪詢或額外天氣請求。有未送出表單、開啟中的 dialog、全螢幕或 Adobe PDF 時暫緩，重新整理圖示上顯示小點。重新載入不是版本比對，不保證繞過第三方資料來源自身的快取。
 - 網站和 App 共用返回修正：點選選單連結、pagehide、BFCache pageshow 還原時，透過原生 trigger 關閉選單並復原捲動鎖。未攔截原生返回手勢，也不改 history。
 - App Head 內嵌關鍵導覽 CSS，在 HTML body 建立前即決定 installed mode，不再等 Footer 標記才套用，降低點 Logo 跨頁時的樣式閃動。
@@ -46,9 +47,10 @@
 - [MDN：manifest 部署與 JSON 類型](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest)
 - [WebKit：Safari 26 的主畫面網頁 App](https://webkit.org/blog/17333/webkit-features-in-safari-26-0/)
 
-2026-10-23 v4：正式 Head／Footer 改載 `app-v4.css`、`app-v4.js` 與 `manifest-v2.json`，保留歷史資產。安裝說明改為置中三步圖例；提示按鈕依文字寬度。更新後請取代舊 App 區塊，不要重複附加。
+2026-10-23 v5：正式 Head／Footer 改載 `app-v5.css`、`app-v5.js` 與 `manifest-v2.json`，保留歷史資產。安裝說明改為置中三步圖例；提示按鈕依文字寬度。更新後請取代舊 App 區塊，不要重複附加。
 
 - [web.dev：BFCache 的 pageshow／pagehide](https://web.dev/articles/bfcache)
 - [Apple：主畫面網頁與 startup image](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html)
 
-- [MDN：Overscroll behavior](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overscroll-behavior)
+
+- [MDN：pageshow 與返回快取還原](https://developer.mozilla.org/en-US/docs/Web/API/Window/pageshow_event)

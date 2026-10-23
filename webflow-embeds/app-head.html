@@ -36,16 +36,10 @@ html[data-gw-app-display="standalone"] :is(.gw-home__nav,.ld-detail__nav,.kd-det
 /* A cached page must return to its content, never to an expanded menu. */
 html[data-gw-menu-reset] .mobile-overlay.gw{display:none!important;visibility:hidden!important;pointer-events:none!important}
 html[data-gw-menu-reset] .navi-buttom-block.gw .top-line.gw,html[data-gw-menu-reset] .navi-buttom-block.gw .middle-line.gw,html[data-gw-menu-reset] .navi-buttom-block.gw .buttom-line.gw{transform:none!important;opacity:1!important;visibility:visible!important}
-/* Only the installed App owns pull-to-refresh. Leave horizontal edge history native. */
+/* A fixed App header has no pull gesture or animated displacement. */
 html[data-gw-app-display="standalone"],html[data-gw-app-display="standalone"] body{overscroll-behavior-y:none!important}
-html[data-gw-app-display="standalone"] body::before{content:"";display:block;height:calc(var(--gw-app-header-height,calc(80px + var(--gw-app-top))) + var(--gw-app-pull,0px));flex:none;pointer-events:none;transition:height .18s ease-out}
-html[data-gw-app-display="standalone"] :is(.navigation.gw,.navi-buttom-block.gw,.gw-app-reload){translate:0 var(--gw-app-pull,0px)!important;transition:translate .18s ease-out}
-html[data-gw-app-pulling] body::before,html[data-gw-app-pulling] :is(.navigation.gw,.navi-buttom-block.gw,.gw-app-reload){transition:none!important}
-.gw-app-pull-indicator{position:fixed;inset:0 0 auto;z-index:9999;display:flex;align-items:center;justify-content:center;gap:8px;height:var(--gw-app-pull,0px);padding:var(--gw-app-top) 16px 0;box-sizing:border-box;overflow:hidden;background:var(--gw-app-surface);color:var(--gw-app-muted);font-family:"GW App Avenir",Arial,sans-serif;font-size:12px;line-height:1.5;pointer-events:none;visibility:hidden;transition:height .18s ease-out}
-.gw-app-pull-indicator[data-state="pull"],.gw-app-pull-indicator[data-state="ready"]{visibility:visible}
-.gw-app-pull-indicator svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.gw-app-pull-indicator[data-state="ready"] svg{rotate:180deg}
-html[data-gw-app-pulling] .gw-app-pull-indicator{transition:none}
+html[data-gw-app-display="standalone"] body::before{content:"";display:block;height:var(--gw-app-header-height,calc(80px + var(--gw-app-top)));flex:none;pointer-events:none}
+html[data-gw-app-display="standalone"] :is(.navigation.gw,.navi-buttom-block.gw,.gw-app-reload){translate:none!important}
 /* Page translators remain mounted. App switches trigger their existing handlers. */
 html[data-gw-app-display="standalone"] :is(.gw-home__language,.ld-detail__language,.df-detail__language,.kd-detail__language,.gz-detail__language,.gw-course__language,.ld-photo__language,[data-sr-language-group],#outside-of-rock .language-switch){display:none!important}
 html[data-gw-app-starting],html[data-gw-app-starting] body{background:#000!important}
@@ -125,4 +119,106 @@ html[data-gw-app-starting]::before{content:"";position:fixed;inset:0;z-index:214
   sync();
 })();
 </script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/pwa/app-v4.css">
+<script data-gw-app-home-motion>
+/* App homepage: keep the CSS scroll timeline alive across history restoration.
+   No scroll handler, no Webflow reinitialization and no network reload. */
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  var app = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true || (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && root.hasAttribute('data-gw-app-test'));
+  if (!app || location.pathname.replace(/\/+$/, '') !== '' || !window.CSS || !CSS.supports('animation-timeline', 'scroll(root block)') || !CSS.supports('animation-range-start', '1px')) return;
+  if (window.GWHomeNativeScrollPin && window.GWHomeNativeScrollPin.version === 'app-return-v2') return;
+  if (window.GWHomeNativeScrollPin && window.GWHomeNativeScrollPin.destroy) window.GWHomeNativeScrollPin.destroy();
+  var mobile = window.matchMedia('(max-width: 767px), (pointer: coarse) and (orientation: landscape) and (max-height: 600px)');
+  var keys = ['--gw-native-pin-start', '--gw-native-pin-end', '--gw-native-pin-travel'];
+  var section = null, hero = null, frame = 0, followup = 0, suspended = false, destroyed = false, restoring = false, resizeObserver = null, bodyObserver = null;
+  if (mobile.matches) root.setAttribute('data-gw-home-native-pin', '');
+  function locked() {
+    return !document.body || root.hasAttribute('data-gw-menu-open') || document.body.style.position === 'fixed' || document.body.style.overflow === 'hidden';
+  }
+  function clear() {
+    root.removeAttribute('data-gw-home-native-pin');
+    [section, hero].forEach(function (node) { if (node) keys.forEach(function (key) { node.style.removeProperty(key); }); });
+  }
+  function rebind() {
+    var nodes = [hero];
+    section.querySelectorAll('.heading-for-course-title.main-page.gw-animation,.black-block').forEach(function (node) {
+      if (/gw-home-landscape-(copy|mask)/.test(getComputedStyle(node).animationName)) nodes.push(node);
+    });
+    var previous = nodes.map(function (node) { return [node, node.style.getPropertyValue('animation-name'), node.style.getPropertyPriority('animation-name')]; });
+    // Reattach only our CSS timeline in one render task; preserve opacity/slider IX2.
+    previous.forEach(function (row) { row[0].style.setProperty('animation-name', 'none', 'important'); });
+    void hero.offsetHeight;
+    previous.forEach(function (row) { if (row[1]) row[0].style.setProperty('animation-name', row[1], row[2]); else row[0].style.removeProperty('animation-name'); });
+  }
+  function measure() {
+    frame = 0;
+    if (destroyed || suspended || !hero) return;
+    if (!mobile.matches) { clear(); restoring = false; return; }
+    if (locked()) return; // Finsweet unlocks body via inline styles, not just a class.
+    var bounds = section.getBoundingClientRect(), start = bounds.top + window.scrollY;
+    var travel = Math.max(0, section.clientHeight - hero.offsetHeight);
+    var values = [start, start + Math.max(travel, 1), travel];
+    values.forEach(function (value, index) {
+      var next = (Math.round(value * 1000) / 1000) + 'px';
+      [section, hero].forEach(function (node) { if (node.style.getPropertyValue(keys[index]) !== next) node.style.setProperty(keys[index], next); });
+    });
+    if (!root.hasAttribute('data-gw-home-native-pin')) root.setAttribute('data-gw-home-native-pin', '');
+    if (restoring) { restoring = false; rebind(); }
+  }
+  function schedule() { if (!destroyed && !suspended && !frame) frame = requestAnimationFrame(measure); }
+  function hide() {
+    suspended = true;
+    if (frame) cancelAnimationFrame(frame);
+    if (followup) cancelAnimationFrame(followup);
+    frame = 0; followup = 0;
+  }
+  function show(event) {
+    suspended = false;
+    if (frame) cancelAnimationFrame(frame);
+    if (followup) cancelAnimationFrame(followup);
+    frame = 0; followup = 0;
+    if (event && event.persisted) restoring = true;
+    schedule();
+    // Scroll restoration and App/menu layout may settle after pageshow itself.
+    followup = requestAnimationFrame(function () { followup = requestAnimationFrame(function () { followup = 0; schedule(); }); });
+  }
+  function visibility() {
+    if (document.visibilityState === 'hidden') hide(); else show({ persisted: true });
+  }
+  function init() {
+    if (destroyed) return;
+    section = document.querySelector('.selection-for-animation,.selection-from-animation');
+    hero = section && section.querySelector(':scope > .gw-landing-slideshow,:scope > .gw-landing-wording');
+    if (!hero) { destroy(); return; }
+    if (window.ResizeObserver) {
+      resizeObserver = new ResizeObserver(schedule);
+      resizeObserver.observe(section); resizeObserver.observe(hero);
+      var header = document.querySelector('.navigation.gw'); if (header) resizeObserver.observe(header);
+    }
+    bodyObserver = new MutationObserver(schedule);
+    bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['class', 'style'] });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+    measure();
+  }
+  function destroy() {
+    destroyed = true; hide();
+    document.removeEventListener('DOMContentLoaded', init);
+    document.removeEventListener('visibilitychange', visibility);
+    window.removeEventListener('resize', schedule); window.removeEventListener('load', schedule);
+    window.removeEventListener('pageshow', show); window.removeEventListener('pagehide', hide);
+    if (mobile.removeEventListener) mobile.removeEventListener('change', schedule);
+    if (resizeObserver) resizeObserver.disconnect(); if (bodyObserver) bodyObserver.disconnect(); clear();
+    if (window.GWHomeNativeScrollPin === api) delete window.GWHomeNativeScrollPin;
+  }
+  var api = { version: 'app-return-v2', refresh: schedule, destroy: destroy };
+  window.GWHomeNativeScrollPin = api;
+  window.addEventListener('resize', schedule); window.addEventListener('load', schedule);
+  window.addEventListener('pageshow', show); window.addEventListener('pagehide', hide);
+  document.addEventListener('visibilitychange', visibility);
+  if (mobile.addEventListener) mobile.addEventListener('change', schedule);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
+})();
+
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/pwa/app-v5.css">
