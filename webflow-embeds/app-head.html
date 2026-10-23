@@ -27,7 +27,7 @@
     if(location.pathname.replace(/\/+$/,'')===''||document.querySelector('[data-gw-home]'))root.setAttribute('data-gw-page-theme','home');
     document.querySelectorAll('[data-gw-app-color-choice]').forEach(function(button){
       var choice=button.getAttribute('data-gw-app-color-choice'),label=en?({system:'System',dark:'Dark',light:'Light'}[choice]):({system:'跟隨手機',dark:'深色',light:'淺色'}[choice]);
-      button.textContent=label;button.setAttribute('aria-label',label);button.setAttribute('aria-pressed',String(choice===mode));
+      button.setAttribute('aria-label',label);button.setAttribute('title',label);button.setAttribute('aria-pressed',String(choice===mode));
     });
     document.querySelectorAll('.gw-menu-brand__logo,.navigation.gw .logo-image.gw').forEach(function(img){var src=theme==='light'?black:white;if(img.getAttribute('src')!==src)img.setAttribute('src',src);img.removeAttribute('srcset');img.removeAttribute('sizes');});
   }
@@ -45,4 +45,4 @@
   sync();
 })();
 </script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/pwa/app-v1.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/pwa/app-v2.css">

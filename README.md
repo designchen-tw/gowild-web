@@ -148,6 +148,6 @@
 
 ## GO WILD App v1（2026-10-23）
 
-新增 `pwa/manifest-v1.json`、`pwa/app-v1.css`、`pwa/app-v1.js` 與四種 PNG 安裝圖示。正式網站仍由 Webflow 發布；全站 Head 附加 `webflow-embeds/app-head.html`、Footer 附加 `webflow-embeds/app-footer.html` 並 Publish 後才能啟用。選單下方的安裝入口由共用 JS 自動加入，毋須重貼 13 頁內容或選單 Embed。安裝說明符合現有深淺色、雙語與 22/18、16/14、14/12、12/10px 字級；點擊才開啟，不自動跳出。
+新增 `pwa/manifest-v1.json`、`pwa/app-v2.css`、`pwa/app-v2.js` 與四種 PNG 安裝圖示。正式網站仍由 Webflow 發布；全站 Head 附加 `webflow-embeds/app-head.html`、Footer 附加 `webflow-embeds/app-footer.html` 並 Publish 後才能啟用。選單下方的安裝入口由共用 JS 自動加入，毋須重貼 13 頁內容或選單 Embed。安裝說明符合現有深淺色、雙語與 22/18、16/14、14/12、12/10px 字級；點擊才開啟，不自動跳出。
 
-App 以獨立視窗模式判斷，只有安裝版使用頂端固定原生導覽列、手機較小 Logo／靠左品牌、6px 品牌間距及輕微陰影；保留 Webflow hamburger interaction、投影片、原生表單及 Adobe PDF 程式，不新增返回箭頭或攔截連結。App 主題提供跟隨手機／深色／淺色三選項，使用獨立儲存設定且不設到期時間；一般網站仍保留原本隔天重置的規則。一般瀏覽器的導覽定位維持原樣。此版本不含 Service Worker、離線快取或推播；PDF、天氣與其他資料仍須連網。詳見 `webflow-embeds/app-installation.md`。本機可核對程式與版面，主畫面安裝及 Webflow 後台收件須在 Publish 後以實機確認。
+App 以獨立視窗模式判斷，只有安裝版使用頂端固定原生導覽列、手機較小 Logo／靠左品牌、6px 品牌間距及輕微陰影；保留 Webflow hamburger interaction、投影片、原生表單及 Adobe PDF 程式，不新增返回箭頭或攔截連結。App 主題提供手機／月亮／太陽圖示三選項（跟隨手機／深色／淺色），使用獨立儲存設定且不設到期時間；一般網站仍保留原本隔天重置的規則。一般瀏覽器的導覽定位維持原樣。此版本不含 Service Worker、離線快取或推播；PDF、天氣與其他資料仍須連網。詳見 `webflow-embeds/app-installation.md`。本機可核對程式與版面，主畫面安裝及 Webflow 後台收件須在 Publish 後以實機確認。
