@@ -1,4 +1,4 @@
-# GO WILD App v5：Webflow 全站安裝
+# GO WILD App v6：Webflow 全站安裝
 
 維護仍使用原本的 Webflow、Code Embed、GitHub 與天氣 Worker。此版本不建立獨立網站，不註冊 Service Worker，不新增離線資料、推播、會員或表單 API。
 
@@ -36,6 +36,12 @@
 - 一般功能更新不需要重新安裝：先發布 GitHub 新版本檔名，再替換這兩段全站 Head／Footer 並 Webflow Publish；使用者重新載入即可取得。已安裝舊版必須至少重新載入一次，才能取得 新版的手動／回到前景更新功能。主畫面名稱、圖示及 OS 啟動畫面屬安裝資訊，可能要重新加入才更新。
 - 如取消此功能，移除新增的全站 Head／Footer 兩段並 Publish。沒有 Service Worker 需要解除、沒有離線快取需要清除；已安裝圖示由使用者自行移除。
 
+## v6 跨頁品牌列
+
+App 在 body 一建立就掛入共用品牌連結，早於原生選單 Embed 與 Navbar 標記。使用同一份官方白 Logo 縮製的透明 128px PNG，直接內嵌 Head，依主題以 CSS 著色；App 顯示的 Logo 無需外部圖檔請求或切換主題換圖。只在成功掛入後隱藏 App 原生 Navbar 的 Logo／品牌文字，避免兩份可見或可讀取的品牌連結；原生 Navbar 背景與 hamburger 保留。普通瀏覽器不掛入、不隱藏。品牌列仍連回 `/`，不攔截點擊或原生返回。
+
+僅預載品牌使用的 Avenir Medium；關鍵 font-face 使用 swap，字型未就緒先顯示備援字體。尋找 body 的 MutationObserver 掛入後即停止；pageshow 僅確認節點存在，不重複建立。維持正常 Webflow 多頁導覽，因此每次換頁仍會建立新文件；此改善減少品牌等待，並非 SPA、不保證零切頁空隙。
+
 ## 驗證範圍
 
 資產、manifest、原生頁框與安裝對話框可在本機驗證。iPhone 主畫面實際安裝、Safari 狀態列、Android 原生提示、Adobe 正式網域開啟與 Webflow 後台收件，必須在 Webflow Publish 後由實機確認；本機測試不發送真實表單。
@@ -47,7 +53,7 @@
 - [MDN：manifest 部署與 JSON 類型](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest)
 - [WebKit：Safari 26 的主畫面網頁 App](https://webkit.org/blog/17333/webkit-features-in-safari-26-0/)
 
-2026-10-23 v5：正式 Head／Footer 改載 `app-v5.css`、`app-v5.js` 與 `manifest-v2.json`，保留歷史資產。安裝說明改為置中三步圖例；提示按鈕依文字寬度。更新後請取代舊 App 區塊，不要重複附加。
+2026-10-23 v6：正式 Head／Footer 改載 `app-v6.css`、`app-v6.js` 與 `manifest-v2.json`，保留歷史資產。安裝說明改為置中三步圖例；提示按鈕依文字寬度。更新後請取代舊 App 區塊，不要重複附加。
 
 - [web.dev：BFCache 的 pageshow／pagehide](https://web.dev/articles/bfcache)
 - [Apple：主畫面網頁與 startup image](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html)

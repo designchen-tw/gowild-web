@@ -1,0 +1,107 @@
+/* GO WILD App v6: installed-mode navigation and a shared, optional install dialog. */
+@font-face{font-family:"GW App Avenir";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d666_Avenir%20LT%20Std%2045%20Book.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"GW App Avenir";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d669_Avenir%20LT%20Std%2065%20Medium.otf") format("opentype");font-weight:600;font-display:swap}
+:root{--gw-app-top:0px;--gw-app-bottom:0px;--gw-app-surface:#0b0d0e;--gw-app-text:#e8e8e8;--gw-app-body:#adadad;--gw-app-muted:#888;--gw-app-line:rgba(255,255,255,.18);--gw-app-button:#252729;--gw-app-hover:#fff;--gw-app-hover-text:#171717;--gw-app-accent:#a9d9b6}
+html[data-gw-theme="light"]{--gw-app-surface:#f6f7f3;--gw-app-text:#262626;--gw-app-body:#555;--gw-app-muted:#777;--gw-app-line:rgba(0,0,0,.18);--gw-app-button:#edf0eb;--gw-app-hover:#fff;--gw-app-hover-text:#171717;--gw-app-accent:#296744}
+html[data-gw-app-display="standalone"]{--gw-app-top:env(safe-area-inset-top,0px);--gw-app-bottom:env(safe-area-inset-bottom,0px);scroll-padding-top:calc(var(--gw-app-header-height,80px) + 12px)}
+/* Preview values are set only by the localhost test harness, never by a public URL. */
+html[data-gw-app-test]{--gw-app-top:24px;--gw-app-bottom:16px}
+html[data-gw-app-display="standalone"] .navigation.gw{position:fixed!important;top:0!important;inset-inline:0!important;z-index:10000!important;display:flex!important;align-items:center!important;width:100%;height:calc(80px + var(--gw-app-top))!important;min-height:calc(80px + var(--gw-app-top));padding:calc(5px + var(--gw-app-top)) 5vw 5px max(2px,env(safe-area-inset-left,0px))!important;overflow:visible;background-color:var(--gw-app-surface)!important;box-sizing:border-box;box-shadow:0 1px 0 rgba(255,255,255,.09),0 5px 14px rgba(0,0,0,.18);font-family:"GW App Avenir",Arial,sans-serif}
+html[data-gw-app-display="standalone"][data-gw-theme="light"] .navigation.gw{box-shadow:0 1px 0 rgba(38,38,38,.09),0 5px 14px rgba(0,0,0,.055)}
+html[data-gw-app-display="standalone"] .navigation.gw .all-item-in-header.gw{flex:1;min-width:0;display:flex;align-items:center;padding:0 101px 0 0;box-sizing:border-box}
+html[data-gw-app-display="standalone"] .navigation.gw .header-icon-and-fonts.gw.gw2{position:static;inset:auto;display:flex;align-items:center;width:auto;height:auto;margin:0}
+html[data-gw-app-display="standalone"] .navigation.gw .header-icon-and-fonts.gw{width:auto;min-width:0;align-items:center}
+html[data-gw-app-display="standalone"] .navigation.gw .header-icon-and-fonts.gw.gw2 > .header-icon-and-fonts.gw{gap:6px}
+html[data-gw-app-display="standalone"] .navigation.gw .header-logo.gw{flex:none}
+html[data-gw-app-display="standalone"] .navigation.gw .logo-image.gw{display:block;width:70px;height:70px;object-fit:contain;padding:5px;box-sizing:border-box;filter:brightness(0) invert(1)!important;opacity:1!important}
+html[data-gw-app-display="standalone"] .navigation.gw .link4.gw{display:block;white-space:nowrap;padding:0;color:#fff!important;font-size:14px;line-height:20px;font-weight:600}
+html[data-gw-app-display="standalone"] .navigation.gw .social-icon{display:none}
+/* Keep the native trigger above the native overlay. Do not replace its animation. */
+html[data-gw-app-display="standalone"] .navi-buttom-block.gw{position:fixed!important;top:calc(17.5px + var(--gw-app-top))!important;right:max(5vw,env(safe-area-inset-right,0px))!important;left:auto!important;z-index:999999!important;width:45px;height:45px;margin:0!important}
+html[data-gw-app-display="standalone"] .navi-buttom-block.gw :is(.top-line,.middle-line,.buttom-line){background-color:#fff!important}
+html[data-gw-app-display="standalone"][data-gw-theme="light"] .navigation.gw .logo-image.gw{filter:brightness(0) invert(.149)!important}
+html[data-gw-app-display="standalone"][data-gw-theme="light"] .navigation.gw .link4.gw{color:#262626!important}
+html[data-gw-app-display="standalone"][data-gw-theme="light"] .navi-buttom-block.gw :is(.top-line,.middle-line,.buttom-line){background-color:#262626!important}
+html[data-gw-app-display="standalone"] .mobile-overlay.gw{height:100dvh;min-height:100svh}
+html[data-gw-app-display="standalone"] .gw-menu-shell{padding-top:calc(88px + var(--gw-app-top));padding-bottom:calc(24px + var(--gw-app-bottom))}
+html[data-gw-app-display="standalone"] :is(.gw-home__nav,.ld-detail__nav,.kd-detail__nav,.df-detail__nav,.gz-detail__nav,.gw-course__nav,.ld-photo__nav,.sr-nav,.outside-nav){bottom:calc(18px + var(--gw-app-bottom))}
+@media(max-width:767px){html[data-gw-app-display="standalone"] .navigation.gw .logo-image.gw{width:50px;height:50px;padding:2px}}
+@media(max-width:520px){html[data-gw-app-display="standalone"] :is(.gw-home__nav,.ld-detail__nav,.kd-detail__nav,.df-detail__nav,.gz-detail__nav,.gw-course__nav,.ld-photo__nav,.sr-nav,.outside-nav){bottom:calc(10px + var(--gw-app-bottom))}}
+/* Installation entry is deliberately quiet and only opens on request. */
+.gw-menu-shell .gw-app-color-switch button{width:36px;min-width:36px;height:30px;min-height:30px;padding:6px 10px}
+.gw-menu-shell button.gw-app-install-entry{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;margin:18px 0 0;padding:8px 10px;border:0;border-radius:3px;background:transparent;color:inherit;font-family:inherit;font-size:12px;font-weight:400;line-height:1.5;letter-spacing:0;cursor:pointer}
+.gw-app-install-entry svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.gw-menu-shell button.gw-app-install-entry[hidden]{display:none!important}
+.gw-app-install-dialog,.gw-app-install-dialog *{box-sizing:border-box}
+.gw-app-install-dialog{position:fixed;inset:0;z-index:2147483647;width:min(420px,calc(100vw - 48px));max-width:none;max-height:calc(100dvh - 48px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));margin:auto;padding:32px 28px 28px;border:1px solid var(--gw-app-line);border-radius:22px;background:var(--gw-app-surface);color:var(--gw-app-body);font-family:"GW App Avenir",Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.72;text-align:center;overflow:auto;overscroll-behavior:contain;box-shadow:0 16px 60px rgba(0,0,0,.16)}
+.gw-app-install-dialog:not([open]){display:none}
+.gw-app-install-dialog::backdrop{background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.gw-app-install-dialog .gw-app-install-close{position:absolute;top:10px;right:10px;display:grid;place-items:center;width:40px;height:40px;margin:0;padding:10px;border:0;border-radius:50%;background:transparent;color:var(--gw-app-muted);cursor:pointer}
+.gw-app-install-close svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round}
+.gw-app-install-dialog .gw-app-install-mark{display:block;width:48px;height:48px;margin:0 auto 16px;border:1px solid var(--gw-app-line);border-radius:12px}
+.gw-app-install-dialog h2{margin:0 0 16px;color:var(--gw-app-text);font-family:inherit;font-size:22px;font-weight:600;line-height:1.45;text-align:center;letter-spacing:0}
+.gw-app-install-dialog p{margin:0 0 20px;font-family:inherit;font-size:inherit;line-height:inherit;color:inherit}
+.gw-app-install-dialog ol{display:grid;gap:12px;margin:0 0 24px;padding:20px 0 0;list-style-position:inside;border-top:1px solid var(--gw-app-line)}
+.gw-app-install-dialog li{margin:0;padding-left:4px;color:inherit;font-size:14px;line-height:1.72}
+.gw-app-install-dialog .gw-app-install-note{margin:0 0 24px;color:var(--gw-app-muted);font-size:12px;line-height:1.65}
+.gw-app-install-dialog .gw-app-install-action{display:inline-flex;align-items:center;justify-content:center;width:auto;min-height:40px;margin:0 auto;padding:10px 20px;border:1px solid var(--gw-app-line);border-radius:999px;background:var(--gw-app-button);color:var(--gw-app-text);font-family:inherit;font-size:14px;font-weight:400;line-height:1.5;cursor:pointer;transition:background-color .18s,color .18s}
+.gw-app-install-dialog button:focus-visible{outline:2px solid var(--gw-app-accent);outline-offset:4px}
+.gw-app-install-dialog .gw-app-install-action:disabled{opacity:.6;cursor:default}
+@media(max-width:520px){.gw-app-install-dialog{padding:30px 24px 24px;font-size:14px}.gw-app-install-dialog h2{font-size:18px}.gw-app-install-dialog li{font-size:12px}.gw-app-install-dialog .gw-app-install-note{font-size:10px}.gw-app-install-dialog .gw-app-install-action{font-size:12px}}
+@media(hover:hover) and (pointer:fine){.gw-app-install-dialog .gw-app-install-action:hover{background:var(--gw-app-hover);color:var(--gw-app-hover-text)}.gw-app-install-dialog .gw-app-install-close:hover{color:var(--gw-app-text)}}
+@media(prefers-reduced-motion:reduce){.gw-app-install-dialog .gw-app-install-action{transition:none}}
+
+/* A cached page must return to its content, never to an expanded menu. */
+html[data-gw-menu-reset] .mobile-overlay.gw{display:none!important;visibility:hidden!important;pointer-events:none!important}
+html[data-gw-menu-reset] .navi-buttom-block.gw .top-line.gw,html[data-gw-menu-reset] .navi-buttom-block.gw .middle-line.gw,html[data-gw-menu-reset] .navi-buttom-block.gw .buttom-line.gw{transform:none!important;opacity:1!important;visibility:visible!important}
+.gw-app-reload{position:fixed;z-index:10001;top:calc(17.5px + var(--gw-app-top));right:calc(max(5vw,env(safe-area-inset-right,0px)) + 47px);display:grid;place-items:center;width:42px;height:45px;margin:0;padding:10px;border:0;border-radius:50%;background:transparent;color:var(--gw-app-text);cursor:pointer}
+.gw-app-reload svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.gw-app-reload:focus-visible{outline:2px solid var(--gw-app-accent);outline-offset:3px}
+.gw-app-reload[data-update-available]::after{position:absolute;top:6px;right:5px;width:5px;height:5px;border-radius:50%;background:var(--gw-app-accent);content:""}
+html[data-gw-menu-open] .gw-app-reload{visibility:hidden}
+.gw-app-reload[aria-busy="true"] svg{animation:gw-app-refresh-spin .8s linear infinite}
+@keyframes gw-app-refresh-spin{to{transform:rotate(360deg)}}
+.gw-app-install-dialog ol.gw-app-install-diagrams{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:20px 0 0;list-style:none}
+.gw-app-install-dialog .gw-app-install-diagrams li{display:flex;align-items:center;flex-direction:column;gap:7px;min-width:0;padding:0}
+.gw-app-install-diagrams svg{display:block;width:66px;height:74px;fill:none;stroke:var(--gw-app-body);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.gw-app-install-diagrams svg .gw-app-diagram-selected{fill:rgba(169,217,182,.12);stroke:var(--gw-app-accent)}
+.gw-app-install-diagrams strong{color:var(--gw-app-text);font-size:14px;line-height:1.5;font-weight:600}
+.gw-app-install-diagrams span{color:var(--gw-app-muted);font-size:12px;line-height:1.6}
+.gw-app-install-dialog .gw-app-refresh-cancel{display:block;min-height:40px;margin:12px auto 0;padding:10px 20px;border:0;background:transparent;color:var(--gw-app-body);font:inherit;font-size:14px;cursor:pointer}
+@media(max-width:520px){.gw-app-install-dialog ol.gw-app-install-diagrams{gap:8px}.gw-app-install-diagrams svg{width:58px;height:66px}.gw-app-install-diagrams strong{font-size:12px}.gw-app-install-diagrams span{font-size:10px}.gw-app-install-dialog .gw-app-refresh-cancel{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.gw-app-reload[aria-busy="true"] svg{animation:none}}
+
+.gw-app-install-dialog .gw-app-install-close:focus-visible{outline:1px dotted var(--gw-app-muted);outline-offset:-8px;border-radius:4px}
+.gw-app-install-dialog h2[tabindex="-1"]:focus{outline:none}
+
+/* A fixed App header has no pull gesture or animated displacement. */
+html[data-gw-app-display="standalone"],html[data-gw-app-display="standalone"] body{overscroll-behavior-y:none!important}
+html[data-gw-app-display="standalone"] body::before{content:"";display:block;height:var(--gw-app-header-height,calc(80px + var(--gw-app-top)));flex:none;pointer-events:none}
+html[data-gw-app-display="standalone"] :is(.navigation.gw,.navi-buttom-block.gw,.gw-app-reload){translate:none!important}
+/* Page translators remain mounted. App switches trigger their existing handlers. */
+html[data-gw-app-display="standalone"] :is(.gw-home__language,.ld-detail__language,.df-detail__language,.kd-detail__language,.gz-detail__language,.gw-course__language,.ld-photo__language,[data-sr-language-group],#outside-of-rock .language-switch){display:none!important}
+.gw-app-language-switch{display:flex;align-items:center;justify-content:center;width:max-content;max-width:100%;gap:2px;margin:14px auto 0;padding:3px;border:1px solid var(--gw-app-line);border-radius:99px;background:transparent;color:var(--gw-app-body)}
+.gw-app-language-switch button{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:30px;margin:0;padding:5px 10px;border:0;border-radius:99px;background:transparent;color:inherit;font-family:inherit;font-size:12px;line-height:1.5;cursor:pointer}
+.gw-app-language-switch button[aria-pressed="true"]{background:rgba(255,255,255,.16);color:var(--gw-app-text)}
+html[data-gw-theme="light"] .gw-app-language-switch button[aria-pressed="true"]{background:rgba(41,103,68,.13);color:var(--gw-app-text)}
+.gw-app-language-switch button:focus-visible{outline:1px solid var(--gw-app-muted);outline-offset:2px}
+.gw-app-install-dialog .gw-app-install-language{margin:0 auto 20px}
+@media(max-width:520px){
+.gw-app-install-dialog:not(.gw-app-refresh-dialog){padding:26px 24px 18px}
+.gw-app-install-dialog .gw-app-install-mark{margin-bottom:12px}
+.gw-app-install-dialog #gw-app-install-title{margin-bottom:12px}
+.gw-app-install-dialog #gw-app-install-description{margin-bottom:14px}
+.gw-app-install-dialog .gw-app-install-language{margin-bottom:14px}
+.gw-app-install-dialog ol.gw-app-install-diagrams{margin-bottom:16px;padding-top:14px}
+.gw-app-install-dialog .gw-app-install-note{margin-bottom:16px}
+}
+
+/* The App brand is rendered as soon as body exists, independently of late Webflow markup. */
+html[data-gw-app-display="standalone"] .gw-app-brand{position:fixed!important;z-index:10001;top:calc(5px + var(--gw-app-top));left:max(2px,env(safe-area-inset-left,0px));display:inline-flex!important;align-items:center;gap:6px;width:max-content;max-width:calc(95vw - 101px);height:70px;margin:0;padding:0;border:0;background:transparent;color:#fff!important;font-family:"GW App Avenir",Arial,sans-serif;font-size:14px;font-weight:600;line-height:20px;text-decoration:none;white-space:nowrap;opacity:1!important;visibility:visible!important;transform:none!important;translate:none!important;transition:none!important}
+html[data-gw-app-display="standalone"] .gw-app-brand__mark{display:block;flex:none;width:70px;height:70px;box-sizing:border-box;padding:5px;object-fit:contain;filter:brightness(0) invert(1);opacity:1}
+html[data-gw-app-display="standalone"][data-gw-theme="light"] .gw-app-brand{color:#262626!important}
+html[data-gw-app-display="standalone"][data-gw-theme="light"] .gw-app-brand__mark{filter:brightness(0) invert(.149)}
+html[data-gw-app-display="standalone"][data-gw-app-brand] .navigation.gw :is(.header-logo.gw,.header-all-title.gw){visibility:hidden!important}
+html[data-gw-app-display="standalone"] .gw-app-brand:focus-visible{outline:1px solid var(--gw-app-muted);outline-offset:2px;border-radius:3px}
+@media(max-width:767px){html[data-gw-app-display="standalone"] .gw-app-brand{top:calc(15px + var(--gw-app-top));height:50px}html[data-gw-app-display="standalone"] .gw-app-brand__mark{width:50px;height:50px;padding:2px}}
+html[data-gw-menu-open] .gw-app-brand{visibility:hidden!important}
