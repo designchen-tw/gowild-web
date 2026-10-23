@@ -1,15 +1,15 @@
-# GO WILD App v1：Webflow 全站安裝
+# GO WILD App v3：Webflow 全站安裝
 
 維護仍使用原本的 Webflow、Code Embed、GitHub 與天氣 Worker。此版本不建立獨立網站，不註冊 Service Worker，不新增離線資料、推播、會員或表單 API。
 
 ## 貼上與發布
 
-1. 開啟 Webflow **Site settings → Custom Code → Head code**，保留原內容，在最後附加 `webflow-embeds/app-head.html` 的完整內容。不要貼進一般頁面 Code Embed；manifest 必須在每頁的 head。
-2. 在同一處的 **Footer code** 保留原內容，附加 `webflow-embeds/app-footer.html` 的完整內容。只放一次，無須修改 13 頁內容 Embed 或重新貼 menu overlay。
+1. 開啟 Webflow **Site settings → Custom Code → Head code**，保留其他原有內容，**替換舊版 GO WILD App Head 區塊**為 `webflow-embeds/app-head.html` 的完整內容。不要貼進一般頁面 Code Embed；manifest 必須在每頁的 head。
+2. 在同一處的 **Footer code** 保留其他原有內容，**替換舊版 GO WILD App Footer 區塊**為 `webflow-embeds/app-footer.html` 的完整內容。只放一次，無須修改 13 頁內容 Embed 或重新貼 menu overlay。
 3. Save，將網站 Publish 到正式網域 `gowild.one`。GitHub push 只發布共用資產，不會替 Webflow 完成這一步。
 4. iPhone 用 Safari 開啟正式頁，從 hamburger 選單中點「加入主畫面」，依畫面步驟安裝，保留「以網頁 App 開啟」。從圖示重新開啟後檢查頂端固定列、地圖、跨頁及 Logo 回首頁。Android 用支援安裝的瀏覽器開啟；有原生安裝事件時，對話框按鈕會呼叫瀏覽器安裝提示，其他情況顯示手動步驟。
 
-`manifest-v1.json` 在 CDN 提供，`id`、`scope`、`start_url`、捷徑均使用正式站絕對網址，因此從任一頁加入主畫面都指向同一個 App。圖示與程式檔採版本化名稱。manifest 回應須是 JSON 並允許跨來源讀取；部署後應確認 CDN 的 HTTP 狀態、MIME 與 CORS。
+`manifest-v2.json` 在 CDN 提供，`id`、`scope`、`start_url`、捷徑均使用正式站絕對網址，因此從任一頁加入主畫面都指向同一個 App。圖示與程式檔採版本化名稱。manifest 回應須是 JSON 並允許跨來源讀取；部署後應確認 CDN 的 HTTP 狀態、MIME 與 CORS。
 
 ## 顯示與維護
 
@@ -17,10 +17,15 @@
 - 沿用原生 Logo、完整品牌文字、三線 hamburger 與 Webflow interaction。共用 CSS 統一水平對齊、手機 50px 圖檔容器、6px 品牌間距與輕微底部陰影。不複製或重新實作 Webflow 選單動畫，不攔截內部連結，不新增返回箭頭或自訂邊緣滑動。
 - App 選單提供手機／月亮／太陽三個圖示選項（跟隨手機／深色／淺色），預設跟隨手機並即時回應系統主題改變。手動選擇保存在 `gw-app-color-theme-v1`，不設重置時間；回到「跟隨手機」即可恢復自動。一般網站仍使用既有的當日選擇／隔天重置規則，兩組儲存設定互不改寫。
 - 安裝入口由共用腳本加到現有 `.gw-menu-panel`，放在主題切換之後。入口僅使用文字與小圖示、沒有按鈕底色或外框；視窗的內文與步驟置中。入口文字與提示皆可隨中文／英文切換，已安裝模式隱藏入口。沒有自動跳出的宣傳提示或安裝追蹤。
-- 提示主標題 22px／手機18px、內文16px／14px、步驟14px／12px、細節12px／10px；灰階文字，灰底圓角按鈕，滑鼠 hover 白底，鍵盤 focus 綠框。淺色主題使用 `#F6F7F3` 底與 `#EDF0EB` 按鈕；深色跟隨既有底色與灰階。
-- 頁面與選單更新須照原流程 Publish；已開啟的 App 畫面需重新載入，並非遠端即時替換。未新增積極更新或輪詢。
+- 提示主標題 22px／手機18px、內文16px／14px、步驟14px／12px、細節12px／10px；灰階文字，依文字寬度加左右20px留白的灰底圓角按鈕，滑鼠 hover 白底，鍵盤 focus 綠框。淺色主題使用 `#F6F7F3` 底與 `#EDF0EB` 按鈕；深色跟隨既有底色與灰階。
+- 頁面與選單更新須照原流程 Publish。App 在 hamburger 左側新增細線重新整理圖示，重新載入目前網址；有未送出的表單時先確認，取消會保留輸入。一般瀏覽器不新增此圖示。
+- App 離開超過15分鐘再回到前景會重新載入一次，讓已開啟畫面取得新頁面；沒有背景輪詢或額外天氣請求。有未送出表單、開啟中的 dialog、全螢幕或 Adobe PDF 時暫緩，重新整理圖示上顯示小點。重新載入不是版本比對，不保證繞過第三方資料來源自身的快取。
+- 網站和 App 共用返回修正：點選選單連結、pagehide、BFCache pageshow 還原時，透過原生 trigger 關閉選單並復原捲動鎖。未攔截原生返回手勢，也不改 history。
+- App Head 內嵌關鍵導覽 CSS，在 HTML body 建立前即決定 installed mode，不再等 Footer 標記才套用，降低點 Logo 跨頁時的樣式閃動。
 - 表單保持 Webflow 原始節點、欄位識別、Turnstile、提交與後台收件。原生 slider、首頁文字動畫與 Adobe PDF 預覽程式保留。PDF 沿用隱藏下載／列印的設定，不自動下載到裝置；仍需連網，Adobe SDK 的允許網域維持正式站。
-- App 安裝及系統啟動畫面由各瀏覽器／作業系統提供；manifest 設定深色背景與白色 Logo 圖示，不新增開場動畫。不保證各系統顯示相同啟動過場或相同的返回手勢。
+- 啟動畫面分兩層：manifest 使用純黑背景；另提供24張 iOS `apple-touch-startup-image`（常見手機與平板直／橫向尺寸，黑底置中官方白 Logo）。系統顯示與快取由 OS 管理，無法保證所有裝置或既有安裝立即採用；必要時移除後重新加入。
+- 網頁首次 App 工作階段另以 Head 內嵌黑底 Logo 遮罩接續，程式就緒後移除；最遲6秒退場，避免 CDN 失敗時卡住。一般站不顯示，也不在每次內部跨頁重播。
+- 一般功能更新不需要重新安裝：先發布 GitHub 新版本檔名，再替換這兩段全站 Head／Footer 並 Webflow Publish；使用者重新載入即可取得。已安裝舊版必須至少重新載入一次，才能取得 v3 的手動／回到前景更新功能。主畫面名稱、圖示及 OS 啟動畫面屬安裝資訊，可能要重新加入才更新。
 - 如取消此功能，移除新增的全站 Head／Footer 兩段並 Publish。沒有 Service Worker 需要解除、沒有離線快取需要清除；已安裝圖示由使用者自行移除。
 
 ## 驗證範圍
@@ -34,4 +39,7 @@
 - [MDN：manifest 部署與 JSON 類型](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest)
 - [WebKit：Safari 26 的主畫面網頁 App](https://webkit.org/blog/17333/webkit-features-in-safari-26-0/)
 
-2026-10-23：正式 Head／Footer 改載 `app-v2.css` 與 `app-v2.js`，保留首版檔案供快取／歷史引用；主題三選項為圖示，名稱保留在中英文 aria-label／title。
+2026-10-23：正式 Head／Footer 改載 `app-v3.css`、`app-v3.js` 與 `manifest-v2.json`，保留歷史資產。安裝說明改為置中三步圖例；提示按鈕依文字寬度。更新後請取代舊 App 區塊，不要重複附加。
+
+- [web.dev：BFCache 的 pageshow／pagehide](https://web.dev/articles/bfcache)
+- [Apple：主畫面網頁與 startup image](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html)
