@@ -166,3 +166,14 @@ App v5 移除 v4 下拉更新的所有手勢、提示與位移／高度過場，
 App v6 在 Head 於 body 建立後立即掛入共用品牌連結，內嵌官方透明 Logo，預載 Avenir Medium 並保留 swap；不等候選單 Embed、原生 Navbar 與 Footer。App 原生重複品牌在掛入後隱藏，一般網站保持原樣。頁面仍為 Webflow 多頁導覽，沒有 PJAX、Service Worker 或全頁預抓；保留 v5 的固定頂列、手動重新整理與返回動畫修正。
 
 App v7 僅修正提前顯示的品牌列水平位置：補回原生 Webflow Navbar 的 16px flex gap 與內層 1% margin，對齊 v5 的原生 Logo／文字位置；尺寸、垂直位置及 6px 品牌間距保留。Head 改用 app-v7.css，Footer 繼續使用 app-v6.js，無需替換 Footer。
+
+
+## 龍洞浪況與跨日潮汐（2026-10-24）
+
+龍洞改用 `longdong-conditions-widget-v32.js`、`webflow-embeds/longdong-conditions-layout-v4.css` 及 `webflow-embeds/longdong-theme-v4.css`。浪況卡在潮汐前，兩張卡共用同一淡藍底色；桌機七欄、平板 3／2／2、手機 2／2／1／2。上一次乾／滿潮的標籤、時間及跨日數字統一使用輔助字級（12px／手機10px），不受主要數值字級覆蓋。
+
+Worker 新增龍洞浮標（46694A）的示性波高、平均週期及浪向。資料來自氣象署官方即時海況表，來源為觀測，卡片來源列會明示觀測時間。缺測不當成零；逾3小時資料標為過期。沿用15分鐘快取，不增加前端輪詢。浪高顏色：≤0.3m綠、<0.6m藍、<1.5m黃、<2.5m橘，其餘紅；屬畫面級距，非岸邊安全或通行判定。
+
+`CONDITIONS_HISTORY` 另外保存前48小時至未來35天的龍洞南口潮汐事件，當日新版預報取代舊版，保留前一日以供跨夜顯示。現有每小時 Cron 每個台北日期至多額外成功預抓一次潮汐，不增加 Cron 頻率。首次部署若 KV 尚未保存昨日資料，無法回補已被來源移除的前一晚；第一筆當日潮汐發生後會有上一次時間，之後跨日可沿用保存資料。
+
+此變更需要先部署 `cwa-weather-worker.js`（保留既有 Secret、KV binding 與 Cron），再完整替換龍洞內容 Embed 並 Webflow Publish；GitHub 不會替代這兩項部署。其他岩場、App 全站 Head／Footer 無需重貼。完整步驟見 `webflow-embeds/longdong-wave-installation.md`。

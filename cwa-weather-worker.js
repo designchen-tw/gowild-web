@@ -2,9 +2,98 @@
  * Cloudflare Worker: serves CWA forecast data and protects the authorization key.
  * Configure CWA_API_KEY as a Worker Secret. Never put the key in this file.
  * Optional variable ALLOWED_ORIGINS: comma-separated origin allowlist.
- * Optional KV binding CONDITIONS_HISTORY: recent station wind/heat history.
+ * Optional KV binding CONDITIONS_HISTORY: station wind/heat and Longdong tide history.
  * The hourly Cron prewarms Longdong, Kenting, Defulan and Guanziling station samples.
  */
+
+// Public CWA marine table: column meanings are fixed by OBS_Marine.html.
+// Parse only the Longdong buoy row; '-' is missing, never a calm/zero wave.
+export function normalizeLongdongWaveHTML(html, nowMs = Date.now()) {
+  const sourceUrl = 'https://www.cwa.gov.tw/V8/C/M/OBS_Marine.html?seas=OSea01&page=0';
+  const base = { stationId: '46694A', stationName: '龍洞浮標', stationNameEn: 'Longdong buoy', sourceType: 'observation', sourceUrl, observedAt: null, height: null, meanPeriod: null, direction: null, status: 'unavailable' };
+  const row = (String(html).match(/<tr\b[^>]*>[\s\S]*?<\/tr>/gi) || []).find(row => /stations_profile\(['"]46694A['"]\)/.test(row));
+  if (!row) return base;
+  const cells = [...row.matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)].map(match => match[1]);
+  if (cells.length !== 12) return base;
+  const plain = value => String(value).replace(/<[^>]*>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').replace(/\s+/g, ' ').trim();
+  const numeric = value => { const text = plain(value); if (!/^\d+(?:\.\d+)?$/.test(text)) return null; const n = Number(text); return Number.isFinite(n) ? n : null; };
+  const match = plain(row.match(/<th\b[^>]*>([\s\S]*?)<\/th>/i)?.[1] || '').match(/(\d{1,2})日\s*(\d{1,2})時/);
+  if (match) {
+    const local = new Date(nowMs + 8 * 3600000), day = Number(match[1]), hour = Number(match[2]);
+    const candidates = [-1, 0, 1].map(offset => {
+      const anchor = new Date(Date.UTC(local.getUTCFullYear(), local.getUTCMonth() + offset, 1));
+      const stamp = Date.UTC(anchor.getUTCFullYear(), anchor.getUTCMonth(), day, hour) - 8 * 3600000;
+      const check = new Date(stamp + 8 * 3600000);
+      return check.getUTCDate() === day && hour <= 23 ? stamp : NaN;
+    }).filter(Number.isFinite).sort((a, b) => Math.abs(a - nowMs) - Math.abs(b - nowMs));
+    if (candidates.length) base.observedAt = new Date(candidates[0]).toISOString();
+  }
+  const height = numeric(cells[1]), period = numeric(cells[3]);
+  const directionText = plain(cells[2].match(/<span\b[^>]*class=["'][^"']*sr-only[^"']*["'][^>]*>([\s\S]*?)<\/span>/i)?.[1] || cells[2]);
+  const names = ['北北東','東北東','東南東','南南東','南南西','西南西','西北西','北北西','東北','東南','西南','西北','北','東','南','西'];
+  base.direction = names.find(name => directionText.startsWith(name)) || null;
+  base.meanPeriod = period !== null && period > 0 && period <= 60 ? period : null;
+  const stamp = Date.parse(base.observedAt), age = nowMs - stamp;
+  if (!Number.isFinite(stamp) || age < -15 * 60000 || age > 3 * 3600000) { base.status = Number.isFinite(stamp) ? 'stale' : 'unavailable'; return base; }
+  if (height !== null && height <= 40) { base.height = height; base.status = 'available'; }
+  return base;
+}
+
+export function extractLongdongTideEvents(data) {
+  const result = [];
+  const visit = (value, inStation = false) => {
+    if (!value || typeof value !== 'object') return;
+    if (Array.isArray(value)) { value.forEach(item => visit(item, inStation)); return; }
+    const id = value.LocationId || value.locationId;
+    const selected = id ? String(id) === 'A01400' : inStation;
+    if (selected) {
+      const raw = value.DateTime || value.dateTime, label = String(value.Tide || value.tide || '');
+      if (raw && /滿潮|乾潮|高潮|低潮|high|low/i.test(label)) {
+        const time = /(?:Z|[+-]\d{2}:?\d{2})$/i.test(raw) ? raw : String(raw).replace(' ', 'T') + '+08:00';
+        if (Number.isFinite(Date.parse(time))) result.push({ time, kind: /滿潮|高潮|high/i.test(label) ? 'high' : 'low' });
+      }
+    }
+    Object.values(value).forEach(item => visit(item, selected));
+  };
+  visit(data); return result;
+}
+
+export function mergeLongdongTideEvents(previous, current, nowMs = Date.now()) {
+  const map = new Map(), incoming = Array.isArray(current) ? current : [];
+  const stamps = incoming.map(row => Date.parse(row?.time)).filter(Number.isFinite);
+  const boundary = stamps.length ? Math.floor((Math.min(...stamps) + 8 * 3600000) / 86400000) * 86400000 - 8 * 3600000 : Infinity;
+  const retained = (Array.isArray(previous) ? previous : []).filter(row => Date.parse(row?.time) < boundary);
+  for (const row of [...retained, ...incoming]) {
+    const stamp = Date.parse(row?.time);
+    if (['high', 'low'].includes(row?.kind) && Number.isFinite(stamp) && stamp >= nowMs - 48 * 3600000 && stamp <= nowMs + 35 * 86400000) map.set(`${stamp}:${row.kind}`, { time: new Date(stamp).toISOString(), kind: row.kind });
+  }
+  return [...map.values()].sort((a, b) => Date.parse(a.time) - Date.parse(b.time));
+}
+
+// Existing hourly Cron performs at most one extra tide download per Taipei day.
+export async function prewarmLongdongTides(env, nowMs = Date.now()) {
+  if (!env.CWA_API_KEY || !env.CONDITIONS_HISTORY) return;
+  const day = new Date(nowMs + 8 * 3600000).toISOString().slice(0, 10);
+  const checkedKey = 'longdong:tide-prewarm-day:v1';
+  if (await env.CONDITIONS_HISTORY.get(checkedKey) === day) return;
+  const address = new URL('https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-A0021-001');
+  address.searchParams.set('format', 'JSON'); address.searchParams.set('LocationId', 'A01400');
+  let response, data = null;
+  try {
+    response = await fetch(address, { headers: { Accept: 'application/json', Authorization: env.CWA_API_KEY }, signal: AbortSignal.timeout(8000) });
+    data = response.ok ? await response.json().catch(() => null) : null;
+  } catch { /* Try the official File API when REST is unavailable. */ }
+  if (!extractLongdongTideEvents(data).length) {
+    const fallback = new URL('https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/F-A0021-001');
+    fallback.searchParams.set('Authorization', env.CWA_API_KEY); fallback.searchParams.set('format', 'JSON'); fallback.searchParams.set('downloadType', 'WEB'); fallback.searchParams.set('LocationId', 'A01400');
+    response = await fetch(fallback, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(8000) });
+    data = response.ok ? await response.json().catch(() => null) : null;
+  }
+  const current = extractLongdongTideEvents(data); if (!current.length) return;
+  const key = 'longdong:tide-events:v1', previous = await env.CONDITIONS_HISTORY.get(key, 'json');
+  await env.CONDITIONS_HISTORY.put(key, JSON.stringify(mergeLongdongTideEvents(previous, current, nowMs)), { expirationTtl: 40 * 86400 });
+  await env.CONDITIONS_HISTORY.put(checkedKey, day, { expirationTtl: 2 * 86400 });
+}
 
 const DEFAULT_ORIGINS = ["https://gowild.one", "https://www.gowild.one"];
 
@@ -45,7 +134,7 @@ export default {
     }
 
     const cache = caches.default;
-    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v25`, { method: "GET" });
+    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v26`, { method: "GET" });
     const cached = await cache.match(cacheKey);
     if (cached) {
       const responseHeaders = new Headers(cached.headers);
@@ -98,6 +187,31 @@ export default {
       const response = Response.json(data, { headers: { "Cache-Control": "public, max-age=600" } });
       ctx.waitUntil(cache.put(observationKey, response.clone()));
       return data;
+    };
+
+    const fetchLongdongWave = async () => {
+      const key = new Request(`${url.origin}/_cwa-cache/longdong-wave?schema=marine-v1`);
+      const saved = await cache.match(key);
+      if (saved) return saved.json();
+      const response = await fetch('https://www.cwa.gov.tw/V8/C/M/OBS_Marine/48hrsSeaObs_MOD/OSea01.html', {
+        headers: { Accept: 'text/html' }, signal: AbortSignal.timeout(8000)
+      });
+      if (!response.ok) throw new Error(`CWA marine HTTP ${response.status}`);
+      const wave = normalizeLongdongWaveHTML(await response.text());
+      ctx.waitUntil(cache.put(key, Response.json(wave, { headers: { 'Cache-Control': 'public, max-age=900' } })));
+      return wave;
+    };
+    const retainLongdongTides = async data => {
+      const current = extractLongdongTideEvents(data), key = 'longdong:tide-events:v1';
+      if (!env.CONDITIONS_HISTORY) return { events: mergeLongdongTideEvents([], current), retained: false };
+      try {
+        const previous = await env.CONDITIONS_HISTORY.get(key, 'json');
+        const events = mergeLongdongTideEvents(previous, current);
+        // Write only when event history changes; avoid a KV write per visitor.
+        const signature = JSON.stringify(events);
+        if (signature !== JSON.stringify(previous || [])) ctx.waitUntil(env.CONDITIONS_HISTORY.put(key, signature, { expirationTtl: 40 * 86400 }));
+        return { events, retained: true };
+      } catch { return { events: mergeLongdongTideEvents([], current), retained: false }; }
     };
 
     const walkData = (value, fn) => {
@@ -290,22 +404,27 @@ export default {
     };
 
     try {
-      const [threeHourResult, weeklyResult, tideResult, stationResult, hourlyRainResult] = await Promise.allSettled([
+      const [threeHourResult, weeklyResult, tideResult, stationResult, hourlyRainResult, waveResult] = await Promise.allSettled([
         fetchProduct(route.current), fetchWeeklyProduct(),
         url.pathname === "/api/longdong" ? fetchProduct("F-A0021-001", { LocationId: "A01400" }) : Promise.resolve(null),
-        fetchObservationProduct("O-A0001-001"), fetchObservationProduct("O-A0002-001")
+        fetchObservationProduct("O-A0001-001"), fetchObservationProduct("O-A0002-001"),
+        url.pathname === "/api/longdong" ? fetchLongdongWave() : Promise.resolve(null)
       ]);
       if (threeHourResult.status === "rejected") throw threeHourResult.reason;
       const weekly = weeklyResult.status === "fulfilled" ? weeklyResult.value : null;
       const weeklyError = weeklyResult.status === "rejected" ? weeklyResult.reason.message : null;
       const station = stationResult.status === "fulfilled" ? normalizeStation(stationResult.value, route) : null;
       const history = await conditionHistory(station, url.pathname.slice(5));
+      const tideHistory = url.pathname === "/api/longdong" ? await retainLongdongTides(tideResult.status === "fulfilled" ? tideResult.value : null) : null;
       const payload = JSON.stringify({
         threeHour: threeHourResult.value,
         fiveDay: weekly?.data || null,
         fiveDayProduct: weekly?.product || null,
         weeklyError,
         tides: tideResult.status === "fulfilled" ? tideResult.value : null,
+        tideHistory,
+        wave: waveResult.status === "fulfilled" ? waveResult.value : null,
+        waveError: waveResult.status === "rejected" ? "Wave observations unavailable" : null,
         station,
         hourlyRain: hourlyRainResult.status === "fulfilled" ? normalizeRain(hourlyRainResult.value, route) : null,
         conditionHistory: history,
@@ -331,6 +450,7 @@ export default {
   },
   async scheduled(_event, env) {
     if (!env.CWA_API_KEY || !env.CONDITIONS_HISTORY) return;
+    try { await prewarmLongdongTides(env); } catch { console.warn("Tide history prewarm unavailable"); }
     try {
       const rest = "https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0001-001?format=JSON";
       const file = `https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0001-001?Authorization=${encodeURIComponent(env.CWA_API_KEY)}&downloadType=WEB&format=JSON`;
