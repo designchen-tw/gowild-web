@@ -146,9 +146,9 @@
 `webflow-embeds/outside-of-rock.html` 是上線用內容 Embed，內含受頁面範圍限制的樣式，使用固定 commit 的 `outside-of-rock-v7.js` 載入雙語學習內容與互動。首頁 EXPLORE 第三張卡片與 menu overlay 已接上 `/outside-of-rock`。保留原生 Webflow navbar 與 footer；桌機／平板／手機左右留白為15vw／7vw／5vw，黑與淺灰黑區塊交替，最後一節不留額外底部空白，copyright footer 黑底。安裝及來源說明見 `webflow-embeds/outside-of-rock-installation.md`；GitHub 更新不會自動發布 Webflow。
 
 
-## GO WILD App v6（2026-10-23）
+## GO WILD App v7（2026-10-23）
 
-新增 `pwa/manifest-v2.json`、`pwa/app-v6.css`、`pwa/app-v6.js` 與四種 PNG 安裝圖示。正式網站仍由 Webflow 發布；全站 Head 取代舊 App 區塊為 `webflow-embeds/app-head.html`、Footer 取代為 `webflow-embeds/app-footer.html` 並 Publish 後才能啟用。選單下方的安裝入口由共用 JS 自動加入，毋須重貼 13 頁內容或選單 Embed。安裝說明符合現有深淺色、雙語與 22/18、16/14、14/12、12/10px 字級；點擊才開啟，不自動跳出。
+新增 `pwa/manifest-v2.json`、`pwa/app-v7.css`、`pwa/app-v6.js` 與四種 PNG 安裝圖示。正式網站仍由 Webflow 發布；全站 Head 取代舊 App 區塊為 `webflow-embeds/app-head.html`、Footer 取代為 `webflow-embeds/app-footer.html` 並 Publish 後才能啟用。選單下方的安裝入口由共用 JS 自動加入，毋須重貼 13 頁內容或選單 Embed。安裝說明符合現有深淺色、雙語與 22/18、16/14、14/12、12/10px 字級；點擊才開啟，不自動跳出。
 
 App 以獨立視窗模式判斷，只有安裝版使用頂端固定原生導覽列、手機較小 Logo／靠左品牌、6px 品牌間距及輕微陰影；保留 Webflow hamburger interaction、投影片、原生表單及 Adobe PDF 程式，不新增返回箭頭或攔截連結。App 主題提供手機／月亮／太陽圖示三選項（跟隨手機／深色／淺色），使用獨立儲存設定且不設到期時間；一般網站仍保留原本隔天重置的規則。一般瀏覽器的導覽定位維持原樣。此版本不含 Service Worker、離線快取或推播；PDF、天氣與其他資料仍須連網。詳見 `webflow-embeds/app-installation.md`。本機可核對程式與版面，主畫面安裝及 Webflow 後台收件須在 Publish 後以實機確認。
 
@@ -164,3 +164,5 @@ App v4 統一 App 頂端列與操作圖示定位，新增頂端下拉／放開�
 App v5 移除 v4 下拉更新的所有手勢、提示與位移／高度過場，保留固定導覽及手動 ↻。App 首頁在 Head 預先接管 CSS 時間軸控制器，取消離頁前的 RAF、在返回與解除捲動鎖定後重算範圍，並重新綁定自己的 CSS animation；不重啟 Webflow runtime、不新增捲動監聽或每次返回整頁重載。一般網站及既有首頁 Page Code 保留。發布後需重新載入取得 v5；記憶快取內的舊文件不會被遠端即時替換。
 
 App v6 在 Head 於 body 建立後立即掛入共用品牌連結，內嵌官方透明 Logo，預載 Avenir Medium 並保留 swap；不等候選單 Embed、原生 Navbar 與 Footer。App 原生重複品牌在掛入後隱藏，一般網站保持原樣。頁面仍為 Webflow 多頁導覽，沒有 PJAX、Service Worker 或全頁預抓；保留 v5 的固定頂列、手動重新整理與返回動畫修正。
+
+App v7 僅修正提前顯示的品牌列水平位置：補回原生 Webflow Navbar 的 16px flex gap 與內層 1% margin，對齊 v5 的原生 Logo／文字位置；尺寸、垂直位置及 6px 品牌間距保留。Head 改用 app-v7.css，Footer 繼續使用 app-v6.js，無需替換 Footer。

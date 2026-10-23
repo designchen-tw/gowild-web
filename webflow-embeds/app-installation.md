@@ -1,4 +1,4 @@
-# GO WILD App v6：Webflow 全站安裝
+# GO WILD App v7：Webflow 全站安裝
 
 維護仍使用原本的 Webflow、Code Embed、GitHub 與天氣 Worker。此版本不建立獨立網站，不註冊 Service Worker，不新增離線資料、推播、會員或表單 API。
 
@@ -60,3 +60,9 @@ App 在 body 一建立就掛入共用品牌連結，早於原生選單 Embed 與
 
 
 - [MDN：pageshow 與返回快取還原](https://developer.mozilla.org/en-US/docs/Web/API/Window/pageshow_event)
+
+## v7 品牌位置修正
+
+提前品牌列補回 v5 原生 Navbar 的 16px flex gap 與內層 1% margin；使用 CSS calc 比照原容器的可用寬度，無需等候 Footer 量測。保持手機 50px／桌機 70px 圖檔容器、垂直置中及 6px 圖文間距。只需替換 App Head 並 Publish；app-v7.css 搭配原 app-v6.js，Footer 不變。
+
+479px 以下依原生 Webflow 設定取消內層 1% margin，保留外層 padding 與 16px flex gap，避免窄手機多加留白。
