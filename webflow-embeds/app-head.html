@@ -1,0 +1,48 @@
+<!-- Webflow Site settings > Custom Code > Head code.
+     Append this whole block once; retain the existing site/page code. -->
+<link rel="manifest" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/pwa/manifest-v1.json" crossorigin="anonymous">
+<link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/pwa/icons/apple-touch-icon-v1.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GO WILD">
+<meta name="theme-color" content="#0b0d0e" data-gw-app-theme-color>
+<script>
+(function(){
+  var root=document.documentElement;
+  var app=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true||(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)&&root.hasAttribute('data-gw-app-test'));
+  root.setAttribute('data-gw-app-display',app?'standalone':'browser');
+  var viewport=document.querySelector('meta[name="viewport"]');
+  if(viewport)viewport.content='width=device-width, initial-scale=1, viewport-fit=cover';
+  if(!app||window.GWAppTheme)return;
+  // An App-only preference. Do not read, rewrite or expire the website's day keys.
+  var key='gw-app-color-theme-v1',mode='system',device=window.matchMedia('(prefers-color-scheme: light)');
+  var white='https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad9712b794a5603e6bb48f9_logo_GW-white.avif';
+  var black='https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad9712cb9c80fb6fc1287b1_logo_GW-black.avif';
+  function valid(value){return value==='dark'||value==='light'||value==='system';}
+  function read(){try{var value=localStorage.getItem(key);mode=valid(value)?value:'system';}catch(e){}}
+  function effective(){return mode==='system'?(device.matches?'light':'dark'):mode;}
+  function sync(){
+    var theme=effective(),main=document.querySelector('main[data-language],main[lang],[data-gw-home]'),en=main&&(main.dataset.language==='en'||main.lang==='en');
+    if(root.getAttribute('data-gw-theme')!==theme)root.setAttribute('data-gw-theme',theme);
+    if(location.pathname.replace(/\/+$/,'')===''||document.querySelector('[data-gw-home]'))root.setAttribute('data-gw-page-theme','home');
+    document.querySelectorAll('[data-gw-app-color-choice]').forEach(function(button){
+      var choice=button.getAttribute('data-gw-app-color-choice'),label=en?({system:'System',dark:'Dark',light:'Light'}[choice]):({system:'跟隨手機',dark:'深色',light:'淺色'}[choice]);
+      button.textContent=label;button.setAttribute('aria-label',label);button.setAttribute('aria-pressed',String(choice===mode));
+    });
+    document.querySelectorAll('.gw-menu-brand__logo,.navigation.gw .logo-image.gw').forEach(function(img){var src=theme==='light'?black:white;if(img.getAttribute('src')!==src)img.setAttribute('src',src);img.removeAttribute('srcset');img.removeAttribute('sizes');});
+  }
+  function set(value){if(!valid(value))return;mode=value;try{localStorage.setItem(key,mode);}catch(e){}sync();}
+  read();
+  window.GWAppTheme={set:set,get:function(){return mode;},sync:sync};
+  // Existing page widgets use this public theme API; they do not own persistence.
+  window.GWColorTheme={set:set,get:effective,sync:sync};
+  document.addEventListener('click',function(event){var button=event.target.closest&&event.target.closest('[data-gw-app-color-choice]');if(button){event.preventDefault();set(button.getAttribute('data-gw-app-color-choice'));}});
+  if(device.addEventListener)device.addEventListener('change',function(){if(mode==='system')sync();});
+  else if(device.addListener)device.addListener(function(){if(mode==='system')sync();});
+  window.addEventListener('storage',function(event){if(event.key===key||event.key===null){read();sync();}});
+  window.addEventListener('pageshow',function(){read();sync();});
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',sync,{once:true});
+  sync();
+})();
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@main/pwa/app-v1.css">
