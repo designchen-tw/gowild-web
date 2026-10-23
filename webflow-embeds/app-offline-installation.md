@@ -35,7 +35,7 @@
 ### Cloudflare 設定
 
 1. 在現有 Cloudflare 帳戶新建獨立 Worker，例如 `gowild-offline`，貼入 `pwa-offline-worker.js`。
-2. 設定一般變數 `OFFLINE_ASSET_COMMIT` 為本次已驗證、包含 `pwa/offline-sw-v1.js` 的40字元 GitHub commit。此值不是 Secret。確切版本見這次交付的 release 記錄。
+2. 交付的 Worker 已內建固定資產版本 `66ff6f0d8bf51033e05bb586edc36703dc9627da`，可直接貼上部署，不需 Secret。未來發布時，可用一般變數 `OFFLINE_ASSET_COMMIT` 覆蓋成包含新版離線程式的40字元 GitHub commit。
 3. 將 Worker Route 指向 **僅** `gowild.one/gw-offline/*`。不要設定成 `gowild.one/*`，不要改成網站的 Custom Domain origin，也不要移除 Webflow DNS。
 4. Route 需有 Cloudflare 代理的 DNS record。網域已使用 Cloudflare nameservers，但仍須在 Dashboard 核對此 hostname 的代理狀態。若目前為 DNS only，不要未確認就更動正式網站連線；先確認 Webflow 網域與 SSL 設定能配合該路由。
 5. 確認端點回傳 JavaScript，不是301、Webflow 404 HTML、登入頁或 Cloudflare challenge。一般網站與 `/longdong` 等頁應繼續由 Webflow 提供。

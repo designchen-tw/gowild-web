@@ -1,8 +1,8 @@
 # GO WILD App v8
 
-App v8 adds per-crag offline downloads. Keep the existing App Head v7; replace the App Footer and deploy the same-origin Service Worker endpoint. Follow [app-offline-installation.md](app-offline-installation.md) for the current deployment and rollback instructions.
+App v8 新增四岩場離線儲存。保留既有 App Head v7，替換 App Footer 並部署同網域 Service Worker 端點；目前部署及停用方式以 [離線安裝說明](app-offline-installation.md) 為準。
 
-The following v7 guide describes the pre-offline base App. Its statements about no Service Worker and online-only use apply to v7.
+以下保留 v7 基礎 App 的說明；其中沒有 Service Worker、需要連網使用的描述，僅適用於加入離線功能之前的 v7。
 
 ---
 
