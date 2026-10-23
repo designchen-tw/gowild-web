@@ -177,3 +177,14 @@ Worker 新增龍洞浮標（46694A）的示性波高、平均週期及浪向。�
 `CONDITIONS_HISTORY` 另外保存前48小時至未來35天的龍洞南口潮汐事件，當日新版預報取代舊版，保留前一日以供跨夜顯示。現有每小時 Cron 每個台北日期至多額外成功預抓一次潮汐，不增加 Cron 頻率。首次部署若 KV 尚未保存昨日資料，無法回補已被來源移除的前一晚；第一筆當日潮汐發生後會有上一次時間，之後跨日可沿用保存資料。
 
 此變更需要先部署 `cwa-weather-worker.js`（保留既有 Secret、KV binding 與 Cron），再完整替換龍洞內容 Embed 並 Webflow Publish；GitHub 不會替代這兩項部署。其他岩場、App 全站 Head／Footer 無需重貼。完整步驟見 `webflow-embeds/longdong-wave-installation.md`。
+
+
+## GO WILD App v8：四岩場離線儲存（2026-10-24）
+
+App Head 保留 v7。新版全站 Footer 載入 `pwa/app-v8.js`、`pwa/offline-v1.js`、`pwa/offline-v1.css`，並透過同網域 `/gw-offline/sw.js` 註冊 `pwa/offline-sw-v1.js`。另提供獨立 `pwa-offline-worker.js` 供 Cloudflare Route `gowild.one/gw-offline/*` 使用，不替換天氣 Worker，也不代理 Webflow 頁面。上線需部署該 route、設定 `OFFLINE_ASSET_COMMIT` 為已發布資產 commit，再替換全站 App Footer 並 Webflow Publish。
+
+四岩場由使用者分別儲存介紹、地圖、路線、必要圖片及程式；下載完整才取代原副本，提供儲存時間、大小、移除與內容更新檢查。原生表單 POST 與輸入不快取，不離線保存 PDF、Windy、監視器與外部網站。天氣只保存最後成功回應，離線顯示明確時間；快取不視為即時資訊。未儲存頁面離線開啟時顯示已儲存岩場清單。
+
+Service Worker 新版採等待與使用者確認後接管，不在閱讀或未送表單時強制刷新。保留固定 App 頂列、原生選單互動、主題／語言與手動重新整理；不恢復下拉更新、不新增永久輪詢。裝置可能清除快取，清單會偵測資料缺漏而回到未儲存。正常頁面仍由 Webflow 線上提供，使用者連線重新整理即可取得 Footer 新功能，無須重裝圖示。
+
+完整同網域部署、版本發布、資料限制與退出方式見 `webflow-embeds/app-offline-installation.md`。本機測試採真實 Service Worker；四頁斷線地圖／路線、跨頁、雙語、離線清單與手動套用新版已核對。Node 回歸檢查位於 `tests/offline.test.mjs` 與 `tests/offline-gateway.test.mjs`。GitHub 不會自動完成 Cloudflare 與 Webflow 部署。

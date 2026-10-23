@@ -1,0 +1,25 @@
+/* The offline controls follow the existing App typography and neutral surfaces. */
+.gw-offline-dialog{width:min(500px,calc(100vw - 40px));text-align:center}
+.gw-offline-dialog [data-offline-intro]{font-size:14px;line-height:1.72;margin-bottom:20px}
+.gw-offline-dialog ul{list-style:none;margin:0 0 20px;padding:0;text-align:left}
+.gw-offline-dialog li{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid var(--gw-app-line)}
+.gw-offline-dialog h3{margin:0 0 4px;color:var(--gw-app-text);font:600 16px/1.5 "GW App Avenir",Arial,sans-serif}
+.gw-offline-dialog li p{margin:0;color:var(--gw-app-muted);font-size:12px;line-height:1.6}
+.gw-offline-actions{flex:none;display:flex;align-items:center;gap:8px}
+.gw-offline-dialog :is(.gw-offline-actions a,.gw-offline-actions button){display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 14px;border:1px solid var(--gw-app-line);border-radius:99px;background:var(--gw-app-button);color:var(--gw-app-text);font:400 12px/1.5 "GW App Avenir",Arial,sans-serif;text-decoration:none;white-space:nowrap;cursor:pointer}
+.gw-offline-dialog button.gw-offline-text{border:0;background:transparent;padding:8px 4px;color:var(--gw-app-body);font:400 12px/1.6 "GW App Avenir",Arial,sans-serif;cursor:pointer}
+.gw-offline-dialog [data-offline-status]{font-size:12px;color:var(--gw-app-body);margin-bottom:12px}
+.gw-offline-dialog [data-offline-status]:empty{display:none}
+.gw-offline-tools{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:20px}
+.gw-offline-dialog [data-offline-version]{font-size:10px;color:var(--gw-app-muted)}
+.gw-offline-dialog :is(button,a):focus-visible{outline:1px solid var(--gw-app-accent);outline-offset:3px}
+.gw-offline-dialog button:disabled{opacity:.55;cursor:wait}
+.gw-offline-dialog [hidden],.gw-offline-media[hidden],.gw-offline-notice[hidden]{display:none!important}
+.gw-offline-notice{box-sizing:border-box;margin:0 0 16px;padding:10px 14px;border:1px solid var(--gw-app-line);border-radius:8px;background:transparent;color:var(--gw-app-body);font:400 12px/1.6 "GW App Avenir",Arial,sans-serif;text-align:center}
+html[data-gw-offline="true"] iframe:is([src*="windy"],[src*="youtube"],[src*="168.motc"],[src*="thb.gov"],[src*="cctv"],[src*="acrobat"],[src*="documentcloud"]){visibility:hidden!important;pointer-events:none!important}
+.gw-offline-media{position:absolute;inset:0;display:grid;place-items:center;padding:20px;text-align:center;color:var(--gw-app-muted);font:400 14px/1.6 "GW App Avenir",Arial,sans-serif;background:var(--gw-app-surface)}
+@media(max-width:520px){.gw-offline-dialog h3{font-size:14px}.gw-offline-dialog [data-offline-intro]{font-size:12px}.gw-offline-dialog li p,.gw-offline-dialog [data-offline-status],.gw-offline-notice{font-size:10px}.gw-offline-dialog li{gap:10px}.gw-offline-dialog .gw-offline-actions{gap:4px}.gw-offline-dialog :is(.gw-offline-actions a,.gw-offline-actions button){padding-inline:10px}}
+@media(hover:hover) and (pointer:fine){.gw-offline-dialog :is(.gw-offline-actions a,.gw-offline-actions button):hover{background:var(--gw-app-hover);color:var(--gw-app-hover-text)}.gw-offline-dialog button.gw-offline-text:hover{background:transparent;color:var(--gw-app-text)}}
+
+.gw-offline-camera{display:grid;place-items:center;min-height:160px;padding:20px;text-align:center;color:var(--gw-app-muted);font:400 14px/1.6 "GW App Avenir",Arial,sans-serif;background:var(--gw-app-surface)}
+.gw-offline-camera[hidden],html[data-gw-offline="true"] img[data-offline-camera-hidden]{display:none!important}

@@ -1,0 +1,9 @@
+import assert from 'node:assert/strict';import worker from '../pwa-offline-worker.js';
+const saved=globalThis.fetch,urls=[];globalThis.fetch=async url=>{urls.push(String(url));return new Response('/* offline worker */',{headers:{'Content-Type':'application/javascript'}})};
+const request=path=>new Request('https://gowild.one'+path),env={OFFLINE_ASSET_COMMIT:'a'.repeat(40)};
+assert.equal((await worker.fetch(request('/longdong'),env)).status,404);
+assert.equal((await worker.fetch(request('/gw-offline/sw.js'),{})).status,503);
+let r=await worker.fetch(request('/gw-offline/sw.js'),env);assert.equal(r.status,200);assert.equal(r.headers.get('Service-Worker-Allowed'),'/');assert(r.headers.get('Content-Type').includes('javascript'));assert.equal(r.headers.get('Cache-Control'),'no-cache');assert(urls[0].endsWith('/pwa/offline-sw-v1.js'));
+await worker.fetch(request('/gw-offline/sw.js'),{...env,OFFLINE_DISABLED:'true'});assert(urls.at(-1).endsWith('/pwa/offline-disable-v1.js'));
+assert.equal((await worker.fetch(new Request('https://gowild.one/gw-offline/sw.js',{method:'POST'}),env)).status,405);
+globalThis.fetch=saved;console.log('PASS: dedicated route only, fixed asset commit, service-worker headers, rollback asset, method restrictions.');

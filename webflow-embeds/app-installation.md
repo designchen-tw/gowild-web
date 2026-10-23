@@ -1,3 +1,11 @@
+# GO WILD App v8
+
+App v8 adds per-crag offline downloads. Keep the existing App Head v7; replace the App Footer and deploy the same-origin Service Worker endpoint. Follow [app-offline-installation.md](app-offline-installation.md) for the current deployment and rollback instructions.
+
+The following v7 guide describes the pre-offline base App. Its statements about no Service Worker and online-only use apply to v7.
+
+---
+
 # GO WILD App v7：Webflow 全站安裝
 
 維護仍使用原本的 Webflow、Code Embed、GitHub 與天氣 Worker。此版本不建立獨立網站，不註冊 Service Worker，不新增離線資料、推播、會員或表單 API。
