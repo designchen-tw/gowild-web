@@ -23,3 +23,10 @@ html[data-gw-offline="true"] iframe:is([src*="windy"],[src*="youtube"],[src*="16
 
 .gw-offline-camera{display:grid;place-items:center;min-height:160px;padding:20px;text-align:center;color:var(--gw-app-muted);font:400 14px/1.6 "GW App Avenir",Arial,sans-serif;background:var(--gw-app-surface)}
 .gw-offline-camera[hidden],html[data-gw-offline="true"] img[data-offline-camera-hidden]{display:none!important}
+.gw-offline-dialog [data-offline-home]{padding:0 0 16px;text-align:center}
+.gw-offline-dialog [data-offline-home] p{margin:0;color:var(--gw-app-muted);font:400 12px/1.6 "GW App Avenir",Arial,sans-serif}
+.gw-offline-dialog [data-offline-progress]{display:block;width:100%;height:3px;border:0;border-radius:2px;background:var(--gw-app-line);accent-color:var(--gw-app-accent);margin:4px 0 10px}
+.gw-offline-dialog progress::-webkit-progress-bar{background:var(--gw-app-line);border-radius:2px}
+.gw-offline-dialog progress::-webkit-progress-value{background:var(--gw-app-accent);border-radius:2px}
+.gw-offline-dialog progress::-moz-progress-bar{background:var(--gw-app-accent);border-radius:2px}
+@media(max-width:520px){.gw-offline-dialog [data-offline-home] p{font-size:10px}}
