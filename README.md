@@ -188,3 +188,10 @@ App Head 保留 v7。新版全站 Footer 載入 `pwa/app-v8.js`、`pwa/offline-v
 Service Worker 新版採等待與使用者確認後接管，不在閱讀或未送表單時強制刷新。保留固定 App 頂列、原生選單互動、主題／語言與手動重新整理；不恢復下拉更新、不新增永久輪詢。裝置可能清除快取，清單會偵測資料缺漏而回到未儲存。正常頁面仍由 Webflow 線上提供，使用者連線重新整理即可取得 Footer 新功能，無須重裝圖示。
 
 完整同網域部署、版本發布、資料限制與退出方式見 `webflow-embeds/app-offline-installation.md`。本機測試採真實 Service Worker；四頁斷線地圖／路線、跨頁、雙語、離線清單與手動套用新版已核對。Node 回歸檢查位於 `tests/offline.test.mjs` 與 `tests/offline-gateway.test.mjs`。GitHub 不會自動完成 Cloudflare 與 Webflow 部署。
+
+
+### 離線 App 2026.10.24.2
+
+修正 Cloudflare Email 保護隨機編碼造成的內容更新誤判，舊離線包從保存的 HTML 升級比對方式。新增下載前預估傳輸 MB、百分比進度及共用首頁／選單；首頁只存一份，可更新或移除，離線可透過選單切換已儲存岩場。尚未儲存的頁面仍需連網。
+
+部署時更新 `pwa-offline-worker.js` 與全站 `webflow-embeds/app-footer.html`；保留 App Head、路由、四岩場 Embed。若有 `OFFLINE_ASSET_COMMIT` 變數需同步更新。見 [離線安裝說明](webflow-embeds/app-offline-installation.md)。

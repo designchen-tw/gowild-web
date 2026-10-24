@@ -6,9 +6,9 @@ export default {
   async fetch(request,env){
     const url=new URL(request.url);
     if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{Allow:'GET, HEAD'}});
-    if(url.pathname==='/gw-offline/health')return Response.json({service:'gowild-offline',release:'2026.10.24.1'},{headers:{'Cache-Control':'no-store'}});
+    if(url.pathname==='/gw-offline/health')return Response.json({service:'gowild-offline',release:'2026.10.24.2'},{headers:{'Cache-Control':'no-store'}});
     if(url.pathname!=='/gw-offline/sw.js')return new Response('Not found',{status:404});
-    const commit=env.OFFLINE_ASSET_COMMIT||'66ff6f0d8bf51033e05bb586edc36703dc9627da';
+    const commit=env.OFFLINE_ASSET_COMMIT||'ce54e44657fb8bb9fb1c1d5a16cdf9894c475399';
     if(!/^[0-9a-f]{40}$/.test(commit||''))return new Response('Offline release not configured',{status:503});
     const file=env.OFFLINE_DISABLED==='true'?'offline-disable-v1.js':'offline-sw-v1.js';
     const upstream=await fetch('https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@'+commit+'/pwa/'+file);
