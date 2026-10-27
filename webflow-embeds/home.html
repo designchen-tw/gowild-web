@@ -1,88 +1,7 @@
-<script>
-/* Shared by the two self-contained Embeds. Does not handle forms or Webflow animations. */
-(function(){
- 'use strict';
- if(window.GWColorTheme){window.GWColorTheme.sync();return;}
- var html=document.documentElement,key='gw-color-theme-v1',theme='dark';
- var device=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)'),preference=null,dayKey=key+'-day',chosenDay='',stored=true;
- function today(){var d=new Date();return[d.getFullYear(),d.getMonth()+1,d.getDate()].join('-');}
- function readPreference(){
-  if(!stored)return chosenDay===today()?preference:null;
-  try{
-   var mode=localStorage.getItem(key);chosenDay=localStorage.getItem(dayKey)||'';
-   if(chosenDay===today()&&(mode==='light'||mode==='dark'))return mode;
-   localStorage.removeItem(key);localStorage.removeItem(dayKey);
-  }catch(error){stored=false;if(chosenDay===today())return preference;}
-  return null;
- }
- function deviceTheme(){return device&&device.matches?'light':'dark';}
- theme=deviceTheme();
- var black='https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad9712cb9c80fb6fc1287b1_logo_GW-black.avif';
- var white='https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad9712b794a5603e6bb48f9_logo_GW-white.avif';
- preference=readPreference();if(preference)theme=preference;
- var languageObserver=null,observedRoot=null,frame=0;
- function attr(node,name,value){if(node.getAttribute(name)!==value)node.setAttribute(name,value);}
- function home(){return html.getAttribute('data-gw-page-theme')==='home'||location.pathname.replace(/\/+$/,'')===''||!!document.querySelector('[data-gw-home]');}
- function sync(){
-  if(frame){cancelAnimationFrame(frame);frame=0;}
-  var isHome=home();
-  if(isHome)attr(html,'data-gw-page-theme','home');
-  attr(html,'data-gw-theme',theme);
-  var root=document.querySelector('[data-gw-home]'),en=root&&root.dataset.language==='en';
-  document.querySelectorAll('[data-gw-color-choice]').forEach(function(button){
-   var light=button.getAttribute('data-gw-color-choice')==='light';
-   attr(button,'aria-pressed',String(theme===(light?'light':'dark')));
-   var label=en?(light?'Light mode':'Dark mode'):(light?'淺色模式':'深色模式');
-   attr(button,'aria-label',label);attr(button,'title',label);
-  });
-  document.querySelectorAll('[data-gw-color-switch]').forEach(function(group){attr(group,'aria-label',en?'Choose appearance':'選擇顯示模式');});
-  document.querySelectorAll('.gw-menu-brand__logo').forEach(function(img){logo(img,theme);});
-  if(isHome)document.querySelectorAll('.navigation.gw .logo-image.gw').forEach(function(img){logo(img,theme);});
-  if(root&&root!==observedRoot){
-   if(languageObserver)languageObserver.disconnect();
-   observedRoot=root;languageObserver=new MutationObserver(schedule);
-   languageObserver.observe(root,{attributes:true,attributeFilter:['data-language']});
-  }
- }
- function logo(img,mode){
-  var url=mode==='light'?black:white;
-  if(img.getAttribute('src')!==url)img.setAttribute('src',url);
-  if(img.hasAttribute('srcset'))img.removeAttribute('srcset');
-  if(img.hasAttribute('sizes'))img.removeAttribute('sizes');
- }
- function schedule(){if(frame)return;frame=requestAnimationFrame(function(){frame=0;sync();});}
- function set(next,persist){
-  if(next!=='light'&&next!=='dark')return;
-  if(persist&&(preference!==next||chosenDay!==today())){preference=next;chosenDay=today();try{localStorage.setItem(dayKey,chosenDay);localStorage.setItem(key,next);}catch(error){stored=false;}}
-  if(next===theme)return;
-  theme=next;sync();
- }
- function followDevice(){preference=readPreference();if(!preference)set(deviceTheme(),false);}
- window.GWColorTheme={set:function(next){set(next,true);},get:function(){return theme;},sync:sync};
- document.addEventListener('click',function(event){
-  var button=event.target.closest&&event.target.closest('[data-gw-color-choice]');
-  if(!button)return;event.preventDefault();set(button.getAttribute('data-gw-color-choice'),true);
- });
- window.addEventListener('storage',function(event){
-  if(event.key!==key&&event.key!==dayKey&&event.key!==null)return;
-  preference=readPreference();
-  set(preference||deviceTheme(),false);
- });
- if(device){if(device.addEventListener)device.addEventListener('change',followDevice);else if(device.addListener)device.addListener(followDevice);}
- window.addEventListener('pageshow',function(){
-  preference=readPreference();
-  set(preference||deviceTheme(),false);sync();
- });
- sync();
- // Embeds can appear before or after the native navbar and homepage content.
- var assembling=new MutationObserver(schedule);
- assembling.observe(html,{childList:true,subtree:true});
- function ready(){assembling.disconnect();sync();}
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready,{once:true});
- else ready();
-})();
-
-</script>
+<script data-gw-preferences-early>(function(){var h=document.documentElement,m='system',c=false;try{m=localStorage.getItem('gw-color-theme-v1')||m;c=localStorage.getItem('gw-home-compact-v1')==='compact'}catch(e){}var t=window.GWColorTheme?window.GWColorTheme.get():(m==='dark'||m==='light'?m:matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');h.setAttribute('data-gw-theme',t);h.setAttribute('data-gw-home-compact',String(window.GWHomeLayout?window.GWHomeLayout.get():c));if(location.pathname.replace(/\/+$/,'')===''||/\/home\.html$/.test(location.pathname))h.setAttribute('data-gw-page-theme','home')})();</script>
+<style data-gw-compact-early>@media(max-width:767px),(pointer:coarse) and (orientation:landscape) and (max-height:600px){html[data-gw-home-compact="true"][data-gw-page-theme="home"] :is(body>.selection-for-animation,body>.selection-from-animation,body>.go-wild-slide.main-page,#gw-home-overview,[data-home-link="overview"]){display:none!important}}</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@2c5ee406af261fadaa3eb3e625bf8a15fd19f3ad/webflow-embeds/home-compact-v1.css">
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@2c5ee406af261fadaa3eb3e625bf8a15fd19f3ad/site-preferences-v1.js" defer></script>
 <!-- GO WILD homepage Embed · mobile labels v1.0.0. Place in the normal-flow content Embed AFTER the existing landing animation section.
 Keep the fixed slideshow, the 200vh animation section and its sticky text wrapper intact.
 Keep the existing native Webflow Course Inquires Form Block on this page, outside this Embed.
@@ -250,7 +169,7 @@ html[data-gw-page-theme="home"] [data-gw-native-home-section]>.text-job-title{di
     root.dataset.ready = 'true';
     const embed = root.closest('.w-embed');
     if (embed) embed.setAttribute('data-gw-home-embed', '');
-    const landing = document.querySelector('.selection-from-animation');
+    const landing = document.querySelector('.selection-for-animation, .selection-from-animation');
     if (landing && !landing.id) landing.id = 'gw-home-landing';
     let language = 'zh';
     let nativeWrapper = null;
@@ -400,13 +319,14 @@ html[data-gw-page-theme="home"] [data-gw-native-home-section]>.text-job-title{di
         nav.classList.toggle('is-visible', bounds.top <= window.innerHeight * .35 && Math.max(bounds.bottom, nativeSection ? nativeSection.getBoundingClientRect().bottom : bounds.bottom) > 80);
         const reference = window.innerHeight * .35;
         let active = sections[0];
-        sections.forEach(section => { if (section.getBoundingClientRect().top <= reference) active = section; });
+        sections.forEach(section => { if (section.getClientRects().length && section.getBoundingClientRect().top <= reference) active = section; });
         setActive(active.dataset.homeSection);
         queued = false;
       });
     }
     window.addEventListener('scroll', syncActive, { passive: true });
     window.addEventListener('resize', syncActive);
+    window.addEventListener('gw-home-mode-change', syncActive);
     syncActive();
     // Keep source-component state and entered values; never handle or replace form submission.
     window.addEventListener('pagehide', () => { if (submitObserver) submitObserver.disconnect(); }, { once: true });
@@ -422,3 +342,5 @@ html[data-gw-page-theme="home"] [data-gw-native-home-section]>.text-job-title{di
 })();
 
 </script>
+
+

@@ -1,88 +1,7 @@
-<script>
-/* Shared by the two self-contained Embeds. Does not handle forms or Webflow animations. */
-(function(){
- 'use strict';
- if(window.GWColorTheme){window.GWColorTheme.sync();return;}
- var html=document.documentElement,key='gw-color-theme-v1',theme='dark';
- var device=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)'),preference=null,dayKey=key+'-day',chosenDay='',stored=true;
- function today(){var d=new Date();return[d.getFullYear(),d.getMonth()+1,d.getDate()].join('-');}
- function readPreference(){
-  if(!stored)return chosenDay===today()?preference:null;
-  try{
-   var mode=localStorage.getItem(key);chosenDay=localStorage.getItem(dayKey)||'';
-   if(chosenDay===today()&&(mode==='light'||mode==='dark'))return mode;
-   localStorage.removeItem(key);localStorage.removeItem(dayKey);
-  }catch(error){stored=false;if(chosenDay===today())return preference;}
-  return null;
- }
- function deviceTheme(){return device&&device.matches?'light':'dark';}
- theme=deviceTheme();
- var black='https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad9712cb9c80fb6fc1287b1_logo_GW-black.avif';
- var white='https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad9712b794a5603e6bb48f9_logo_GW-white.avif';
- preference=readPreference();if(preference)theme=preference;
- var languageObserver=null,observedRoot=null,frame=0;
- function attr(node,name,value){if(node.getAttribute(name)!==value)node.setAttribute(name,value);}
- function home(){return html.getAttribute('data-gw-page-theme')==='home'||location.pathname.replace(/\/+$/,'')===''||!!document.querySelector('[data-gw-home]');}
- function sync(){
-  if(frame){cancelAnimationFrame(frame);frame=0;}
-  var isHome=home();
-  if(isHome)attr(html,'data-gw-page-theme','home');
-  attr(html,'data-gw-theme',theme);
-  var root=document.querySelector('[data-gw-home]'),en=root&&root.dataset.language==='en';
-  document.querySelectorAll('[data-gw-color-choice]').forEach(function(button){
-   var light=button.getAttribute('data-gw-color-choice')==='light';
-   attr(button,'aria-pressed',String(theme===(light?'light':'dark')));
-   var label=en?(light?'Light mode':'Dark mode'):(light?'淺色模式':'深色模式');
-   attr(button,'aria-label',label);attr(button,'title',label);
-  });
-  document.querySelectorAll('[data-gw-color-switch]').forEach(function(group){attr(group,'aria-label',en?'Choose appearance':'選擇顯示模式');});
-  document.querySelectorAll('.gw-menu-brand__logo').forEach(function(img){logo(img,theme);});
-  if(isHome)document.querySelectorAll('.navigation.gw .logo-image.gw').forEach(function(img){logo(img,theme);});
-  if(root&&root!==observedRoot){
-   if(languageObserver)languageObserver.disconnect();
-   observedRoot=root;languageObserver=new MutationObserver(schedule);
-   languageObserver.observe(root,{attributes:true,attributeFilter:['data-language']});
-  }
- }
- function logo(img,mode){
-  var url=mode==='light'?black:white;
-  if(img.getAttribute('src')!==url)img.setAttribute('src',url);
-  if(img.hasAttribute('srcset'))img.removeAttribute('srcset');
-  if(img.hasAttribute('sizes'))img.removeAttribute('sizes');
- }
- function schedule(){if(frame)return;frame=requestAnimationFrame(function(){frame=0;sync();});}
- function set(next,persist){
-  if(next!=='light'&&next!=='dark')return;
-  if(persist&&(preference!==next||chosenDay!==today())){preference=next;chosenDay=today();try{localStorage.setItem(dayKey,chosenDay);localStorage.setItem(key,next);}catch(error){stored=false;}}
-  if(next===theme)return;
-  theme=next;sync();
- }
- function followDevice(){preference=readPreference();if(!preference)set(deviceTheme(),false);}
- window.GWColorTheme={set:function(next){set(next,true);},get:function(){return theme;},sync:sync};
- document.addEventListener('click',function(event){
-  var button=event.target.closest&&event.target.closest('[data-gw-color-choice]');
-  if(!button)return;event.preventDefault();set(button.getAttribute('data-gw-color-choice'),true);
- });
- window.addEventListener('storage',function(event){
-  if(event.key!==key&&event.key!==dayKey&&event.key!==null)return;
-  preference=readPreference();
-  set(preference||deviceTheme(),false);
- });
- if(device){if(device.addEventListener)device.addEventListener('change',followDevice);else if(device.addListener)device.addListener(followDevice);}
- window.addEventListener('pageshow',function(){
-  preference=readPreference();
-  set(preference||deviceTheme(),false);sync();
- });
- sync();
- // Embeds can appear before or after the native navbar and homepage content.
- var assembling=new MutationObserver(schedule);
- assembling.observe(html,{childList:true,subtree:true});
- function ready(){assembling.disconnect();sync();}
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready,{once:true});
- else ready();
-})();
-
-</script>
+<script data-gw-preferences-early>(function(){var h=document.documentElement,m='system',c=false;try{m=localStorage.getItem('gw-color-theme-v1')||m;c=localStorage.getItem('gw-home-compact-v1')==='compact'}catch(e){}var t=window.GWColorTheme?window.GWColorTheme.get():(m==='dark'||m==='light'?m:matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');h.setAttribute('data-gw-theme',t);h.setAttribute('data-gw-home-compact',String(window.GWHomeLayout?window.GWHomeLayout.get():c));if(location.pathname.replace(/\/+$/,'')===''||/\/home\.html$/.test(location.pathname))h.setAttribute('data-gw-page-theme','home')})();</script>
+<style data-gw-compact-early>@media(max-width:767px),(pointer:coarse) and (orientation:landscape) and (max-height:600px){html[data-gw-home-compact="true"][data-gw-page-theme="home"] :is(body>.selection-for-animation,body>.selection-from-animation,body>.go-wild-slide.main-page,#gw-home-overview,[data-home-link="overview"]){display:none!important}}</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@2c5ee406af261fadaa3eb3e625bf8a15fd19f3ad/webflow-embeds/home-compact-v1.css">
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@2c5ee406af261fadaa3eb3e625bf8a15fd19f3ad/site-preferences-v1.js" defer></script>
 <!-- GO WILD menu. Paste the entire file into a Code Embed inside .mobile-overlay.gw > .menu-icon-items-section. Keep Finsweet's fs-scrolldisable-element="when-visible" on the outer .mobile-overlay.gw element. -->
 <style>
   @font-face{font-family:"GW Avenir";src:url("https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6abb59dcfe815aa0c010d666_Avenir%20LT%20Std%2045%20Book.otf") format("opentype");font-weight:400;font-display:swap}
@@ -170,6 +89,7 @@ html[data-gw-theme] .gw-menu-shell .gw-menu-brand{color:var(--gw-menu-idle)}html
 <div class="gw-menu-shell" data-gw-full-menu>
   <nav class="gw-menu-panel" aria-label="網站主選單">
     <a class="gw-menu-brand" href="/"><img class="gw-menu-brand__logo" src="https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad9712b794a5603e6bb48f9_logo_GW-white.avif" width="64" height="64" alt=""><span>GO WILD | 夠野戶外</span></a>
+<div class="gw-home-compact-setting"><div class="gw-home-layout-switch" role="group" aria-label="首頁顯示"><button type="button" data-gw-home-mode="full" aria-pressed="true">完整首頁</button><button type="button" data-gw-home-mode="compact" aria-pressed="false">精簡首頁</button></div></div>
     <hr class="gw-menu-line">
 
     <div class="gw-menu-groups">
@@ -203,7 +123,10 @@ html[data-gw-theme] .gw-menu-shell .gw-menu-brand{color:var(--gw-menu-idle)}html
     </div>
 
     <hr class="gw-menu-line">
-<div class="gw-color-setting"><div class="gw-color-switch" data-gw-color-switch role="group" aria-label="選擇顯示模式"><button type="button" data-gw-color-choice="dark" aria-pressed="true" aria-label="深色模式" title="深色模式"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"/></svg></button><button type="button" data-gw-color-choice="light" aria-pressed="false" aria-label="淺色模式" title="淺色模式"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button></div></div>
+<div class="gw-color-setting"><div class="gw-color-switch" data-gw-color-switch role="group" aria-label="選擇顯示模式"><button type="button" data-gw-color-mode="system" aria-pressed="true" aria-label="跟隨裝置" title="跟隨裝置"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M10 18.5h4"/></svg></button><button type="button" data-gw-color-choice="dark" aria-pressed="false" aria-label="深色模式" title="深色模式"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"/></svg></button><button type="button" data-gw-color-choice="light" aria-pressed="false" aria-label="淺色模式" title="淺色模式"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button></div></div>
+<div class="gw-site-language-switch" role="group" aria-label="語言"><button type="button" data-gw-site-language="zh" aria-pressed="true">中文</button><button type="button" data-gw-site-language="en" aria-pressed="false">EN</button></div>
+
+<div class="gw-menu-tools"></div>
   </nav>
 </div>
 
@@ -430,7 +353,7 @@ html[data-gw-theme] .gw-menu-shell .gw-menu-brand{color:var(--gw-menu-idle)}html
     }
     var panel = shell.querySelector('.gw-menu-panel');
     var nodes = panel && Array.from(panel.querySelectorAll(
-      '.gw-menu-brand,.gw-menu-line,.gw-menu-group,.gw-color-setting,.gw-menu-social'
+      '.gw-menu-brand,.gw-menu-line,.gw-menu-group,.gw-color-setting,.gw-site-language-switch,.gw-home-compact-setting,.gw-menu-social'
     ));
     if (!nodes || !nodes.length || typeof nodes[0].animate !== 'function') {
       update();
@@ -469,3 +392,5 @@ html[data-gw-theme] .gw-menu-shell .gw-menu-brand{color:var(--gw-menu-idle)}html
 })();
 
 </script>
+
+

@@ -100,7 +100,7 @@ html[data-gw-menu-open] .gw-app-brand{visibility:hidden!important}
   var viewport=document.querySelector('meta[name="viewport"]');
   if(viewport)viewport.content='width=device-width, initial-scale=1, viewport-fit=cover';
   if(!app||window.GWAppTheme)return;
-  // An App-only preference. Do not read, rewrite or expire the website's day keys.
+  // App and browser preferences remain independent and do not expire.
   var key='gw-app-color-theme-v1',mode='system',device=window.matchMedia('(prefers-color-scheme: light)');
   var white='https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad9712b794a5603e6bb48f9_logo_GW-white.avif';
   var black='https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad9712cb9c80fb6fc1287b1_logo_GW-black.avif';
@@ -131,6 +131,53 @@ html[data-gw-menu-open] .gw-app-brand{visibility:hidden!important}
   sync();
 })();
 </script>
+<script data-gw-appearance-early>
+/* Persistent appearance and optional mobile homepage layout. No animation replacement. */
+(function(){
+ 'use strict';
+ if(window.GWColorTheme){window.GWColorTheme.sync();return;}
+ var html=document.documentElement,key='gw-color-theme-v1',mode='system';
+ var device=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)');
+ var black='https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad9712cb9c80fb6fc1287b1_logo_GW-black.avif';
+ var white='https://cdn.prod.website-files.com/6abb59dcfe815aa0c010d5c6/6ad9712b794a5603e6bb48f9_logo_GW-white.avif';
+ var languageObserver=null,observedRoot=null,frame=0;
+ function valid(value){return value==='system'||value==='dark'||value==='light';}
+ function read(){try{var value=localStorage.getItem(key);mode=valid(value)?value:'system';localStorage.removeItem(key+'-day');}catch(error){}}
+ function effective(){return mode==='system'?(device&&device.matches?'light':'dark'):mode;}
+ function attr(node,name,value){if(node.getAttribute(name)!==value)node.setAttribute(name,value);}
+ function home(){return html.getAttribute('data-gw-page-theme')==='home'||location.pathname.replace(/\/+$/,'')===''||!!document.querySelector('[data-gw-home]');}
+ function sync(){
+  if(frame){cancelAnimationFrame(frame);frame=0;}
+  var isHome=home(),theme=effective();if(isHome)attr(html,'data-gw-page-theme','home');attr(html,'data-gw-theme',theme);
+  var root=document.querySelector('[data-gw-home],main[data-language],main[lang],#outside-of-rock'),en=root&&(root.dataset.language==='en'||root.lang==='en');
+  document.querySelectorAll('[data-gw-color-choice],[data-gw-color-mode]').forEach(function(button){
+   var choice=button.getAttribute('data-gw-color-mode')||button.getAttribute('data-gw-color-choice');
+   var label=(en?{system:'Follow device',dark:'Dark mode',light:'Light mode'}:{system:'跟隨裝置',dark:'深色模式',light:'淺色模式'})[choice];
+   attr(button,'aria-pressed',String(choice===mode));attr(button,'aria-label',label);attr(button,'title',label);
+  });
+  document.querySelectorAll('[data-gw-color-switch]').forEach(function(group){attr(group,'aria-label',en?'Choose appearance':'選擇顯示模式');});
+  document.querySelectorAll('.gw-menu-brand__logo').forEach(function(img){logo(img,theme);});
+  if(isHome)document.querySelectorAll('.navigation.gw .logo-image.gw').forEach(function(img){logo(img,theme);});
+  if(root&&root!==observedRoot){if(languageObserver)languageObserver.disconnect();observedRoot=root;languageObserver=new MutationObserver(schedule);languageObserver.observe(root,{attributes:true,attributeFilter:['data-language','lang']});}
+ }
+ function logo(img,theme){var url=theme==='light'?black:white;if(img.getAttribute('src')!==url)img.setAttribute('src',url);img.removeAttribute('srcset');img.removeAttribute('sizes');}
+ function schedule(){if(frame)return;frame=requestAnimationFrame(function(){frame=0;sync();});}
+ function set(next,persist){if(!valid(next))return;mode=next;if(persist)try{localStorage.setItem(key,next);localStorage.removeItem(key+'-day');}catch(error){}sync();}
+ read();window.GWColorTheme={set:function(next){set(next,true);},get:effective,getMode:function(){return mode;},sync:sync};
+ document.addEventListener('click',function(event){var button=event.target.closest&&event.target.closest('[data-gw-color-choice],[data-gw-color-mode]');if(!button)return;event.preventDefault();set(button.getAttribute('data-gw-color-mode')||button.getAttribute('data-gw-color-choice'),true);});
+ window.addEventListener('storage',function(event){if(event.key!==key&&event.key!==null)return;read();sync();});
+ function followDevice(){if(mode==='system')sync();}
+ if(device){if(device.addEventListener)device.addEventListener('change',followDevice);else if(device.addListener)device.addListener(followDevice);}
+ window.addEventListener('pageshow',function(){read();sync();});sync();
+ var assembling=new MutationObserver(schedule);assembling.observe(html,{childList:true,subtree:true});
+ function ready(){assembling.disconnect();sync();}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready,{once:true});else ready();
+})();
+</script>
+<script data-gw-preferences-early>(function(){var h=document.documentElement,m='system',c=false;try{m=localStorage.getItem('gw-color-theme-v1')||m;c=localStorage.getItem('gw-home-compact-v1')==='compact'}catch(e){}var t=window.GWColorTheme?window.GWColorTheme.get():(m==='dark'||m==='light'?m:matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');h.setAttribute('data-gw-theme',t);h.setAttribute('data-gw-home-compact',String(window.GWHomeLayout?window.GWHomeLayout.get():c));if(location.pathname.replace(/\/+$/,'')===''||/\/home\.html$/.test(location.pathname))h.setAttribute('data-gw-page-theme','home')})();</script>
+<style data-gw-compact-early>@media(max-width:767px),(pointer:coarse) and (orientation:landscape) and (max-height:600px){html[data-gw-home-compact="true"][data-gw-page-theme="home"] :is(body>.selection-for-animation,body>.selection-from-animation,body>.go-wild-slide.main-page,#gw-home-overview,[data-home-link="overview"]){display:none!important}}</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@2c5ee406af261fadaa3eb3e625bf8a15fd19f3ad/webflow-embeds/home-compact-v1.css">
+<script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@2c5ee406af261fadaa3eb3e625bf8a15fd19f3ad/site-preferences-v1.js" defer></script>
+
 <script data-gw-app-early-brand>
 /* Webflow still performs normal document navigation. Mount the shared App brand
    before the overlay scripts/native header are parsed; never intercept links. */
