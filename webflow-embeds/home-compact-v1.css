@@ -1,0 +1,57 @@
+/* Mobile-only preference; desktop always retains the full homepage. */
+.gw-home-compact-setting{display:none}
+.gw-home__compact-language{display:none}
+@media(max-width:767px),(pointer:coarse) and (orientation:landscape) and (max-height:600px){
+ .gw-home-compact-setting{display:block;margin:16px 0 0;text-align:center}
+ .gw-menu-shell .gw-home-compact-toggle{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:36px;padding:4px 8px;border:0;border-radius:4px;background:transparent;color:inherit;font:400 12px/1.6 "GW App Avenir",Arial,sans-serif;cursor:pointer;opacity:1}
+ .gw-home-compact-track{display:inline-block;position:relative;width:28px;height:16px;flex:none;box-sizing:border-box;border:1px solid currentColor;border-radius:99px;opacity:.7}
+ .gw-home-compact-track::after{content:"";position:absolute;top:3px;left:3px;width:8px;height:8px;border-radius:50%;background:currentColor;transition:transform .15s}
+ .gw-home-compact-toggle[aria-checked="true"] .gw-home-compact-track{background:rgba(169,217,182,.18);color:#a9d9b6;opacity:1}
+ .gw-home-compact-toggle[aria-checked="true"] .gw-home-compact-track::after{transform:translateX(12px)}
+ html[data-gw-theme="light"] .gw-home-compact-toggle[aria-checked="true"] .gw-home-compact-track{background:rgba(41,103,68,.12);color:#296744}
+ html[data-gw-home-compact="true"][data-gw-page-theme="home"] body>.selection-for-animation,
+ html[data-gw-home-compact="true"][data-gw-page-theme="home"] body>.selection-from-animation,
+ html[data-gw-home-compact="true"][data-gw-page-theme="home"] body>.go-wild-slide.main-page,
+ html[data-gw-home-compact="true"][data-gw-page-theme="home"] #gw-home-overview,
+ html[data-gw-home-compact="true"][data-gw-page-theme="home"] [data-home-link="overview"]{display:none!important}
+ html[data-gw-home-compact="true"][data-gw-page-theme="home"] .gw-home__nav{grid-template-columns:repeat(4,minmax(0,1fr))}
+ html[data-gw-home-compact="true"][data-gw-page-theme="home"] #gw-home-discover{padding-top:40px!important;border-top:0!important}
+ html[data-gw-home-compact="true"][data-gw-page-theme="home"] .gw-home__compact-language{display:flex;justify-content:center;padding:24px var(--home-page-gutter,5vw) 0}
+ html[data-gw-home-compact="true"][data-gw-app-display="standalone"] .gw-home__compact-language{display:none}
+}
+@media(prefers-reduced-motion:reduce){.gw-home-compact-track::after{transition:none}}
+.gw-site-language-switch{display:inline-flex;align-items:center;gap:0;margin:14px 0 0;padding:3px;border:1px solid rgba(255,255,255,.17);border-radius:999px;background:rgba(255,255,255,.04)}
+.gw-menu-shell .gw-site-language-switch button{display:inline-flex;align-items:center;justify-content:center;min-height:30px;min-width:36px;padding:6px 10px;border:0;border-radius:999px;background:transparent;color:inherit;opacity:1;font:400 12px/1.5 "GW App Avenir",Arial,sans-serif;cursor:pointer}
+.gw-menu-shell .gw-site-language-switch button[aria-pressed="true"]{background:rgba(255,255,255,.16);color:#fff}
+html[data-gw-theme="light"] .gw-site-language-switch{border-color:rgba(0,0,0,.17);background:rgba(0,0,0,.04)}
+html[data-gw-theme="light"] .gw-menu-shell .gw-site-language-switch button[aria-pressed="true"]{background:rgba(41,103,68,.16);color:#296744}
+html[data-gw-app-display="standalone"] .gw-site-language-switch{display:none}
+html[data-gw-menu-language] :is(.gw-home__language,.gw-course__language,.ld-detail__language,.kd-detail__language,.df-detail__language,.gz-detail__language,.ld-photo__language,.sr-language,#outside-of-rock .language-switch){display:none!important}
+html[data-gw-menu-language] .gw-home__compact-language{display:none!important}
+@media(hover:hover) and (pointer:fine){.gw-menu-shell .gw-site-language-switch button:hover{background:rgba(255,255,255,.16);color:#fff}html[data-gw-theme="light"] .gw-menu-shell .gw-site-language-switch button:hover{background:rgba(0,0,0,.1);color:#262626}}
+/* Three centered desktop rows: appearance, language, then text tools. */
+.gw-menu-panel>.gw-site-language-switch,.gw-menu-panel>.gw-app-language-switch{display:flex;width:max-content;margin:14px auto 0}
+html[data-gw-app-display="standalone"] .gw-menu-panel>.gw-site-language-switch{display:none}
+.gw-menu-tools{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 18px;margin:16px 0 0}
+.gw-menu-tools:empty{display:none}
+.gw-menu-shell .gw-menu-tools .gw-app-install-entry{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:auto;min-height:30px;margin:0;padding:4px 0;border:0;border-radius:0;background:transparent;box-shadow:none;color:inherit;font:400 12px/1.6 "GW App Avenir",Arial,sans-serif;text-decoration:none;white-space:nowrap;opacity:1}
+.gw-menu-tools .gw-app-install-entry svg{display:block;flex:none;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+/* Shared moving selection plate; no blur, scroll listener or animation loop. */
+.gw-menu-shell :is(.gw-color-switch,.gw-site-language-switch,.gw-app-language-switch,.gw-home-layout-switch){position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:0;padding:3px;border:1px solid rgba(255,255,255,.17);border-radius:999px;background:rgba(255,255,255,.04);--gw-switch-active:rgba(255,255,255,.16)}
+.gw-menu-shell .gw-control-switch::before{content:"";position:absolute;z-index:0;left:0;top:3px;width:var(--gw-switch-w,0px);height:30px;border-radius:999px;background:var(--gw-switch-active);transform:translateX(var(--gw-switch-x,0px));pointer-events:none}
+.gw-menu-shell .gw-control-switch[data-gw-switch-ready]::before{transition:transform .2s cubic-bezier(.2,.7,.25,1),width .2s cubic-bezier(.2,.7,.25,1)}
+html[data-gw-theme] .gw-menu-shell :is(.gw-color-switch,.gw-site-language-switch,.gw-app-language-switch,.gw-home-layout-switch) button{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;min-height:30px;min-width:36px;height:30px;margin:0;padding:6px 10px;border:0;border-radius:999px;background:transparent!important;box-sizing:border-box;color:inherit;font:400 12px/1.5 "GW App Avenir",Arial,sans-serif;opacity:1;cursor:pointer;transition:color .15s;-webkit-tap-highlight-color:transparent}
+html[data-gw-theme="dark"] .gw-menu-shell .gw-control-switch button[aria-pressed="true"]{color:#fff}
+html[data-gw-theme="light"] .gw-menu-shell :is(.gw-color-switch,.gw-site-language-switch,.gw-app-language-switch,.gw-home-layout-switch){border-color:rgba(0,0,0,.17);background:rgba(0,0,0,.04);--gw-switch-active:rgba(41,103,68,.16)}
+html[data-gw-theme="light"] .gw-menu-shell .gw-control-switch button[aria-pressed="true"]{color:#296744}
+html[data-gw-app-display="standalone"] .gw-menu-panel>.gw-site-language-switch{display:none}
+.gw-menu-panel>.gw-site-language-switch,.gw-menu-panel>.gw-app-language-switch{display:flex;width:max-content;margin:14px auto 0}
+@media(hover:hover) and (pointer:fine){html[data-gw-theme="dark"] .gw-menu-shell .gw-control-switch button:hover{color:#fff}html[data-gw-theme="light"] .gw-menu-shell .gw-control-switch button:hover{color:#262626}.gw-menu-shell .gw-menu-tools .gw-app-install-entry:hover{color:var(--gw-app-text)}}
+@media(prefers-reduced-motion:reduce){.gw-menu-shell .gw-control-switch[data-gw-switch-ready]::before,html[data-gw-theme] .gw-menu-shell .gw-control-switch button{transition:none}}
+/* Brand contrast is 90% in either appearance; other menu text keeps its hierarchy. */
+html[data-gw-theme="dark"] .gw-menu-shell a.gw-menu-brand{color:rgba(255,255,255,.9)}
+html[data-gw-theme="light"] .gw-menu-shell a.gw-menu-brand{color:rgba(0,0,0,.9)}
+html[data-gw-theme="dark"] .gw-menu-shell .gw-menu-brand .gw-menu-brand__logo{filter:grayscale(1) brightness(0) invert(1)!important;opacity:.9!important}
+html[data-gw-theme="light"] .gw-menu-shell .gw-menu-brand .gw-menu-brand__logo{filter:grayscale(1) brightness(0)!important;opacity:.9!important}
+.gw-menu-brand+.gw-home-compact-setting{margin-top:16px}
+@media(hover:hover) and (pointer:fine){html[data-gw-theme="dark"] .gw-menu-shell a.gw-menu-brand:hover{color:#fff}html[data-gw-theme="light"] .gw-menu-shell a.gw-menu-brand:hover{color:#000}}

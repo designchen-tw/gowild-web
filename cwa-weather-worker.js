@@ -95,6 +95,7 @@ export async function prewarmLongdongTides(env, nowMs = Date.now()) {
   await env.CONDITIONS_HISTORY.put(checkedKey, day, { expirationTtl: 2 * 86400 });
 }
 
+const marineInflight = new Map();
 const DEFAULT_ORIGINS = ["https://gowild.one", "https://www.gowild.one"];
 
 function corsHeaders(origin, allowed) {
@@ -122,7 +123,8 @@ export default {
       "/api/defulan": { current: "F-D0047-073", weekly: ["F-D0047-075"], conditionLocationName: "和平區", lat: 24.174, lon: 120.974 },
       "/api/guanziling": { current: "F-D0047-077", weekly: ["F-D0047-079"], conditionLocationName: "白河區", lat: 23.3283185, lon: 120.4889894, stationId: "C0X240" }
     };
-    const route = routes[url.pathname];
+    const waveOnly = url.pathname === "/api/longdong/wave";
+    const route = routes[waveOnly ? "/api/longdong" : url.pathname];
     if (request.method !== "GET" || !route) {
       return Response.json({ error: "Not found" }, { status: 404, headers });
     }
@@ -135,7 +137,7 @@ export default {
 
     const cache = caches.default;
     const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v26`, { method: "GET" });
-    const cached = await cache.match(cacheKey);
+    const cached = waveOnly ? null : await cache.match(cacheKey);
     if (cached) {
       const responseHeaders = new Headers(cached.headers);
       for (const [key, value] of Object.entries(headers)) responseHeaders.set(key, value);
@@ -189,18 +191,54 @@ export default {
       return data;
     };
 
-    const fetchLongdongWave = async () => {
-      const key = new Request(`${url.origin}/_cwa-cache/longdong-wave?schema=marine-v1`);
+    const readLongdongWave = async () => {
+      const key = new Request(`${url.origin}/_cwa-cache/longdong-wave?schema=marine-v2`);
+      const fresh = value => value?.status === 'available' && Number.isFinite(value.height) && value.height >= 0 && value.height <= 40 && Date.now() - Date.parse(value.observedAt) >= -900000 && Date.now() - Date.parse(value.observedAt) <= 10800000;
       const saved = await cache.match(key);
-      if (saved) return saved.json();
-      const response = await fetch('https://www.cwa.gov.tw/V8/C/M/OBS_Marine/48hrsSeaObs_MOD/OSea01.html', {
-        headers: { Accept: 'text/html' }, signal: AbortSignal.timeout(8000)
-      });
-      if (!response.ok) throw new Error(`CWA marine HTTP ${response.status}`);
-      const wave = normalizeLongdongWaveHTML(await response.text());
-      ctx.waitUntil(cache.put(key, Response.json(wave, { headers: { 'Cache-Control': 'public, max-age=900' } })));
+      if (saved) { const value = await saved.json(); if (fresh(value)) return value; }
+      const historyKey = 'longdong:last-valid-wave:v1';
+      let previous = null;
+      if (env.CONDITIONS_HISTORY) try { previous = await env.CONDITIONS_HISTORY.get(historyKey, 'json'); } catch {}
+      let wave = null, failure = null;
+      try {
+        const response = await fetch('https://www.cwa.gov.tw/V8/C/M/OBS_Marine/48hrsSeaObs_MOD/OSea01.html', {
+          headers: { Accept: 'text/html' }, signal: AbortSignal.timeout(8000)
+        });
+        if (!response.ok) throw new Error(`CWA marine HTTP ${response.status}`);
+        wave = normalizeLongdongWaveHTML(await response.text());
+      } catch (error) { failure = error; }
+      if (fresh(wave)) {
+        ctx.waitUntil(cache.put(key, Response.json(wave, { headers: { 'Cache-Control': 'public, max-age=900' } })));
+        if (env.CONDITIONS_HISTORY && (!fresh(previous) || Date.parse(wave.observedAt) > Date.parse(previous.observedAt))) {
+          ctx.waitUntil(env.CONDITIONS_HISTORY.put(historyKey, JSON.stringify(wave), { expirationTtl: 6 * 3600 }));
+        }
+        return wave;
+      }
+      // Preserve the actual observation time; never refresh a stale record's age.
+      if (fresh(previous)) {
+        const fallback = { ...previous, fallback: true };
+        ctx.waitUntil(cache.put(key, Response.json(fallback, { headers: { 'Cache-Control': 'public, max-age=900' } })));
+        return fallback;
+      }
+      // Missing or failed observations must not become a 15-minute marine cache.
+      if (failure) throw failure;
       return wave;
     };
+    const fetchLongdongWave = () => {
+      if (marineInflight.has(url.origin)) return marineInflight.get(url.origin);
+      const task = readLongdongWave().finally(() => marineInflight.delete(url.origin));
+      marineInflight.set(url.origin, task); return task;
+    };
+    if (waveOnly) {
+      try {
+        const wave = await fetchLongdongWave();
+        return Response.json({ wave, fetchedAt: new Date().toISOString() }, {
+          headers: { ...headers, 'Cache-Control': wave?.status === 'available' ? 'public, max-age=900' : 'no-store', 'X-Content-Type-Options': 'nosniff' }
+        });
+      } catch {
+        return Response.json({ wave: null, error: 'Wave observations unavailable' }, { status: 502, headers: { ...headers, 'Cache-Control': 'no-store' } });
+      }
+    }
     const retainLongdongTides = async data => {
       const current = extractLongdongTideEvents(data), key = 'longdong:tide-events:v1';
       if (!env.CONDITIONS_HISTORY) return { events: mergeLongdongTideEvents([], current), retained: false };
