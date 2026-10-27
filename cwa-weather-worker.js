@@ -136,7 +136,7 @@ export default {
     }
 
     const cache = caches.default;
-    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v26`, { method: "GET" });
+    const cacheKey = new Request(`${url.origin}${url.pathname}?schema=climbing-conditions-v27`, { method: "GET" });
     const cached = waveOnly ? null : await cache.match(cacheKey);
     if (cached) {
       const responseHeaders = new Headers(cached.headers);
@@ -312,8 +312,8 @@ export default {
       }
       return rows.filter(item => Number.isFinite(item.distance) && item.distance <= 60).sort((a, b) => a.distance - b.distance)[0] || null;
     };
-    const normalizeStation = (data, route) => {
-      const selected = stationRows(data, route, "weather");
+    const normalizeStation = (data, route, selection = null) => {
+      const selected = selection || stationRows(data, route, "weather");
       if (!selected) return null;
       const row = selected.row;
       const weather = row.WeatherElement ?? row.weatherElement ?? {};
@@ -335,8 +335,26 @@ export default {
         dailyLow: temperatureValue(pick(weather, ["DailyLow"])),
         windDirection: numberValue(pick(weather, ["WindDirection", "WD"])),
         windSpeed: numberValue(pick(weather, ["WindSpeed", "WS"])),
-        observedAt: pick(row, ["DateTime"])
+        observedAt: row.ObsTime?.DateTime ?? row.obsTime?.DateTime ?? row.obsTime?.dateTime ?? pick(row, ["DateTime"])
       };
+    };
+    // Reuse the already fetched observation dataset; no additional CWA request.
+    const dailyTemperatureStation = (data, route) => {
+      const candidates = [];
+      const today = Math.floor((Date.now() + 8 * 3600000) / 86400000);
+      walkData(data, row => {
+        const id = row.StationId ?? row.StationID ?? row.stationId ?? row.stationID;
+        if (!id || !(row.WeatherElement ?? row.weatherElement)) return;
+        const position = stationPosition(row), distance = stationDistance(position, route);
+        if (!Number.isFinite(distance) || distance > 15) return;
+        const station = normalizeStation(null, route, { row, id: String(id), position, distance });
+        const observed = Date.parse(station.observedAt);
+        if (!Number.isFinite(observed) || observed > Date.now() + 15 * 60000 || Date.now() - observed > 3 * 3600000 || Math.floor((observed + 8 * 3600000) / 86400000) !== today) return;
+        if (!Number.isFinite(station.dailyHigh) || !Number.isFinite(station.dailyLow) || station.dailyLow > station.dailyHigh) return;
+        candidates.push(station);
+      });
+      candidates.sort((a, b) => Number(b.stationId === route.stationId) - Number(a.stationId === route.stationId) || a.distanceKm - b.distanceKm);
+      return candidates[0] || null;
     };
     const normalizeRain = (data, route) => {
       const selected = stationRows(data, route, "rain");
@@ -466,6 +484,7 @@ export default {
         wave: waveResult.status === "fulfilled" ? waveResult.value : null,
         waveError: waveResult.status === "rejected" ? "Wave observations unavailable" : null,
         station,
+        dailyTemperatureStation: url.pathname === "/api/longdong" && stationResult.status === "fulfilled" ? dailyTemperatureStation(stationResult.value, route) : null,
         hourlyRain: hourlyRainResult.status === "fulfilled" ? normalizeRain(hourlyRainResult.value, route) : null,
         conditionHistory: history,
         conditionsForecast: normalizeForecastConditions(threeHourResult.value, route),

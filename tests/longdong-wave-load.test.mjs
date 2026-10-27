@@ -29,9 +29,32 @@ for(const key of ['LocationName','locationName']){
 cacheData.clear();weatherData={success:true,records:{Location:[{LocationName:'其他地點',WeatherElement:[element('RelativeHumidity',95)]}]}};
 const noMatch=await(await worker.fetch(req('/api/longdong'),env,ctx)).json();await Promise.all(pending);assert.equal(noMatch.conditionsForecast.humidity,null);assert.equal(noMatch.conditionsForecast.locationName,undefined);
 console.log('PASS: uppercase/lowercase CWA location names, first matched forecast row, values preserved and absent-location fallback.');
+// Prefer the configured station when valid; otherwise use the nearest fresh
+// station within 15km from the SAME observation response, with no new fetch.
+function stationRecord(id,lat,high,low,stamp=new Date(now).toISOString()){
+ return {StationId:id,StationName:id,GeoInfo:{Coordinates:[{CoordinateName:'WGS84',StationLatitude:String(lat),StationLongitude:'121.919'}]},ObsTime:{DateTime:stamp},WeatherElement:{AirTemperature:'23',RelativeHumidity:'80',DailyExtreme:{DailyHigh:{TemperatureInfo:{AirTemperature:String(high)}},DailyLow:{TemperatureInfo:{AirTemperature:String(low)}}}}};
+}
+cacheData.clear();weatherData={success:true,records:{Station:[
+ stationRecord('C0A950',25.111,-99,-99),
+ stationRecord('STALE',25.112,30,20,new Date(now-4*3600000).toISOString()),
+ stationRecord('DISTANT',24.5,30,20),
+ stationRecord('NEAREST',25.12,26.8,22.4),
+ stationRecord('FARTHER',25.14,28,24)
+]}};
+const temperatureCalls=weatherCalls;
+let temperaturePayload=await(await worker.fetch(req('/api/longdong'),env,ctx)).json();await Promise.all(pending);
+assert.equal(temperaturePayload.station.stationId,'C0A950');assert.equal(temperaturePayload.station.dailyHigh,null);
+assert.equal(temperaturePayload.dailyTemperatureStation.stationId,'NEAREST');assert.equal(temperaturePayload.dailyTemperatureStation.dailyHigh,26.8);assert.equal(temperaturePayload.dailyTemperatureStation.dailyLow,22.4);
+assert.equal(temperaturePayload.dailyTemperatureStation.observedAt,new Date(now).toISOString());
+assert.equal(weatherCalls-temperatureCalls,5,'temperature fallback must reuse existing observations');
+cacheData.clear();weatherData.records.Station[0]=stationRecord('C0A950',25.111,27.1,23.2);
+temperaturePayload=await(await worker.fetch(req('/api/longdong'),env,ctx)).json();await Promise.all(pending);assert.equal(temperaturePayload.dailyTemperatureStation.stationId,'C0A950');
+cacheData.clear();weatherData.records.Station=[stationRecord('YESTERDAY',25.12,29,22,new Date(now-24*3600000).toISOString())];
+temperaturePayload=await(await worker.fetch(req('/api/longdong'),env,ctx)).json();await Promise.all(pending);assert.equal(temperaturePayload.dailyTemperatureStation,null);
+console.log('PASS: nested daily extremes, nearby fresh temperature fallback, preferred station preservation, stale/out-of-range rejection and no added CWA requests.');
 globalThis.fetch=savedFetch;globalThis.Date=NativeDate;
 // Exercise the actual UI wave-loading controller without the rest of the weather DOM.
-const source=fs.readFileSync(new URL('../longdong-conditions-widget-v33.js',import.meta.url),'utf8');new vm.Script(source);
+const source=fs.readFileSync(new URL('../longdong-conditions-widget-v34.js',import.meta.url),'utf8');new vm.Script(source);
 const section=source.slice(source.indexOf('// A cold full forecast'),source.indexOf('const beaufortLimits='));
 function controller({offline=false,initial=null}={}){
  const timers=new Map(),fields=new Map();let id=0,calls=0;
