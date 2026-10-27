@@ -4,14 +4,14 @@
 
 將 `webflow-embeds/resole.html` 的完整內容貼回 Webflow `/resole` 頁面原有 Code Embed，再 Publish。保留既有 navbar、menu overlay 與 footer；全站 Head／Footer、其他頁面及 Workers 不需因此更換。GitHub 更新不會自動發布 Webflow。
 
-新版圖例與樣式已內嵌於 HTML，無需另外上傳圖片或新增載入器；原有共用深淺主題程式仍沿用既有固定版本。HTML 約48,100字元，低於 Webflow 50,000字元限制。
+新版圖例與樣式已內嵌於 HTML，無需另外上傳圖片或新增載入器；原有共用深淺主題程式仍沿用既有固定版本。HTML 約49,500字元，低於 Webflow 50,000字元限制。
 
 ## 本次內容
 
 - 製造章節：使用站方更新的 Instinct VSR 外型 SVG，保留42個原始路徑及其 transform 與中文標記位置。整合時僅補上英文標記、可讀文字與深淺主題配色，並將 Illustrator 的通用 class 名稱加上專用前綴以免影響其他元件。圖上不放 VSR 字樣，結構與分層為製程示意，非原廠工程圖。
 - 製作流程維持鞋楦與材料準備、鞋面裁切與縫合、套楦成形、包邊與外底黏合、修整與檢查，不新增裝飾編碼。電腦左右對照，手機上下排列。
 - 材料卡片：XS Grip 2 新增 Instinct VSR、Drago、Solution Comp；XS Edge 新增 Instinct VS 男款前掌、TC Pro、Katana 男款。標示外底或前掌部位，並說明 Instinct VS 男款的腳跟採用 XS Grip 2。
-- Vibram XS Grip 2／XS Edge 官方連結放在各自材料描述下一行，鞋款例子排列其後。
+- Vibram XS Grip 2／XS Edge 官方連結整合於各自標題，標題右側顯示小型超連結圖示，移除原獨立來源文字列。鞋款範例使用預設收合的「舉例鞋款與使用部位」，點選後顯示鞋款與使用部位；採原生 details／summary，中文英文同步，字級桌機14px／手機12px，不使用額外按鈕外框。
 - 送修推薦加入 Roofguy Works 與 `https://lin.ee/9z18c2UT`，只顯示名稱與 LINE 入口，不附額外服務說明。
 
 ## SVG 維護
