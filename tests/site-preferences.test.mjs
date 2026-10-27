@@ -1,7 +1,7 @@
 import vm from 'node:vm';import fs from 'node:fs';import assert from 'node:assert/strict';
 const source=fs.readFileSync(new URL('../site-preferences-v1.js',import.meta.url),'utf8');
 function harness(seed={},options={}){
- const data=new Map(Object.entries(seed)),attrs=new Map(),events={},docEvents={},mediaEvents={},choices=['system','dark','light'].map(value=>({attrs:new Map([[value==='system'?'data-gw-color-mode':'data-gw-color-choice',value]]),getAttribute(n){return this.attrs.get(n)||null},setAttribute(n,v){this.attrs.set(n,v)}}));
+ const data=new Map(Object.entries(seed)),attrs=new Map([['data-gw-app-display',options.app?'standalone':'browser']]),events={},docEvents={},mediaEvents={},choices=['system','dark','light'].map(value=>({attrs:new Map([[value==='system'?'data-gw-color-mode':'data-gw-color-choice',value]]),getAttribute(n){return this.attrs.get(n)||null},setAttribute(n,v){this.attrs.set(n,v)}}));
  const languageChoices=['zh','en'].map(value=>({attrs:new Map([['data-gw-site-language',value]]),getAttribute(n){return this.attrs.get(n)||null},setAttribute(n,v){this.attrs.set(n,v)}}));
  const page={dataset:{language:'zh'},lang:'zh',querySelector(selector){const language=selector.includes('="en"')?'en':'zh';return {click(){page.dataset.language=language;page.lang=language}}}},toggle={attrs:new Map(),setAttribute(n,v){this.attrs.set(n,v)},querySelector(){return {textContent:'精簡首頁'}}};
  const root={getAttribute:n=>attrs.get(n)||null,setAttribute:(n,v)=>attrs.set(n,v)};
@@ -18,10 +18,26 @@ let next=harness(Object.fromEntries(h.data),{light:false});assert.equal(next.win
 h=harness({'gw-color-theme-v1':'dark','gw-color-theme-v1-day':'2000-01-01'});assert.equal(h.window.GWColorTheme.get(),'dark');assert(!h.data.has('gw-color-theme-v1-day'));h.change('pageshow');assert.equal(h.window.GWColorTheme.get(),'dark');
 h.data.set('gw-color-theme-v1','system');h.change('storage');assert.equal(h.window.GWColorTheme.get(),'light');h.data.clear();h.change('storage');assert.equal(h.window.GWColorTheme.getMode(),'system');
 h=harness({}, {blockStorage:true});h.window.GWColorTheme.set('dark');h.change('pageshow');assert.equal(h.window.GWColorTheme.get(),'dark');
-h=harness();assert.equal(h.window.GWHomeLayout.get(),false);h.window.GWHomeLayout.set(true);assert.equal(h.window.GWHomeLayout.isCompact(),true);assert.equal(h.data.get('gw-home-compact-v1'),'compact');assert.equal(h.toggle.attrs.get('aria-checked'),'true');
+h=harness({}, {app:true});assert.equal(h.window.GWHomeLayout.get(),false);h.window.GWHomeLayout.set(true);assert.equal(h.window.GWHomeLayout.isCompact(),true);assert.equal(h.data.get('gw-home-compact-v1'),'compact');assert.equal(h.toggle.attrs.get('aria-checked'),'true');
 h.phone.matches=false;h.phoneChange();assert.equal(h.window.GWHomeLayout.isCompact(),false);assert.equal(h.window.GWHomeLayout.get(),true);h.phone.matches=true;h.phoneChange();assert.equal(h.window.GWHomeLayout.isCompact(),true);
-next=harness(Object.fromEntries(h.data));assert.equal(next.window.GWHomeLayout.isCompact(),true);next.window.GWHomeLayout.set(false);assert.equal(next.window.GWHomeLayout.isCompact(),false);
+next=harness(Object.fromEntries(h.data),{app:true});assert.equal(next.window.GWHomeLayout.isCompact(),true);next.window.GWHomeLayout.set(false);assert.equal(next.window.GWHomeLayout.isCompact(),false);
+h=harness();
 h.window.GWSiteLanguage.set('en');assert.equal(h.page.dataset.language,'en');assert.equal(h.languageChoices[1].getAttribute('aria-pressed'),'true');let languageReload=harness(Object.fromEntries(h.data));assert.equal(languageReload.page.dataset.language,'en');languageReload.window.GWSiteLanguage.set('zh');assert.equal(languageReload.page.dataset.language,'zh');
+
+// A previous compact choice must never alter either mobile or desktop website.
+for(const mobile of [true,false]){
+ const web=harness({'gw-home-compact-v1':'compact'},{mobile});
+ assert.equal(web.window.GWHomeLayout.isCompact(),false);
+ assert.equal(web.root.getAttribute('data-gw-home-compact'),'false');
+ web.window.GWHomeLayout.set(false);
+ assert.equal(web.data.get('gw-home-compact-v1'),'compact');
+}
+// Restoring an installed App keeps its preference; desktop-sized App stays full.
+const installed=harness({'gw-home-compact-v1':'compact'},{app:true});
+assert.equal(installed.root.getAttribute('data-gw-home-compact'),'true');
+assert.equal(installed.window.GWHomeLayout.isCompact(),true);
+assert.equal(harness({'gw-home-compact-v1':'compact'},{app:true,mobile:false}).window.GWHomeLayout.isCompact(),false);
+
 const original=h.window.GWColorTheme;vm.runInContext(source,h.context);assert.equal(h.window.GWColorTheme,original);
 const root=new URL('../webflow-embeds/',import.meta.url);for(const file of ['home.html','menu-overlay-full.html','app-head.html','longdong.html']){const html=fs.readFileSync(new URL(file,root),'utf8');assert(html.length<50000,file+' exceeds Webflow code limit');for(const match of html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g))new vm.Script(match[1]);}
-console.log('PASS: persistent three-state theme, device changes, legacy day-key migration, blocked storage, cross-page theme/language persistence, existing translator activation, mobile-only compact choice, desktop preservation and idempotent bootstrap.');
+console.log('PASS: persistent three-state theme, device changes, legacy day-key migration, blocked storage, cross-page theme/language persistence, existing translator activation, App-only mobile compact choice, browser preference isolation, desktop preservation and idempotent bootstrap.');

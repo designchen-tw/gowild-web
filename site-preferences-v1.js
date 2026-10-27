@@ -1,4 +1,4 @@
-/* Persistent appearance and optional mobile homepage layout. No animation replacement. */
+/* Persistent appearance and optional mobile App homepage layout. No animation replacement. */
 (function(){
  'use strict';
  if(window.GWColorTheme){window.GWColorTheme.sync();return;}
@@ -45,9 +45,10 @@
  var phone=window.matchMedia('(max-width:767px), (pointer:coarse) and (orientation:landscape) and (max-height:600px)');
  var languageOrigin=null,languageBar=null;
  function read(){try{compact=localStorage.getItem(key)==='compact';}catch(error){}}
- function active(){return compact&&phone.matches;}
+ function app(){return root.getAttribute('data-gw-app-display')==='standalone';}
+ function active(){return app()&&compact&&phone.matches;}
  function sync(){
-  root.setAttribute('data-gw-home-compact',String(compact));
+  root.setAttribute('data-gw-home-compact',String(app()&&compact));
   var home=document.querySelector('[data-gw-home]'),page=document.querySelector('main[data-language],main[lang],#outside-of-rock');
   var en=root.getAttribute('data-gw-app-language')==='en'||page&&(page.dataset.language==='en'||page.lang==='en');
   document.querySelectorAll('[data-gw-home-compact-toggle]').forEach(function(button){
@@ -67,13 +68,13 @@
   if(page&&page!==observedRoot){if(languageObserver)languageObserver.disconnect();observedRoot=page;languageObserver=new MutationObserver(sync);languageObserver.observe(page,{attributes:true,attributeFilter:['data-language','lang']});}
  }
  function refresh(){sync();if(window.GWHomeNativeScrollPin)window.GWHomeNativeScrollPin.refresh();window.dispatchEvent(new Event('gw-home-mode-change'));window.dispatchEvent(new Event('resize'));}
- function set(value){compact=!!value;try{localStorage.setItem(key,compact?'compact':'full');}catch(error){}refresh();}
+ function set(value){if(!app())return;compact=!!value;try{localStorage.setItem(key,compact?'compact':'full');}catch(error){}refresh();}
  read();window.GWHomeLayout={set:set,get:function(){return compact;},isCompact:active,sync:sync};sync();
  document.addEventListener('click',function(event){var button=event.target.closest&&event.target.closest('[data-gw-home-compact-toggle],[data-gw-home-mode]');if(button){event.preventDefault();var choice=button.getAttribute('data-gw-home-mode');set(choice?choice==='compact':!compact);}});
  window.addEventListener('storage',function(event){if(event.key===key||event.key===null){read();refresh();}});
  window.addEventListener('pageshow',function(){read();refresh();});
  if(phone.addEventListener)phone.addEventListener('change',refresh);else phone.addListener(refresh);
- new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['data-gw-app-language']});
+ new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['data-gw-app-language','data-gw-app-display']});
  var assembling=new MutationObserver(sync);assembling.observe(root,{childList:true,subtree:true});
  function ready(){assembling.disconnect();refresh();}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready,{once:true});else ready();
 })();

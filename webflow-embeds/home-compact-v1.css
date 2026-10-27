@@ -1,22 +1,22 @@
-/* Mobile-only preference; desktop always retains the full homepage. */
+/* Mobile App only; all browser views retain the full homepage. */
 .gw-home-compact-setting{display:none}
 .gw-home__compact-language{display:none}
 @media(max-width:767px),(pointer:coarse) and (orientation:landscape) and (max-height:600px){
- .gw-home-compact-setting{display:block;margin:16px 0 0;text-align:center}
+ html[data-gw-app-display="standalone"] .gw-home-compact-setting{display:block;margin:16px 0 24px;text-align:center}
+ html[data-gw-app-display="standalone"] .gw-menu-panel>.gw-menu-brand{margin-bottom:0}
  .gw-menu-shell .gw-home-compact-toggle{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:36px;padding:4px 8px;border:0;border-radius:4px;background:transparent;color:inherit;font:400 12px/1.6 "GW App Avenir",Arial,sans-serif;cursor:pointer;opacity:1}
  .gw-home-compact-track{display:inline-block;position:relative;width:28px;height:16px;flex:none;box-sizing:border-box;border:1px solid currentColor;border-radius:99px;opacity:.7}
  .gw-home-compact-track::after{content:"";position:absolute;top:3px;left:3px;width:8px;height:8px;border-radius:50%;background:currentColor;transition:transform .15s}
  .gw-home-compact-toggle[aria-checked="true"] .gw-home-compact-track{background:rgba(169,217,182,.18);color:#a9d9b6;opacity:1}
  .gw-home-compact-toggle[aria-checked="true"] .gw-home-compact-track::after{transform:translateX(12px)}
  html[data-gw-theme="light"] .gw-home-compact-toggle[aria-checked="true"] .gw-home-compact-track{background:rgba(41,103,68,.12);color:#296744}
- html[data-gw-home-compact="true"][data-gw-page-theme="home"] body>.selection-for-animation,
- html[data-gw-home-compact="true"][data-gw-page-theme="home"] body>.selection-from-animation,
- html[data-gw-home-compact="true"][data-gw-page-theme="home"] body>.go-wild-slide.main-page,
- html[data-gw-home-compact="true"][data-gw-page-theme="home"] #gw-home-overview,
- html[data-gw-home-compact="true"][data-gw-page-theme="home"] [data-home-link="overview"]{display:none!important}
- html[data-gw-home-compact="true"][data-gw-page-theme="home"] .gw-home__nav{grid-template-columns:repeat(4,minmax(0,1fr))}
- html[data-gw-home-compact="true"][data-gw-page-theme="home"] #gw-home-discover{padding-top:40px!important;border-top:0!important}
- html[data-gw-home-compact="true"][data-gw-page-theme="home"] .gw-home__compact-language{display:flex;justify-content:center;padding:24px var(--home-page-gutter,5vw) 0}
+ html[data-gw-app-display="standalone"][data-gw-home-compact="true"][data-gw-page-theme="home"] body>.selection-for-animation,
+ html[data-gw-app-display="standalone"][data-gw-home-compact="true"][data-gw-page-theme="home"] body>.selection-from-animation,
+ html[data-gw-app-display="standalone"][data-gw-home-compact="true"][data-gw-page-theme="home"] body>.go-wild-slide.main-page,
+ html[data-gw-app-display="standalone"][data-gw-home-compact="true"][data-gw-page-theme="home"] #gw-home-overview,
+ html[data-gw-app-display="standalone"][data-gw-home-compact="true"][data-gw-page-theme="home"] [data-home-link="overview"]{display:none!important}
+ html[data-gw-app-display="standalone"][data-gw-home-compact="true"][data-gw-page-theme="home"] .gw-home__nav{grid-template-columns:repeat(4,minmax(0,1fr))}
+ html[data-gw-app-display="standalone"][data-gw-home-compact="true"][data-gw-page-theme="home"] #gw-home-discover{padding-top:40px!important;border-top:0!important}
  html[data-gw-home-compact="true"][data-gw-app-display="standalone"] .gw-home__compact-language{display:none}
 }
 @media(prefers-reduced-motion:reduce){.gw-home-compact-track::after{transition:none}}
@@ -53,5 +53,4 @@ html[data-gw-theme="dark"] .gw-menu-shell a.gw-menu-brand{color:rgba(255,255,255
 html[data-gw-theme="light"] .gw-menu-shell a.gw-menu-brand{color:rgba(0,0,0,.9)}
 html[data-gw-theme="dark"] .gw-menu-shell .gw-menu-brand .gw-menu-brand__logo{filter:grayscale(1) brightness(0) invert(1)!important;opacity:.9!important}
 html[data-gw-theme="light"] .gw-menu-shell .gw-menu-brand .gw-menu-brand__logo{filter:grayscale(1) brightness(0)!important;opacity:.9!important}
-.gw-menu-brand+.gw-home-compact-setting{margin-top:16px}
 @media(hover:hover) and (pointer:fine){html[data-gw-theme="dark"] .gw-menu-shell a.gw-menu-brand:hover{color:#fff}html[data-gw-theme="light"] .gw-menu-shell a.gw-menu-brand:hover{color:#000}}
