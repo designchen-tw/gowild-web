@@ -3,8 +3,8 @@ const NativeDate=Date;let now=NativeDate.parse('2026-10-27T15:10:00+08:00');glob
 const row=height=>'<tr><th><a onclick="stations_profile(\'46694A\')">龍洞浮標<br>27日15時</a></th>'+['',height,'<span class="sr-only">東北</span>','6.6','5','','','','','','',''].map(x=>'<td>'+x+'</td>').join('')+'</tr>';
 const cacheData=new Map(),kvData=new Map(),pending=[];globalThis.caches={default:{match:async r=>cacheData.get(r.url)?.clone(),put:async(r,v)=>cacheData.set(r.url,v.clone())}};
 const env={CWA_API_KEY:'test-not-a-secret',CONDITIONS_HISTORY:{get:async k=>kvData.has(k)?JSON.parse(kvData.get(k)):null,put:async(k,v)=>kvData.set(k,v)}};const ctx={waitUntil:p=>pending.push(p)};
-let marineCalls=0,weatherCalls=0,fail=false,missing=false,barrier=null;
-const savedFetch=globalThis.fetch;globalThis.fetch=async input=>{if(String(input).includes('/OBS_Marine/')){marineCalls++;if(barrier)await barrier;if(fail)throw Error('timeout');return new Response(row(missing?'-':'1.8'));}weatherCalls++;return Response.json({success:true,records:{Station:[]}})};
+let marineCalls=0,weatherCalls=0,fail=false,missing=false,barrier=null,weatherData={success:true,records:{Station:[]}};
+const savedFetch=globalThis.fetch;globalThis.fetch=async input=>{if(String(input).includes('/OBS_Marine/')){marineCalls++;if(barrier)await barrier;if(fail)throw Error('timeout');return new Response(row(missing?'-':'1.8'));}weatherCalls++;return Response.json(weatherData)};
 const req=(path='/api/longdong/wave',origin='https://gowild.one')=>new Request('https://test.example'+path,{headers:{Origin:origin}});
 let r=await worker.fetch(req(),env,ctx),d=await r.json();await Promise.all(pending);assert.equal(r.status,200);assert.equal(d.wave.height,1.8);assert.equal(weatherCalls,0);assert.equal(marineCalls,1);const originalStamp=d.wave.observedAt;
 await worker.fetch(req(),env,ctx);assert.equal(marineCalls,1);assert(kvData.has('longdong:last-valid-wave:v1'));
@@ -15,6 +15,20 @@ missing=false;r=await worker.fetch(req(),env,ctx);d=await r.json();assert.equal(
 cacheData.clear();kvData.clear();let release;barrier=new Promise(r=>release=r);const before=marineCalls;const a=worker.fetch(req(),env,ctx),b=worker.fetch(req(),env,ctx);for(let i=0;i<12;i++)await Promise.resolve();assert.equal(marineCalls,before+1);release();await Promise.all([a,b]);barrier=null;await Promise.all(pending);
 assert.equal((await worker.fetch(req('/api/longdong/wave','https://evil.example'),env,ctx)).status,403);
 for(const crag of ['kenting','defulan','guanziling']){const before=marineCalls;await worker.fetch(req('/api/'+crag),env,ctx);await Promise.all(pending);assert.equal(marineCalls,before);}
+// Forecast selection preserves first matching location and both CWA key casings.
+const element=(name,value)=>({ElementName:name,Time:[{StartTime:new Date(now).toISOString(),ElementValue:[{Value:value}]}]});
+for(const key of ['LocationName','locationName']){
+ cacheData.clear();weatherData={success:true,records:{Location:[
+  {[key]:'其他地點',WeatherElement:[element('RelativeHumidity',95)]},
+  {[key]:'龍洞灣公園',WeatherElement:[element('RelativeHumidity',84),element('Temperature',26)]},
+  {[key]:'龍洞灣公園',WeatherElement:[element('RelativeHumidity',55)]}
+ ]}};
+ const data=await(await worker.fetch(req('/api/longdong'),env,ctx)).json();await Promise.all(pending);
+ assert.equal(data.conditionsForecast.locationName,'龍洞灣公園');assert.equal(data.conditionsForecast.humidity,84);assert.equal(data.conditionsForecast.temperature,26);
+}
+cacheData.clear();weatherData={success:true,records:{Location:[{LocationName:'其他地點',WeatherElement:[element('RelativeHumidity',95)]}]}};
+const noMatch=await(await worker.fetch(req('/api/longdong'),env,ctx)).json();await Promise.all(pending);assert.equal(noMatch.conditionsForecast.humidity,null);assert.equal(noMatch.conditionsForecast.locationName,undefined);
+console.log('PASS: uppercase/lowercase CWA location names, first matched forecast row, values preserved and absent-location fallback.');
 globalThis.fetch=savedFetch;globalThis.Date=NativeDate;
 // Exercise the actual UI wave-loading controller without the rest of the weather DOM.
 const source=fs.readFileSync(new URL('../longdong-conditions-widget-v33.js',import.meta.url),'utf8');new vm.Script(source);

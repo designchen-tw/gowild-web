@@ -403,12 +403,14 @@ export default {
       return directions[String(raw ?? "").replace(/偏|風|風向|\s/g, "")] ?? null;
     };
     const normalizeForecastConditions = (data, route) => {
-      let location = null;
+      /** @type {Array<{ LocationName?: string, locationName?: string }>} */
+      const locations = [];
       walkData(data, row => {
         const id = row.LocationId ?? row.LocationID ?? row.locationId ?? row.locationID ?? row.ParameterSet?.Parameter?.ParameterValue;
         const name = String(row.LocationName ?? row.locationName ?? "");
-        if (!location && ((route.conditionLocationId && String(id) === route.conditionLocationId) || (route.conditionLocationName && name.includes(route.conditionLocationName)))) location = row;
+        if (!locations.length && ((route.conditionLocationId && String(id) === route.conditionLocationId) || (route.conditionLocationName && name.includes(route.conditionLocationName)))) locations.push(row);
       });
+      const location = locations[0];
       if (!location) return { humidity: null, temperature: null, dewPoint: null, feels: null, windDirection: null, windSpeed: null };
       const best = { humidity: Infinity, temperature: Infinity, dewPoint: Infinity, feels: Infinity, windDirection: Infinity, windSpeed: Infinity };
       const result = { humidity: null, temperature: null, dewPoint: null, feels: null, windDirection: null, windSpeed: null, locationName: location.LocationName ?? location.locationName ?? "" };
