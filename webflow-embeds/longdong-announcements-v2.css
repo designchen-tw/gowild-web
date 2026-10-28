@@ -1,0 +1,62 @@
+main.ld-detail .ld-announcements{margin:0 0 32px;padding:22px 0;border-block:1px solid var(--line,rgba(255,255,255,.14));background:transparent;text-align:center}
+main.ld-detail .ld-announcements__head{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;margin-bottom:14px}
+main.ld-detail .ld-announcements__head h3{margin:0;color:var(--gw-ink-muted,var(--gray));font-size:var(--gw-type-label,14px);font-weight:400;line-height:1.45;letter-spacing:0}
+main.ld-detail .ld-announcements__head time{color:var(--gw-ink-muted,var(--gray));font-size:var(--gw-type-label,14px);font-weight:400;line-height:1.45;letter-spacing:0;white-space:nowrap}
+main.ld-detail .ld-announcements ol{display:grid;gap:12px;list-style:none;margin:0;padding:0}
+main.ld-detail .ld-announcements li{margin:0;padding:0}
+main.ld-detail .ld-announcements li strong{display:block;margin:0 0 2px;color:var(--gw-ink,var(--white));font-size:max(12px,var(--gw-type-label,14px));font-weight:600;line-height:1.6}
+main.ld-detail .ld-announcements li p{margin:0;color:var(--gw-ink-secondary,var(--gray));font-size:max(12px,var(--gw-type-label,14px));line-height:1.8}
+@media(max-width:520px){main.ld-detail .ld-announcements{padding-block:18px;margin-bottom:26px}main.ld-detail .ld-announcements__head{gap:6px}}
+
+main.ld-detail .ld-announcements__note{margin:0;color:var(--gw-ink-detail,var(--gray));font-size:var(--gw-type-detail,12px);font-weight:400;line-height:1.6}
+/* Match the full-width tagline used by the other crag pages. */
+main.ld-detail #ld-about-title [data-tagline]{max-width:100%!important}
+
+main.ld-detail .ld-announcements__title-row{display:flex;align-items:baseline;justify-content:center;gap:10px}
+
+/* Notice card and compact collapsed slideshow. */
+html[data-gw-page-theme="longdong"] main.ld-detail .ld-announcements{
+  margin:0 0 36px;
+  padding:28px 32px 16px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--ld-theme-soft,#0b0d0e);
+  text-align:center;
+}
+main.ld-detail .ld-announcements .ld-announcements__head{
+  gap:10px;
+  margin:0 0 24px;
+  padding:0 0 22px;
+  border-bottom:1px solid var(--line);
+}
+main.ld-detail .ld-announcements .ld-announcements__note{max-width:660px}
+main.ld-detail .ld-announcements ol{max-width:760px;margin:0 auto;gap:22px}
+html[data-gw-page-theme="longdong"] main.ld-detail .ld-announcements li strong{
+  margin:0 0 6px;
+  color:var(--ld-theme-accent,#a9d9b6);
+  font-size:var(--gw-type-card,16px);
+  font-weight:600;
+  line-height:1.6;
+}
+main.ld-detail .ld-announcements li p{font-size:var(--gw-type-label,14px);line-height:1.8}
+/* Slides share a grid cell, preserving the tallest message's height. */
+main.ld-detail .ld-announcements.is-collapsed ol{grid-template-areas:"notice";gap:0}
+main.ld-detail .ld-announcements.is-collapsed ol>li{grid-area:notice;visibility:hidden;opacity:0;pointer-events:none}
+main.ld-detail .ld-announcements.is-collapsed ol>li.is-current{visibility:visible;opacity:1;pointer-events:auto}
+main.ld-detail .ld-announcements .ld-notice-footer{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 20px;margin-top:8px;color:var(--ld-theme-muted);font-size:var(--gw-type-detail,12px);line-height:1.5}
+.ld-notice-playback{display:flex;align-items:center;justify-content:center;gap:2px}
+.ld-notice-playback[hidden]{display:none}
+main.ld-detail .ld-announcements .ld-notice-footer button{display:inline-flex;align-items:center;justify-content:center;min-height:32px;margin:0;padding:4px 6px;border:0;border-radius:3px;background:transparent;color:inherit;font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ld-notice-footer button svg{display:block;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.ld-notice-playback button{width:32px}
+.ld-notice-position{min-width:38px;font-variant-numeric:tabular-nums}
+.ld-notice-toggle{gap:5px}
+.ld-notice-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.ld-notice-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(hover:hover) and (pointer:fine){main.ld-detail .ld-announcements .ld-notice-footer button:hover{color:var(--ld-theme-text)}}
+@media(max-width:520px){
+  html[data-gw-page-theme="longdong"] main.ld-detail .ld-announcements{margin-bottom:28px;padding:22px 20px 12px;border-radius:14px}
+  main.ld-detail .ld-announcements .ld-announcements__head{gap:8px;margin-bottom:20px;padding-bottom:18px}
+  main.ld-detail .ld-announcements ol{gap:20px}
+  main.ld-detail .ld-announcements .ld-notice-footer{margin-top:6px;gap:4px 12px}
+}
