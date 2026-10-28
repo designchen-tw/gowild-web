@@ -1,5 +1,9 @@
 # GO WILD 網站原始碼
 
+## 地區存取控制 Worker（2026-10-28 記錄）
+
+新增管理者提供的目前「404 Worker」原始碼 [`geo-access-worker.js`](geo-access-worker.js)，保存 36 個放行地區、驗證機器人例外、404 回應及轉送前移除內部驗證標頭的邏輯，並記錄先以 `true` 將標頭歸零、再以 `cf.client.bot` 設為 `1` 的兩條 Transform Rules。詳細規則與未取得的部署設定範圍見 [`geo-access-worker.md`](geo-access-worker.md)。本次僅記錄專案來源，未變更 Cloudflare 部署、氣象 Worker 或離線 Worker。
+
 首頁內容區已與目前Webflow footer對齊：介紹內文、DISCOVER／LEARN／EXPLORE卡片及聯絡表單統一桌機15vw、≤991px為7vw、≤767px為5vw的水平留白。LEARN五張卡片改用編輯者指定的彩色照片，救援使用編輯者更正的rescue.avif照片。landing固定投影片、sticky動畫及原生表單整合程式保留。需重貼 `webflow-embeds/home.html` 完整Embed並Publish。
 
 
