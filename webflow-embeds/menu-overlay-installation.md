@@ -9,6 +9,9 @@
 - 入口及視窗頂端均使用使用者提供的圓形驚嘆號，完整保留向量形狀，並沿用灰階、深淺主題及既有語言設定。原始 SVG 保留於 `webflow-embeds/svg/website-statement-danger.svg`；Embed 直接內嵌圖形，不需額外載入圖片。
 - 聲明以已確認的中文版本為準，英文為對應翻譯。
 - 原生 dialog 限制焦點於視窗內，支援關閉按鈕、Escape、點擊外部關閉及關閉後焦點回位。視窗內容可獨立捲動。
+- 聲明內文標記 Finsweet preserve，並以被動觸控事件隔離單指 touchmove，避免較晚建立的視窗被 Finsweet v1 的全頁觸控鎖定攔截；保留原生捲動與雙指縮放，背景鎖定維持原樣。
+- Finsweet v1 對 preserve 的說明見[官方文件](https://finsweet.com/attributes/v1/disable-scrolling#preserve)。事件隔離同時處理內文區在初始化之後才建立的情況。
+- 語言切換至下方工具列的上方間距為 28px；網站聲明維持在工具列下方。
 - GitHub 更新不會自動發布 Webflow；請替換 Embed 並 Publish。
 
 建議發布後確認：手機及電腦的工具列順序、深淺主題、中文／英文聲明，以及 App 模式下的離線入口。

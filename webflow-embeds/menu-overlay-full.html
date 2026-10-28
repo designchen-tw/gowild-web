@@ -397,13 +397,15 @@ html[data-gw-theme] .gw-menu-shell .gw-menu-brand{color:var(--gw-menu-idle)}html
 
 <style data-gw-statement-style>
 .gw-menu-statement-row{margin:8px 0 0;text-align:center}
+html[data-gw-theme] .gw-menu-shell .gw-menu-tools{margin-top:28px}
+.gw-menu-tools:empty+.gw-menu-statement-row{margin-top:28px}
 html[data-gw-theme] .gw-menu-shell .gw-menu-statement-entry{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;margin:0;padding:6px 8px;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--gw-menu-idle,#adadad);font:400 12px/1.6 "GW Avenir",Arial,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .gw-menu-statement-entry svg{position:relative;top:-1px;display:block;width:14px;height:14px;flex:none;fill:currentColor;stroke:none}
 .gw-statement-dialog,.gw-statement-dialog *{box-sizing:border-box}
 .gw-statement-dialog{--statement-bg:#0b0d0e;--statement-text:#ededed;--statement-body:#adadad;--statement-line:rgba(255,255,255,.18);--statement-hover:#fff;width:min(680px,calc(100% - 40px));max-width:none;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);margin:auto;padding:0;border:1px solid var(--statement-line);border-radius:16px;background:var(--statement-bg);color:var(--statement-body);font:400 14px/1.85 "GW Avenir",Arial,sans-serif;overflow:hidden;box-shadow:none;overscroll-behavior:contain;color-scheme:dark}
 html[data-gw-theme="light"] .gw-statement-dialog{--statement-bg:#f6f7f3;--statement-text:#262626;--statement-body:#4d4d4d;--statement-line:rgba(0,0,0,.18);--statement-hover:#000;color-scheme:light}
 .gw-statement-dialog::backdrop{background:rgba(0,0,0,.36);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-.gw-statement-scroll{max-height:calc(100vh - 50px);max-height:calc(100dvh - 50px);overflow-y:auto;overscroll-behavior:contain;padding:38px 40px 32px;scrollbar-width:thin;scrollbar-color:var(--statement-line) transparent}
+.gw-statement-scroll{max-height:calc(100vh - 50px);max-height:calc(100dvh - 50px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y pinch-zoom;padding:38px 40px 32px;scrollbar-width:thin;scrollbar-color:var(--statement-line) transparent}
 .gw-statement-header{text-align:center;margin:0 0 26px}
 .gw-statement-mark{display:block;width:32px;height:32px;margin:0 auto 14px;fill:currentColor;stroke:none;color:var(--statement-body)}
 .gw-statement-dialog h2{margin:0;color:var(--statement-text);font-size:20px;font-weight:600;line-height:1.5}
@@ -423,65 +425,64 @@ html[data-gw-statement-open] .mobile-overlay.gw{overflow-y:hidden!important}
 <script>window.GWStatementCopy={"title":["網站聲明","Website Statement"],"intro":["使用本網站前，請詳閱以下聲明。繼續瀏覽或使用本站內容，即表示您已閱讀、理解並同意以下使用約定；若不同意，請停止使用本站內容。","Please read this statement before using this website. By continuing to browse or use its content, you acknowledge that you have read, understood and agreed to the following terms of use. If you do not agree, please stop using the website’s content."],"sections":[{"heading":["關於本站","About this website"],"paragraphs":[["GO WILD｜夠野戶外，是由台灣人創立的攀岩資訊平台，致力於整合分散的台灣岩場、在地資源與戶外學習資訊，讓在地攀岩者及來台旅行的朋友，都能更方便地認識與探索台灣的攀岩環境。","GO WILD｜夠野戶外 is a climbing information platform founded by Taiwanese people. It brings together information about Taiwan’s crags, local resources and outdoor learning opportunities, helping local climbers and visitors better understand and explore climbing in Taiwan."],["在此也感謝參與資料提供、網站建置及其他協作的夥伴，讓這個平台得以成立。","We thank the partners who have contributed information, website development and other support to make this platform possible."],["如有合作需求，歡迎透過電子郵件或網站聯絡表單與我們聯繫。","For collaboration enquiries, please contact us by email or through the website’s contact form."]]},{"heading":["攀登風險與使用責任","Climbing risks and personal responsibility"],"paragraphs":[["攀岩及相關戶外活動具有嚴重受傷或死亡的風險。","Climbing and related outdoor activities carry a risk of serious injury or death."],["本站內容僅供資訊參考，不構成攀登教學、技術指導或安全保證，也不能取代具備相應資格與經驗人員的現場指導。","This website provides information for reference only. Its content does not constitute climbing instruction, technical guidance or a guarantee of safety, and cannot replace in-person instruction from someone with appropriate qualifications and experience."],["請依自身能力、隊伍經驗及現場條件評估活動，並對自己的決策與行動負責。","Assess activities according to your own abilities, your team’s experience and the conditions on site. You are responsible for your own decisions and actions."]]},{"heading":["資料正確性與更新","Accuracy and updates"],"paragraphs":[["本站依有限的公開資料與在地資訊整理，內容可能有誤、遺漏或未能即時更新。","This website is compiled from limited public and local information. Content may contain errors or omissions and may not be updated promptly."],["岩場固定點、路線、通行條件及救援器材的位置與可用狀態，都可能隨時變動。","Fixed protection, routes, access conditions, and the location and availability of rescue equipment may change at any time."],["使用前請向原始來源查證，並再次確認現場狀況。本站資訊不應作為活動規劃或安全判斷的唯一依據。","Check the original sources before use and confirm conditions on site. This website should not be your sole basis for planning an activity or making safety decisions."]]},{"heading":["天氣、海況與攀登現況","Weather, sea conditions and climbing conditions"],"paragraphs":[["本站的氣象、雨量、風速、浪況及潮汐資訊，來自相關測站、公開預報或資料推估，可能受到測站距離、地形差異及資料延遲等因素影響。","Weather, rainfall, wind, wave and tide information comes from relevant stations, public forecasts or data-based estimates. It may be affected by station distance, differences in terrain, data delays and other factors."],["本站呈現的攀登現況不等同於岩壁或通行路線的實際狀態，也不代表適合攀登。請綜合現場觀察、官方警報及最新公告作出判斷。","The climbing conditions shown here do not represent the actual state of a rock face or access route, nor do they indicate that climbing is suitable. Make decisions using on-site observations, official warnings and current notices together."]]},{"heading":["英文翻譯與在地背景","English translation and local context"],"paragraphs":[["本站英文內容由 AI 翻譯，可能存在錯誤，或未能完整傳達中文原意。如有理解上的差異，請以中文版為準。","The English content on this website is translated by AI. It may contain errors or fail to convey the full meaning of the Chinese original. If there is a difference in interpretation, please refer to the Chinese version as the authoritative text."],["台灣的戶外環境、攀岩發展、土地使用與歷史背景，可能與其他國家或地區有很大差異。請尊重台灣的文化、歷史、法律及在地社群，避免直接套用海外經驗或慣例。","Taiwan’s outdoor environment, climbing development, land use and historical background may differ greatly from those of other countries or regions. Respect Taiwan’s culture, history, laws and local communities, and avoid applying overseas experience or customs without considering the local context."]]},{"heading":["岩場開發與維護","Route development and crag maintenance"],"paragraphs":[["台灣許多岩場由在地攀岩社群、相關協會及維護人員長期投入心力維護。未取得在地社群、相關維護單位，以及土地所有人或管理單位所需的同意前，請勿自行開設新路線、增設或移除固定點，或進行其他可能改變岩場環境的開發行為。","Many crags in Taiwan are maintained through the long-term efforts of local climbing communities, associations and individual maintainers. Do not establish new routes, add or remove fixed protection, or carry out other development that may alter a crag without first obtaining the necessary agreement from the local community, relevant maintenance groups, and landowners or land managers."],["有意參與開發或維護，請先了解當地的使用規範、歷史與既有協議，與相關人員充分溝通，取得同意後再行動。","If you wish to help with development or maintenance, first learn about local rules, history and existing agreements. Communicate fully with the people involved and obtain their agreement before taking action."]]},{"heading":["課程推薦與學習資訊","Course recommendations and learning information"],"paragraphs":[["本站提供的課程資訊、機構推薦及學習路徑，僅供比較與資料參考，相關課程均由各承辦單位自行辦理。","Course information, provider recommendations and learning pathways on this website are offered for comparison and reference only. Courses are independently organised by their respective providers."],["課程內容、資格要求、費用、保險及報名事項，請直接向授課或發證單位確認。","Confirm course content, eligibility requirements, fees, insurance and registration details directly with the course provider or certifying organisation."],["收錄於本站不代表本站承辦、認證或保證其服務。","Inclusion on this website does not mean that GO WILD organises, certifies or guarantees the service."]]},{"heading":["照片、著作權與聯絡","Photography, copyright and contact"],"paragraphs":[["本站照片、文字及其他作品的著作權歸各權利人所有；照片中人物的肖像及隱私權，也應受到尊重。","Copyright in photographs, text and other works on this website belongs to the respective rights holders. The image and privacy rights of people shown in photographs must also be respected."],["未經授權，請勿擅自轉載或使用。","Please do not reproduce or use these works without permission."],["如發現資料錯誤、有權利疑慮，或希望移除涉及您的內容，請透過本站聯絡信箱告知，我們會儘速確認並處理。","If you find an error, have a rights-related concern, or would like content involving you removed, please contact us through the website’s email address. We will review and address the matter as soon as possible."]]}]};</script>
 <script>
 (function(){
-  'use strict';
-  var copy=window.GWStatementCopy;
-  function init(){
-    var entry=document.querySelector('[data-gw-statement-open]');
-    if(!entry||entry.dataset.ready||!copy)return;
-    entry.dataset.ready='1';
-    var root=document.documentElement,overlay=entry.closest('.mobile-overlay.gw');
-    // The App and offline scripts append their entries after this Embed loads.
-    // Keep both tools above the statement regardless of their loading order.
-    var panel=entry.closest('.gw-menu-panel'),row=entry.parentElement,tools=panel&&panel.querySelector('.gw-menu-tools');
-    function order(){
-      if(!tools)return;
-      panel.querySelectorAll(':scope > .gw-app-install-entry').forEach(function(button){tools.appendChild(button);});
-      if(tools.nextElementSibling!==row)tools.insertAdjacentElement('afterend',row);
-    }
-    if(panel){new MutationObserver(order).observe(panel,{childList:true});order();}
-    var dialog=document.createElement('dialog');
-    dialog.className='gw-statement-dialog';dialog.id='gw-website-statement';
-    dialog.setAttribute('aria-labelledby','gw-statement-title');
-    dialog.innerHTML='<button type="button" class="gw-statement-close" aria-label="關閉"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg></button><div class="gw-statement-scroll"><header class="gw-statement-header"><svg class="gw-statement-mark" viewBox="0 0 338.74 338.74" aria-hidden="true"><path d="M169.37,338.74C75.98,338.74,0,262.76,0,169.37S75.98,0,169.37,0s169.37,75.98,169.37,169.37-75.98,169.37-169.37,169.37ZM169.37,23C88.66,23,23,88.66,23,169.37s65.66,146.37,146.37,146.37,146.37-65.66,146.37-146.37S250.08,23,169.37,23Z" /><path d="M169.37,214.87c-6.35,0-11.5-5.15-11.5-11.5v-117.44c0-6.35,5.15-11.5,11.5-11.5s11.5,5.15,11.5,11.5v117.44c0,6.35-5.15,11.5-11.5,11.5Z" /><circle cx="169.37" cy="249.08" r="12.38" /></svg><h2 id="gw-statement-title"></h2></header><div class="gw-statement-intro"></div><div class="gw-statement-sections"></div></div>';
-    document.body.appendChild(dialog);
-    var scroll=dialog.querySelector('.gw-statement-scroll'),closer=dialog.querySelector('.gw-statement-close');
-    scroll.tabIndex=0;scroll.setAttribute('role','region');scroll.setAttribute('aria-labelledby','gw-statement-title');
-    var lastLanguage='';
-    function language(){
-      if(root.getAttribute('data-gw-app-display')==='standalone'&&window.GWAppLanguage)return window.GWAppLanguage.get();
-      if(window.GWSiteLanguage)return window.GWSiteLanguage.get();
-      return root.lang==='en'?'en':'zh';
-    }
-    function paragraph(text){var p=document.createElement('p');p.textContent=text;return p;}
-    function sync(){
-      var lang=language()==='en'?'en':'zh',i=lang==='en'?1:0;
-      entry.querySelector('span').textContent=copy.title[i];
-      entry.setAttribute('aria-label',copy.title[i]);
-      if(lastLanguage===lang)return;
-      lastLanguage=lang;dialog.lang=lang==='en'?'en':'zh-Hant';
-      closer.setAttribute('aria-label',i?'Close':'關閉');
-      dialog.querySelector('h2').textContent=copy.title[i];
-      var intro=dialog.querySelector('.gw-statement-intro');intro.replaceChildren(paragraph(copy.intro[i]));
-      var sections=dialog.querySelector('.gw-statement-sections');sections.replaceChildren();
-      copy.sections.forEach(function(item){
-        var section=document.createElement('section');section.className='gw-statement-section';
-        var heading=document.createElement('h3');heading.textContent=item.heading[i];section.appendChild(heading);
-        item.paragraphs.forEach(function(text){section.appendChild(paragraph(text[i]));});sections.appendChild(section);
-      });
-    }
-    function close(){if(dialog.open)dialog.close();}
-    entry.addEventListener('click',function(){sync();if(dialog.open)return;dialog.showModal();scroll.scrollTop=0;root.setAttribute('data-gw-statement-open','');entry.setAttribute('aria-expanded','true');closer.focus({preventScroll:true});});
-    closer.addEventListener('click',close);
-    var outsideDown=false;
-    dialog.addEventListener('pointerdown',function(event){outsideDown=event.target===dialog;});
-    dialog.addEventListener('click',function(event){if(outsideDown&&event.target===dialog){var r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)close();}outsideDown=false;});
-    dialog.addEventListener('close',function(){root.removeAttribute('data-gw-statement-open');entry.setAttribute('aria-expanded','false');if(overlay&&getComputedStyle(overlay).display!=='none')entry.focus({preventScroll:true});});
-    if(overlay)new MutationObserver(function(){if(getComputedStyle(overlay).display==='none'||getComputedStyle(overlay).visibility==='hidden')close();}).observe(overlay,{attributes:true,attributeFilter:['style','class','aria-hidden']});
-    new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['lang','data-gw-app-language']});
-    window.addEventListener('pagehide',close);window.addEventListener('pageshow',sync);
-    sync();
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+'use strict';
+var copy=window.GWStatementCopy;
+function init(){
+var entry=document.querySelector('[data-gw-statement-open]');
+if(!entry||entry.dataset.ready||!copy)return;
+entry.dataset.ready='1';
+var root=document.documentElement,overlay=entry.closest('.mobile-overlay.gw');
+var panel=entry.closest('.gw-menu-panel'),row=entry.parentElement,tools=panel&&panel.querySelector('.gw-menu-tools');
+function order(){
+if(!tools)return;
+panel.querySelectorAll(':scope > .gw-app-install-entry').forEach(function(button){tools.appendChild(button);});
+if(tools.nextElementSibling!==row)tools.insertAdjacentElement('afterend',row);
+}
+if(panel){new MutationObserver(order).observe(panel,{childList:true});order();}
+var dialog=document.createElement('dialog');
+dialog.className='gw-statement-dialog';dialog.id='gw-website-statement';
+dialog.setAttribute('aria-labelledby','gw-statement-title');
+dialog.innerHTML='<button type="button" class="gw-statement-close" aria-label="關閉"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg></button><div class="gw-statement-scroll"><header class="gw-statement-header"><svg class="gw-statement-mark" viewBox="0 0 338.74 338.74" aria-hidden="true"><path d="M169.37,338.74C75.98,338.74,0,262.76,0,169.37S75.98,0,169.37,0s169.37,75.98,169.37,169.37-75.98,169.37-169.37,169.37ZM169.37,23C88.66,23,23,88.66,23,169.37s65.66,146.37,146.37,146.37,146.37-65.66,146.37-146.37S250.08,23,169.37,23Z" /><path d="M169.37,214.87c-6.35,0-11.5-5.15-11.5-11.5v-117.44c0-6.35,5.15-11.5,11.5-11.5s11.5,5.15,11.5,11.5v117.44c0,6.35-5.15,11.5-11.5,11.5Z" /><circle cx="169.37" cy="249.08" r="12.38" /></svg><h2 id="gw-statement-title"></h2></header><div class="gw-statement-intro"></div><div class="gw-statement-sections"></div></div>';
+document.body.appendChild(dialog);
+var scroll=dialog.querySelector('.gw-statement-scroll'),closer=dialog.querySelector('.gw-statement-close');
+scroll.tabIndex=0;scroll.setAttribute('role','region');scroll.setAttribute('aria-labelledby','gw-statement-title');
+scroll.setAttribute('fs-scrolldisable-element','preserve');
+scroll.addEventListener('touchmove',function(event){if(dialog.open&&event.touches.length===1)event.stopPropagation();},{passive:true});
+var lastLanguage='';
+function language(){
+if(root.getAttribute('data-gw-app-display')==='standalone'&&window.GWAppLanguage)return window.GWAppLanguage.get();
+if(window.GWSiteLanguage)return window.GWSiteLanguage.get();
+return root.lang==='en'?'en':'zh';
+}
+function paragraph(text){var p=document.createElement('p');p.textContent=text;return p;}
+function sync(){
+var lang=language()==='en'?'en':'zh',i=lang==='en'?1:0;
+entry.querySelector('span').textContent=copy.title[i];
+entry.setAttribute('aria-label',copy.title[i]);
+if(lastLanguage===lang)return;
+lastLanguage=lang;dialog.lang=lang==='en'?'en':'zh-Hant';
+closer.setAttribute('aria-label',i?'Close':'關閉');
+dialog.querySelector('h2').textContent=copy.title[i];
+var intro=dialog.querySelector('.gw-statement-intro');intro.replaceChildren(paragraph(copy.intro[i]));
+var sections=dialog.querySelector('.gw-statement-sections');sections.replaceChildren();
+copy.sections.forEach(function(item){
+var section=document.createElement('section');section.className='gw-statement-section';
+var heading=document.createElement('h3');heading.textContent=item.heading[i];section.appendChild(heading);
+item.paragraphs.forEach(function(text){section.appendChild(paragraph(text[i]));});sections.appendChild(section);
+});
+}
+function close(){if(dialog.open)dialog.close();}
+entry.addEventListener('click',function(){sync();if(dialog.open)return;dialog.showModal();scroll.scrollTop=0;root.setAttribute('data-gw-statement-open','');entry.setAttribute('aria-expanded','true');closer.focus({preventScroll:true});});
+closer.addEventListener('click',close);
+var outsideDown=false;
+dialog.addEventListener('pointerdown',function(event){outsideDown=event.target===dialog;});
+dialog.addEventListener('click',function(event){if(outsideDown&&event.target===dialog){var r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)close();}outsideDown=false;});
+dialog.addEventListener('close',function(){root.removeAttribute('data-gw-statement-open');entry.setAttribute('aria-expanded','false');if(overlay&&getComputedStyle(overlay).display!=='none')entry.focus({preventScroll:true});});
+if(overlay)new MutationObserver(function(){if(getComputedStyle(overlay).display==='none'||getComputedStyle(overlay).visibility==='hidden')close();}).observe(overlay,{attributes:true,attributeFilter:['style','class','aria-hidden']});
+new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['lang','data-gw-app-language']});
+window.addEventListener('pagehide',close);window.addEventListener('pageshow',sync);
+sync();
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
-
 </script>
