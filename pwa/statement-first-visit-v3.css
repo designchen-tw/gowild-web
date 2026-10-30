@@ -58,8 +58,8 @@ html[data-gw-theme="light"] .gw-first-visit .gw-first-visit-actions button[data-
 @media(prefers-reduced-motion:reduce){.gw-first-visit *{transition:none!important}}
 
 /* Shared dialog corrections: preserve keyboard focus, avoid touch focus boxes. */
-.gw-app-install-dialog ol.gw-app-install-diagrams{border-top:0;margin-top:0;padding-top:12px;margin-bottom:20px}
-.gw-app-install-dialog #gw-app-install-description{margin-bottom:20px}
+.gw-app-install-dialog ol.gw-app-install-diagrams{border-top:0;margin-top:0;padding-top:4px;margin-bottom:20px}
+.gw-app-install-dialog #gw-app-install-description{margin-bottom:16px}
 .gw-statement-dialog button.gw-statement-close:focus-visible,.gw-app-install-dialog button.gw-app-install-close:focus-visible{outline:none;box-shadow:none}
 @media(hover:hover) and (pointer:fine){.gw-statement-dialog button.gw-statement-close:focus-visible,.gw-app-install-dialog button.gw-app-install-close:focus-visible{outline:1px solid var(--gw-app-muted,#888);outline-offset:-8px;border-radius:4px}}
 html[data-gw-statement-exit] body>:not(.gw-first-visit-exit):not(style):not(link):not(script){display:none!important}
