@@ -1,0 +1,75 @@
+
+.gw-menu-statement-row{margin:8px 0 0;text-align:center}
+html[data-gw-theme] .gw-menu-shell .gw-menu-tools{margin-top:28px}
+.gw-menu-tools:empty+.gw-menu-statement-row{margin-top:28px}
+html[data-gw-theme] .gw-menu-shell .gw-menu-statement-entry{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;margin:0;padding:6px 8px;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--gw-menu-idle,#adadad);font:400 12px/1.6 "GW Avenir",Arial,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.gw-menu-statement-entry svg{position:relative;top:-1px;display:block;width:14px;height:14px;flex:none;fill:currentColor;stroke:none}
+.gw-statement-dialog,.gw-statement-dialog *{box-sizing:border-box}
+.gw-statement-dialog{--statement-bg:#0b0d0e;--statement-text:#ededed;--statement-body:#adadad;--statement-muted:#888;--statement-close-text:#e8e8e8;--statement-line:rgba(255,255,255,.18);width:min(680px,calc(100% - 40px));max-width:none;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);margin:auto;padding:0;border:1px solid var(--statement-line);border-radius:16px;background:var(--statement-bg);color:var(--statement-body);font:400 14px/1.85 "GW Avenir",Arial,sans-serif;overflow:hidden;box-shadow:none;overscroll-behavior:contain;color-scheme:dark}
+html[data-gw-theme="light"] .gw-statement-dialog{--statement-bg:#f6f7f3;--statement-text:#262626;--statement-body:#4d4d4d;--statement-muted:#777;--statement-close-text:#262626;--statement-line:rgba(0,0,0,.18);color-scheme:light}
+.gw-statement-dialog::backdrop{background:rgba(0,0,0,.36);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.gw-statement-scroll{max-height:calc(100vh - 50px);max-height:calc(100dvh - 50px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y pinch-zoom;padding:38px 40px 32px;scrollbar-width:thin;scrollbar-color:var(--statement-line) transparent}
+.gw-statement-header{text-align:center;margin:0 0 26px}
+.gw-statement-mark{display:block;width:32px;height:32px;margin:0 auto 14px;fill:currentColor;stroke:none;color:var(--statement-body)}
+.gw-statement-dialog h2{margin:0;color:var(--statement-text);font-size:20px;font-weight:600;line-height:1.5}
+.gw-statement-dialog p{margin:0 0 10px;overflow-wrap:break-word}
+.gw-statement-dialog p:last-child{margin-bottom:0}
+.gw-statement-intro{padding-bottom:24px;border-bottom:1px solid var(--statement-line)}
+.gw-statement-section{margin-top:26px}
+.gw-statement-dialog h3{margin:0 0 10px;color:var(--statement-text);font-size:14px;font-weight:600;line-height:1.6}
+.gw-statement-dialog button.gw-statement-close{position:absolute;z-index:1;top:10px;right:10px;display:grid;place-items:center;width:40px;height:40px;margin:0;padding:10px;border:0;border-radius:50%;box-shadow:none;background:transparent;color:var(--gw-app-muted,var(--statement-muted));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.gw-statement-close svg{display:block;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round}
+.gw-statement-dialog :focus-visible{outline:1px solid currentColor;outline-offset:3px}
+.gw-statement-dialog button.gw-statement-close:focus-visible{outline:1px dotted var(--gw-app-muted,var(--statement-muted));outline-offset:-8px;border-radius:4px}
+html[data-gw-statement-open] .mobile-overlay.gw{overflow-y:hidden!important}
+@media(hover:hover) and (pointer:fine){.gw-statement-dialog button.gw-statement-close:hover{color:var(--gw-app-text,var(--statement-close-text))}}
+@media(max-width:600px){.gw-statement-dialog{width:calc(100% - 28px);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);border-radius:14px;font-size:13px}.gw-statement-scroll{max-height:calc(100vh - 34px);max-height:calc(100dvh - 34px);padding:34px 24px 28px}.gw-statement-dialog h2{font-size:18px}.gw-statement-dialog h3{font-size:13px}.gw-statement-header{margin-bottom:22px}.gw-statement-section{margin-top:24px}}
+
+
+html[data-gw-first-visit-open]{overflow:hidden!important}
+.gw-first-visit[open]{display:flex;flex-direction:column;width:min(680px,calc(100% - 40px));height:min(780px,calc(100dvh - 48px));max-height:calc(100dvh - 48px);padding:0}
+.gw-first-visit .gw-first-visit-language{display:inline-flex;gap:3px;margin:14px auto 0;padding:3px;border:1px solid var(--statement-line);border-radius:999px}
+.gw-first-visit .gw-first-visit-language button{min-height:30px;margin:0;padding:4px 12px;border:0;border-radius:999px;background:transparent;color:var(--statement-muted);font:400 12px/1.5 "GW Avenir",Arial,sans-serif;cursor:pointer;box-shadow:none;transition:color .18s,background-color .18s}
+.gw-first-visit .gw-first-visit-language button[aria-pressed="true"]{background:rgba(255,255,255,.1);color:var(--statement-text)}
+html[data-gw-theme="light"] .gw-first-visit .gw-first-visit-language button[aria-pressed="true"]{background:#e1e4df}
+.gw-first-visit .gw-statement-scroll{flex:1;min-height:0;max-height:none;padding:36px 40px 28px}
+.gw-first-visit .gw-statement-header{margin-bottom:22px}
+.gw-first-visit .gw-statement-header h2:focus{outline:none}
+.gw-first-visit .gw-first-visit-footer{flex:none;padding:20px 40px 16px;border-top:1px solid var(--statement-line);text-align:center;background:var(--statement-bg)}
+.gw-first-visit .gw-first-visit-remember{display:flex;align-items:center;justify-content:center;gap:9px;margin:0 0 8px;color:var(--statement-body);font-size:12px;font-weight:400;line-height:1.6;text-transform:none;letter-spacing:normal;cursor:pointer}
+.gw-first-visit .gw-first-visit-remember[hidden]{display:none!important}
+.gw-first-visit .gw-first-visit-remember input{appearance:none;-webkit-appearance:none;position:relative;flex:none;width:16px;height:16px;margin:0;border:1px solid rgba(255,255,255,.35);border-radius:3px;background:transparent center / 13px 11px no-repeat;cursor:pointer}
+.gw-first-visit .gw-first-visit-remember input:checked{border-color:#fff;background-image:url("https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg")}
+
+html[data-gw-theme="light"] .gw-first-visit .gw-first-visit-remember input{border-color:rgba(0,0,0,.18)}
+html[data-gw-theme="light"] .gw-first-visit .gw-first-visit-remember input:checked{border-color:#296744;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 11'%3E%3Cpath fill='none' stroke='%23296744' stroke-width='2' stroke-miterlimit='10' d='M11 2L5.5 8.5 2 5'/%3E%3C/svg%3E")}
+
+.gw-first-visit p.gw-first-visit-note{margin:0 auto 14px;color:var(--statement-muted);font-size:12px;line-height:1.7;max-width:450px}
+.gw-first-visit .gw-first-visit-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.gw-first-visit .gw-first-visit-actions button,.gw-first-visit-exit button{display:inline-flex;align-items:center;justify-content:center;width:auto;min-height:40px;margin:0;padding:8px 22px;border:1px solid var(--statement-line,rgba(255,255,255,.18));border-radius:999px;background:#252729;color:var(--statement-text,#ededed);font:400 13px/1.6 "GW Avenir",Arial,sans-serif;cursor:pointer;box-shadow:none;-webkit-tap-highlight-color:transparent}
+.gw-first-visit .gw-first-visit-actions button[data-visit-action="disagree"]{background:transparent;color:var(--statement-body)}
+html[data-gw-theme="light"] .gw-first-visit .gw-first-visit-actions button{background:#edf0eb}
+html[data-gw-theme="light"] .gw-first-visit .gw-first-visit-actions button[data-visit-action="disagree"]{background:transparent}
+.gw-first-visit p.gw-first-visit-preview-note{margin:10px 0 0;color:var(--statement-muted);font-size:10px;line-height:1.5}
+.gw-first-visit-exit{display:grid;align-content:center;justify-items:center;min-height:100dvh;padding:28px;background:var(--gw-app-surface,#0b0d0e);color:var(--gw-app-body,#adadad);font:400 14px/1.8 "GW Avenir",Arial,sans-serif;text-align:center}
+.gw-first-visit-exit h1{font-size:20px;color:var(--gw-app-text,#ededed)}
+@media(hover:hover) and (pointer:fine){.gw-first-visit .gw-first-visit-actions button:hover{background:#fff;color:#171717}.gw-first-visit .gw-first-visit-actions button[data-visit-action="disagree"]:hover{background:rgba(255,255,255,.08);color:var(--statement-text)}html[data-gw-theme="light"] .gw-first-visit .gw-first-visit-actions button[data-visit-action="disagree"]:hover{background:#edf0eb}}
+@media(max-width:600px){.gw-first-visit[open]{width:calc(100% - 28px);height:calc(100dvh - 32px);max-height:calc(100dvh - 32px)}.gw-first-visit .gw-first-visit-language{margin:12px auto 0}.gw-first-visit .gw-statement-scroll{padding:30px 24px 24px}.gw-first-visit .gw-first-visit-footer{padding:16px 24px 13px}.gw-first-visit p.gw-first-visit-note{font-size:11px}.gw-first-visit .gw-first-visit-actions{gap:10px}.gw-first-visit .gw-first-visit-actions button{min-height:38px;padding:7px 18px}}
+@media(prefers-reduced-motion:reduce){.gw-first-visit *{transition:none!important}}
+
+/* Shared dialog corrections: preserve keyboard focus, avoid touch focus boxes. */
+.gw-app-install-dialog ol.gw-app-install-diagrams{border-top:0;margin-top:0;padding-top:12px;margin-bottom:20px}
+.gw-app-install-dialog #gw-app-install-description{margin-bottom:20px}
+.gw-statement-dialog button.gw-statement-close:focus-visible,.gw-app-install-dialog button.gw-app-install-close:focus-visible{outline:none;box-shadow:none}
+@media(hover:hover) and (pointer:fine){.gw-statement-dialog button.gw-statement-close:focus-visible,.gw-app-install-dialog button.gw-app-install-close:focus-visible{outline:1px solid var(--gw-app-muted,#888);outline-offset:-8px;border-radius:4px}}
+html[data-gw-statement-exit] body>:not(.gw-first-visit-exit):not(style):not(link):not(script){display:none!important}
+html[data-gw-statement-exit],html[data-gw-statement-exit] body{margin:0!important;min-height:100%;height:auto!important;overflow:auto!important;background:#0b0d0e!important}
+html[data-gw-statement-exit][data-gw-theme="light"],html[data-gw-statement-exit][data-gw-theme="light"] body{background:#f6f7f3!important}
+html[data-gw-statement-exit] body>.gw-first-visit-exit{--exit-bg:#0b0d0e;--exit-text:#ededed;--exit-body:#adadad;--exit-button:#252729;--exit-line:rgba(255,255,255,.18);display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:18px;width:100%;min-height:100vh;min-height:100dvh;box-sizing:border-box;margin:0;padding:40px 24px;background:var(--exit-bg);color:var(--exit-body);font:400 14px/1.8 "GW Avenir",Arial,sans-serif;text-align:center}
+html[data-gw-statement-exit][data-gw-theme="light"] body>.gw-first-visit-exit{--exit-bg:#f6f7f3;--exit-text:#262626;--exit-body:#4d4d4d;--exit-button:#edf0eb;--exit-line:rgba(0,0,0,.18)}
+.gw-first-visit-exit .gw-first-visit-exit-mark{display:block;width:32px;height:32px;fill:currentColor;color:var(--exit-body);flex:none;margin:0 0 4px}
+html[data-gw-statement-exit] .gw-first-visit-exit h1{max-width:520px;margin:0;color:var(--exit-text);font:600 22px/1.5 "GW Avenir",Arial,sans-serif;letter-spacing:normal;outline:none}
+html[data-gw-statement-exit] .gw-first-visit-exit p{max-width:440px;margin:0;color:var(--exit-body);font:400 14px/1.8 "GW Avenir",Arial,sans-serif}
+html[data-gw-statement-exit] .gw-first-visit-exit button{margin:8px 0 0;padding:8px 20px;min-height:40px;width:auto;border:1px solid var(--exit-line);border-radius:999px;background:var(--exit-button);color:var(--exit-text);font:400 13px/1.6 "GW Avenir",Arial,sans-serif;box-shadow:none;cursor:pointer}
+@media(hover:hover) and (pointer:fine){html[data-gw-statement-exit] .gw-first-visit-exit button:hover{background:#fff;color:#171717}}
+@media(max-width:600px){html[data-gw-statement-exit] .gw-first-visit-exit h1{font-size:20px}html[data-gw-statement-exit] .gw-first-visit-exit p{font-size:13px}}
