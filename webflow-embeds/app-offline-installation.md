@@ -1,6 +1,8 @@
-# GO WILD 離線 App v1 — 2026.10.24.2
+# GO WILD 離線 App v2 — 2026.11.02.1
 
 維護仍以 Webflow 與現有 HTML Embed 為主，不另建網站，也不替換原生 Webflow 導覽、投影片或表單。提供龍洞、德芙蘭、關子嶺、墾丁四個岩場的手動離線儲存，並共用離線首頁與選單。
+
+目前升級步驟與測試摘要見 [慢速連線更新](app-offline-slow-network-update.md)。
 
 ## 使用方式
 
@@ -16,12 +18,12 @@
 
 ## 資料邊界
 
-- 天氣 API：連線時照原規則取得資料，只保留最後成功回應。離線顯示明確標示「離線資料 · 最後取得」時間；這不是當前天氣。未曾成功取得的資料顯示暫缺，不補示例值。
+- 天氣 API：已有成功回應時立即顯示上次資料與原始 fetchedAt 時間，背景嘗試更新；未取得新資料前維持「上次資料／尚未更新」提示。背景取得不同資料後顯示「已取得新資料」與重新載入入口，不把尚未顯示的新資料冒充即時內容。未曾成功取得的資料顯示暫缺，不補示例值。
 - 波高／潮汐：包含在最後的龍洞回應中，仍受原本資料過期邏輯限制。不外推不存在的浪高或潮汐事件。
 - 即時影像、Windy、外部網站、Google Maps、Google 文件及 Adobe PDF 不列入離線包。原本限制下載的 PDF 仍需連線；不建立離線 PDF 副本。
 - 表單：不快取 POST、輸入值、訊息或送出結果。離線按送出會提示需連線，輸入仍留在當前頁面，不排隊自動寄送；關閉或重新載入頁面仍可能失去未送內容。
 - 首次儲存岩場時包含首頁原始公開 HTML、選單、首頁卡片照片、實際使用的投影片背景與必要程式／字型。離線首頁、選單、主題與語言切換可使用；課程、攝影等未下載頁面不因此變成可離線。離線點擊未保存連結會提示需要連網；若首頁未儲存或已移除，根目錄回到已儲存岩場清單。
-- 一般網站依舊優先使用網路 HTML。程式與圖片以實際版本化網址快取；頁面、Menu Overlay 與 Webflow 更新仍走原發布流程。
+- 已儲存的首頁與四個岩場立即使用儲存的 HTML，背景檢查新版；未儲存頁面仍使用網路。手動重新整理會優先嘗試新版，連線失敗則保留儲存副本。程式與圖片以實際版本化網址快取；頁面、Menu Overlay 與 Webflow 更新仍走原發布流程。
 
 ## 上線前置：同網域 Service Worker
 
@@ -37,7 +39,7 @@
 ### Cloudflare 設定
 
 1. 在現有 Cloudflare 帳戶新建獨立 Worker，例如 `gowild-offline`，貼入 `pwa-offline-worker.js`。
-2. 交付的 Worker 已內建固定資產版本 `ce54e44657fb8bb9fb1c1d5a16cdf9894c475399`，可直接貼上部署，不需 Secret。未來發布時，可用一般變數 `OFFLINE_ASSET_COMMIT` 覆蓋成包含新版離線程式的40字元 GitHub commit。
+2. 交付的 Worker 已內建固定資產版本 `33659d1a6a8ec3f6c9007ed042faaee478b8ecd2`，可直接貼上部署，不需 Secret。未來發布時，可用一般變數 `OFFLINE_ASSET_COMMIT` 覆蓋成包含新版離線程式的40字元 GitHub commit。
 3. 將 Worker Route 指向 **僅** `gowild.one/gw-offline/*`。不要設定成 `gowild.one/*`，不要改成網站的 Custom Domain origin，也不要移除 Webflow DNS。
 4. Route 需有 Cloudflare 代理的 DNS record。網域已使用 Cloudflare nameservers，但仍須在 Dashboard 核對此 hostname 的代理狀態。若目前為 DNS only，不要未確認就更動正式網站連線；先確認 Webflow 網域與 SSL 設定能配合該路由。
 5. 確認端點回傳 JavaScript，不是301、Webflow 404 HTML、登入頁或 Cloudflare challenge。一般網站與 `/longdong` 等頁應繼續由 Webflow 提供。
@@ -49,7 +51,7 @@
 
 1. 保留現有 `webflow-embeds/app-head.html`（App v7）及首頁 Page Code。
 2. 將全站 Footer 裡原本載入 `pwa/app-v6.js` 的 App 區塊，**完整替換**成新版 `webflow-embeds/app-footer.html`；不要重複附加兩份 App 腳本。
-3. 新 Footer 載入 `app-v8.js`、`offline-v1.js` 及 `offline-v1.css`。保留其他原生 Webflow、Finsweet、表單、PDF 程式。四頁內容 Embed 不需為離線功能另外改寫。
+3. 新 Footer 載入 `app-v10.js`、`offline-v2.js` 及 `offline-v2.css`，並保留既有網站聲明程式。保留其他原生 Webflow、Finsweet、表單、PDF 程式。四頁內容 Embed 不需為離線功能另外改寫。
 4. Webflow Publish 後，既有 App 需連線並手動 ↻ 重新載入一次，才能取得離線程式。不需移除並重新加入主畫面。
 5. 用 iPhone 真機完成下方核對；GitHub 推送不會替代 Cloudflare deploy 與 Webflow Publish。
 
