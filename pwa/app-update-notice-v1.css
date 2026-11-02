@@ -1,0 +1,11 @@
+/* App runtime updates are separate from saved-crag content checks. */
+.gw-app-update-notice{display:flex;align-items:baseline;justify-content:center;flex-wrap:wrap;gap:6px 14px;padding:12px 16px;border:1px solid var(--gw-app-line);border-radius:10px;background:transparent;color:var(--gw-app-body);font-family:inherit;font-size:12px;font-weight:400;line-height:1.6;text-align:center}
+.gw-app-update-notice :is(span,a){font-family:inherit!important;font-size:inherit!important;font-weight:400!important;line-height:inherit!important;letter-spacing:inherit!important}
+.gw-app-update-notice a{display:inline-flex;align-items:center;gap:5px;color:var(--gw-app-text);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.gw-app-update-notice svg{flex:none;width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.5}
+.gw-app-update-notice a:focus-visible{outline:1px solid var(--gw-app-accent);outline-offset:4px}
+@media(max-width:520px){.gw-app-update-notice{font-size:10px}}
+
+.gw-app-update-wrap{position:relative;z-index:2;padding:12px 15vw;background:var(--gw-app-surface)}
+@media(max-width:991px){.gw-app-update-wrap{padding-inline:7vw}}
+@media(max-width:767px){.gw-app-update-wrap{padding-inline:5vw}}

@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
+class Node{constructor(){this.children=[];this.attributes={};this.hidden=false;this._text=''}set textContent(v){this._text=v;this.children=[]}get textContent(){return this._text+this.children.map(c=>c.textContent).join('')}set innerHTML(v){this._text=v;this.children=[];if(v.includes('<span>')){const span=new Node();span.tag='span';this.children.push(span)}}appendChild(n){this.children.push(n);n.parent=this;return n}prepend(n){this.children.unshift(n);n.parent=this}setAttribute(k,v){this.attributes[k]=v}getAttribute(k){return this.attributes[k]??null}hasAttribute(k){return k in this.attributes}addEventListener(){}matches(){return false}remove(){this.parent.children=this.parent.children.filter(x=>x!==this)}querySelector(s){if(s==='span')return this.children.find(c=>c.tag==='span');if(s.includes('[data-offline-weather-note]'))return this.children.find(c=>c.hasAttribute('data-offline-weather-note'));return null}dataset={};}
+
+function fixture(stored=false){
+ const root=new Node(),main=new Node(),panel=new Node(),events=[];
+ function find(attr,node=main){if(node.hasAttribute(attr))return node;for(const child of node.children){const match=find(attr,child);if(match)return match;}return null}
+ const document={documentElement:root,readyState:'loading',addEventListener(){},dispatchEvent:event=>events.push(event),querySelector:s=>s==='main'?main:s==='[data-offline-page-note]'?find('data-offline-page-note'):s==='[data-offline-page-wrap]'?find('data-offline-page-wrap'):null,querySelectorAll:s=>s==='.ld-condition-panel,.gw-condition-panel,[data-cwa-widget]'?[panel]:s==='[data-offline-weather-note]'?panel.children.filter(n=>n.hasAttribute('data-offline-weather-note')):[],createElement:()=>new Node(),createTextNode:text=>{const n=new Node();n.textContent=text;return n}};
+ const window={GWStoredDocument:stored?{slug:'/longdong',savedAt:'2026-11-01T08:00:00+08:00',state:'loading'}:null,GWApp:{reload(){},hasUnsavedForm:()=>false},addEventListener(){}};
+ let clock=Date.parse('2026-11-02T09:00:00+08:00');class ClockDate extends Date{static now(){return clock}constructor(...args){super(...(args.length?args:[clock]))}}
+ const navigator={onLine:true,serviceWorker:{addEventListener(){}}};
+ class Event{constructor(type,options){this.type=type;this.detail=options.detail}}
+ const ctx=vm.createContext({window,document,location:{hostname:'gowild.one',pathname:'/longdong'},navigator,sessionStorage:{setItem(){}},URL,Date:ClockDate,CustomEvent:Event,matchMedia:()=>({matches:false}),console,setTimeout:()=>0,clearTimeout(){}});
+ let source=fs.readFileSync(new URL('../pwa/offline-v5.js',import.meta.url),'utf8');source=source.replace(/\}\)\(\);\s*$/,"window.qa={receiveState,connectivity};})();");vm.runInContext(source,ctx);
+ return{root,main,panel,events,window,navigator,qa:window.qa};
+}
+const ui=fixture(),fresh={threeHour:{temperature:24},fetchedAt:'2026-11-02T09:00:00+08:00'};
+ui.qa.connectivity();assert.equal(ui.main.children.length,0,'online page has no banner');
+ui.qa.receiveState({type:'GW_WEATHER_ONLINE',key:'/api/longdong',savedAt:fresh.fetchedAt,data:fresh});assert.equal(ui.panel.children.length,0,'online weather has no extra notice');assert.equal(ui.events.length,1);
+ui.qa.receiveState({type:'GW_WEATHER_OFFLINE',key:'/api/longdong',savedAt:'2026-11-02T08:00:00+08:00',state:'loading'});assert(ui.panel.children[0].textContent.includes('暫用上次氣象資料'));assert(ui.panel.children[0].textContent.includes('正在更新'));
+ui.qa.receiveState({type:'GW_WEATHER_OFFLINE',key:'/api/longdong',savedAt:'2026-11-01T07:00:00+08:00',state:'loading'});assert(ui.panel.children[0].textContent.includes('氣象資料已過期，正在嘗試更新'));
+ui.navigator.onLine=false;ui.qa.connectivity();assert(ui.main.children[0].children[0].textContent.includes('因為沒有網路，此頁暫用已儲存版本'));assert(ui.panel.children[0].textContent.includes('等待網路連線'));assert(!ui.panel.children[0].textContent.includes('正在'));
+ui.navigator.onLine=true;ui.qa.receiveState({type:'GW_WEATHER_UPDATE',key:'/api/longdong',savedAt:'2026-11-02T10:00:00+08:00',data:{...fresh,fetchedAt:'2026-11-02T10:00:00+08:00'}});assert.equal(ui.panel.children.length,0,'late recovery removes notice');assert.equal(ui.events.length,2,'late recovery sends data to real widgets');assert.equal(ui.main.children[0].children[0].hidden,true,'offline-only page notice disappears on recovery');
+const saved=fixture(true);saved.qa.connectivity();const note=saved.main.children[0].children[0];assert(note.textContent.includes('此頁暫用已儲存版本'));assert(note.textContent.includes('重新整理'));assert(!note.textContent.includes('有新版'));assert.equal(saved.main.children[0].className,'gw-offline-page-wrap');
+saved.root.setAttribute('data-gw-app-language','en');saved.qa.connectivity();assert(note.textContent.includes('Because the connection is slow'));
+console.log('PASS: no normal-online page/weather notices, fallback-only loading/24-hour expiry, honest offline wording, automatic recovery dispatch + notice removal, aligned wrapper, no false content-update banner, bilingual refresh label.');
