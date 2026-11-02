@@ -1,8 +1,8 @@
-# GO WILD 離線 App v5 — 2026.11.02.4
+# GO WILD 離線 App v6 — 2026.11.02.5
 
 維護仍以 Webflow 與現有 HTML Embed 為主，不另建網站，也不替換原生 Webflow 導覽、投影片或表單。提供龍洞、德芙蘭、關子嶺、墾丁四個岩場的手動離線儲存，並共用離線首頁與選單。
 
-目前升級步驟與測試摘要見 [離線下載修復](app-offline-download-fix.md)，App 更新流程見 [首頁更新提示](app-update-installation.md)，原有 [網路優先規則](app-offline-network-first-update.md) 保留。
+目前升級步驟與測試摘要見 [App 更新小窗](app-update-dialog.md)，下載修復見 [離線下載修復](app-offline-download-fix.md)，原有 [網路優先規則](app-offline-network-first-update.md) 保留。
 
 ## 使用方式
 
@@ -39,7 +39,7 @@
 ### Cloudflare 設定
 
 1. 在現有 Cloudflare 帳戶新建獨立 Worker，例如 `gowild-offline`，貼入 `pwa-offline-worker.js`。
-2. 交付的 Worker 已內建固定資產版本 `41c5ee8b13dc052f64ad8fc46806609e0ba7f609`，可直接貼上部署，不需 Secret。未來發布時，可用一般變數 `OFFLINE_ASSET_COMMIT` 覆蓋成包含新版離線程式的40字元 GitHub commit。
+2. 交付的 Worker 已內建固定資產版本 `084bc57b58bc4d19be5bdbecf103e91990824b4e`，可直接貼上部署，不需 Secret。未來發布時，可用一般變數 `OFFLINE_ASSET_COMMIT` 覆蓋成包含新版離線程式的40字元 GitHub commit。
 3. 將 Worker Route 指向 **僅** `gowild.one/gw-offline/*`。不要設定成 `gowild.one/*`，不要改成網站的 Custom Domain origin，也不要移除 Webflow DNS。
 4. Route 需有 Cloudflare 代理的 DNS record。網域已使用 Cloudflare nameservers，但仍須在 Dashboard 核對此 hostname 的代理狀態。若目前為 DNS only，不要未確認就更動正式網站連線；先確認 Webflow 網域與 SSL 設定能配合該路由。
 5. 確認端點回傳 JavaScript，不是301、Webflow 404 HTML、登入頁或 Cloudflare challenge。一般網站與 `/longdong` 等頁應繼續由 Webflow 提供。
@@ -51,7 +51,7 @@
 
 1. 保留現有 `webflow-embeds/app-head.html`（App v7）及首頁 Page Code。
 2. 將全站 Footer 裡原本載入 `pwa/app-v6.js` 的 App 區塊，**完整替換**成新版 `webflow-embeds/app-footer.html`；不要重複附加兩份 App 腳本。
-3. 新 Footer 載入 `app-v10.js`、`offline-v5.js` 及 `offline-v5.css`，並保留既有網站聲明程式。保留其他原生 Webflow、Finsweet、表單、PDF 程式。四頁內容 Embed 不需為離線功能另外改寫。
+3. 新 Footer 載入 `app-v10.js`、`offline-v6.js` 及 `offline-v6.css`，並保留既有網站聲明程式。保留其他原生 Webflow、Finsweet、表單、PDF 程式。四頁內容 Embed 不需為離線功能另外改寫。
 4. Webflow Publish 後，既有 App 需連線並手動 ↻ 重新載入一次，才能取得離線程式。不需移除並重新加入主畫面。
 5. 用 iPhone 真機完成下方核對；GitHub 推送不會替代 Cloudflare deploy 與 Webflow Publish。
 
