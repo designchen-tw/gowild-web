@@ -1,5 +1,11 @@
 # GO WILD 網站原始碼
 
+## 墾丁 GPX 地圖與操作元件樣式
+
+墾丁地圖改用 `kenting-sector-map-v12.js`，依編輯者提供的 `kenting-original-gpx-aligned-editable-ai2.svg` 建立岩體、名稱與圓圈的互動，保留三塊蝸牛牆的共同選取。原始向量與經緯度換算存於 `webflow-embeds/svg/kenting-gpx-map-v1.svg`、`kenting-gpx-georeference-v1.json`。定位需由使用者主動啟用，指南針另行授權；位置超出畫布會隱藏定位圖層並顯示範圍外提示，返回後自動恢復。重新儲存墾丁離線資料可取得新版地圖。
+
+所有地圖操作元件採共同規則，包含北方圖示、＋／－、定位、手機方向及岩區／全圖／回到位置。深淺主題的未選取底層不透明度為 .74，滑過為 .86；選取底層為 .90，再疊加 .14 的主題綠色。圖示、文字、外框跟隨現有主題變數，滑過限支援 hover 的精確指標，鍵盤使用 focus-visible。這次套用墾丁，其他岩場地圖後續修改時沿用相同規則。
+
 ## 地區存取控制 Worker（2026-10-28 記錄）
 
 新增管理者提供的目前「404 Worker」原始碼 [`geo-access-worker.js`](geo-access-worker.js)，保存 36 個放行地區、驗證機器人例外、404 回應及轉送前移除內部驗證標頭的邏輯，並記錄先以 `true` 將標頭歸零、再以 `cf.client.bot` 設為 `1` 的兩條 Transform Rules。詳細規則與未取得的部署設定範圍見 [`geo-access-worker.md`](geo-access-worker.md)。本次僅記錄專案來源，未變更 Cloudflare 部署、氣象 Worker 或離線 Worker。
