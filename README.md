@@ -1,5 +1,11 @@
 # GO WILD 網站原始碼
 
+## 關子嶺 GPX 地圖與手機縮放
+
+關子嶺地圖使用編輯者提供的 Illustrator 向量。可編輯檔與座標校準資料在 `webflow-embeds/svg/guanziling-gpx-map-v1.svg` 與 `guanziling-gpx-georeference-v1.json`。座標以原 GPX 與新 SVG 中十個對應航點校準，點選定位後可查看精度、附近航點與距實走軌跡的距離；手機方向需另外啟用。毒刺林推薦路線新增白無常（白鬼）、黑無常（黑鬼）及白虎。
+
+關子嶺與墾丁共用 `climbing-gpx-map-v1.js`。手機快速點兩下，第二下按住向下滑可放大、向上滑可縮小。雙指縮放、單指拖曳及按鈕也可使用。上線時將新版 `webflow-embeds/guanziling.html` 和 `webflow-embeds/kenting.html` 貼回對應 Webflow 頁面並發布。已儲存的岩場可透過離線資料功能重新下載新版地圖。
+
 ## 墾丁 GPX 地圖與操作元件樣式
 
 墾丁地圖改用 `kenting-sector-map-v12.js`，依編輯者提供的 `kenting-original-gpx-aligned-editable-ai2.svg` 建立岩體、名稱與圓圈的互動，保留三塊蝸牛牆的共同選取。原始向量與經緯度換算存於 `webflow-embeds/svg/kenting-gpx-map-v1.svg`、`kenting-gpx-georeference-v1.json`。定位需由使用者主動啟用，指南針另行授權；位置超出畫布會隱藏定位圖層並顯示範圍外提示，返回後自動恢復。重新儲存墾丁離線資料可取得新版地圖。
