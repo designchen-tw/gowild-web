@@ -1,4 +1,17 @@
 <script>(function(){var h=document.documentElement,t='dark';h.setAttribute('data-gw-page-theme','climbing');try{t=window.GWColorTheme?GWColorTheme.get():localStorage.getItem('gw-color-theme-v1')}catch(e){}h.setAttribute('data-gw-theme',t==='light'?'light':'dark')})();</script>
+<style>
+/* Collapse the icon column whenever the wind arrow is hidden. */
+main[data-gw-route-list] :is(.ld-condition-wind,.gw-condition-wind)
+:is(.ld-condition-wind-main,.gw-condition-wind-main):has(> :is([data-wind-arrow],[data-arrow])[hidden]) {
+  grid-template-columns: minmax(0, 1fr) !important;
+  column-gap: 0 !important;
+}
+main[data-gw-route-list] :is(.ld-condition-wind,.gw-condition-wind)
+:is(.ld-condition-wind-main,.gw-condition-wind-main):has(> :is([data-wind-arrow],[data-arrow])[hidden])
+> :is([data-wind-summary],[data-wind]) {
+  grid-column: 1 !important;
+}
+</style>
 <main data-gw-route-list data-gw-section-system class="gz-detail gw-sector-browser" data-gw-sector-browser="gz" data-gz-detail data-condition-endpoint="/api/guanziling" data-condition-lat="23.3283185" data-condition-lon="120.4889894" data-condition-language-event="gz-language-change">
 <nav class="gz-detail__nav" aria-label="關子嶺頁面導覽"><a href="#gz-overview" data-gz-link="overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10.5 8.5-7 8.5 7M5.5 9.5v10h13v-10M9.5 19.5v-6h5v6"/></svg><span data-lang-zh="關子嶺" data-lang-en="Guanziling">關子嶺</span></a><a href="#gz-areas" data-gz-link="areas"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span data-lang-zh="岩場" data-lang-en="Crag">岩場</span></a><a href="#gz-visit" data-gz-link="visit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg><span data-lang-zh="行前" data-lang-en="Plan">行前</span></a><a href="#gz-safety" data-gz-link="safety"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="18" r="1.5"/><path d="M8 16 18 6m-6 0h6v6"/></svg><span data-lang-zh="出發" data-lang-en="Go">出發</span></a><a href="#gz-live-weather" data-gz-link="weather"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v2M2 8h2m-.5-4.5 1.4 1.4M11.5 3.5l-1.4 1.4M6.8 11.8A4 4 0 1 1 11 6.2M7 19h10a4 4 0 1 0-.8-7.9A5.5 5.5 0 0 0 6 12.2 3.5 3.5 0 0 0 7 19Z"/></svg><span data-lang-zh="天氣" data-lang-en="Weather">天氣</span></a>
 </nav>
