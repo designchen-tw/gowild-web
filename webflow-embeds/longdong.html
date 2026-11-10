@@ -106,7 +106,8 @@ html[data-gw-theme="light"] main.ld-detail [data-ld-sector-map] .zoom-buttons bu
 </main>
 
 <style>
-main.ld-detail .ld-sector-expanded__routes ol > li {position:relative}
+/* Reset Webflow's global list-item margin inside the recommended routes. */
+main.ld-detail[data-gw-route-list] .ld-sector-expanded__routes ol > li {position:relative;margin:0}
 main.ld-detail :is(.kd-route-detail-trigger,.kd-route-dialog__close) {-webkit-tap-highlight-color:transparent}
 @media (hover:hover) and (pointer:fine) {
   main.ld-detail .kd-route-detail-trigger:hover {background:transparent}
