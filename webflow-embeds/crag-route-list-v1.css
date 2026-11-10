@@ -1,0 +1,67 @@
+/* Shared route-list layout. Long Dong keeps its existing sub-sector tabs. */
+main:is(.gw-sector-browser, .ld-sector-browser)[data-gw-route-list] :is(.gw-sector-panel, .ld-sector-expanded) {
+  padding-block-start: 16px;
+}
+main:is(.gw-sector-browser, .ld-sector-browser)[data-gw-route-list] :is(.gw-sector-panel, .ld-sector-expanded__routes) h4 {
+  margin-inline: 0;
+  margin-block-end: 12px;
+  padding-block: 0;
+  padding-inline: var(--gw-route-text-inset);
+  scrollbar-gutter: auto;
+}
+main.gw-sector-browser[data-gw-route-list] .gw-sector-panel > p.gw-sector-panel__empty {
+  margin-inline: 0;
+  scrollbar-gutter: auto;
+}
+
+main:is(.gw-sector-browser, .ld-sector-browser)[data-gw-route-list] .gw-route-scroll-hints {
+  display: block;
+  position: relative;
+}
+main:is(.gw-sector-browser, .ld-sector-browser)[data-gw-route-list] :is(.gw-sector-panel__scroll, .ld-sector-expanded__route-scroll) {
+  padding-inline: 0;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+main:is(.gw-sector-browser, .ld-sector-browser)[data-gw-route-list] .gw-route-scroll-hints__rail:not([hidden]) {
+  position: absolute;
+  inset: 0 var(--gw-route-scrollbar-width, 0px) 0 auto;
+  width: var(--gw-route-control-width);
+  z-index: 1;
+  pointer-events: none;
+}
+main:is(.gw-sector-browser, .ld-sector-browser)[data-gw-route-list] .gw-route-scroll-hints__button {
+  width: var(--gw-route-control-width);
+  transform: none;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+main:is(.gw-sector-browser, .ld-sector-browser)[data-gw-route-list] :is(.gw-sector-panel, .ld-sector-expanded__routes) ol > li {
+  padding-inline: var(--gw-route-text-inset) calc(var(--gw-route-control-width) + 8px);
+}
+main:is(.gw-sector-browser, .ld-sector-browser)[data-gw-route-list] :is(.gw-sector-panel, .ld-sector-expanded__routes) ol > li:first-child {
+  padding-block-start: 12px;
+}
+main:is(.gw-sector-browser, .ld-sector-browser)[data-gw-route-list] :is(.gw-sector-panel, .ld-sector-expanded__routes) ol > li:last-child {
+  padding-block-end: 12px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  main:is(.gw-sector-browser, .ld-sector-browser)[data-gw-route-list] :is(.gw-sector-panel, .ld-sector-expanded__routes) ol > li:hover {
+    border-radius: 4px;
+    background: rgba(var(--gw-crag-neutral-rgb, var(--ld-theme-neutral-rgb, 255,255,255)), .055);
+  }
+  main.kd-detail[data-gw-route-list] .kd-route-detail-trigger:hover {
+    background: transparent;
+  }
+}
+main[data-gw-route-list]:not([data-gw-route-keyboard-focus]) :is(
+  .kd-route-detail-trigger, .kd-route-dialog__close, .gw-route-scroll-hints__button,
+  .gw-sector-panel__scroll, .ld-sector-expanded__route-scroll
+):focus {
+  outline: none;
+}
+main.kd-detail[data-gw-route-list] :is(.kd-route-detail-trigger, .kd-route-dialog__close) {
+  -webkit-tap-highlight-color: transparent;
+}
