@@ -6,12 +6,12 @@ export default {
   async fetch(request,env){
     const url=new URL(request.url);
     if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{Allow:'GET, HEAD'}});
-    if(url.pathname==='/gw-offline/health')return Response.json({service:'gowild-offline',release:'2026.11.02.5'},{headers:{'Cache-Control':'no-store'}});
+    if(url.pathname==='/gw-offline/health')return Response.json({service:'gowild-offline',release:'2026.11.10.1'},{headers:{'Cache-Control':'no-store'}});
     const updatePage=url.pathname.replace(/\/$/,'')==='/gw-offline/update';
     if(url.pathname!=='/gw-offline/sw.js'&&!updatePage)return new Response('Not found',{status:404});
-    const commit=env.OFFLINE_ASSET_COMMIT||'084bc57b58bc4d19be5bdbecf103e91990824b4e';
+    const commit=env.OFFLINE_ASSET_COMMIT||'4f956913c77fd838db9150447dea60c7b91ffb24';
     if(!/^[0-9a-f]{40}$/.test(commit||''))return new Response('Offline release not configured',{status:503});
-    const file=updatePage?'update-v1.html':env.OFFLINE_DISABLED==='true'?'offline-disable-v1.js':'offline-sw-v6.js';
+    const file=updatePage?'update-v1.html':env.OFFLINE_DISABLED==='true'?'offline-disable-v1.js':'offline-sw-v7.js';
     const upstream=await fetch('https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@'+commit+'/pwa/'+file);
     if(!upstream.ok)return new Response('Offline release unavailable',{status:502,headers:{'Cache-Control':'no-store'}});
     const assetBase='https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@'+commit+'/pwa/';
