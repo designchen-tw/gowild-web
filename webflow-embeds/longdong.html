@@ -2,6 +2,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>main.ld-detail #ld-classics{display:none!important}</style>
+<style>
+main.ld-detail [data-ld-sector-map] .zoom-buttons button {
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+main.ld-detail [data-ld-sector-map] .zoom-buttons button:enabled:active {
+  background:linear-gradient(rgba(var(--ld-theme-accent-rgb,169,217,182),.14),rgba(var(--ld-theme-accent-rgb,169,217,182),.14)),rgba(var(--ld-theme-nav-rgb,27,29,31),.9)!important;
+}
+html[data-gw-theme="light"] main.ld-detail [data-ld-sector-map] .zoom-buttons button:enabled:active {
+  color:var(--ld-theme-accent,#296744);
+}
+</style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@3f79702772cf7599dfacec03cc06927090925c3d/webflow-embeds/longdong-announcements-v2.css">
 <script src="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@5dfc726b7516c0a3b3bbdaf5ac5c579dcca1fdd8/longdong-announcements-v2.js" defer></script>
 <main data-gw-route-list data-gw-section-system class="ld-detail ld-sector-browser" data-ld-detail>
