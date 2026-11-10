@@ -74,7 +74,6 @@
   :where(html[data-gw-theme="light"]) .gw-menu-shell .gw-menu-submenu a[aria-current="page"]{color:#296744;background:rgba(41,103,68,.16)}
   :where(html[data-gw-theme="light"]) .gw-menu-shell .gw-menu-toggle:hover,
   :where(html[data-gw-theme="light"]) .gw-menu-shell .gw-menu-group.is-open .gw-menu-toggle{color:#262626}
-  :where(html[data-gw-theme="light"]) .gw-menu-shell .gw-menu-statement-entry{--gw-menu-idle:#4d4d4d}
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/designchen-tw/gowild-web@07f022bbaa72a3bc96ce55774f4a81be6ac93154/webflow-embeds/menu-overlay-theme-v1.css">
 
@@ -218,8 +217,29 @@
 .gw-menu-statement-row{margin:8px 0 0;text-align:center}
 html[data-gw-theme] .gw-menu-shell .gw-menu-tools{margin-top:28px}
 .gw-menu-tools:empty+.gw-menu-statement-row{margin-top:28px}
-html[data-gw-theme] .gw-menu-shell .gw-menu-statement-entry{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;margin:0;padding:6px 8px;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--gw-menu-idle,#adadad);font:400 12px/1.6 "GW Avenir",Arial,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.gw-menu-statement-entry svg{position:relative;top:-1px;display:block;width:14px;height:14px;flex:none;fill:currentColor;stroke:none}
+html[data-gw-theme] .gw-menu-shell .gw-menu-panel :is(button.gw-menu-statement-entry,button.gw-offline-entry,button.gw-app-update-entry){
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  min-height:40px;width:auto;margin:0;padding:8px 6px;border:0;border-radius:0;
+  background:transparent;box-shadow:none;color:var(--gw-menu-idle,#adadad);opacity:1;
+  font:400 12px/1.5 "GW Avenir",Arial,sans-serif;letter-spacing:0;
+  cursor:pointer;-webkit-tap-highlight-color:transparent
+}
+html[data-gw-theme="light"] .gw-menu-shell .gw-menu-panel :is(button.gw-menu-statement-entry,button.gw-offline-entry,button.gw-app-update-entry){
+  color:var(--gw-menu-idle,#666)
+}
+.gw-menu-panel :is(.gw-menu-statement-entry,.gw-offline-entry,.gw-app-update-entry) > svg{
+  position:static;display:block;width:14px;height:14px;flex:none;fill:none;stroke:currentColor;
+  stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:1
+}
+.gw-menu-panel .gw-menu-statement-row .gw-menu-statement-entry > svg{fill:currentColor;stroke:none}
+@media(hover:hover) and (pointer:fine){
+  html[data-gw-theme] .gw-menu-shell .gw-menu-panel :is(button.gw-menu-statement-entry,button.gw-offline-entry,button.gw-app-update-entry):hover{
+    color:var(--gw-menu-hover,#fff);opacity:1
+  }
+  html[data-gw-theme="light"] .gw-menu-shell .gw-menu-panel :is(button.gw-menu-statement-entry,button.gw-offline-entry,button.gw-app-update-entry):hover{
+    color:var(--gw-menu-hover,#000)
+  }
+}
 .gw-statement-dialog,.gw-statement-dialog *{box-sizing:border-box}
 .gw-statement-dialog{--statement-bg:#0b0d0e;--statement-text:#ededed;--statement-body:#adadad;--statement-muted:#888;--statement-close-text:#e8e8e8;--statement-line:rgba(255,255,255,.18);width:min(680px,calc(100% - 40px));max-width:none;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);margin:auto;padding:0;border:1px solid var(--statement-line);border-radius:16px;background:var(--statement-bg);color:var(--statement-body);font:400 14px/1.85 "GW Avenir",Arial,sans-serif;overflow:hidden;box-shadow:none;overscroll-behavior:contain;color-scheme:dark}
 html[data-gw-theme="light"] .gw-statement-dialog{--statement-bg:#f6f7f3;--statement-text:#262626;--statement-body:#4d4d4d;--statement-muted:#777;--statement-close-text:#262626;--statement-line:rgba(0,0,0,.18);color-scheme:light}
