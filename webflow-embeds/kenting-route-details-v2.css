@@ -1,0 +1,120 @@
+main.kd-detail .gw-sector-panel li.kd-route-detail-row {
+  position: relative;
+  padding-right: 25px;
+}
+.kd-route-detail-trigger {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--gw-crag-muted, #aaa);
+  cursor: pointer;
+}
+.kd-route-detail-trigger:focus-visible {
+  outline: 2px solid var(--gw-crag-accent, #a9d9b6);
+  outline-offset: -2px;
+}
+.kd-route-detail-trigger__arrow {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border: solid currentColor;
+  border-width: 1px 1px 0 0;
+  transform: translateY(-50%) rotate(45deg);
+}
+@media (hover: hover) and (pointer: fine) {
+  .kd-route-detail-trigger:hover {
+    background: rgba(var(--gw-crag-neutral-rgb, 255,255,255), .055);
+    color: var(--gw-crag-text, #fff);
+  }
+}
+html:has(.kd-route-dialog[open]) { overflow: hidden; }
+.kd-route-dialog {
+  width: min(520px, calc(100% - 30px));
+  max-width: none;
+  max-height: calc(100% - 28px);
+  max-height: calc(100dvh - 28px);
+  padding: 0;
+  margin: auto;
+  overflow: hidden;
+  border: 1px solid rgba(var(--gw-crag-neutral-rgb, 255,255,255), .20);
+  border-radius: 18px;
+  background: var(--gw-crag-soft, #0b0d0e);
+  color: var(--gw-crag-text, #f5f5f5);
+  font: inherit;
+  font-size: var(--gw-type-body);
+  font-weight: 400;
+  line-height: 1.7;
+}
+.kd-route-dialog *, .kd-route-dialog { box-sizing: border-box; }
+.kd-route-dialog::backdrop { background: rgba(0,0,0,.5); backdrop-filter: blur(3px); }
+.kd-route-dialog__content {
+  position: relative;
+  max-height: calc(100vh - 30px);
+  max-height: calc(100dvh - 30px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 28px clamp(18px, 5vw, 32px) 24px;
+}
+.kd-route-dialog__header { padding-right: 34px; }
+.kd-route-dialog__header p { margin: 0; color: var(--gw-crag-muted, #aaa); font-weight: 400; }
+.kd-route-dialog__header [data-route-area] { font-size: var(--gw-type-label); }
+.kd-route-dialog__header [data-route-alternate] { font-size: var(--gw-type-card); line-height: 1.45; }
+.kd-route-dialog__header h2 { margin: 5px 0 3px; font-size: var(--gw-type-card); font-weight: 600; line-height: 1.45; overflow-wrap: anywhere; }
+.kd-route-dialog__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--gw-crag-muted, #aaa);
+  cursor: pointer;
+}
+.kd-route-dialog__close svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.kd-route-dialog :focus-visible { outline: 2px solid var(--gw-crag-accent, #a9d9b6); outline-offset: -3px; }
+.kd-route-dialog__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 20px;
+  margin: 20px 0 0;
+  padding-top: 15px;
+  border-top: 1px solid rgba(var(--gw-crag-neutral-rgb, 255,255,255), .15);
+}
+/* The description uses the same label and value typography as the facts. */
+.kd-route-dialog :is(dt, .kd-route-dialog__description h3) {
+  margin: 0;
+  color: var(--gw-crag-muted, #aaa);
+  font-family: inherit;
+  font-size: var(--gw-type-label);
+  font-weight: 400;
+  line-height: inherit;
+  text-align: start;
+}
+.kd-route-dialog :is(dd, .kd-route-dialog__description p) {
+  margin: 2px 0 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: var(--gw-type-body);
+  font-weight: 400;
+  line-height: inherit;
+  overflow-wrap: anywhere;
+  text-align: start;
+}
+.kd-route-dialog__description { margin: 12px 0 0; padding: 0; }
